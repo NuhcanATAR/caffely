@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6317390880",
+    "project_id": "caffely-90d9a",
+    "storage_bucket": "caffely-90d9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6317390880:android:9462eecb8bb2516d191045",
+        "android_client_info": {
+          "package_name": "com.codenoah.caffely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6317390880-2hm4n9jg9jbvjigh0n85r2k4e6jtlkn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6CFVvA5ik2QbkcLnNe3w18SPKhQ0rzb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6317390880-2hm4n9jg9jbvjigh0n85r2k4e6jtlkn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
