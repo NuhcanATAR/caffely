@@ -1,8 +1,10 @@
+import 'package:caffely/feature/sign_up/bloc/cubit.dart';
 import 'package:caffely/main_viewmodel.dart';
 import 'package:caffely/product/initialize/app_start.dart';
 import 'package:caffely/product/theme/light_theme.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'product/constants/logo.dart';
 
@@ -14,26 +16,20 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MultiBlocProvider(
-  //     providers: const [],
-  //     child: MaterialApp(
-  //       debugShowCheckedModeBanner: false,
-  //       theme: CustomLightTheme().themeData,
-  //       themeMode: ThemeMode.light,
-  //       home: const FirsView(),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: CustomLightTheme().themeData,
-      themeMode: ThemeMode.light,
-      home: const FirsView(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SignUpBloc>(
+          create: (BuildContext context) => SignUpBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: CustomLightTheme().themeData,
+        themeMode: ThemeMode.light,
+        home: const FirsView(),
+      ),
     );
   }
 }

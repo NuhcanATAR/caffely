@@ -41,13 +41,14 @@ class _SignViewState extends SignViewModel {
               ),
               // title
               Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
-                  ),
-                  child: const TitleLargeBlackBoldText(
-                    text: 'Caffely Giriş Yap',
-                    textAlign: TextAlign.center,
-                  )),
+                padding: PaddingSizedsUtility.vertical(
+                  PaddingSizedsUtility.normalPaddingValue,
+                ),
+                child: const TitleLargeBlackBoldText(
+                  text: 'Caffely Giriş Yap',
+                  textAlign: TextAlign.center,
+                ),
+              ),
               // google sign in
               SignInButtonWidget(
                 func: () {},

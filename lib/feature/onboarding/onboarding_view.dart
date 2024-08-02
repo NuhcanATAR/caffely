@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:caffely/feature/onboarding/onboarding_viewmodel.dart';
 import 'package:caffely/feature/sign/sign_view.dart';
+import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/onboarding_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -44,23 +45,26 @@ class _OnBoardingViewState extends OnBoardingViewModel {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               _buildStepIndicator(
-                  context,
-                  selectProccessIndex >= StepProccess.oneView.value ? 25 : 8,
-                  selectProccessIndex >= StepProccess.oneView.value
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.grey),
+                context,
+                selectProccessIndex >= StepProccess.oneView.value ? 25 : 8,
+                selectProccessIndex >= StepProccess.oneView.value
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.grey,
+              ),
               _buildStepIndicator(
-                  context,
-                  selectProccessIndex >= StepProccess.secondView.value ? 25 : 8,
-                  selectProccessIndex >= StepProccess.secondView.value
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.grey),
+                context,
+                selectProccessIndex >= StepProccess.secondView.value ? 25 : 8,
+                selectProccessIndex >= StepProccess.secondView.value
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.grey,
+              ),
               _buildStepIndicator(
-                  context,
-                  selectProccessIndex >= StepProccess.threeView.value ? 25 : 8,
-                  selectProccessIndex >= StepProccess.threeView.value
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.grey),
+                context,
+                selectProccessIndex >= StepProccess.threeView.value ? 25 : 8,
+                selectProccessIndex >= StepProccess.threeView.value
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.grey,
+              ),
             ],
           ),
           // footer
@@ -110,7 +114,7 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                               });
                             }
                           },
-                          btnStatus: 3,
+                          btnStatus: ButtonTypes.borderPrimaryColorButton,
                         ),
                       ),
                     ),
@@ -152,7 +156,7 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                               );
                             }
                           },
-                          btnStatus: 1,
+                          btnStatus: ButtonTypes.primaryColorButton,
                         ),
                       ),
                     ),
@@ -211,7 +215,8 @@ class _OnBoardingViewState extends OnBoardingViewModel {
       width: width,
       height: 8,
       margin: PaddingSizedsUtility.horizontal(
-          PaddingSizedsUtility.smallPaddingValue),
+        PaddingSizedsUtility.smallPaddingValue,
+      ),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.all(

@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:caffely/product/constants/icon.dart';
+import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
@@ -143,7 +144,7 @@ class CodeNoahDialogs {
                     dynamicViewExtensions: dynamicViewExtensions,
                     text: "TAMAM",
                     func: funcOne,
-                    btnStatus: 1,
+                    btnStatus: ButtonTypes.primaryColorButton,
                   ),
                 ),
                 const SizedBox(
@@ -156,7 +157,7 @@ class CodeNoahDialogs {
                     dynamicViewExtensions: dynamicViewExtensions,
                     text: "KAPAT",
                     func: funcSecond,
-                    btnStatus: 4,
+                    btnStatus: ButtonTypes.borderPrimaryColorButton,
                   ),
                 ),
               ],

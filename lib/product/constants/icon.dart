@@ -10,7 +10,10 @@ enum AppIcons {
   lockFill('lock_fill'),
   mailFill('mail_fill'),
   add('add'),
-  rocketOutline('rocket_outline');
+  rocketOutline('rocket_outline'),
+  warningCircle('warning_circle'),
+  eyeOutline('eye_outline'),
+  eyeCloseOutline('eyeclose_outline');
 
   final String value;
   const AppIcons(this.value);
