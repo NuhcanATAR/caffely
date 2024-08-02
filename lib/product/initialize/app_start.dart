@@ -124,7 +124,7 @@ Future<void> onStart(ServiceInstance service) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
         await service.setForegroundNotificationInfo(
-          title: "E-Çiftçi",
+          title: "Caffely",
           content: "Uygulama arka planda çalışıyor",
         );
       }

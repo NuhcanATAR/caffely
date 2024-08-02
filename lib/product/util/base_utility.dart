@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IconSizedsUtility {
+  static double hugeSize = 200.0;
   static double largeSecondSize = 55.0;
   static double largeSize = 40.0;
   static double mediumSecondSize = 30.0;
