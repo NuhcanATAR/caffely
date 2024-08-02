@@ -202,6 +202,9 @@ class _SignUpViewState extends SignUpViewModel {
                                               state.password,
                                             ),
                                           );
+                                      emailController.clear();
+                                      passwordController.clear();
+                                      isAgree = false;
                                     } else {
                                       CodeNoahDialogs(context).showFlush(
                                         type: SnackType.warning,

@@ -13,7 +13,8 @@ enum AppIcons {
   rocketOutline('rocket_outline'),
   warningCircle('warning_circle'),
   eyeOutline('eye_outline'),
-  eyeCloseOutline('eyeclose_outline');
+  eyeCloseOutline('eyeclose_outline'),
+  accountSignIn('account_signin');
 
   final String value;
   const AppIcons(this.value);

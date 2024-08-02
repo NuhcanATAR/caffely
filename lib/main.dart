@@ -1,3 +1,4 @@
+import 'package:caffely/feature/sign_in/bloc/cubit.dart';
 import 'package:caffely/feature/sign_up/bloc/cubit.dart';
 import 'package:caffely/main_viewmodel.dart';
 import 'package:caffely/product/initialize/app_start.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<SignUpBloc>(
           create: (BuildContext context) => SignUpBloc(),
+        ),
+        BlocProvider<SignInBloc>(
+          create: (BuildContext context) => SignInBloc(),
         ),
       ],
       child: MaterialApp(

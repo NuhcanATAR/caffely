@@ -3,6 +3,7 @@ import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/util/base_utility.dart';
+import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
 
@@ -161,6 +162,60 @@ class CodeNoahDialogs {
                   ),
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<T?> showLoadingAlert<T extends Object?>(
+    AppIcons icon,
+    String title,
+    String subTitle,
+    DynamicViewExtensions dynamicViewExtensions,
+  ) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
+        title: icon.toSvgImg(
+          null,
+          IconSizedsUtility.hugeSize,
+          IconSizedsUtility.hugeSize,
+        ),
+        content: SizedBox(
+          height: dynamicViewExtensions.dynamicHeight(context, 0.11),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: PaddingSizedsUtility.bottom(
+                    PaddingSizedsUtility.normalPaddingValue,
+                  ),
+                  child: TitleLargeBlackBoldText(
+                    text: title,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: PaddingSizedsUtility.bottom(
+                    PaddingSizedsUtility.smallPaddingValue,
+                  ),
+                  child: BodyMediumBlackText(
+                    text: subTitle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: const [
+          Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 6,
+              strokeCap: StrokeCap.round,
             ),
           ),
         ],
