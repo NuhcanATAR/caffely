@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 enum SlideDirection { leftToRight, rightToLeft, topToBottom, bottomToTop }
 
 class CodeNoahNavigatorRouter {
-  static void push(BuildContext context, Widget page,
-      {SlideDirection direction = SlideDirection.rightToLeft}) {
+  static void push(
+    BuildContext context,
+    Widget page, {
+    SlideDirection direction = SlideDirection.rightToLeft,
+  }) {
     Navigator.push(
       context,
       _createRoute(page, direction),
     );
   }
 
-  static void pushAndRemoveUntil(BuildContext context, Widget page,
-      {SlideDirection direction = SlideDirection.rightToLeft}) {
+  static void pushAndRemoveUntil(
+    BuildContext context,
+    Widget page, {
+    SlideDirection direction = SlideDirection.rightToLeft,
+  }) {
     Navigator.pushAndRemoveUntil(
       context,
       _createRoute(page, direction),
@@ -42,9 +48,9 @@ class CodeNoahNavigatorRouter {
         const end = Offset.zero;
         const curve = Curves.easeInOut;
 
-        var tween =
+        final tween =
             Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        var offsetAnimation = animation.drive(tween);
+        final offsetAnimation = animation.drive(tween);
 
         return SlideTransition(
           position: offsetAnimation,
