@@ -1,5 +1,6 @@
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
+import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
@@ -117,7 +118,7 @@ class _VersionViewState extends BaseState<VersionView> {
                               throw Exception('Could not launch ');
                             }
                           },
-                          btnStatus: 1,
+                          btnStatus: ButtonTypes.primaryColorButton,
                         ),
                       ],
                     ),
