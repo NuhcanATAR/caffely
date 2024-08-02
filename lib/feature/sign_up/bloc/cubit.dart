@@ -35,6 +35,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           .doc(FirebaseService().authID)
           .set({
         'id': FirebaseAuth.instance.currentUser!.uid,
+        'profile_image': '',
         'name_surname': '',
         'email': event.email,
         'password': event.password,
