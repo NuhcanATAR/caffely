@@ -14,7 +14,8 @@ enum AppIcons {
   warningCircle('warning_circle'),
   eyeOutline('eye_outline'),
   eyeCloseOutline('eyeclose_outline'),
-  accountSignIn('account_signin');
+  accountSignIn('account_signin'),
+  accountPassword('account_password');
 
   final String value;
   const AppIcons(this.value);
