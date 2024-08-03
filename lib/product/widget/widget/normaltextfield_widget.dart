@@ -44,16 +44,12 @@ class NormalTextFieldWidget extends StatelessWidget {
               )
             : const SizedBox(),
         Container(
-          margin: isLabelText == true
-              ? EdgeInsets.only(
-                  left: MarginSizedsUtility.normalMarginValue,
-                  bottom: MarginSizedsUtility.smallMarginValue,
-                )
-              : context.padding.onlyBottomLow,
+          margin: context.padding.onlyBottomLow,
           child: TextFormField(
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).colorScheme.scrim,
                   fontFamily: 'Popins',
+                  fontWeight: FontWeight.bold,
                 ),
             controller: controller,
             validator: isValidator == true
@@ -61,7 +57,7 @@ class NormalTextFieldWidget extends StatelessWidget {
                     CustomValidator(value: value).emptyNormalCheck
                 : null,
             onChanged: onChanged,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.text,
             maxLines: explanationStatus == true ? 4 : null,
             enabled: enabled,
             decoration: InputDecoration(
@@ -72,13 +68,17 @@ class NormalTextFieldWidget extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Colors.transparent,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: PaddingSizedsUtility.normalPaddingValue,
+                vertical: PaddingSizedsUtility.smallPaddingValue,
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                   width: 1,
                 ),
               ),
@@ -86,27 +86,24 @@ class NormalTextFieldWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
             ),

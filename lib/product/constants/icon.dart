@@ -15,7 +15,10 @@ enum AppIcons {
   eyeOutline('eye_outline'),
   eyeCloseOutline('eyeclose_outline'),
   accountSignIn('account_signin'),
-  accountPassword('account_password');
+  accountPassword('account_password'),
+  callOutline('call_outline'),
+  arrowDropDown('arrow_drop_down'),
+  doneOutline('done_outline');
 
   final String value;
   const AppIcons(this.value);
