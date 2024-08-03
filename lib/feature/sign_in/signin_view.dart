@@ -41,224 +41,216 @@ class _SignInViewState extends SignInViewModel {
           ),
         ),
       ),
-      body: BlocBuilder<SignInBloc, SignInState>(
-        builder: (BuildContext context, state) {
-          return BlocConsumer<SignInBloc, SignInState>(
-            listener: signInListenerBloc,
-            builder: (BuildContext context, blocState) {
-              return Form(
-                key: formSignInKey,
-                child: Padding(
-                  padding: PaddingSizedsUtility.all(
-                    PaddingSizedsUtility.normalPaddingValue,
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      // body
-                      Expanded(
-                        child: ListView(
-                          children: <Widget>[
-                            // title & sub title
-                            Padding(
-                              padding: PaddingSizedsUtility.vertical(
-                                PaddingSizedsUtility.normalPaddingValue,
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  // title
-                                  SizedBox(
-                                    width:
-                                        dynamicViewExtensions.maxWidth(context),
-                                    child: Padding(
-                                      padding: PaddingSizedsUtility.bottom(
-                                        PaddingSizedsUtility.normalPaddingValue,
-                                      ),
-                                      child: const TitleLargeBlackBoldText(
-                                        text: 'Giriş Yap 👩‍💻',
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
+      body: BlocConsumer<SignInBloc, SignInState>(
+        listener: signInListenerBloc,
+        builder: (BuildContext context, blocState) {
+          return Form(
+            key: formSignInKey,
+            child: Padding(
+              padding: PaddingSizedsUtility.all(
+                PaddingSizedsUtility.normalPaddingValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  // body
+                  Expanded(
+                    child: ListView(
+                      children: <Widget>[
+                        // title & sub title
+                        Padding(
+                          padding: PaddingSizedsUtility.vertical(
+                            PaddingSizedsUtility.normalPaddingValue,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              // title
+                              SizedBox(
+                                width: dynamicViewExtensions.maxWidth(context),
+                                child: Padding(
+                                  padding: PaddingSizedsUtility.bottom(
+                                    PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  // sub title
-                                  SizedBox(
-                                    width:
-                                        dynamicViewExtensions.maxWidth(context),
-                                    child: Padding(
-                                      padding: PaddingSizedsUtility.bottom(
-                                        PaddingSizedsUtility.normalPaddingValue,
-                                      ),
-                                      child: const BodyMediumBlackText(
-                                        text:
-                                            "Hesap bilgilerinizi girin ve Caffely'e giriş yapın",
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
+                                  child: const TitleLargeBlackBoldText(
+                                    text: 'Giriş Yap 👩‍💻',
+                                    textAlign: TextAlign.left,
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                            // email
-                            CustomEmailFieldWidget(
-                              emailController: emailController,
-                              hintText: 'E-mail',
-                              onChanged: (String value) {
-                                context
-                                    .read<SignInBloc>()
-                                    .add(SignInEmailEvent(value));
-                              },
-                              isLabelText: true,
-                            ),
-                            // password
-                            CustomPasswordFieldWidget(
-                              passwordController: passwordController,
-                              hintText: 'Şifre',
-                              onChanged: (String value) {
-                                context
-                                    .read<SignInBloc>()
-                                    .add(SignInPasswordEvent(value));
-                              },
-                              isValidator: false,
-                              isLabelText: true,
-                            ),
-                            // remember me & forgot password
-                            Padding(
-                              padding: PaddingSizedsUtility.vertical(
-                                PaddingSizedsUtility.normalPaddingValue,
-                              ),
-                              child: Row(
-                                children: <Widget>[
-                                  // remember me
-                                  Flexible(
-                                    fit: FlexFit.tight,
-                                    flex: 1,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Checkbox(
-                                          value: isRememberMe,
-                                          onChanged: rememberMeOnChanged,
-                                          activeColor: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                PaddingSizedsUtility.horizontal(
-                                              PaddingSizedsUtility
-                                                  .smallPaddingValue,
-                                            ),
-                                            child: const BodyMediumBlackText(
-                                              text: 'Beni Hatırla',
-                                              textAlign: TextAlign.left,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                              // sub title
+                              SizedBox(
+                                width: dynamicViewExtensions.maxWidth(context),
+                                child: Padding(
+                                  padding: PaddingSizedsUtility.bottom(
+                                    PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  // forgot password
-                                  Flexible(
-                                    fit: FlexFit.tight,
-                                    flex: 1,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        CodeNoahNavigatorRouter.push(
-                                          context,
-                                          const PasswordView(),
-                                          direction: SlideDirection.rightToLeft,
-                                        );
-                                      },
-                                      child: const BodyMediumMainColorBoldText(
-                                        text: 'Şifremi Unuttum',
-                                        textAlign: TextAlign.right,
-                                      ),
-                                    ),
+                                  child: const BodyMediumBlackText(
+                                    text:
+                                        "Hesap bilgilerinizi girin ve Caffely'e giriş yapın",
+                                    textAlign: TextAlign.left,
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                            // sign up
-                            Padding(
-                              padding: PaddingSizedsUtility.top(
-                                PaddingSizedsUtility.hightPaddingValue,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  const Spacer(),
-                                  Flexible(
-                                    fit: FlexFit.tight,
-                                    flex: 5,
-                                    child: Padding(
-                                      padding: PaddingSizedsUtility.horizontal(
-                                        PaddingSizedsUtility.smallPaddingValue,
-                                      ),
-                                      child: const BodyMediumBlackText(
-                                        text: 'Henüz hesabınız yokmu?',
-                                        textAlign: TextAlign.right,
-                                      ),
+                            ],
+                          ),
+                        ),
+                        // email
+                        CustomEmailFieldWidget(
+                          emailController: emailController,
+                          hintText: 'E-mail',
+                          onChanged: (String value) {
+                            context
+                                .read<SignInBloc>()
+                                .add(SignInEmailEvent(value));
+                          },
+                          isLabelText: true,
+                        ),
+                        // password
+                        CustomPasswordFieldWidget(
+                          passwordController: passwordController,
+                          hintText: 'Şifre',
+                          onChanged: (String value) {
+                            context
+                                .read<SignInBloc>()
+                                .add(SignInPasswordEvent(value));
+                          },
+                          isValidator: false,
+                          isLabelText: true,
+                        ),
+                        // remember me & forgot password
+                        Padding(
+                          padding: PaddingSizedsUtility.vertical(
+                            PaddingSizedsUtility.normalPaddingValue,
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              // remember me
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 1,
+                                child: Row(
+                                  children: <Widget>[
+                                    Checkbox(
+                                      value: isRememberMe,
+                                      onChanged: rememberMeOnChanged,
+                                      activeColor:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
-                                  ),
-                                  Flexible(
-                                    fit: FlexFit.tight,
-                                    flex: 3,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        CodeNoahNavigatorRouter.push(
-                                          context,
-                                          const SignUpView(),
-                                          direction: SlideDirection.rightToLeft,
-                                        );
-                                      },
+                                    Expanded(
                                       child: Padding(
                                         padding:
                                             PaddingSizedsUtility.horizontal(
                                           PaddingSizedsUtility
                                               .smallPaddingValue,
                                         ),
-                                        child: const BodyMediumMainColorText(
-                                          text: 'Hesap Oluştur',
+                                        child: const BodyMediumBlackText(
+                                          text: 'Beni Hatırla',
                                           textAlign: TextAlign.left,
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  const Spacer(),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                              // forgot password
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 1,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    CodeNoahNavigatorRouter.push(
+                                      context,
+                                      const PasswordView(),
+                                      direction: SlideDirection.rightToLeft,
+                                    );
+                                  },
+                                  child: const BodyMediumMainColorBoldText(
+                                    text: 'Şifremi Unuttum',
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      // sign in
-                      CustomButtonWidget(
-                        dynamicViewExtensions: dynamicViewExtensions,
-                        text: 'Giriş Yap',
-                        func: state.email.isEmpty || state.password.isEmpty
-                            ? () {}
-                            : () {
-                                if (formSignInKey.currentState!.validate()) {
-                                  context.read<SignInBloc>().add(
-                                        SignInUserEvent(
-                                          state.email,
-                                          state.password,
-                                          dynamicViewExtensions,
-                                        ),
-                                      );
-                                  emailController.clear();
-                                  passwordController.clear();
-                                }
-                              },
-                        btnStatus: state.email.isEmpty || state.password.isEmpty
+                        // sign up
+                        Padding(
+                          padding: PaddingSizedsUtility.top(
+                            PaddingSizedsUtility.hightPaddingValue,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              const Spacer(),
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 5,
+                                child: Padding(
+                                  padding: PaddingSizedsUtility.horizontal(
+                                    PaddingSizedsUtility.smallPaddingValue,
+                                  ),
+                                  child: const BodyMediumBlackText(
+                                    text: 'Henüz hesabınız yokmu?',
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                fit: FlexFit.tight,
+                                flex: 3,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    CodeNoahNavigatorRouter.push(
+                                      context,
+                                      const SignUpView(),
+                                      direction: SlideDirection.rightToLeft,
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: PaddingSizedsUtility.horizontal(
+                                      PaddingSizedsUtility.smallPaddingValue,
+                                    ),
+                                    child: const BodyMediumMainColorText(
+                                      text: 'Hesap Oluştur',
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Spacer(),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // sign in
+                  CustomButtonWidget(
+                    dynamicViewExtensions: dynamicViewExtensions,
+                    text: 'Giriş Yap',
+                    func: blocState.email.isEmpty || blocState.password.isEmpty
+                        ? () {}
+                        : () {
+                            if (formSignInKey.currentState!.validate()) {
+                              context.read<SignInBloc>().add(
+                                    SignInUserEvent(
+                                      blocState.email,
+                                      blocState.password,
+                                      dynamicViewExtensions,
+                                    ),
+                                  );
+                              emailController.clear();
+                              passwordController.clear();
+                            }
+                          },
+                    btnStatus:
+                        blocState.email.isEmpty || blocState.password.isEmpty
                             ? ButtonTypes.borderPrimaryColorButton
                             : ButtonTypes.primaryColorButton,
-                      ),
-                    ],
                   ),
-                ),
-              );
-            },
+                ],
+              ),
+            ),
           );
         },
       ),
