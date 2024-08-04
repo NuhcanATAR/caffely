@@ -1,5 +1,6 @@
 import 'package:caffely/feature/splash/splash_view.dart';
 import 'package:caffely/feature/version/version_view.dart';
+import 'package:caffely/product/core/base/helper/auth_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ abstract class SplashViewModel extends State<SplashView> {
       final int isAuthStatus = prefs.getInt('auth_status') ?? 0;
       if (isRememberMe == true && currentUserId.isNotEmpty) {
         await checkVersion(true);
-      } else if (isAuthStatus == 2) {
+      } else if (isAuthStatus == AuthControl.googleAuth.valueAuth) {
         await checkVersion(true);
       } else {
         await checkVersion(false);

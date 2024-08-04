@@ -8,6 +8,7 @@ class IconSizedsUtility {
   static double mediumSize = 20.0;
   static double normalSize = 25.0;
   static double smallSize = 18.0;
+  static double xSmallSize = 10.0;
 }
 
 class WidgetWidthHeightValueUtility {
@@ -50,15 +51,17 @@ class MarginSizedsUtility {
   static double mediumMarginValue = 10.0;
   static double smallMarginValue = 5.0;
 
-  static EdgeInsets horizontal(double padding) =>
-      EdgeInsets.symmetric(horizontal: padding);
-  static EdgeInsets vertical(double padding) =>
-      EdgeInsets.symmetric(vertical: padding);
-  static EdgeInsets left(double padding) => EdgeInsets.only(left: padding);
-  static EdgeInsets right(double padding) => EdgeInsets.only(right: padding);
-  static EdgeInsets top(double padding) => EdgeInsets.only(top: padding);
-  static EdgeInsets bottom(double padding) => EdgeInsets.only(bottom: padding);
-  static EdgeInsets all(double padding) => EdgeInsets.all(padding);
+  static EdgeInsets horizontal(double margin) =>
+      EdgeInsets.symmetric(horizontal: margin);
+  static EdgeInsets vertical(double margin) => EdgeInsets.symmetric(
+        vertical: margin,
+        horizontal: margin,
+      );
+  static EdgeInsets left(double margin) => EdgeInsets.only(left: margin);
+  static EdgeInsets right(double margin) => EdgeInsets.only(right: margin);
+  static EdgeInsets top(double margin) => EdgeInsets.only(top: margin);
+  static EdgeInsets bottom(double margin) => EdgeInsets.only(bottom: margin);
+  static EdgeInsets all(double margin) => EdgeInsets.all(margin);
 }
 
 class RadiusUtility {
