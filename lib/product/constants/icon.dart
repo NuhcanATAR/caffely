@@ -18,7 +18,26 @@ enum AppIcons {
   accountPassword('account_password'),
   callOutline('call_outline'),
   arrowDropDown('arrow_drop_down'),
-  doneOutline('done_outline');
+  arrowRight('arrow_right'),
+  doneOutline('done_outline'),
+  creditCardOutline('creditcard_outline'),
+  favoriteFill('favorite_fill'),
+  favoriteOutline('favorite_outline'),
+  giftOutline('gift_outline'),
+  homeFill('home_fill'),
+  homeOutline('home_outline'),
+  locationFill('location_fill'),
+  notificationOutline('notification_outline'),
+  orderFill('order_fill'),
+  orderOutline('order_outline'),
+  settingOutline('setting_outline'),
+  shareOutline('share_outline'),
+  shopFill('shop_fill'),
+  shopOutline('shop_outline'),
+  starFill('star_fill'),
+  timeOutline('time_outline'),
+  userFill('user_fill'),
+  userOutline('user_outline');
 
   final String value;
   const AppIcons(this.value);

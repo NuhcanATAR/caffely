@@ -55,11 +55,12 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
-                  child: BodyMediumBlackText(
-                    text: 'Şehir',
-                    textAlign: TextAlign.left,
-                  )),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: BodyMediumBlackText(
+                  text: 'Şehir',
+                  textAlign: TextAlign.left,
+                ),
+              ),
             ),
             Container(
               margin: MarginSizedsUtility.bottom(
