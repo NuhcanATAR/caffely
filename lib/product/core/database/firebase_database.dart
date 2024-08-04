@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum FirebaseCollectionReferances {
   users,
+  banners,
+  stores,
+  product,
   version;
 
   CollectionReference get collectRef =>

@@ -1,4 +1,6 @@
 import 'package:caffely/feature/complete/bloc/cubit.dart';
+import 'package:caffely/feature/home/bloc/cubit.dart';
+import 'package:caffely/feature/home/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/cubit.dart';
 import 'package:caffely/feature/sign_in/bloc/cubit.dart';
 import 'package:caffely/feature/sign_up/bloc/cubit.dart';
@@ -34,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ProfileCompleteBloc>(
           create: (BuildContext context) => ProfileCompleteBloc(),
+        ),
+        BlocProvider<HomeBloc>(
+          create: (BuildContext context) => HomeBloc()..add(LoadHome()),
         ),
       ],
       child: MaterialApp(

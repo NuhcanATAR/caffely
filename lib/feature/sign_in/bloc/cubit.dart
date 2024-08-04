@@ -126,6 +126,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             'auth_status': 2,
             'date': FieldValue.serverTimestamp(),
           });
+        } else {
+          await FirebaseCollectionReferances.users.collectRef
+              .doc(FirebaseService().authID)
+              .update({
+            'profile_image': googleUser.photoUrl,
+            'auth_status': 2,
+          });
         }
         emit(
           const SignInGoogleAuthSuccess(
