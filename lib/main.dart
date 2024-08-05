@@ -4,6 +4,8 @@ import 'package:caffely/feature/home/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/cubit.dart';
 import 'package:caffely/feature/sign_in/bloc/cubit.dart';
 import 'package:caffely/feature/sign_up/bloc/cubit.dart';
+import 'package:caffely/feature/store/bloc/cubit.dart';
+import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/main_viewmodel.dart';
 import 'package:caffely/product/initialize/app_start.dart';
 import 'package:caffely/product/theme/light_theme.dart';
@@ -39,6 +41,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<HomeBloc>(
           create: (BuildContext context) => HomeBloc()..add(LoadHome()),
+        ),
+        BlocProvider<StoreBloc>(
+          create: (BuildContext context) => StoreBloc()..add(LoadStores("")),
         ),
       ],
       child: MaterialApp(

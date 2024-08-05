@@ -6,7 +6,10 @@ import 'package:flutter_svg/svg.dart';
 enum AppImages {
   onBoardingOne('slide_one'),
   onBoardingTwo('slide_second'),
-  onBoardingThree('slide_three');
+  onBoardingThree('slide_three'),
+  notFound('not_found_second'),
+  notFoundSecond('not_found'),
+  error('error');
 
   final String value;
   const AppImages(this.value);

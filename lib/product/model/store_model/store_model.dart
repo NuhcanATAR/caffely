@@ -50,6 +50,7 @@ class StoreModel {
   final bool freeDelivery;
   final String paymentTypes;
   final String tradeName;
+  final String locationUrl;
   @TimestampConverter()
   final Timestamp? openingTime;
   @TimestampConverter()
@@ -75,6 +76,7 @@ class StoreModel {
     this.freeDelivery,
     this.paymentTypes,
     this.tradeName,
+    this.locationUrl,
     this.openingTime,
     this.closingTime,
     this.date,
