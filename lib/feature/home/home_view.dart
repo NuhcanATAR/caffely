@@ -339,6 +339,7 @@ class _HomeViewState extends HomeViewModel {
                                         store: store,
                                         dynamicViewExtensions:
                                             dynamicViewExtensions,
+                                        isCardStatus: true,
                                       );
                                     },
                                   ),

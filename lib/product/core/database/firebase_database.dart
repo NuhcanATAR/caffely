@@ -8,6 +8,7 @@ enum FirebaseCollectionReferances {
   banners,
   stores,
   product,
+  favorite,
   version;
 
   CollectionReference get collectRef =>

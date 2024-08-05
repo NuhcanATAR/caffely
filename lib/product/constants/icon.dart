@@ -37,7 +37,9 @@ enum AppIcons {
   starFill('star_fill'),
   timeOutline('time_outline'),
   userFill('user_fill'),
-  userOutline('user_outline');
+  userOutline('user_outline'),
+  searchOutline('search_outline'),
+  filterOutline('filter_outline');
 
   final String value;
   const AppIcons(this.value);
