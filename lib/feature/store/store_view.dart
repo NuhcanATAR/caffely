@@ -100,7 +100,7 @@ class _StoresViewState extends StoresViewModel {
             );
           } else if (state is StoresLoaded) {
             if (state.stores.isEmpty) {
-              return const Center(child: Text('No banners available'));
+              return const Center(child: Text('No stores available'));
             }
           }
           return const SizedBox();

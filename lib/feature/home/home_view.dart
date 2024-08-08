@@ -19,7 +19,8 @@ import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/productcard_widget.dart';
 import 'package:caffely/product/widget/widget/slidercard_widget.dart';
 import 'package:caffely/product/widget/widget/storecard_widget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -230,8 +231,7 @@ class _HomeViewState extends HomeViewModel {
                                       PaddingSizedsUtility.smallPaddingValue,
                                     ),
                                     child: GestureDetector(
-                                      onTap: () => carouselController
-                                          .animateToPage(entry.key),
+                                      onTap: () => carouselController,
                                       child: Icon(
                                         Icons.circle,
                                         size: IconSizedsUtility.xSmallSize,

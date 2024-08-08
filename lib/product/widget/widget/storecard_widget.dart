@@ -53,7 +53,7 @@ class StoreCardWidget extends StatelessWidget {
                     children: <Widget>[
                       // top
                       Expanded(
-                        flex: 4,
+                        flex: 5,
                         child: CachedNetworkImage(
                           imageUrl: store.coverImage.toString(),
                           imageBuilder: (
@@ -110,7 +110,7 @@ class StoreCardWidget extends StatelessWidget {
                       // body
                       Flexible(
                         fit: FlexFit.tight,
-                        flex: 2,
+                        flex: 3,
                         child: Center(
                           child: SingleChildScrollView(
                             child: Column(
