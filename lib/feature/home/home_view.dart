@@ -3,14 +3,15 @@ import 'package:caffely/feature/home/bloc/cubit.dart';
 import 'package:caffely/feature/home/bloc/state.dart';
 import 'package:caffely/feature/home/home_viewmodel.dart';
 import 'package:caffely/feature/notification/notification_view.dart';
+import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
 import 'package:caffely/feature/products/products_view.dart';
-import 'package:caffely/feature/products/view/productdetail_view.dart';
 import 'package:caffely/feature/store/store_view.dart';
 import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/productfilter_control.dart';
+import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -19,7 +20,7 @@ import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/productcard_widget.dart';
 import 'package:caffely/product/widget/widget/slidercard_widget.dart';
 import 'package:caffely/product/widget/widget/storecard_widget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -107,10 +108,10 @@ class _HomeViewState extends HomeViewModel {
                                   PaddingSizedsUtility.smallPaddingValue,
                                 ),
                                 child: BodyMediumBlackText(
-                                  text: timeHour > 6
-                                      ? 'Günaydın ⛅'
-                                      : timeHour < 7
-                                          ? 'İyi akşamlar 🌃'
+                                  text: timeHour > 18
+                                      ? 'İyi akşamlar 🌃'
+                                      : timeHour < 18
+                                          ? 'Günaydın ⛅'
                                           : 'Bilinmiyor',
                                   textAlign: TextAlign.left,
                                 ),
@@ -230,8 +231,7 @@ class _HomeViewState extends HomeViewModel {
                                       PaddingSizedsUtility.smallPaddingValue,
                                     ),
                                     child: GestureDetector(
-                                      onTap: () => carouselController
-                                          .animateToPage(entry.key),
+                                      onTap: () => carouselController,
                                       child: Icon(
                                         Icons.circle,
                                         size: IconSizedsUtility.xSmallSize,
@@ -439,6 +439,8 @@ class _HomeViewState extends HomeViewModel {
                                             ),
                                           );
                                         },
+                                        isCardStatus:
+                                            ProductCardType.horizontal,
                                       );
                                     },
                                   ),

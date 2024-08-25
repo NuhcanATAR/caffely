@@ -61,11 +61,13 @@ abstract class SplashViewModel extends State<SplashView> {
           const Duration(seconds: 4),
           () {
             if (isRouter == true) {
+              if (!mounted) return;
               CodeNoahNavigatorRouter.pushAndRemoveUntil(
                 context,
                 const SignInLoadingView(),
               );
             } else {
+              if (!mounted) return;
               CodeNoahNavigatorRouter.pushAndRemoveUntil(
                 context,
                 const OnBoardingView(),
@@ -77,6 +79,7 @@ abstract class SplashViewModel extends State<SplashView> {
         Future.delayed(
           const Duration(seconds: 4),
           () {
+            if (!mounted) return;
             CodeNoahNavigatorRouter.pushAndRemoveUntil(
               context,
               const VersionView(),

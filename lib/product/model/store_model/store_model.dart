@@ -51,6 +51,7 @@ class StoreModel {
   final String paymentTypes;
   final String tradeName;
   final String locationUrl;
+  final bool isDeleted;
   @TimestampConverter()
   final Timestamp? openingTime;
   @TimestampConverter()
@@ -77,6 +78,7 @@ class StoreModel {
     this.paymentTypes,
     this.tradeName,
     this.locationUrl,
+    this.isDeleted,
     this.openingTime,
     this.closingTime,
     this.date,

@@ -79,6 +79,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .product.collectRef
           .where('store_id', isEqualTo: event.storeId)
+          .where('is_deleted', isEqualTo: false)
           .get();
       productList = snapshot.docs
           .map(
@@ -90,7 +91,6 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
           .favorite.collectRef
           .where('store_id', isEqualTo: event.storeId)
           .where('user_id', isEqualTo: FirebaseService().authID)
-          .where('is_deleted', isEqualTo: false)
           .get();
       favoritesList = snapshotFavorite.docs
           .map(
