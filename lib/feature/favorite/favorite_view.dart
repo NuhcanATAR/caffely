@@ -2,6 +2,7 @@ import 'package:caffely/feature/favorite/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/state.dart';
 import 'package:caffely/feature/favorite/favorite_viewmodel.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
@@ -99,7 +100,14 @@ class _FavoriteViewState extends FavoriteViewModel {
                             return StoreCardWidget(
                               store: store,
                               dynamicViewExtensions: dynamicViewExtensions,
-                              func: () {},
+                              func: () {
+                                CodeNoahNavigatorRouter.push(
+                                  context,
+                                  StoreDetailView(
+                                    storeModel: store,
+                                  ),
+                                );
+                              },
                               isCardStatus: false,
                             );
                           },
