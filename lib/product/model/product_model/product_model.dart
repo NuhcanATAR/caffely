@@ -10,6 +10,9 @@ class ProductModel {
   final String subTitle;
   final String description;
   final int price;
+
+  final int middlePrice;
+  final int largePrice;
   final int quanity;
   final bool isShowCase;
   final int productType;
@@ -23,6 +26,8 @@ class ProductModel {
     this.subTitle,
     this.description,
     this.price,
+    this.middlePrice,
+    this.largePrice,
     this.quanity,
     this.isShowCase,
     this.productType,

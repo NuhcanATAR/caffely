@@ -39,7 +39,11 @@ enum AppIcons {
   userFill('user_fill'),
   userOutline('user_outline'),
   searchOutline('search_outline'),
-  filterOutline('filter_outline');
+  filterOutline('filter_outline'),
+  closeOutline('close_light'),
+  minusLight('minus_light'),
+  hotOutline('hot_coffe'),
+  icedOutline('ice_coffe');
 
   final String value;
   const AppIcons(this.value);

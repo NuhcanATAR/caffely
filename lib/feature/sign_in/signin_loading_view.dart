@@ -45,6 +45,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
             });
             if (user.nameSurname.isEmpty) {
               Future.delayed(const Duration(seconds: 3), () {
+                if (!context.mounted) return;
                 CodeNoahNavigatorRouter.pushAndRemoveUntil(
                   context,
                   const ProfileCompleteView(),
@@ -53,6 +54,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
               });
             } else {
               Future.delayed(const Duration(seconds: 3), () {
+                if (!context.mounted) return;
                 CodeNoahNavigatorRouter.pushAndRemoveUntil(
                   context,
                   const BottomMenuView(),
