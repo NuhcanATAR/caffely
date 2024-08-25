@@ -6,6 +6,7 @@ enum ProductTypeControl {
   smallMiddle,
   middleLarge,
   standart,
+  notSelect,
 }
 
 extension ProducttypeControlExtension on ProductTypeControl {
@@ -25,6 +26,44 @@ extension ProducttypeControlExtension on ProductTypeControl {
         return 6;
       case ProductTypeControl.standart:
         return 7;
+      case ProductTypeControl.notSelect:
+        return 0;
+    }
+  }
+}
+
+enum ProductCoffeAvaibleTypeControl {
+  hot,
+  ice,
+  notSelect,
+}
+
+extension ProductCoffeAvaibleTypeControlExtension
+    on ProductCoffeAvaibleTypeControl {
+  int get coffeAvaibleTypeValue {
+    switch (this) {
+      case ProductCoffeAvaibleTypeControl.notSelect:
+        return 1;
+      case ProductCoffeAvaibleTypeControl.hot:
+        return 2;
+      case ProductCoffeAvaibleTypeControl.ice:
+        return 3;
+    }
+  }
+}
+
+enum ProductCardType {
+  veritical,
+  horizontal,
+}
+
+extension ProductCardTypeExtension on ProductCardType {
+  int get cardTypeValue {
+    switch (this) {
+      case ProductCardType.veritical:
+        return 1;
+      case ProductCardType.horizontal:
+        return 2;
     }
   }
 }

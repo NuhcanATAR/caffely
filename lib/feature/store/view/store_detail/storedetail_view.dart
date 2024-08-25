@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:caffely/feature/products/view/productdetail_view.dart';
+import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
 import 'package:caffely/feature/store/bloc/cubit.dart';
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/feature/store/view/store_information/storeinformation_view.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
+import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/core/exception/service_exception/service_exceptions.dart';
 import 'package:caffely/product/model/store_model/store_model.dart';
@@ -406,6 +407,7 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                             ),
                           );
                         },
+                        isCardStatus: ProductCardType.horizontal,
                       );
                     },
                     childCount: productList.length,
