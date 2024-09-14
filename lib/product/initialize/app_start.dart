@@ -3,11 +3,9 @@ import 'dart:ui';
 
 import 'package:caffely/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 // ignore: depend_on_referenced_packages
-import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:logger/logger.dart';
@@ -34,9 +32,6 @@ class AppStart {
 
     // İzinleri kontrol et ve iste
     await _requestPermissions();
-
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    Logger().i('Notification Token ID: $fcmToken');
   }
 
   static Future<void> _requestPermissions() async {

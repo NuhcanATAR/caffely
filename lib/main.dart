@@ -1,3 +1,6 @@
+import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
+import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
+import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/complete/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/event.dart';
 import 'package:caffely/feature/home/bloc/cubit.dart';
@@ -54,6 +57,13 @@ class MyApp extends StatelessWidget {
         BlocProvider<FavoriteBloc>(
           create: (BuildContext context) =>
               FavoriteBloc()..add(LoadFavoriteProduct()),
+        ),
+        BlocProvider<SavedAdressBloc>(
+          create: (BuildContext context) =>
+              SavedAdressBloc()..add(LoadSavedAdressEvent()),
+        ),
+        BlocProvider<PersonalInformationBloc>(
+          create: (BuildContext context) => PersonalInformationBloc(),
         ),
       ],
       child: MaterialApp(

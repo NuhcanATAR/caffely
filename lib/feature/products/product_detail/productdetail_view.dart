@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffely/feature/products/bloc/cubit.dart';

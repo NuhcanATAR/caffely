@@ -9,7 +9,8 @@ enum FirebaseCollectionReferances {
   stores,
   product,
   favorite,
-  version;
+  version,
+  saved_adress;
 
   CollectionReference get collectRef =>
       FirebaseService().cloudFireStore.collection(name);

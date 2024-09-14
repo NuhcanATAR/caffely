@@ -9,7 +9,8 @@ enum AppImages {
   onBoardingThree('slide_three'),
   notFound('not_found_second'),
   notFoundSecond('not_found'),
-  error('error');
+  error('error'),
+  campaign('campaign');
 
   final String value;
   const AppImages(this.value);
