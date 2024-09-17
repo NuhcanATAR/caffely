@@ -10,7 +10,9 @@ enum AppImages {
   notFound('not_found_second'),
   notFoundSecond('not_found'),
   error('error'),
-  campaign('campaign');
+  campaign('campaign'),
+  flagTurkey('turkey'),
+  flagEnglish('english');
 
   final String value;
   const AppImages(this.value);

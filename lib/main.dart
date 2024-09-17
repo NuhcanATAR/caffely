@@ -1,29 +1,44 @@
+// ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
+
 import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/complete/bloc/cubit.dart';
+import 'package:caffely/feature/favorite/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/event.dart';
 import 'package:caffely/feature/home/bloc/cubit.dart';
 import 'package:caffely/feature/home/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/cubit.dart';
+import 'package:caffely/feature/products/bloc/cubit.dart';
 import 'package:caffely/feature/sign_in/bloc/cubit.dart';
 import 'package:caffely/feature/sign_up/bloc/cubit.dart';
 import 'package:caffely/feature/store/bloc/cubit.dart';
 import 'package:caffely/feature/store/bloc/event.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/main_viewmodel.dart';
+import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/initialize/app_start.dart';
+import 'package:caffely/product/model/langue_model/langue_model.dart';
 import 'package:caffely/product/theme/light_theme.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'feature/favorite/bloc/cubit.dart';
-import 'feature/products/bloc/cubit.dart';
-import 'product/constants/logo.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await AppStart.initStartApp();
-  runApp(const MyApp());
+
+  final languageProvider = LanguageProvider();
+  await languageProvider.loadLanguage();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => languageProvider,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +46,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<SignUpBloc>(
@@ -67,6 +84,17 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        locale: Locale(languageProvider.selectedLanguage),
+        supportedLocales: const [
+          Locale('en', ''),
+          Locale('tr', ''),
+        ],
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         debugShowCheckedModeBanner: false,
         theme: CustomLightTheme().themeData,
         themeMode: ThemeMode.light,

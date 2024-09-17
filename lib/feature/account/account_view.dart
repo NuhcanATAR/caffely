@@ -13,12 +13,14 @@ import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
+import 'package:caffely/product/model/langue_model/langue_model.dart';
 import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/menu_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AccountView extends StatefulWidget {
   const AccountView({super.key});
@@ -30,6 +32,7 @@ class AccountView extends StatefulWidget {
 class _AccountViewState extends AccountViewModel {
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       appBar: AppBar(
@@ -60,7 +63,10 @@ class _AccountViewState extends AccountViewModel {
               // menu group one
               buildMenuGroupOneWidget,
               // menu group second
-              buildMenuGroupSecondWidget,
+              buildMenuGroupSecondWidget(
+                languageProvider,
+                context,
+              ),
               // menu group third
               buildMenuGroupThirdWidget,
             ],
@@ -216,7 +222,11 @@ class _AccountViewState extends AccountViewModel {
       );
 
   // menu group second
-  Widget get buildMenuGroupSecondWidget => Column(
+  Widget buildMenuGroupSecondWidget(
+    LanguageProvider languageProvider,
+    BuildContext context,
+  ) =>
+      Column(
         children: <Widget>[
           // general
           SizedBox(
@@ -279,27 +289,28 @@ class _AccountViewState extends AccountViewModel {
             menuText: 'Dil',
             menuIcon: AppIcons.worldOutline,
             isArrowBtn: true,
-            children: const <Widget>[
+            children: <Widget>[
               BodyMediumBlackText(
-                text: 'Turkish (TR)',
+                text:
+                    ' ${languageProvider.selectedLanguage == 'en' ? 'English (EN)' : 'Turkish (TR)'}',
                 textAlign: TextAlign.center,
               ),
             ],
           ),
-          // dark mode
-          CustomMenuRowCardWidget(
-            func: () {},
-            dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Tema Modu',
-            menuIcon: AppIcons.sunOutline,
-            isArrowBtn: false,
-            children: <Widget>[
-              Switch(
-                value: true,
-                onChanged: (value) {},
-              ),
-            ],
-          ),
+          // // dark mode
+          // CustomMenuRowCardWidget(
+          //   func: () {},
+          //   dynamicViewExtensions: dynamicViewExtensions,
+          //   menuText: 'Tema Modu',
+          //   menuIcon: AppIcons.sunOutline,
+          //   isArrowBtn: false,
+          //   children: <Widget>[
+          //     Switch(
+          //       value: true,
+          //       onChanged: (value) {},
+          //     ),
+          //   ],
+          // ),
         ],
       );
 
