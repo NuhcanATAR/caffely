@@ -42,7 +42,7 @@ class _HomeViewState extends HomeViewModel {
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         toolbarHeight: 120,
         titleSpacing: PaddingSizedsUtility.normalPaddingValue,
         title: FutureBuilder<UserModel>(

@@ -51,7 +51,8 @@ enum AppIcons {
   moonOutline('moon_outline'),
   fileOutline('file_outline'),
   infoOutline('info_outline'),
-  logoutOutline('logout_outline');
+  logoutOutline('logout_outline'),
+  close('close');
 
   final String value;
   const AppIcons(this.value);

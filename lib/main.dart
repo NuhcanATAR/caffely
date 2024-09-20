@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
 
+import 'package:caffely/feature/account/view/accountqr_code/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
@@ -81,6 +82,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<PersonalInformationBloc>(
           create: (BuildContext context) => PersonalInformationBloc(),
+        ),
+        BlocProvider<QrCodeCubit>(
+          create: (BuildContext context) => QrCodeCubit(),
         ),
       ],
       child: MaterialApp(

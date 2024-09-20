@@ -4,10 +4,10 @@ import 'package:caffely/feature/account/view/accountqr_code/accountqrcode_view.d
 import 'package:caffely/feature/account/view/campain_discounts/campaindiscounts_view.dart';
 import 'package:caffely/feature/account/view/center_help/centerhelp_view.dart';
 import 'package:caffely/feature/account/view/langue/langue_view.dart';
+import 'package:caffely/feature/account/view/notification/notification_view.dart';
 import 'package:caffely/feature/account/view/personal_information/personalinformation_view.dart';
 import 'package:caffely/feature/account/view/saved_adress/savedadress_view.dart';
 import 'package:caffely/feature/account/view/security/security_view.dart';
-import 'package:caffely/feature/notification/notification_view.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';

@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.4
   firebase_auth: ^4.17.4
+  firebase_storage: ^11.7.7
   google_sign_in: ^6.2.1
 
   # notifications
@@ -66,6 +67,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_gen: ^5.7.0
+  qr_flutter: ^4.1.0
 
   # esc_pos_bluetooth: ^0.4.1
 

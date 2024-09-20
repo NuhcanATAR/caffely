@@ -12,7 +12,9 @@ enum AppImages {
   error('error'),
   campaign('campaign'),
   flagTurkey('turkey'),
-  flagEnglish('english');
+  flagEnglish('english'),
+  permissionWarning('permissionWarning'),
+  qrCodeNotFound('qrcode_notfound');
 
   final String value;
   const AppImages(this.value);
