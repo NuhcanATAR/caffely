@@ -5,6 +5,7 @@ import 'package:caffely/feature/home/home_view.dart';
 import 'package:caffely/feature/orders/orders_view.dart';
 import 'package:caffely/feature/store/store_view.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
+import 'package:caffely/product/core/base/helper/bottommenu_control.dart';
 import 'package:caffely/product/mixin/bottom_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,8 @@ abstract class BottomMenuViewModel extends BaseState<BottomMenuView>
     const AccountView(),
   ];
 
-  late int selectView = 0;
+  late int selectView =
+      widget.startView?.menuValue == null ? 0 : widget.startView!.menuValue;
 
   // menu ontap
   void menuClickChange(int viewValue) {

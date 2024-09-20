@@ -10,6 +10,7 @@ import 'package:caffely/feature/bottom_menu/bottommenu_view.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
+import 'package:caffely/product/core/base/helper/bottommenu_control.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -41,7 +42,9 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
           onPressed: () {
             CodeNoahNavigatorRouter.push(
               context,
-              const BottomMenuView(),
+              const BottomMenuView(
+                startView: BottomMenuViews.profile,
+              ),
             );
           },
           icon: AppIcons.arrowLeft.toSvgImg(
