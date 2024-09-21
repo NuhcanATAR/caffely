@@ -52,7 +52,9 @@ enum AppIcons {
   fileOutline('file_outline'),
   infoOutline('info_outline'),
   logoutOutline('logout_outline'),
-  close('close');
+  close('close'),
+  github('github'),
+  linkedin('linkedin');
 
   final String value;
   const AppIcons(this.value);
