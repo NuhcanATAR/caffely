@@ -11,7 +11,8 @@ enum FirebaseCollectionReferances {
   favorite,
   version,
   saved_adress,
-  qr_code;
+  qr_code,
+  center_helps;
 
   CollectionReference get collectRef =>
       FirebaseService().cloudFireStore.collection(name);

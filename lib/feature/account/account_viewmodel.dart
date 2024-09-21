@@ -1,5 +1,5 @@
 import 'package:caffely/feature/account/account_view.dart';
-import 'package:caffely/feature/sign_in/signin_view.dart';
+import 'package:caffely/feature/sign/sign_view.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -16,7 +16,7 @@ abstract class AccountViewModel extends BaseState<AccountView> {
     if (!mounted) return;
     CodeNoahNavigatorRouter.pushAndRemoveUntil(
       context,
-      const SignInView(),
+      const SignView(),
     );
   }
 
