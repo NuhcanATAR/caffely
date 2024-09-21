@@ -1,3 +1,4 @@
+import 'package:caffely/feature/sign/sign_view.dart';
 import 'package:caffely/feature/splash/splash_view.dart';
 import 'package:caffely/feature/version/version_view.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
@@ -9,7 +10,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../onboarding/onboarding_view.dart';
-import '../sign_in/signin_loading_view.dart';
 
 abstract class SplashViewModel extends State<SplashView> {
   @override
@@ -29,6 +29,7 @@ abstract class SplashViewModel extends State<SplashView> {
       final String currentUserId = prefs.getString('user_id') ?? '';
       final bool isRememberMe = prefs.getBool('remember_me') ?? false;
       final int isAuthStatus = prefs.getInt('auth_status') ?? 0;
+
       if (isRememberMe == true && currentUserId.isNotEmpty) {
         await checkVersion(true);
       } else if (isAuthStatus == AuthControl.googleAuth.valueAuth) {
@@ -64,7 +65,7 @@ abstract class SplashViewModel extends State<SplashView> {
               if (!mounted) return;
               CodeNoahNavigatorRouter.pushAndRemoveUntil(
                 context,
-                const SignInLoadingView(),
+                const SignView(),
               );
             } else {
               if (!mounted) return;
