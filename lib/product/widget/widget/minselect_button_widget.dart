@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/util/base_utility.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:caffely/feature/account/account_view.dart';
 import 'package:caffely/feature/home/bloc/cubit.dart';
 import 'package:caffely/feature/home/bloc/state.dart';
@@ -40,7 +42,7 @@ class _HomeViewState extends HomeViewModel {
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         toolbarHeight: 120,
         titleSpacing: PaddingSizedsUtility.normalPaddingValue,
         title: FutureBuilder<UserModel>(

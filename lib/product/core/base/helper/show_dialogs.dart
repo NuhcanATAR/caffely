@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';

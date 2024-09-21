@@ -1,10 +1,16 @@
 import 'package:caffely/feature/bottom_menu/bottommenu_viewmodel.dart';
 import 'package:caffely/product/constants/icon.dart';
+import 'package:caffely/product/core/base/helper/bottommenu_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:flutter/material.dart';
 
 class BottomMenuView extends StatefulWidget {
-  const BottomMenuView({super.key});
+  const BottomMenuView({
+    super.key,
+    this.startView,
+  });
+
+  final BottomMenuViews? startView;
 
   @override
   State<BottomMenuView> createState() => _BottomMenuViewState();

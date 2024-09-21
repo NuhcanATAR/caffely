@@ -35,7 +35,10 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
           }
 
           if (snapshot.hasData) {
-            final data = snapshot.data!.data() as Map<String, dynamic>;
+            final data = snapshot.data?.data() as Map<String, dynamic>;
+            if (data.isEmpty) {
+              return const SizedBox();
+            }
             final user = UserModel.fromJson(data);
             SharedPreferences.getInstance().then((valuePrefs) {
               valuePrefs.setInt(

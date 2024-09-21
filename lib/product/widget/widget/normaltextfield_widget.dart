@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/validator/custom_validator.dart';
@@ -61,7 +63,7 @@ class NormalTextFieldWidget extends StatelessWidget {
             maxLines: explanationStatus == true ? 4 : null,
             enabled: enabled,
             decoration: InputDecoration(
-              hintText: hintText,
+              hintText: isLabelText == true ? '' : hintText,
               hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                     fontFamily: 'Popins Light',
@@ -159,20 +161,24 @@ class NumberTextFieldWidget extends StatelessWidget {
                 CustomValidator(value: value).emptyNumberCheck,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              hintText: hintText,
+              hintText: isLabelText == true ? '' : hintText,
               hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                     fontFamily: 'Popins Light',
                     fontWeight: FontWeight.w500,
                   ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Colors.transparent,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: PaddingSizedsUtility.normalPaddingValue,
+                vertical: PaddingSizedsUtility.smallPaddingValue,
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                   width: 1,
                 ),
               ),
@@ -180,27 +186,24 @@ class NumberTextFieldWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   RadiusUtility.circularMediumValue,
                 ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error,
-                  width: 1,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
             ),
