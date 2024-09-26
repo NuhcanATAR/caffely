@@ -54,7 +54,8 @@ enum AppIcons {
   logoutOutline('logout_outline'),
   close('close'),
   github('github'),
-  linkedin('linkedin');
+  linkedin('linkedin'),
+  basketOutline('basket_outline');
 
   final String value;
   const AppIcons(this.value);
