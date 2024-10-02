@@ -187,7 +187,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
             await productDoc.reference.update({
               'quanity': newQuantity,
-              'basket_total': FieldValue.increment(event.totalPrice),
+              'product_total': FieldValue.increment(event.totalPrice),
             });
 
             Logger().i('Ürün miktarı güncellendi: $newQuantity');
@@ -262,9 +262,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           event.productModel,
         );
       }
-      emit(const ProductBasketAddSuccessState(
-        'Ürün sepete eklendi!',
-      ));
+      emit(
+        const ProductBasketAddSuccessState(
+          'Ürün sepete eklendi!',
+        ),
+      );
     } catch (e) {
       emit(
         const ProductBasketAddError(
@@ -310,7 +312,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       'avaible': state.coffeeType.coffeAvaibleTypeValue,
       'status': OrderProductStatusControl.orderInProgress.value,
       'product_id': productModel.id,
-      'basket_total': totalPrice,
+      'product_total': totalPrice,
     }).then((value) {
       final docId = value.id;
       value.update({'id': docId});
