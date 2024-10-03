@@ -21,7 +21,7 @@ class BasketLoaded extends BasketState {
     bool? isProductsVisible,
   })  : isBasket = isBasket ?? false,
         branches = branches ?? [],
-        isProductsVisible = isProductsVisible ?? false;
+        isProductsVisible = isProductsVisible ?? true;
 
   BasketLoaded copyWith({
     bool? isBasket,

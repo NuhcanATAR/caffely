@@ -72,10 +72,7 @@ class _BasketViewState extends BasketViewModel {
                         // body
                         buildBodyWidget(state),
                         // footer button
-                        buildFooterWidget(
-                          state,
-                          basketProductList,
-                        ),
+                        buildFooterWidget(state),
                       ],
                     )
                   : const CustomResponseWidget(
@@ -348,24 +345,23 @@ class _BasketViewState extends BasketViewModel {
   // footer
   CustomButtonWidget buildFooterWidget(
     BasketLoaded state,
-    List<BasketProductModel> basketProducts,
   ) =>
       CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
         text: 'Siparişi Tamamla',
         func: () {
-          if (basketProducts.isNotEmpty) {
+          if (basketProductList.isEmpty) {
+            CodeNoahDialogs(context).showFlush(
+              type: SnackType.warning,
+              message: 'Sepetinizde ürün bulunmuyor',
+            );
+          } else {
             CodeNoahNavigatorRouter.push(
               context,
               OrderCompleteView(
                 branches: state.branches,
-                basketProducts: basketProducts,
+                basketProducts: basketProductList,
               ),
-            );
-          } else {
-            CodeNoahDialogs(context).showFlush(
-              type: SnackType.error,
-              message: 'Sepetde Henüz Ürün Bulunmuyor',
             );
           }
         },
