@@ -12,7 +12,10 @@ enum FirebaseCollectionReferances {
   version,
   saved_adress,
   qr_code,
-  center_helps;
+  center_helps,
+  basket,
+  branch,
+  orders;
 
   CollectionReference get collectRef =>
       FirebaseService().cloudFireStore.collection(name);

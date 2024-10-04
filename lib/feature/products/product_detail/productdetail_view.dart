@@ -122,7 +122,6 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                   : state.coffeSize == ProductTypeControl.large
                       ? widget.productModel.largePrice
                       : 0);
-
           return Padding(
             padding: PaddingSizedsUtility.all(
               PaddingSizedsUtility.normalPaddingValue,
@@ -621,14 +620,22 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                     // basket add
                     Expanded(
                       flex: 3,
-                      child: CustomButtonWidget(
-                        dynamicViewExtensions: dynamicViewExtensions,
-                        text: 'Sepete Ekle',
-                        func: () {},
-                        btnStatus:
-                            state.coffeSize == ProductTypeControl.notSelect
-                                ? ButtonTypes.borderPrimaryColorButton
-                                : ButtonTypes.primaryColorButton,
+                      child: BlocConsumer<ProductBloc, ProductState>(
+                        listener: basketAddListenerBloc,
+                        builder: (BuildContext context, blocConsumertate) {
+                          return CustomButtonWidget(
+                            dynamicViewExtensions: dynamicViewExtensions,
+                            text: 'Sepete Ekle',
+                            func: () => productBasketAdd(
+                              state,
+                              totalPrice,
+                            ),
+                            btnStatus:
+                                state.coffeSize == ProductTypeControl.notSelect
+                                    ? ButtonTypes.borderPrimaryColorButton
+                                    : ButtonTypes.primaryColorButton,
+                          );
+                        },
                       ),
                     ),
                   ],

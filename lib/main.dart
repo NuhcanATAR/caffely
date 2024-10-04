@@ -6,6 +6,8 @@ import 'package:caffely/feature/account/view/center_help/bloc/event.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
+import 'package:caffely/feature/basket/bloc/cubit.dart';
+import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/complete/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/event.dart';
@@ -91,6 +93,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<CenterHelpBloc>(
           create: (BuildContext context) =>
               CenterHelpBloc()..add(LoadCenterHelpEvent()),
+        ),
+        BlocProvider<BasketBloc>(
+          create: (BuildContext context) =>
+              BasketBloc()..add(LoadBasketEvent()),
         ),
       ],
       child: MaterialApp(
