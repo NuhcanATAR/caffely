@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:caffely/feature/account/account_view.dart';
+import 'package:caffely/feature/basket/basket_view.dart';
 import 'package:caffely/feature/home/bloc/cubit.dart';
 import 'package:caffely/feature/home/bloc/state.dart';
 import 'package:caffely/feature/home/home_viewmodel.dart';
@@ -40,7 +43,7 @@ class _HomeViewState extends HomeViewModel {
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         toolbarHeight: 120,
         titleSpacing: PaddingSizedsUtility.normalPaddingValue,
         title: FutureBuilder<UserModel>(
@@ -143,6 +146,45 @@ class _HomeViewState extends HomeViewModel {
           },
         ),
         actions: [
+          // basket
+          GestureDetector(
+            onTap: () {
+              CodeNoahNavigatorRouter.push(
+                context,
+                const BasketView(),
+              );
+            },
+            child: Container(
+              margin: MarginSizedsUtility.right(
+                MarginSizedsUtility.normalMarginValue,
+              ),
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline,
+                      width: 0.5,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        RadiusUtility.circularHighValue,
+                      ),
+                    ),
+                  ),
+                  child: AppIcons.basketOutline.toSvgImg(
+                    null,
+                    IconSizedsUtility.mediumSecondSize,
+                    IconSizedsUtility.mediumSecondSize,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // notification
           GestureDetector(
             onTap: () {
               CodeNoahNavigatorRouter.push(

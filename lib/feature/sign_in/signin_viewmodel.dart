@@ -6,6 +6,7 @@ import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
@@ -47,6 +48,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
       final bool rememberMe = prefs.getBool('remember_me') ?? false;
 
       if (rememberMe) {
+        Logger().i('Beni hatırla açık');
         setState(() {
           isRememberMe = true;
         });

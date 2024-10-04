@@ -9,7 +9,13 @@ enum AppImages {
   onBoardingThree('slide_three'),
   notFound('not_found_second'),
   notFoundSecond('not_found'),
-  error('error');
+  error('error'),
+  campaign('campaign'),
+  flagTurkey('turkey'),
+  flagEnglish('english'),
+  permissionWarning('permissionWarning'),
+  qrCodeNotFound('qrcode_notfound'),
+  thankYou('thank_you');
 
   final String value;
   const AppImages(this.value);

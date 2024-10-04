@@ -82,3 +82,15 @@ class ProductFavoriteAddError extends ProductState {
 
   const ProductFavoriteAddError(this.message);
 }
+
+class ProductBasketAddSuccessState extends ProductState {
+  final String message;
+
+  const ProductBasketAddSuccessState(this.message);
+}
+
+class ProductBasketAddError extends ProductState {
+  final String message;
+
+  const ProductBasketAddError(this.message);
+}

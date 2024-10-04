@@ -1,10 +1,15 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
+import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
+import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   List<ProductModel> productList = [];
@@ -51,6 +56,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<SearchProducts>(_onSearchStores);
     on<LoadProducts>(_onLoadProducts);
     on<ProductFavoriteCreateEvent>(storeFavoriteAdd);
+    on<ProductBasketAddEvent>(productBasketAdd);
   }
 
   Future<void> _onLoadProducts(
@@ -139,5 +145,178 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ),
       );
     }
+  }
+
+  Future<void> productBasketAdd(
+    ProductBasketAddEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    try {
+      final basketDoc = FirebaseCollectionReferances.basket.collectRef
+          .doc(FirebaseService().authID);
+      final basketCollection = await basketDoc.get();
+
+      if (basketCollection.exists) {
+        Logger().i('Sepette ürün var');
+
+        final branchDoc = basketDoc
+            .collection(FirebaseCollectionReferances.branch.name)
+            .doc(event.productModel.storeId);
+
+        final branchCollection = await branchDoc.get();
+
+        if (branchCollection.exists) {
+          Logger().f('Şube zaten sepette');
+
+          final productQuery = await basketDoc
+              .collection(FirebaseCollectionReferances.branch.name)
+              .doc(event.productModel.storeId)
+              .collection(FirebaseCollectionReferances.product.name)
+              .where('product_id', isEqualTo: event.productModel.id)
+              .where(
+                'avaible',
+                isEqualTo: state.coffeeType.coffeAvaibleTypeValue,
+              )
+              .where('size', isEqualTo: state.coffeSize.productTypeValue)
+              .get();
+
+          if (productQuery.docs.isNotEmpty) {
+            final productDoc = productQuery.docs.first;
+            final currentQuantity = productDoc['quanity'];
+            final newQuantity = currentQuantity + 1;
+
+            await productDoc.reference.update({
+              'quanity': newQuantity,
+              'product_total': FieldValue.increment(event.totalPrice),
+            });
+
+            Logger().i('Ürün miktarı güncellendi: $newQuantity');
+
+            final branchQuery = await basketDoc
+                .collection(FirebaseCollectionReferances.branch.name)
+                .doc(event.productModel.storeId)
+                .get();
+
+            if (branchQuery.exists) {
+              final currentBasketTotal = branchQuery['basket_total'];
+              final currentTotalQuantity = branchQuery['total_quanity'];
+
+              await branchDoc.update({
+                'basket_total': currentBasketTotal + event.totalPrice,
+                'total_quanity': currentTotalQuantity + 1,
+                'status': OrderBranchStatusControl.orderReceived.value,
+              });
+
+              Logger().i(
+                'Şube bilgileri güncellendi: basket_total ve total_quanity',
+              );
+            }
+          } else {
+            await addNewProductToBasket(
+              state,
+              basketDoc,
+              event.totalPrice,
+              event.productModel,
+            );
+            final branchQuery = await basketDoc
+                .collection(FirebaseCollectionReferances.branch.name)
+                .doc(event.productModel.storeId)
+                .get();
+
+            if (branchQuery.exists) {
+              final currentBasketTotal = branchQuery['basket_total'];
+              final currentTotalQuantity = branchQuery['total_quanity'];
+
+              await branchDoc.update({
+                'basket_total': currentBasketTotal + event.totalPrice,
+                'total_quanity': currentTotalQuantity + 1,
+                'status': OrderBranchStatusControl.orderReceived.value,
+              });
+
+              Logger().i(
+                'Şube bilgileri güncellendi: basket_total ve total_quanity',
+              );
+            }
+          }
+        } else {
+          Logger().f('Yeni şube sepete ekleniyor');
+          await addNewBranchToBasket(
+            state,
+            basketDoc,
+            event.totalPrice,
+            event.productModel,
+          );
+        }
+      } else {
+        Logger().f('Sepet Henüz Açılmamış');
+
+        await basketDoc.set({
+          'id': FirebaseService().authID,
+          'basket_status': BasketMainStatusControl.orderReceived.value,
+        });
+
+        await addNewBranchToBasket(
+          state,
+          basketDoc,
+          event.totalPrice,
+          event.productModel,
+        );
+      }
+      emit(
+        const ProductBasketAddSuccessState(
+          'Ürün sepete eklendi!',
+        ),
+      );
+    } catch (e) {
+      emit(
+        const ProductBasketAddError(
+          'Ürün Sepete eklenirken bir sorun oluştu.',
+        ),
+      );
+    }
+  }
+
+  Future<void> addNewBranchToBasket(
+    ProductState state,
+    DocumentReference basketDoc,
+    int totalPrice,
+    ProductModel productModel,
+  ) async {
+    await basketDoc
+        .collection(FirebaseCollectionReferances.branch.name)
+        .doc(productModel.storeId)
+        .set({
+      'id': productModel.storeId,
+      'basket_total': totalPrice,
+      'total_quanity': 1,
+      'status': OrderBranchStatusControl.orderReceived.value,
+    });
+
+    await addNewProductToBasket(state, basketDoc, totalPrice, productModel);
+  }
+
+  Future<void> addNewProductToBasket(
+    ProductState state,
+    DocumentReference basketDoc,
+    int totalPrice,
+    ProductModel productModel,
+  ) async {
+    await basketDoc
+        .collection(FirebaseCollectionReferances.branch.name)
+        .doc(productModel.storeId)
+        .collection(FirebaseCollectionReferances.product.name)
+        .add({
+      'id': null,
+      'quanity': 1,
+      'size': state.coffeSize.productTypeValue,
+      'avaible': state.coffeeType.coffeAvaibleTypeValue,
+      'status': OrderProductStatusControl.orderInProgress.value,
+      'product_id': productModel.id,
+      'product_total': totalPrice,
+    }).then((value) {
+      final docId = value.id;
+      value.update({'id': docId});
+      Logger().i('Yeni ürün sepete eklendi: $docId');
+    });
   }
 }

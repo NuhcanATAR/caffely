@@ -27,6 +27,7 @@ enum AppIcons {
   homeFill('home_fill'),
   homeOutline('home_outline'),
   locationFill('location_fill'),
+  locationOutline('pin_outline'),
   notificationOutline('notification_outline'),
   orderFill('order_fill'),
   orderOutline('order_outline'),
@@ -43,7 +44,19 @@ enum AppIcons {
   closeOutline('close_light'),
   minusLight('minus_light'),
   hotOutline('hot_coffe'),
-  icedOutline('ice_coffe');
+  icedOutline('ice_coffe'),
+  securityOutline('security_outline'),
+  worldOutline('world_outline'),
+  sunOutline('sun_outline'),
+  moonOutline('moon_outline'),
+  fileOutline('file_outline'),
+  infoOutline('info_outline'),
+  logoutOutline('logout_outline'),
+  close('close'),
+  github('github'),
+  linkedin('linkedin'),
+  basketOutline('basket_outline'),
+  successfull('successfull');
 
   final String value;
   const AppIcons(this.value);
