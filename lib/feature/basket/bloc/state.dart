@@ -40,3 +40,17 @@ class BasketLoaded extends BasketState {
 }
 
 class BasketError extends BasketState {}
+
+class BaskekOrderCompleteLoading extends BasketState {}
+
+class BasketOrderCompleteState extends BasketState {
+  final String message;
+
+  BasketOrderCompleteState(this.message);
+}
+
+class BasketOrderCompleteError extends BasketState {
+  final String message;
+
+  BasketOrderCompleteError(this.message);
+}

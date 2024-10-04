@@ -55,7 +55,8 @@ enum AppIcons {
   close('close'),
   github('github'),
   linkedin('linkedin'),
-  basketOutline('basket_outline');
+  basketOutline('basket_outline'),
+  successfull('successfull');
 
   final String value;
   const AppIcons(this.value);

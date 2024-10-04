@@ -14,7 +14,8 @@ enum AppImages {
   flagTurkey('turkey'),
   flagEnglish('english'),
   permissionWarning('permissionWarning'),
-  qrCodeNotFound('qrcode_notfound');
+  qrCodeNotFound('qrcode_notfound'),
+  thankYou('thank_you');
 
   final String value;
   const AppImages(this.value);

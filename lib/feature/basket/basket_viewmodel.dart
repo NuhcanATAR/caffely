@@ -9,6 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BasketViewModel extends BaseState<BasketView> {
   late List<BasketProductModel> basketProductList;
+
+  late String branchId = "";
+
   @override
   void initState() {
     super.initState();

@@ -96,7 +96,7 @@ class _BasketViewState extends BasketViewModel {
           itemCount: state.branches.length,
           itemBuilder: (context, index) {
             final branchesModel = state.branches[index];
-
+            branchId = branchesModel.id;
             return SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Container(
@@ -361,6 +361,7 @@ class _BasketViewState extends BasketViewModel {
               OrderCompleteView(
                 branches: state.branches,
                 basketProducts: basketProductList,
+                branchId: branchId,
               ),
             );
           }

@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
+import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -14,9 +15,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
+import '../../../product/model/savedadress_model/savedadress_model.dart';
+
 class BasketBloc extends Bloc<BasketEvent, BasketState> {
   BasketBloc() : super(BasketInitialState()) {
     on<LoadBasketEvent>(basketList);
+
+    on<BasketOrderCreateEvent>(orderCreate);
   }
 
   Future<void> basketList(
@@ -284,6 +289,120 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
       Logger().f(
         'Hata: $e',
       );
+    }
+  }
+
+  Future<List<SavedAdressModel>> fetchSavedAddresses() async {
+    final QuerySnapshot querySnapshot = await FirebaseCollectionReferances
+        .saved_adress.collectRef
+        .where('user_id', isEqualTo: FirebaseService().authID)
+        .where('is_deleted', isEqualTo: false)
+        .get();
+
+    return querySnapshot.docs.map((doc) {
+      return SavedAdressModel.fromJson(doc.data() as Map<String, dynamic>);
+    }).toList();
+  }
+
+  Future<void> orderCreate(
+    BasketOrderCreateEvent event,
+    Emitter<BasketState> emit,
+  ) async {
+    emit(BaskekOrderCompleteLoading());
+    try {
+      await FirebaseCollectionReferances.orders.collectRef.add({
+        'id': null,
+        'user_id': FirebaseService().authID,
+        'payment_type': event.paymentType == PaymentType.online ? 1 : 2,
+        'adress_title': event.selectAdress.adressTitle,
+        'adress_city': event.selectAdress.adressCity,
+        'adress_district': event.selectAdress.adressDistrict,
+        'adress_street': event.selectAdress.adressStreet,
+        'adress_floor': event.selectAdress.adressFloor,
+        'adress_apartment_no': event.selectAdress.adressAparmentNo,
+        'adress_directions': event.selectAdress.adressDirections,
+        'contact_name': event.selectAdress.contactName,
+        'contact_surname': event.selectAdress.contactSurname,
+        'contact_phone_number': event.selectAdress.contactPhoneNumber,
+      }).then((value) async {
+        final String orderId = value.id;
+        await value.update({'id': orderId});
+
+        await FirebaseCollectionReferances.orders.collectRef
+            .doc(orderId)
+            .collection(FirebaseCollectionReferances.basket.name)
+            .add({
+          'id': null,
+          'basket_status': 1,
+        }).then((value) async {
+          final String basketId = value.id;
+
+          await value.update({'id': basketId});
+
+          for (final branchModel in event.basketBranchModel) {
+            await FirebaseCollectionReferances.orders.collectRef
+                .doc(orderId)
+                .collection(FirebaseCollectionReferances.basket.name)
+                .doc(basketId)
+                .collection(FirebaseCollectionReferances.branch.name)
+                .doc(branchModel.id)
+                .set({
+              'id': branchModel.id,
+              'basket_total': branchModel.basketTotal,
+              'total_quanity': branchModel.totalQuanity,
+              'status': 1,
+            }).then((value) async {
+              for (final productModel in event.basketProductModel) {
+                await FirebaseCollectionReferances.orders.collectRef
+                    .doc(orderId)
+                    .collection(FirebaseCollectionReferances.basket.name)
+                    .doc(basketId)
+                    .collection(FirebaseCollectionReferances.branch.name)
+                    .doc(branchModel.id)
+                    .collection(FirebaseCollectionReferances.product.name)
+                    .doc(productModel.id)
+                    .set({
+                  'id': productModel.id,
+                  'avaible': productModel.avaible,
+                  'product_id': productModel.productId,
+                  'product_total': productModel.productTotal,
+                  'quanity': productModel.quanity,
+                  'size': productModel.size,
+                  'status': productModel.status,
+                });
+              }
+            });
+          }
+
+          for (final branchModel in event.basketBranchModel) {
+            for (final productModel in event.basketProductModel) {
+              await FirebaseCollectionReferances.basket.collectRef
+                  .doc(FirebaseService().authID)
+                  .collection(FirebaseCollectionReferances.branch.name)
+                  .doc(branchModel.id)
+                  .collection(FirebaseCollectionReferances.product.name)
+                  .doc(productModel.id)
+                  .delete();
+            }
+          }
+
+          for (final branchModel in event.basketBranchModel) {
+            await FirebaseCollectionReferances.basket.collectRef
+                .doc(FirebaseService().authID)
+                .collection(FirebaseCollectionReferances.branch.name)
+                .doc(branchModel.id)
+                .delete();
+          }
+
+          await FirebaseCollectionReferances.basket.collectRef
+              .doc(FirebaseService().authID)
+              .delete();
+
+          emit(BasketOrderCompleteState('Siparişiniz başarıyla oluşturuldu.'));
+        });
+      });
+    } catch (e) {
+      emit(BasketOrderCompleteError('Sipariş Oluşturulurken bir hata oluştu'));
     }
   }
 }
