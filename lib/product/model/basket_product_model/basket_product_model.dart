@@ -7,6 +7,7 @@ class BasketProductModel {
   final int avaible;
   final int productTotal;
   final String productId;
+  final String branchId;
   final int quanity;
   final int size;
   final int status;
@@ -16,6 +17,7 @@ class BasketProductModel {
     this.avaible,
     this.productTotal,
     this.productId,
+    this.branchId,
     this.quanity,
     this.size,
     this.status,

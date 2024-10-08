@@ -4,6 +4,7 @@ import 'package:caffely/feature/favorite/favorite_viewmodel.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
 import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
 import 'package:caffely/product/constants/image.dart';
+import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -31,6 +32,12 @@ class _FavoriteViewState extends FavoriteViewModel {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         automaticallyImplyLeading: false,
         centerTitle: true,
+        leading: Padding(
+          padding: PaddingSizedsUtility.all(
+            PaddingSizedsUtility.smallPaddingValue,
+          ),
+          child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
+        ),
         title: const BodyMediumBlackText(
           text: 'Favoriler',
           textAlign: TextAlign.left,

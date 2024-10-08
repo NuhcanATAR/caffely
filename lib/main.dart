@@ -13,6 +13,8 @@ import 'package:caffely/feature/favorite/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/event.dart';
 import 'package:caffely/feature/home/bloc/cubit.dart';
 import 'package:caffely/feature/home/bloc/event.dart';
+import 'package:caffely/feature/orders/bloc/cubit.dart';
+import 'package:caffely/feature/orders/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/cubit.dart';
 import 'package:caffely/feature/products/bloc/cubit.dart';
 import 'package:caffely/feature/sign_in/bloc/cubit.dart';
@@ -31,6 +33,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppStart.initStartApp();
@@ -98,6 +101,11 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) =>
               BasketBloc()..add(LoadBasketEvent()),
         ),
+        BlocProvider<OrderBloc>(
+          create: (BuildContext context) => OrderBloc()
+            ..add(LoadOrderEvent())
+            ..add(LoadBranchesEvent("")),
+        ),
       ],
       child: MaterialApp(
         locale: Locale(languageProvider.selectedLanguage),
@@ -115,6 +123,7 @@ class MyApp extends StatelessWidget {
         theme: CustomLightTheme().themeData,
         themeMode: ThemeMode.light,
         home: const FirsView(),
+        navigatorObservers: [routeObserver],
       ),
     );
   }

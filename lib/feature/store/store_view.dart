@@ -4,6 +4,7 @@ import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/feature/store/store_viewmodel.dart';
 import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
 import 'package:caffely/product/constants/image.dart';
+import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -29,6 +30,12 @@ class _StoresViewState extends StoresViewModel {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         automaticallyImplyLeading: false,
         centerTitle: true,
+        leading: Padding(
+          padding: PaddingSizedsUtility.all(
+            PaddingSizedsUtility.smallPaddingValue,
+          ),
+          child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
+        ),
         title: const BodyMediumBlackText(
           text: 'Şubeler',
           textAlign: TextAlign.left,
