@@ -1,4 +1,5 @@
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
+import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
 import 'package:equatable/equatable.dart';
 
 class BasketState extends Equatable {
@@ -14,29 +15,39 @@ class BasketLoaded extends BasketState {
   final bool isBasket;
   final List<BasketBranchModel> branches;
   final bool isProductsVisible;
+  final Map<String, List<BasketProductModel>> branchProducts;
 
   BasketLoaded({
     bool? isBasket,
     List<BasketBranchModel>? branches,
     bool? isProductsVisible,
+    Map<String, List<BasketProductModel>>? branchProducts,
   })  : isBasket = isBasket ?? false,
         branches = branches ?? [],
-        isProductsVisible = isProductsVisible ?? true;
+        isProductsVisible = isProductsVisible ?? true,
+        branchProducts = branchProducts ?? {};
 
   BasketLoaded copyWith({
     bool? isBasket,
     List<BasketBranchModel>? branches,
     bool? isProductsVisible,
+    Map<String, List<BasketProductModel>>? branchProducts,
   }) {
     return BasketLoaded(
       isBasket: isBasket ?? this.isBasket,
       branches: branches ?? this.branches,
       isProductsVisible: isProductsVisible ?? this.isProductsVisible,
+      branchProducts: branchProducts ?? this.branchProducts,
     );
   }
 
   @override
-  List<Object> get props => [isBasket, branches, isProductsVisible];
+  List<Object> get props => [
+        isBasket,
+        branches,
+        isProductsVisible,
+        branchProducts,
+      ];
 }
 
 class BasketError extends BasketState {}

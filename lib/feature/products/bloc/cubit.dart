@@ -217,6 +217,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               basketDoc,
               event.totalPrice,
               event.productModel,
+              event.productModel.storeId,
             );
             final branchQuery = await basketDoc
                 .collection(FirebaseCollectionReferances.branch.name)
@@ -292,7 +293,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       'status': OrderBranchStatusControl.orderReceived.value,
     });
 
-    await addNewProductToBasket(state, basketDoc, totalPrice, productModel);
+    await addNewProductToBasket(
+      state,
+      basketDoc,
+      totalPrice,
+      productModel,
+      productModel.storeId,
+    );
   }
 
   Future<void> addNewProductToBasket(
@@ -300,6 +307,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     DocumentReference basketDoc,
     int totalPrice,
     ProductModel productModel,
+    String storeId,
   ) async {
     await basketDoc
         .collection(FirebaseCollectionReferances.branch.name)
@@ -313,6 +321,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       'status': OrderProductStatusControl.orderInProgress.value,
       'product_id': productModel.id,
       'product_total': totalPrice,
+      'branch_id': storeId,
     }).then((value) {
       final docId = value.id;
       value.update({'id': docId});
