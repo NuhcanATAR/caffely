@@ -80,7 +80,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: BodyMediumBlackText(
                         text: AppLocalizations.of(context)!.location_menu_city,
                         textAlign: TextAlign.left,

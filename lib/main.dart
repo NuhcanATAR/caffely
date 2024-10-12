@@ -107,7 +107,7 @@ class MyApp extends StatelessWidget {
             ..add(LoadBranchesEvent(
               "",
               context,
-            )),
+            ),),
         ),
       ],
       child: MaterialApp(
@@ -145,49 +145,27 @@ class _FirsViewState extends MainViewModel {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: isInitialized
-            ? Padding(
-                padding: PaddingSizedsUtility.all(
-                  130,
-                ),
-                child: Center(
-                  child: Container(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.smallPaddingValue,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          RadiusUtility.circularMediumValue,
-                        ),
-                      ),
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    child: AppLogoConstants.appLogoTextPrimaryColor.toImg,
-                  ),
-                ),
-              )
-            : Padding(
-                padding: PaddingSizedsUtility.all(
-                  130,
-                ),
-                child: Center(
-                  child: Container(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.smallPaddingValue,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          RadiusUtility.circularMediumValue,
-                        ),
-                      ),
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    child: AppLogoConstants.appLogoTextPrimaryColor.toImg,
-                  ),
-                ),
+        child: Padding(
+          padding: PaddingSizedsUtility.all(
+            130,
+          ),
+          child: Center(
+            child: Container(
+              padding: PaddingSizedsUtility.all(
+                PaddingSizedsUtility.smallPaddingValue,
               ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    RadiusUtility.circularMediumValue,
+                  ),
+                ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: AppLogoConstants.appLogoTextPrimaryColor.toImg,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -68,5 +68,5 @@ class ProductBasketAddEvent extends ProductEvent {
   final BuildContext context;
 
   const ProductBasketAddEvent(
-      this.productModel, this.state, this.totalPrice, this.context);
+      this.productModel, this.state, this.totalPrice, this.context,);
 }

@@ -20,16 +20,18 @@ class VersionView extends StatefulWidget {
 }
 
 class _VersionViewState extends BaseState<VersionView> {
+  late String coverImage =
+      "https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/images%2Fpexels-ron-lach-8429814.jpg?alt=media&token=5c0177f2-45b6-4b92-a582-4b8160056581";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //   image: AssetImage(AppImages.versionUpdate.toPng),
-            //   fit: BoxFit.cover,
-            // ),
-            ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(coverImage),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             const Spacer(),
