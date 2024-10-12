@@ -2,7 +2,7 @@ import 'package:caffely/product/core/service/locatizations_service/localization_
 import 'package:flutter/foundation.dart';
 
 class LanguageProvider with ChangeNotifier {
-  String _selectedLanguage = 'en';
+  String _selectedLanguage = 'tr';
 
   String get selectedLanguage => _selectedLanguage;
 
