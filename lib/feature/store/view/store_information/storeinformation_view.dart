@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:caffely/feature/store/view/store_information/storeinformation_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -42,8 +43,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
           ),
         ),
         centerTitle: true,
-        title: const BodyMediumBlackText(
-          text: 'Şube Hakkında',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.stores_information_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -76,7 +77,7 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
-                                  "Şu saat'de açılıyor ${openDateTime.hour}:${openDateTime.minute}",
+                                  "${AppLocalizations.of(context)!.stores_information_opening_time} ${openDateTime.hour}:${openDateTime.minute}",
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -103,7 +104,7 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
-                                  'Şu saate kadar açık: ${closeDateTime.hour}:${closeDateTime.minute}',
+                                  '${AppLocalizations.of(context)!.stores_information_close_time}: ${closeDateTime.hour}:${closeDateTime.minute}',
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -151,8 +152,9 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             padding: PaddingSizedsUtility.vertical(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackBoldText(
-                              text: 'Satıcı Ticari Unvanı',
+                            child: BodyMediumBlackBoldText(
+                              text: AppLocalizations.of(context)!
+                                  .stores_information_trade_name,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -185,8 +187,9 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             padding: PaddingSizedsUtility.vertical(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackBoldText(
-                              text: 'Ödeme Yöntemleri',
+                            child: BodyMediumBlackBoldText(
+                              text: AppLocalizations.of(context)!
+                                  .stores_information_payment_type,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -219,8 +222,9 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             padding: PaddingSizedsUtility.vertical(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackBoldText(
-                              text: 'Teslimat Ücreti',
+                            child: BodyMediumBlackBoldText(
+                              text: AppLocalizations.of(context)!
+                                  .stores_information_delivery_type,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -231,9 +235,9 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             padding: PaddingSizedsUtility.vertical(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackText(
-                              text:
-                                  'Teslimat ücreti, mesafeye ve günün hangi saati olduğuna göre belirlenir.',
+                            child: BodyMediumBlackText(
+                              text: AppLocalizations.of(context)!
+                                  .stores_information_delivery_type_explanation,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -254,8 +258,9 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             padding: PaddingSizedsUtility.vertical(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackBoldText(
-                              text: 'Min. Sepet Tutarı',
+                            child: BodyMediumBlackBoldText(
+                              text: AppLocalizations.of(context)!
+                                  .stores_information_min_basket_value,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -268,7 +273,7 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                             ),
                             child: BodyMediumBlackText(
                               text:
-                                  "Bu şube ${widget.storeModel.minBasketAmount}TL'den daha düşük tutarlı siparişleri kabul etmemektedir.",
+                                  "${AppLocalizations.of(context)!.stores_information_min_basket_explanation} ${widget.storeModel.minBasketAmount}${AppLocalizations.of(context)!.stores_information_min_basket_explanation_second}",
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -285,13 +290,15 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                 // google maps
                 CustomButtonWidget(
                   dynamicViewExtensions: dynamicViewExtensions,
-                  text: 'Yol Tarifi Al',
+                  text: AppLocalizations.of(context)!
+                      .stores_information_location_btn,
                   func: () async {
                     if (widget.storeModel.locationUrl.isEmpty) {
                       unawaited(
                         CodeNoahDialogs(context).showFlush(
                           type: SnackType.error,
-                          message: 'Yol Tarifi Bulunamadı!',
+                          message: AppLocalizations.of(context)!
+                              .stores_information_location_not_found,
                         ),
                       );
                     } else {
@@ -307,13 +314,15 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                 // call
                 CustomButtonWidget(
                   dynamicViewExtensions: dynamicViewExtensions,
-                  text: 'Ara',
+                  text:
+                      AppLocalizations.of(context)!.stores_information_call_btn,
                   func: () async {
                     if (widget.storeModel.phoneNumber == 0) {
                       unawaited(
                         CodeNoahDialogs(context).showFlush(
                           type: SnackType.error,
-                          message: 'Telefon Numarası bulunamadı!',
+                          message: AppLocalizations.of(context)!
+                              .stores_information_call_error,
                         ),
                       );
                     } else {

@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:caffely/feature/account/view/langue/langue_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/model/langue_model/langue_model.dart';
@@ -37,8 +38,8 @@ class _LangueViewState extends LangueViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Dil Seçimi',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_langue_appbar,
           textAlign: TextAlign.left,
         ),
       ),

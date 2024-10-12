@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_success/ordersuccess_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -30,8 +31,8 @@ mixin BasketMixin {
         break;
       case BaskekOrderCompleteLoading:
         CodeNoahDialogs(context).showAlert(
-          const BodyMediumWhiteText(
-            text: 'Lütfen Bekleyiniz...',
+          BodyMediumWhiteText(
+            text: AppLocalizations.of(context)!.basket_loading_title,
             textAlign: TextAlign.center,
           ),
         );

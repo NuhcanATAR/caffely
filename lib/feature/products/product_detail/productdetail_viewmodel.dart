@@ -5,6 +5,7 @@ import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/mixin.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -28,7 +29,8 @@ abstract class ProductDetailViewModel extends BaseState<ProductDetailView>
           state.coffeeType == ProductCoffeAvaibleTypeControl.notSelect) {
         CodeNoahDialogs(context).showFlush(
           type: SnackType.warning,
-          message: 'Lütfen kahve seçiminizi yapınız',
+          message:
+              AppLocalizations.of(context)!.products_basket_add_select_error,
         );
       } else {
         context.read<ProductBloc>().add(
@@ -36,6 +38,7 @@ abstract class ProductDetailViewModel extends BaseState<ProductDetailView>
                 widget.productModel,
                 state,
                 totalPrice,
+                context,
               ),
             );
       }

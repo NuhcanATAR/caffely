@@ -17,7 +17,7 @@ abstract class ProfileCompleteViewModel extends BaseState<ProfileCompleteView>
   void handleCityChanged(String? city) {
     setState(() {
       selectedCity = city;
-      selectedDistrict = null; // Şehir değişince ilçe seçimini sıfırla
+      selectedDistrict = null;
     });
   }
 

@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/store_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
@@ -286,7 +287,7 @@ class StoreCardWidget extends StatelessWidget {
                                     ),
                                     child: BodyMediumBlackText(
                                       text:
-                                          '${store.minBasketAmount}TL min. sepet tutarı',
+                                          '${store.minBasketAmount}${AppLocalizations.of(context)!.store_card_min_basket_value}',
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -357,9 +358,10 @@ class StoreCardWidget extends StatelessWidget {
                                                   flex: 1,
                                                   child: store.freeDelivery ==
                                                           true
-                                                      ? const BodyMediumMainColorBoldText(
-                                                          text:
-                                                              'Ücretsiz Teslimat',
+                                                      ? BodyMediumMainColorBoldText(
+                                                          text: AppLocalizations
+                                                                  .of(context)!
+                                                              .store_card_free_delivery,
                                                           textAlign:
                                                               TextAlign.left,
                                                         )

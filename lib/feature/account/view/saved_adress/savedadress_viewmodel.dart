@@ -10,6 +10,6 @@ abstract class SavedAdressViewModel extends BaseState<SavedAdressView>
   @override
   void initState() {
     super.initState();
-    context.read<SavedAdressBloc>().add(LoadSavedAdressEvent());
+    context.read<SavedAdressBloc>().add(LoadSavedAdressEvent(context));
   }
 }

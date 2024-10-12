@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
@@ -91,8 +92,8 @@ class _VersionViewState extends BaseState<VersionView> {
                           padding: PaddingSizedsUtility.vertical(
                             PaddingSizedsUtility.normalPaddingValue,
                           ),
-                          child: const TitleLargeBlackBoldText(
-                            text: 'Yeni Versiyon Çıktı!',
+                          child: TitleLargeBlackBoldText(
+                            text: AppLocalizations.of(context)!.version_title,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -101,16 +102,16 @@ class _VersionViewState extends BaseState<VersionView> {
                           padding: PaddingSizedsUtility.vertical(
                             PaddingSizedsUtility.normalPaddingValue,
                           ),
-                          child: const BodyMediumBlackText(
+                          child: BodyMediumBlackText(
                             text:
-                                'Caffely Uygulamasanın yeni versiyonu yayınlandı hemen uygulama mağazanızdan güncelleyebilirsiniz.',
+                                AppLocalizations.of(context)!.version_subtitle,
                             textAlign: TextAlign.center,
                           ),
                         ),
                         // update button
                         CustomButtonWidget(
                           dynamicViewExtensions: dynamicViewExtensions,
-                          text: 'Mağazaya Git',
+                          text: AppLocalizations.of(context)!.version_btn,
                           func: () async {
                             if (!await launchUrl(
                               Uri.parse(

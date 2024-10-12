@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/price_convert.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
@@ -141,9 +142,10 @@ class OrderProductCardWidget extends StatelessWidget {
                           ),
                           child: Row(
                             children: <Widget>[
-                              const Expanded(
+                              Expanded(
                                 child: BodyMediumBlackText(
-                                  text: 'Adet',
+                                  text: AppLocalizations.of(context)!
+                                      .order_product_card_quanity,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -170,9 +172,10 @@ class OrderProductCardWidget extends StatelessWidget {
                           ),
                           child: Row(
                             children: <Widget>[
-                              const Expanded(
+                              Expanded(
                                 child: BodyMediumBlackText(
-                                  text: 'Boyut',
+                                  text: AppLocalizations.of(context)!
+                                      .order_product_card_size,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -181,7 +184,7 @@ class OrderProductCardWidget extends StatelessWidget {
                                 flex: 1,
                                 child: BodyMediumBlackText(
                                   text:
-                                      ' ${basketProductModel.size == ProductTypeControl.middle.productTypeValue ? 'Orta' : basketProductModel.size == ProductTypeControl.large.productTypeValue ? 'Büyük' : 'Küçük'}',
+                                      ' ${basketProductModel.size == ProductTypeControl.middle.productTypeValue ? AppLocalizations.of(context)!.order_product_card_middle : basketProductModel.size == ProductTypeControl.large.productTypeValue ? AppLocalizations.of(context)!.order_product_card_large : AppLocalizations.of(context)!.order_product_card_small}',
                                   textAlign: TextAlign.right,
                                 ),
                               ),
@@ -200,9 +203,10 @@ class OrderProductCardWidget extends StatelessWidget {
                           ),
                           child: Row(
                             children: <Widget>[
-                              const Expanded(
+                              Expanded(
                                 child: BodyMediumBlackText(
-                                  text: 'Boyut',
+                                  text: AppLocalizations.of(context)!
+                                      .order_product_card_avaible,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -211,7 +215,7 @@ class OrderProductCardWidget extends StatelessWidget {
                                 flex: 1,
                                 child: BodyMediumBlackText(
                                   text:
-                                      ' ${basketProductModel.avaible == ProductCoffeAvaibleTypeControl.notSelect.coffeAvaibleTypeValue ? 'Seçim Yok' : basketProductModel.avaible == ProductCoffeAvaibleTypeControl.hot.coffeAvaibleTypeValue ? 'Sıcak' : basketProductModel.avaible == ProductCoffeAvaibleTypeControl.ice.coffeAvaibleTypeValue ? 'Soğuk' : 'Bilinmiyor'}',
+                                      ' ${basketProductModel.avaible == ProductCoffeAvaibleTypeControl.notSelect.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_not_select : basketProductModel.avaible == ProductCoffeAvaibleTypeControl.hot.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_hot : basketProductModel.avaible == ProductCoffeAvaibleTypeControl.ice.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_ice : AppLocalizations.of(context)!.order_status_unknow}',
                                   textAlign: TextAlign.right,
                                 ),
                               ),
@@ -230,9 +234,10 @@ class OrderProductCardWidget extends StatelessWidget {
                           ),
                           child: Row(
                             children: <Widget>[
-                              const Expanded(
+                              Expanded(
                                 child: BodyMediumMainColorText(
-                                  text: 'Fiyat',
+                                  text: AppLocalizations.of(context)!
+                                      .order_product_card_price,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -272,9 +277,10 @@ class OrderProductCardWidget extends StatelessWidget {
                           ),
                           child: Row(
                             children: <Widget>[
-                              const Expanded(
+                              Expanded(
                                 child: BodyMediumMainColorText(
-                                  text: 'Toplam Fiyat',
+                                  text: AppLocalizations.of(context)!
+                                      .order_product_card_total_price,
                                   textAlign: TextAlign.left,
                                 ),
                               ),

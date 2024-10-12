@@ -1,4 +1,5 @@
 import 'package:caffely/feature/account/view/saved_adress/view/savedadress_create/savedadress_create_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
@@ -52,9 +53,9 @@ class AdressSelectCardWidget extends StatelessWidget {
               ),
               child: Row(
                 children: <Widget>[
-                  const Expanded(
+                  Expanded(
                     child: BodyMediumBlackBoldText(
-                      text: 'Teslimat Adresi',
+                      text: AppLocalizations.of(context)!.adress_select_title,
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -65,8 +66,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                         const SavedadressCreateView(),
                       );
                     },
-                    child: const BodyMediumMainColorText(
-                      text: 'Adres Ekle',
+                    child: BodyMediumMainColorText(
+                      text: AppLocalizations.of(context)!.adress_select_add,
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -88,8 +89,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                     IconSizedsUtility.normalSize,
                     IconSizedsUtility.normalSize,
                   ),
-                  hint: const BodyMediumBlackText(
-                    text: 'Teslimat Adresi Seçiniz',
+                  hint: BodyMediumBlackText(
+                    text: AppLocalizations.of(context)!.adress_select,
                     textAlign: TextAlign.left,
                   ),
                   value: selectedAddress,

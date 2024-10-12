@@ -3,6 +3,7 @@
 import 'package:caffely/feature/basket/basket_viewmodel.dart';
 import 'package:caffely/feature/basket/bloc/cubit.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
@@ -47,8 +48,8 @@ class _BasketViewState extends BasketViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Sepet',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.basket_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -73,17 +74,19 @@ class _BasketViewState extends BasketViewModel {
                             buildFooterWidget(state),
                           ],
                         )
-                      : const CustomResponseWidget(
+                      : CustomResponseWidget(
                           img: AppImages.notFound,
-                          title: 'Sepetde Henüz Ürün Bulunmuyor',
-                          subTitle:
-                              'Sepetinizde henüz ürün bulunmuyor, isterseniz sepetinze ürün ekemeye başlayabilirsiniz.',
+                          title: AppLocalizations.of(context)!
+                              .basket_product_empty_title,
+                          subTitle: AppLocalizations.of(context)!
+                              .basket_product_empty_subtitle,
                         )
-                  : const CustomResponseWidget(
+                  : CustomResponseWidget(
                       img: AppImages.notFound,
-                      title: 'Sepetde Henüz Ürün Bulunmuyor',
-                      subTitle:
-                          'Sepetinizde henüz ürün bulunmuyor, isterseniz sepetinze ürün ekemeye başlayabilirsiniz.',
+                      title: AppLocalizations.of(context)!
+                          .basket_product_empty_title,
+                      subTitle: AppLocalizations.of(context)!
+                          .basket_product_empty_subtitle,
                     );
             }
 
@@ -169,15 +172,15 @@ class _BasketViewState extends BasketViewModel {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
-                  return const SizedBox(
-                    child: Text("Hatalı"),
+                  return SizedBox(
+                    child: Text(
+                      AppLocalizations.of(context)!.basket_product_error,
+                    ),
                   );
                 }
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const SizedBox(
-                    child: Text("asdas"),
-                  );
+                  return const SizedBox();
                 }
 
                 if (snapshot.hasData) {
@@ -192,8 +195,9 @@ class _BasketViewState extends BasketViewModel {
                   basketProductList.addAll(basketProducts);
 
                   return basketProducts.isEmpty
-                      ? const BodyMediumBlackBoldText(
-                          text: 'Şubeye Ait Ürün Bulunmuyor',
+                      ? BodyMediumBlackBoldText(
+                          text: AppLocalizations.of(context)!
+                              .basket_store_product_empty,
                           textAlign: TextAlign.center,
                         )
                       : ListView.builder(
@@ -214,20 +218,17 @@ class _BasketViewState extends BasketViewModel {
                                 AsyncSnapshot<DocumentSnapshot> snapshot,
                               ) {
                                 if (snapshot.hasError) {
-                                  return const SizedBox(
+                                  return SizedBox(
                                     child: Text(
-                                      "Hatalı",
+                                      AppLocalizations.of(context)!
+                                          .basket_product_error,
                                     ),
                                   );
                                 }
 
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
-                                  return const SizedBox(
-                                    child: Text(
-                                      "Yükleniyor",
-                                    ),
-                                  );
+                                  return const SizedBox();
                                 }
 
                                 if (snapshot.hasData && snapshot.data != null) {
@@ -235,11 +236,7 @@ class _BasketViewState extends BasketViewModel {
                                       as Map<String, dynamic>?;
 
                                   if (data == null) {
-                                    return const SizedBox(
-                                      child: Text(
-                                        "Veri yok",
-                                      ),
-                                    );
+                                    return const SizedBox();
                                   }
 
                                   final ProductModel product =
@@ -292,9 +289,7 @@ class _BasketViewState extends BasketViewModel {
                         );
                 }
 
-                return const SizedBox(
-                  child: Text("asdas"),
-                );
+                return const SizedBox();
               },
             ),
         ],
@@ -306,7 +301,7 @@ class _BasketViewState extends BasketViewModel {
   ) =>
       CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
-        text: 'Siparişi Tamamla',
+        text: AppLocalizations.of(context)!.basket_complete_btn,
         func: () => orderCompleteFunc(state),
         btnStatus: ButtonTypes.primaryColorButton,
       );

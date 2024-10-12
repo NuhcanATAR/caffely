@@ -1,6 +1,7 @@
 import 'package:caffely/feature/basket/bloc/cubit.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/price_convert.dart';
@@ -53,8 +54,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Siparişi Tamamla',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.basket_order_complete_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -183,9 +184,10 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                         ),
                         child: Row(
                           children: <Widget>[
-                            const Expanded(
+                            Expanded(
                               child: BodyMediumBlackText(
-                                text: 'Ürün Adeti',
+                                text: AppLocalizations.of(context)!
+                                    .basket_order_complete_product_quanity,
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -199,7 +201,7 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                         ),
                       ),
                     ),
-                    // Toplam fiyat
+                    // total price
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
@@ -208,9 +210,10 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                         ),
                         child: Row(
                           children: <Widget>[
-                            const Expanded(
+                            Expanded(
                               child: BodyMediumBlackText(
-                                text: 'Toplam Fiyat',
+                                text: AppLocalizations.of(context)!
+                                    .basket_order_complete_total_price,
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -223,7 +226,7 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                         ),
                       ),
                     ),
-                    // Genel toplam
+                    // main total
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
@@ -232,9 +235,10 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                         ),
                         child: Row(
                           children: <Widget>[
-                            const Expanded(
+                            Expanded(
                               child: BodyMediumBlackText(
-                                text: 'Genel Toplam',
+                                text: AppLocalizations.of(context)!
+                                    .basket_order_complete_main_total,
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -256,7 +260,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
           // order complete button
           CustomButtonWidget(
             dynamicViewExtensions: dynamicViewExtensions,
-            text: 'Siparişi Oluştur',
+            text:
+                AppLocalizations.of(context)!.basket_order_complete_create_btn,
             func: () => orderCreateBtn(blocState),
             btnStatus: ButtonTypes.primaryColorButton,
           ),

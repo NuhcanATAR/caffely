@@ -1,4 +1,5 @@
 import 'package:caffely/feature/account/view/accountqr_code/accountqrcode_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -54,8 +55,9 @@ class _AccountQrCodeCreateLoadingViewState
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.smallPaddingValue,
               ),
-              child: const BodyMediumBlackBoldText(
-                text: 'Qr Kod Oluşturuluyor',
+              child: BodyMediumBlackBoldText(
+                text: AppLocalizations.of(context)!
+                    .account_qrcode_create_loading_title,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -64,8 +66,9 @@ class _AccountQrCodeCreateLoadingViewState
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.smallPaddingValue,
               ),
-              child: const BodyMediumBlackText(
-                text: 'Bu biraz zaman alabilir, lütfen bekleyiniz.',
+              child: BodyMediumBlackText(
+                text: AppLocalizations.of(context)!
+                    .account_qrcode_create_loading_subtitle,
                 textAlign: TextAlign.center,
               ),
             ),

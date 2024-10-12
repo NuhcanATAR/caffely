@@ -1,5 +1,6 @@
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/savedadress_model/savedadress_model.dart';
@@ -79,9 +80,10 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
 
       emit(SavedAdressLoaded(savedAdress));
     } catch (e) {
+      if (!event.context.mounted) return;
       emit(
-        const SavedAdressError(
-          'Adres Kayıt yapılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz',
+        SavedAdressError(
+          AppLocalizations.of(event.context)!.account_saveadress_load_error,
         ),
       );
     }
@@ -112,15 +114,17 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
         final String docId = value.id;
         value.update({'id': docId});
       });
+      if (!event.context.mounted) return;
       emit(
-        const SaveAdressCreateSuccess(
-          'Adres başarıyla kaydedildi',
+        SaveAdressCreateSuccess(
+          AppLocalizations.of(event.context)!
+              .account_saveadress_create_succcess,
         ),
       );
     } catch (e) {
       emit(
-        const SaveAdressCreateError(
-          'Adres kaydedilirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz',
+        SaveAdressCreateError(
+          AppLocalizations.of(event.context)!.account_saveadress_create_error,
         ),
       );
     }
@@ -136,15 +140,16 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
           .update({
         'is_deleted': true,
       });
+      if (!event.context.mounted) return;
       emit(
-        const SaveAdressDeleteSuccess(
-          'Adres başarıyla silindi',
+        SaveAdressDeleteSuccess(
+          AppLocalizations.of(event.context)!.account_saveadress_delete_success,
         ),
       );
     } catch (e) {
       emit(
-        const SaveAdressDeleteError(
-          'Adres kaldırılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        SaveAdressDeleteError(
+          AppLocalizations.of(event.context)!.account_saveadress_delete_error,
         ),
       );
     }
@@ -170,15 +175,16 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
         'contact_surname': event.contactSurname,
         'contact_phone_number': event.contactPhoneNumber,
       });
+      if (!event.context.mounted) return;
       emit(
-        const SaveAdressUpdateSuccess(
-          'Adres başarıyla güncellendi',
+        SaveAdressUpdateSuccess(
+          AppLocalizations.of(event.context)!.account_saveadress_edit_success,
         ),
       );
     } catch (e) {
       emit(
-        const SaveAdressUpdateError(
-          'Adres güncellenirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz',
+        SaveAdressUpdateError(
+          AppLocalizations.of(event.context)!.account_saveadress_edit_error,
         ),
       );
     }

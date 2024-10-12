@@ -2,6 +2,7 @@ import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dar
 import 'package:caffely/feature/account/view/personal_information/bloc/event.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/state.dart';
 import 'package:caffely/feature/account/view/personal_information/personalinformation_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -43,8 +44,9 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Kişisel Bilgiler',
+        title: BodyMediumBlackText(
+          text:
+              AppLocalizations.of(context)!.account_personal_information_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -95,7 +97,8 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
                     // name surname
                     NormalTextFieldWidget(
                       controller: nameSurnameController,
-                      hintText: 'Ad Soyad',
+                      hintText: AppLocalizations.of(context)!
+                          .account_personal_information_name_surname,
                       explanationStatus: false,
                       onChanged: (val) {},
                       isValidator: true,
@@ -106,7 +109,8 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
                     // phone number
                     PhoneNumberFieldWidget(
                       phoneNumberController: phoneNumberController,
-                      hintText: 'Telefon Numarası',
+                      hintText: AppLocalizations.of(context)!
+                          .account_personal_information_phone_number,
                       onChanged: (val) {},
                       isLabelText: true,
                     ),
@@ -131,7 +135,8 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
   // footer button
   CustomButtonWidget get buildFooterButtonWidget => CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
-        text: 'Profili Güncelle',
+        text: AppLocalizations.of(context)!
+            .account_personal_information_footer_btn,
         func: () {
           if (formPersonalInformationKey.currentState!.validate()) {
             if (selectedCity != null || selectedDistrict != null) {
@@ -141,12 +146,14 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
                       int.parse(phoneNumberController.text),
                       selectedCity!,
                       selectedDistrict!,
+                      context,
                     ),
                   );
             } else {
               CodeNoahDialogs(context).showFlush(
                 type: SnackType.error,
-                message: 'Lütfen şehir ve ilçe seçimi yapınız.',
+                message: AppLocalizations.of(context)!
+                    .account_personal_information_city_error,
               );
             }
           }

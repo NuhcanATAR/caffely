@@ -2,6 +2,7 @@ import 'package:caffely/feature/password/bloc/cubit.dart';
 import 'package:caffely/feature/password/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/state.dart';
 import 'package:caffely/feature/password/password_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -66,8 +67,9 @@ class _PasswordViewState extends PasswordViewmodel {
                                   padding: PaddingSizedsUtility.bottom(
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  child: const TitleLargeBlackBoldText(
-                                    text: 'Şifrenimizimi Unuttunuz? 🔑',
+                                  child: TitleLargeBlackBoldText(
+                                    text: AppLocalizations.of(context)!
+                                        .forgot_password_title,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -79,9 +81,9 @@ class _PasswordViewState extends PasswordViewmodel {
                                   padding: PaddingSizedsUtility.bottom(
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  child: const BodyMediumBlackText(
-                                    text:
-                                        "Hesabınıza kayıtlı email adresini girin ve şifrenizi hızlıca yenileyin.",
+                                  child: BodyMediumBlackText(
+                                    text: AppLocalizations.of(context)!
+                                        .forgot_password_subtitle,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -92,7 +94,8 @@ class _PasswordViewState extends PasswordViewmodel {
                         // email
                         CustomEmailFieldWidget(
                           emailController: emailController,
-                          hintText: 'E-mail',
+                          hintText: AppLocalizations.of(context)!
+                              .forgot_password_email,
                           onChanged: (String value) {
                             context.read<PasswordBloc>().add(
                                   PasswordEmailEvent(value),
@@ -106,7 +109,8 @@ class _PasswordViewState extends PasswordViewmodel {
                   // footer
                   CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
-                    text: 'DOĞRULA',
+                    text: AppLocalizations.of(context)!
+                        .forgot_password_correct_btn,
                     func: state.email.isEmpty
                         ? () {}
                         : () {
@@ -115,6 +119,7 @@ class _PasswordViewState extends PasswordViewmodel {
                                     PasswordResetEvent(
                                       state.email,
                                       dynamicViewExtensions,
+                                      context,
                                     ),
                                   );
                               emailController.clear();

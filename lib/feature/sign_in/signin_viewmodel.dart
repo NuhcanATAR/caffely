@@ -1,6 +1,7 @@
 import 'package:caffely/feature/sign_in/bloc/mixin.dart';
 import 'package:caffely/feature/sign_in/signin_loading_view.dart';
 import 'package:caffely/feature/sign_in/signin_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -72,7 +73,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
           if (!mounted) return;
           await CodeNoahDialogs(context).showFlush(
             type: SnackType.error,
-            message: 'Kullanıcı bulunamadı!',
+            message: AppLocalizations.of(context)!.sign_user_not_found,
           );
         }
       }
@@ -81,7 +82,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
       if (!mounted) return;
       await CodeNoahDialogs(context).showFlush(
         type: SnackType.error,
-        message: 'Kullanıcı bulunamadı!',
+        message: AppLocalizations.of(context)!.sign_user_not_found,
       );
     }
   }

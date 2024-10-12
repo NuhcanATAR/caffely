@@ -8,6 +8,7 @@ import 'package:caffely/feature/store/bloc/cubit.dart';
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/feature/store/view/store_information/storeinformation_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
@@ -88,7 +89,6 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                 final favoriteList = state.favorites;
                 final storeId = widget.storeModel.id;
 
-                // Favori kontrolü ve favori ID'sini alma
                 final favorite = favoriteList
                         .where((favorite) => favorite.storeId == storeId)
                         .toList()
@@ -109,6 +109,7 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                                 storeId,
                                 favoriteId,
                                 false,
+                                context,
                               ),
                             );
                         context.read<StoreBloc>().add(
@@ -124,6 +125,7 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                               storeId,
                               '',
                               true,
+                              context,
                             ),
                           );
                       context.read<StoreBloc>().add(
@@ -297,7 +299,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                           unawaited(
                             CodeNoahDialogs(context).showFlush(
                               type: SnackType.error,
-                              message: 'Url Adresi Bulunamadı',
+                              message: AppLocalizations.of(context)!
+                                  .stores_detail_location_not_found,
                             ),
                           );
                         } else {
@@ -416,11 +419,7 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                   ),
                 );
               } else if (state is StoresError) {
-                return SliverToBoxAdapter(
-                  child: Center(
-                    child: Text('Error: ${state.message}'),
-                  ),
-                );
+                return const SliverToBoxAdapter(child: SizedBox());
               } else {
                 return const SliverToBoxAdapter();
               }

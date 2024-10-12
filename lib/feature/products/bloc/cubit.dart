@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -130,18 +131,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             .doc(event.favoriteId)
             .delete();
       }
-
+      if (!event.context.mounted) return;
       emit(
         ProductFavoriteAddSuccess(
           event.isFavoriteStatus
-              ? 'Şube Favorilere eklendi!'
-              : 'Şube Favorilerden kaldırıldı!',
+              ? AppLocalizations.of(event.context)!
+                  .products_store_favorite_add_success
+              : AppLocalizations.of(event.context)!
+                  .products_store_favorite_delete_success,
         ),
       );
     } catch (e) {
       emit(
-        const ProductFavoriteAddError(
-          'Hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        ProductFavoriteAddError(
+          AppLocalizations.of(event.context)!.products_favorite_error,
         ),
       );
     }
@@ -263,15 +266,16 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           event.productModel,
         );
       }
+      if (!event.context.mounted) return;
       emit(
-        const ProductBasketAddSuccessState(
-          'Ürün sepete eklendi!',
+        ProductBasketAddSuccessState(
+          AppLocalizations.of(event.context)!.products_basket_add_success,
         ),
       );
     } catch (e) {
       emit(
-        const ProductBasketAddError(
-          'Ürün Sepete eklenirken bir sorun oluştu.',
+        ProductBasketAddError(
+          AppLocalizations.of(event.context)!.products_basket_add_error,
         ),
       );
     }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class QrCodeEvent extends Equatable {
   const QrCodeEvent();
@@ -7,4 +8,8 @@ abstract class QrCodeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class QrCodeCreateEvent extends QrCodeEvent {}
+class QrCodeCreateEvent extends QrCodeEvent {
+  final BuildContext context;
+
+  const QrCodeCreateEvent(this.context);
+}

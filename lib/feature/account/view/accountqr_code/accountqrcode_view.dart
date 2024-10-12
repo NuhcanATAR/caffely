@@ -7,6 +7,7 @@ import 'package:caffely/feature/account/view/accountqr_code/bloc/event.dart';
 import 'package:caffely/feature/account/view/accountqr_code/bloc/state.dart';
 import 'package:caffely/feature/account/view/accountqr_code/view/loading_view.dart';
 import 'package:caffely/feature/bottom_menu/bottommenu_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
@@ -53,8 +54,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Caffely Profil QR Kod',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_qrcode_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -133,9 +134,9 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
             FadeInUp(
               child: CustomButtonWidget(
                 dynamicViewExtensions: dynamicViewExtensions,
-                text: 'QR Kod Oluştur',
+                text: AppLocalizations.of(context)!.account_qrcode_create_btn,
                 func: () {
-                  context.read<QrCodeCubit>().add(QrCodeCreateEvent());
+                  context.read<QrCodeCubit>().add(QrCodeCreateEvent(context));
                   CodeNoahNavigatorRouter.push(
                     context,
                     const AccountQrCodeCreateLoadingView(),
@@ -238,8 +239,9 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
                                   padding: PaddingSizedsUtility.vertical(
                                     PaddingSizedsUtility.smallPaddingValue,
                                   ),
-                                  child: const BodyMediumMainColorText(
-                                    text: 'Doğrulanmış Hesap',
+                                  child: BodyMediumMainColorText(
+                                    text: AppLocalizations.of(context)!
+                                        .account_qrcode_verified,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),

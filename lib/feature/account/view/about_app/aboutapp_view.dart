@@ -1,4 +1,5 @@
 import 'package:caffely/feature/account/view/about_app/aboutapp_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -33,8 +34,8 @@ class _AboutAppViewState extends AboutAppViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Caffely Hakkında',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_aboutapp_appbar,
           textAlign: TextAlign.left,
         ),
       ),

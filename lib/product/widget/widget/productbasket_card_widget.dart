@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffely/feature/basket/bloc/cubit.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/price_convert.dart';
@@ -54,30 +55,18 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
         AsyncSnapshot<DocumentSnapshot> snapshot,
       ) {
         if (snapshot.hasError) {
-          return const SizedBox(
-            child: Text(
-              "Hatalı",
-            ),
-          );
+          return const SizedBox();
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const SizedBox(
-            child: Text(
-              "Yükleniyor",
-            ),
-          );
+          return const SizedBox();
         }
 
         if (snapshot.hasData && snapshot.data != null) {
           final data = snapshot.data!.data() as Map<String, dynamic>?;
 
           if (data == null) {
-            return const SizedBox(
-              child: Text(
-                "Veri yok",
-              ),
-            );
+            return const SizedBox();
           }
 
           final ProductModel product = ProductModel.fromJson(
@@ -232,9 +221,10 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             ),
                             child: Row(
                               children: <Widget>[
-                                const Expanded(
+                                Expanded(
                                   child: BodyMediumBlackText(
-                                    text: 'Boyut',
+                                    text: AppLocalizations.of(context)!
+                                        .product_basket_card_size,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -243,7 +233,7 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                   flex: 1,
                                   child: BodyMediumBlackText(
                                     text:
-                                        ' ${widget.productModel.size == ProductTypeControl.middle.productTypeValue ? 'Orta' : widget.productModel.size == ProductTypeControl.large.productTypeValue ? 'Büyük' : 'Küçük'}',
+                                        ' ${widget.productModel.size == ProductTypeControl.middle.productTypeValue ? AppLocalizations.of(context)!.order_product_card_middle : widget.productModel.size == ProductTypeControl.large.productTypeValue ? AppLocalizations.of(context)!.order_product_card_large : AppLocalizations.of(context)!.order_product_card_small}',
                                     textAlign: TextAlign.right,
                                   ),
                                 ),
@@ -262,9 +252,10 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             ),
                             child: Row(
                               children: <Widget>[
-                                const Expanded(
+                                Expanded(
                                   child: BodyMediumBlackText(
-                                    text: 'Boyut',
+                                    text: AppLocalizations.of(context)!
+                                        .product_basket_card_avaible,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -273,7 +264,7 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                   flex: 1,
                                   child: BodyMediumBlackText(
                                     text:
-                                        ' ${widget.productModel.avaible == ProductCoffeAvaibleTypeControl.notSelect.coffeAvaibleTypeValue ? 'Seçim Yok' : widget.productModel.avaible == ProductCoffeAvaibleTypeControl.hot.coffeAvaibleTypeValue ? 'Sıcak' : widget.productModel.avaible == ProductCoffeAvaibleTypeControl.ice.coffeAvaibleTypeValue ? 'Soğuk' : 'Bilinmiyor'}',
+                                        ' ${widget.productModel.avaible == ProductCoffeAvaibleTypeControl.notSelect.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_not_select : widget.productModel.avaible == ProductCoffeAvaibleTypeControl.hot.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_hot : widget.productModel.avaible == ProductCoffeAvaibleTypeControl.ice.coffeAvaibleTypeValue ? AppLocalizations.of(context)!.order_product_card_ice : AppLocalizations.of(context)!.order_status_unknow}',
                                     textAlign: TextAlign.right,
                                   ),
                                 ),

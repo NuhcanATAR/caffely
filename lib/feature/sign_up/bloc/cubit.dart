@@ -1,5 +1,6 @@
 import 'package:caffely/feature/sign_up/bloc/event.dart';
 import 'package:caffely/feature/sign_up/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,21 +49,31 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
       final User? userAuth = userCredential.user;
       await userAuth?.sendEmailVerification();
-
+      if (!event.context.mounted) return;
       emit(
-        const SignUpSuccessState(
-          'Hesabınız Başarıyla oluşturuldu!',
+        SignUpSuccessState(
+          AppLocalizations.of(event.context)!.signup_success,
         ),
       );
     } catch (e) {
       if (e is FirebaseAuthException) {
         if (e.code == 'email-already-in-use') {
-          emit(const SignUpErrorState('E-mail adresi zaten kullanımda.'));
+          emit(
+            SignUpErrorState(
+              AppLocalizations.of(event.context)!.signup_email_already_in_use,
+            ),
+          );
         } else {
-          emit(const SignUpErrorState('Kayıt işlemi başarısız oldu.'));
+          emit(
+            SignUpErrorState(
+              AppLocalizations.of(event.context)!.signup_email_erorr,
+            ),
+          );
         }
       } else {
-        emit(const SignUpErrorState('Kayıt işlemi başarısız oldu'));
+        emit(
+          SignUpErrorState(AppLocalizations.of(event.context)!.signup_error),
+        );
       }
     }
   }

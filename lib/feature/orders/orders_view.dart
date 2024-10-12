@@ -1,6 +1,7 @@
 import 'package:caffely/feature/orders/bloc/cubit.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
 import 'package:caffely/feature/orders/orders_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -32,8 +33,8 @@ class _OrdersViewState extends OrdersViewModel {
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
-        title: const BodyMediumBlackText(
-          text: 'Siparişlerim',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.order_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -47,11 +48,10 @@ class _OrdersViewState extends OrdersViewModel {
             branches = state.branches;
             return buildBodyWidget(state);
           } else if (state is OrderError) {
-            return const CustomResponseWidget(
+            return CustomResponseWidget(
               img: AppImages.error,
-              title: 'Siparişler Bulunamadı',
-              subTitle:
-                  'Siparişler yüklenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+              title: AppLocalizations.of(context)!.order_error_title,
+              subTitle: AppLocalizations.of(context)!.order_error_subtitle,
             );
           } else {
             return const SizedBox();
@@ -63,34 +63,26 @@ class _OrdersViewState extends OrdersViewModel {
 
   // body
   Widget buildBodyWidget(OrderLoaded state) => state.orders.isEmpty
-      ? const CustomResponseWidget(
+      ? CustomResponseWidget(
           img: AppImages.notFound,
-          title: 'Siparişiniz Bulunmuyor',
-          subTitle:
-              'Henüz yeni bir sipariş oluşturmadınız, isterseniz yeni sipariş oluşturmaya başlayabilirsiniz.',
+          title: AppLocalizations.of(context)!.order_empty_title,
+          subTitle: AppLocalizations.of(context)!.order_empty_subtitle,
         )
       : Padding(
           padding: PaddingSizedsUtility.all(
             PaddingSizedsUtility.normalPaddingValue,
           ),
-          child: state.orders.isEmpty
-              ? const CustomResponseWidget(
-                  img: AppImages.notFound,
-                  title: 'Hazırlanmakta Olan Sipariş Bulunmuyor',
-                  subTitle:
-                      'Henüz hazırlanmak üzere olan bir siparişiniz bulunmuyor.',
-                )
-              : ListView.builder(
-                  itemCount: state.orders.length,
-                  itemBuilder: (context, index) {
-                    final model = state.orders[index];
-                    final date = model.date!.toDate();
-                    final createDate = '${date.day}.${date.month}.${date.year}';
-                    return OrderCardWidget(
-                      createDate: createDate,
-                      model: model,
-                    );
-                  },
-                ),
+          child: ListView.builder(
+            itemCount: state.orders.length,
+            itemBuilder: (context, index) {
+              final model = state.orders[index];
+              final date = model.date!.toDate();
+              final createDate = '${date.day}.${date.month}.${date.year}';
+              return OrderCardWidget(
+                createDate: createDate,
+                model: model,
+              );
+            },
+          ),
         );
 }

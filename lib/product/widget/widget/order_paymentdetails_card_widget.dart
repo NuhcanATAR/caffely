@@ -1,4 +1,5 @@
 import 'package:caffely/feature/orders/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/model/order_model/order_model.dart';
@@ -59,8 +60,9 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const TitleMediumBlackBoldText(
-                  text: 'Ödeme Detayları',
+                child: TitleMediumBlackBoldText(
+                  text: AppLocalizations.of(context)!
+                      .order_paymentdetail_card_title,
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -75,9 +77,10 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 ),
                 child: Row(
                   children: <Widget>[
-                    const Expanded(
+                    Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Ödeme Tipi',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_payment_type,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -87,8 +90,10 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                       child: BodyMediumBlackBoldText(
                         text: orderModel.paymentType ==
                                 OrderPaymentType.online.value
-                            ? 'Online Ödeme'
-                            : 'Kapıda Ödeme',
+                            ? AppLocalizations.of(context)!
+                                .order_paymentdetail_card_online_payment
+                            : AppLocalizations.of(context)!
+                                .order_paymentdetail_card_atthe_door,
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -105,9 +110,10 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 ),
                 child: Row(
                   children: <Widget>[
-                    const Expanded(
+                    Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Toplam Fiyat',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_total_price,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -133,9 +139,10 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 ),
                 child: Row(
                   children: <Widget>[
-                    const Expanded(
+                    Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Adet',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_quanity,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -158,15 +165,16 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 padding: PaddingSizedsUtility.vertical(
                   PaddingSizedsUtility.normalPaddingValue,
                 ),
-                child: const Row(
+                child: Row(
                   children: <Widget>[
                     Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Servis Ücreti',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_service_price,
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    Flexible(
+                    const Flexible(
                       fit: FlexFit.tight,
                       flex: 1,
                       child: BodyMediumBlackBoldText(
@@ -185,15 +193,16 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 padding: PaddingSizedsUtility.vertical(
                   PaddingSizedsUtility.normalPaddingValue,
                 ),
-                child: const Row(
+                child: Row(
                   children: <Widget>[
                     Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Teslimat Ücreti',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_delivery_price,
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    Flexible(
+                    const Flexible(
                       fit: FlexFit.tight,
                       flex: 1,
                       child: BodyMediumBlackBoldText(
@@ -214,9 +223,10 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
                 ),
                 child: Row(
                   children: <Widget>[
-                    const Expanded(
+                    Expanded(
                       child: BodyMediumBlackText(
-                        text: 'Toplam Ödeme',
+                        text: AppLocalizations.of(context)!
+                            .order_paymentdetail_card_total_pay,
                         textAlign: TextAlign.left,
                       ),
                     ),

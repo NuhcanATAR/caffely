@@ -15,7 +15,12 @@ abstract class OrderDetailViewModel extends BaseState<OrderDetailView> {
   void initState() {
     super.initState();
 
-    context.read<OrderBloc>().add(LoadBranchesEvent(widget.orderModel.id));
+    context.read<OrderBloc>().add(
+          LoadBranchesEvent(
+            widget.orderModel.id,
+            context,
+          ),
+        );
     mainTotalQuanity = 0;
     mainTotalQuanity = 0;
   }

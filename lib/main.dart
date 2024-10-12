@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SavedAdressBloc>(
           create: (BuildContext context) =>
-              SavedAdressBloc()..add(LoadSavedAdressEvent()),
+              SavedAdressBloc()..add(LoadSavedAdressEvent(context)),
         ),
         BlocProvider<PersonalInformationBloc>(
           create: (BuildContext context) => PersonalInformationBloc(),
@@ -103,8 +103,11 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<OrderBloc>(
           create: (BuildContext context) => OrderBloc()
-            ..add(LoadOrderEvent())
-            ..add(LoadBranchesEvent("")),
+            ..add(LoadOrderEvent(context))
+            ..add(LoadBranchesEvent(
+              "",
+              context,
+            )),
         ),
       ],
       child: MaterialApp(

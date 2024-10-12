@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/complete/bloc/state.dart';
 import 'package:caffely/feature/complete/completesuccess_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -30,8 +31,8 @@ mixin ProfileCompleteMixin {
       case ProfileCompleteLoading:
         CodeNoahDialogs(context).showLoadingAlert(
           AppIcons.accountSignIn,
-          'Hesabınıza Giriş Yapılıyor',
-          'Lütfen Bekleyiniz...',
+          AppLocalizations.of(context)!.sign_complete_loading_title,
+          AppLocalizations.of(context)!.sign_complete_loading_subtitle,
           (state as ProfileCompleteLoading).dynamicViewExtensions,
         );
         break;
