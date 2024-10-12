@@ -74,7 +74,7 @@ seçeneklerine göre tercih edebilirler
 
 <img width="5056" alt="db_diagram" src="https://github.com/user-attachments/assets/2711fab0-e9a2-4518-a124-3683e5c071f1">
 
-## Trelloda Çalışma Alanımm ( Tamamlandıktan Sonra )
+## Trelloda Çalışma Alanım ( Tamamlandıktan Sonra )
 <img width="5056" src="https://github.com/user-attachments/assets/e0b5333f-9df8-4d9f-9a65-002a82b0242f">
 <img width="5056" src="https://github.com/user-attachments/assets/b720b732-3ba1-425d-b6ee-d56d70dc09fe">
 
