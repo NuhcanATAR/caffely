@@ -1,6 +1,7 @@
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/view/savedadress_edit/savedadress_edit_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -141,7 +142,7 @@ class AdressCardWidget extends StatelessWidget {
                   ),
                   child: CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
-                    text: 'Düzenle',
+                    text: AppLocalizations.of(context)!.adress_edit_btn,
                     func: () {
                       CodeNoahNavigatorRouter.push(
                         context,
@@ -162,17 +163,18 @@ class AdressCardWidget extends StatelessWidget {
                   ),
                   child: CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
-                    text: 'Sil',
+                    text: AppLocalizations.of(context)!.adress_delete_btn,
                     func: () {
                       CodeNoahDialogs(context).showWarningAlert(
                         AppIcons.warningCircle,
                         Colors.red,
-                        'Adresi Silmek İstiyormusunuz?',
+                        AppLocalizations.of(context)!.adress_dialog_title,
                         dynamicViewExtensions,
                         () {
                           context.read<SavedAdressBloc>().add(
                                 SaveAdressDeleteEvent(
                                   adressModel,
+                                  context,
                                 ),
                               );
                         },

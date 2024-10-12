@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/price_convert.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
@@ -174,9 +175,10 @@ class BasketProductListWidget extends StatelessWidget {
                       ),
                       child: Row(
                         children: <Widget>[
-                          const Expanded(
+                          Expanded(
                             child: BodyMediumBlackText(
-                              text: 'Boyut',
+                              text: AppLocalizations.of(context)!
+                                  .basket_product_list_size,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -204,9 +206,10 @@ class BasketProductListWidget extends StatelessWidget {
                       ),
                       child: Row(
                         children: <Widget>[
-                          const Expanded(
+                          Expanded(
                             child: BodyMediumBlackText(
-                              text: 'Boyut',
+                              text: AppLocalizations.of(context)!
+                                  .basket_product_list_avaible,
                               textAlign: TextAlign.left,
                             ),
                           ),

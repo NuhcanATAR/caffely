@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:caffely/feature/bottom_menu/bottommenu_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
@@ -65,8 +66,9 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
                         padding: PaddingSizedsUtility.vertical(
                           PaddingSizedsUtility.normalPaddingValue,
                         ),
-                        child: const TitleLargeBlackBoldText(
-                          text: 'Herşey Tamamlandı!',
+                        child: TitleLargeBlackBoldText(
+                          text: AppLocalizations.of(context)!
+                              .sign_complete_success_title,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -76,9 +78,9 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
                         padding: PaddingSizedsUtility.bottom(
                           PaddingSizedsUtility.normalPaddingValue,
                         ),
-                        child: const BodyMediumBlackText(
-                          text:
-                              'Caffely Hesap bilgileriniz tamamlandığına göre hesabınıza giriş yapabilirsiniz.',
+                        child: BodyMediumBlackText(
+                          text: AppLocalizations.of(context)!
+                              .sign_complete_success_subtitle,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -91,7 +93,7 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
             FadeInUp(
               child: CustomButtonWidget(
                 dynamicViewExtensions: dynamicViewExtensions,
-                text: 'Başla',
+                text: AppLocalizations.of(context)!.sign_complete_start_btn,
                 func: () {
                   CodeNoahNavigatorRouter.pushAndRemoveUntil(
                     context,

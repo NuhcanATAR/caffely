@@ -1,8 +1,9 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member, unused_local_variable, avoid_dynamic_calls
+// ignore_for_file: invalid_use_of_visible_for_testing_member, unused_local_variable, avoid_dynamic_calls,
 
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -306,7 +307,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
           context,
         ).showFlush(
           type: SnackType.warning,
-          message: 'Adet değeri minimum 1 olmalı',
+          message: AppLocalizations.of(context)!.basket_quanity_erorr,
         );
       }
     } catch (e) {
@@ -427,10 +428,18 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
       await FirebaseCollectionReferances.basket.collectRef
           .doc(FirebaseService().authID)
           .delete();
-
-      emit(BasketOrderCompleteState('Siparişiniz başarıyla oluşturuldu.'));
+      if (!event.context.mounted) return;
+      emit(
+        BasketOrderCompleteState(
+          AppLocalizations.of(event.context)!.basket_order_complete_success,
+        ),
+      );
     } catch (e) {
-      emit(BasketOrderCompleteError('Sipariş Oluşturulurken bir hata oluştu'));
+      emit(
+        BasketOrderCompleteError(
+          AppLocalizations.of(event.context)!.basket_order_complete_error,
+        ),
+      );
     }
   }
 }

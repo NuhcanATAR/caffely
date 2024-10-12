@@ -1,5 +1,6 @@
 import 'package:caffely/product/model/savedadress_model/savedadress_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class SavedAdressEvent extends Equatable {
   const SavedAdressEvent();
@@ -109,6 +110,7 @@ class SaveAdressCreateEvent extends SavedAdressEvent {
   final String contactName;
   final String contactSurname;
   final int contactPhoneNumber;
+  final BuildContext context;
 
   const SaveAdressCreateEvent(
     this.adressTitle,
@@ -121,13 +123,18 @@ class SaveAdressCreateEvent extends SavedAdressEvent {
     this.contactName,
     this.contactSurname,
     this.contactPhoneNumber,
+    this.context,
   );
 }
 
 class SaveAdressDeleteEvent extends SavedAdressEvent {
   final SavedAdressModel model;
+  final BuildContext context;
 
-  const SaveAdressDeleteEvent(this.model);
+  const SaveAdressDeleteEvent(
+    this.model,
+    this.context,
+  );
 }
 
 class SaveAdressEditEvent extends SavedAdressEvent {
@@ -142,6 +149,7 @@ class SaveAdressEditEvent extends SavedAdressEvent {
   final String contactName;
   final String contactSurname;
   final int contactPhoneNumber;
+  final BuildContext context;
 
   const SaveAdressEditEvent(
     this.model,
@@ -155,7 +163,12 @@ class SaveAdressEditEvent extends SavedAdressEvent {
     this.contactName,
     this.contactSurname,
     this.contactPhoneNumber,
+    this.context,
   );
 }
 
-class LoadSavedAdressEvent extends SavedAdressEvent {}
+class LoadSavedAdressEvent extends SavedAdressEvent {
+  final BuildContext context;
+
+  const LoadSavedAdressEvent(this.context);
+}

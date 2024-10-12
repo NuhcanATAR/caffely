@@ -55,7 +55,8 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
                 ),
             controller: widget.phoneNumberController,
             validator: (String? value) =>
-                CustomValidator(value: value).phoneNumberValidator(value),
+                CustomValidator(value: value, context: context)
+                    .phoneNumberValidator(value),
             onChanged: widget.onChanged,
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(

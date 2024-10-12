@@ -2,6 +2,7 @@ import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
 import 'package:caffely/feature/account/view/saved_adress/savedadress_viewmodel.dart';
 import 'package:caffely/feature/account/view/saved_adress/view/savedadress_create/savedadress_create_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -38,8 +39,8 @@ class _SavedAdressViewState extends SavedAdressViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Kayıtlı Adresler',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_saveadress_appbar,
           textAlign: TextAlign.left,
         ),
         actions: [
@@ -72,11 +73,12 @@ class _SavedAdressViewState extends SavedAdressViewModel {
             );
           } else if (state is SavedAdressLoaded) {
             return state.savedAdress.isEmpty
-                ? const CustomResponseWidget(
+                ? CustomResponseWidget(
                     img: AppImages.notFound,
-                    title: 'Kayıtlı Adres Bulunmuyor.',
-                    subTitle:
-                        'Henüz yeni bir kayıtlı adresiniz bulunmuyor, hemen yeni bi adres oluşturaiblirsiniz.',
+                    title: AppLocalizations.of(context)!
+                        .account_saveadress_empty_title,
+                    subTitle: AppLocalizations.of(context)!
+                        .account_saveadress_empty_subtitle,
                   )
                 : ListView.builder(
                     itemCount: state.savedAdress.length,

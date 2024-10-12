@@ -11,7 +11,6 @@ abstract class OrdersViewModel extends BaseState<OrdersView> {
   @override
   void initState() {
     super.initState();
-    // OrderListEvent'i yükle
-    context.read<OrderBloc>().add(LoadOrderEvent());
+    context.read<OrderBloc>().add(LoadOrderEvent(context));
   }
 }

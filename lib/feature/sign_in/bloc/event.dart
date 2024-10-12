@@ -1,5 +1,6 @@
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 class SignInEvent extends Equatable {
   const SignInEvent();
@@ -28,16 +29,22 @@ class SignInUserEvent extends SignInEvent {
   final String email;
   final String password;
   final DynamicViewExtensions dynamicViewExtensions;
+  final BuildContext context;
 
   const SignInUserEvent(
     this.email,
     this.password,
     this.dynamicViewExtensions,
+    this.context,
   );
 }
 
 class SignInUserGoogleEvent extends SignInEvent {
   final DynamicViewExtensions dynamicViewExtensions;
+  final BuildContext context;
 
-  const SignInUserGoogleEvent(this.dynamicViewExtensions);
+  const SignInUserGoogleEvent(
+    this.dynamicViewExtensions,
+    this.context,
+  );
 }

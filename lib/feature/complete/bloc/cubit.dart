@@ -1,5 +1,6 @@
 import 'package:caffely/feature/complete/bloc/event.dart';
 import 'package:caffely/feature/complete/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,9 +39,10 @@ class ProfileCompleteBloc
       });
       emit(ProfileCompleteSuccess());
     } catch (e) {
+      if (!event.context.mounted) return;
       emit(
-        const ProfileCompleteError(
-          'Profil Tamamlama sırasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        ProfileCompleteError(
+          AppLocalizations.of(event.context)!.sign_complete_error,
         ),
       );
     }

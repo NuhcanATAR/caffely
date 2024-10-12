@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
@@ -42,9 +43,9 @@ mixin NotificationMixin {
                   ),
                   child: Row(
                     children: <Widget>[
-                      const Expanded(
+                      Expanded(
                         child: BodyMediumBlackBoldText(
-                          text: 'İZİN YÖNETİMİ',
+                          text: AppLocalizations.of(context)!.permission_appbar,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -72,8 +73,8 @@ mixin NotificationMixin {
                   padding: PaddingSizedsUtility.top(
                     PaddingSizedsUtility.normalPaddingValue,
                   ),
-                  child: const TitleLargeBlackBoldText(
-                    text: 'İzinleri Kapatamazsın!',
+                  child: TitleLargeBlackBoldText(
+                    text: AppLocalizations.of(context)!.permission_title,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -82,16 +83,16 @@ mixin NotificationMixin {
                   padding: PaddingSizedsUtility.vertical(
                     PaddingSizedsUtility.normalPaddingValue,
                   ),
-                  child: const BodyMediumBlackText(
-                    text:
-                        'Uygulama içerisinden izinleri açabilirsiniz ama izinleri kapatmazsınız, izinleri kapatmak için uygulama ayarlarından yönetebilirsiniz.',
+                  child: BodyMediumBlackText(
+                    text: AppLocalizations.of(context)!.permission_subtitle,
                     textAlign: TextAlign.center,
                   ),
                 ),
                 // button
                 CustomButtonWidget(
                   dynamicViewExtensions: dynamicViewExtensions,
-                  text: 'UYGULAMA AYARLARINA GİT',
+                  text:
+                      AppLocalizations.of(context)!.permission_app_setting_btn,
                   func: () {
                     Navigator.pop(context);
                     Navigator.pop(context);

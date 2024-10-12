@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/label_medium_text.dart';
@@ -10,12 +11,12 @@ mixin BottomMenuMixin {
           context: context,
           builder: (context) => AlertDialog(
             backgroundColor: Colors.white,
-            title: const BodyMediumBlackBoldText(
-              text: 'Çıkış Yapılıyor',
+            title: BodyMediumBlackBoldText(
+              text: AppLocalizations.of(context)!.account_exit_title,
               textAlign: TextAlign.center,
             ),
-            content: const LabelMediumBlackText(
-              text: 'Çıkış yapmak istediğinize eminmisiniz.',
+            content: LabelMediumBlackText(
+              text: AppLocalizations.of(context)!.account_exit_subtitle,
               textAlign: TextAlign.center,
             ),
             actionsPadding: PaddingSizedsUtility.all(
@@ -35,7 +36,8 @@ mixin BottomMenuMixin {
                       onPressed: () {
                         Navigator.pop(context, true);
                       },
-                      child: const Text('Evet'),
+                      child:
+                          Text(AppLocalizations.of(context)!.account_exit_yes),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -50,7 +52,8 @@ mixin BottomMenuMixin {
                       onPressed: () {
                         Navigator.pop(context, false);
                       },
-                      child: const Text('Hayır'),
+                      child:
+                          Text(AppLocalizations.of(context)!.account_exit_no),
                     ),
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:caffely/feature/orders/view/order_detail/orderdetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
@@ -51,7 +52,8 @@ class OrderCardWidget extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: LabelMediumBlackText(
-                    text: 'Sipariş Tarihi: $createDate',
+                    text:
+                        '${AppLocalizations.of(context)!.order_card_date}: $createDate',
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -70,8 +72,9 @@ class OrderCardWidget extends StatelessWidget {
                         padding: PaddingSizedsUtility.horizontal(
                           PaddingSizedsUtility.mediumPaddingValue,
                         ),
-                        child: const BodyMediumMainColorText(
-                          text: 'Sipariş Detayı',
+                        child: BodyMediumMainColorText(
+                          text: AppLocalizations.of(context)!
+                              .order_card_detail_btn,
                           textAlign: TextAlign.left,
                         ),
                       ),
@@ -105,8 +108,10 @@ class OrderCardWidget extends StatelessWidget {
                     ),
                     child: LabelMediumBlackText(
                       text: model.paymentType == OrderPaymentType.online.value
-                          ? 'Online Ödeme'
-                          : 'Kapıda Ödeme',
+                          ? AppLocalizations.of(context)!
+                              .order_card_online_payment
+                          : AppLocalizations.of(context)!
+                              .order_card_payatthe_door,
                       textAlign: TextAlign.left,
                     ),
                   ),

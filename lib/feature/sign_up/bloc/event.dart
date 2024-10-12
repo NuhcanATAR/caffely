@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class SignUpEvent extends Equatable {
   const SignUpEvent();
@@ -31,9 +32,11 @@ class SignUpPasswordEvent extends SignUpEvent {
 class SignUpUserEvent extends SignUpEvent {
   final String email;
   final String password;
+  final BuildContext context;
 
   const SignUpUserEvent(
     this.email,
     this.password,
+    this.context,
   );
 }

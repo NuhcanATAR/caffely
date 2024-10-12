@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,38 +41,45 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       final User? user = userCredential.user;
 
       if (user == null) {
+        if (!event.context.mounted) return;
         emit(
-          const SignInErrorState('Oturumda kullanıcı bulunamadı!'),
+          SignInErrorState(AppLocalizations.of(event.context)!.sign_error),
         );
       } else {
         if (user.emailVerified) {
           emit(SignInSuccessState(user.uid));
         } else {
+          if (!event.context.mounted) return;
           emit(
-            const SignInErrorState('Lütfen hesabınızı doğrulayın!'),
+            SignInErrorState(
+              AppLocalizations.of(event.context)!.sign_email_verified_error,
+            ),
           );
           await user.sendEmailVerification();
         }
       }
     } on FirebaseAuthException catch (e) {
+      if (!event.context.mounted) return;
       String errorMessage;
       switch (e.code) {
         case 'user-not-found':
-          errorMessage = 'Kullanıcı bulunamadı!';
+          errorMessage =
+              AppLocalizations.of(event.context)!.sign_user_not_found;
           break;
         case 'wrong-password':
-          errorMessage = 'E-mail veya şifre hatalı';
+          errorMessage =
+              AppLocalizations.of(event.context)!.sign_wrong_password;
           break;
         case 'too-many-requests':
           errorMessage =
-              'Çok fazla hatalı giriş yaptınız, o yüzden hesabınız engellendi. Bir süre sonra tekrar deneyiniz.';
+              AppLocalizations.of(event.context)!.sign_too_many_request;
           break;
         case 'user-disabled':
-          errorMessage = 'Bu hesap engellenmiştir!';
+          errorMessage = AppLocalizations.of(event.context)!.sign_user_disabled;
           break;
         default:
           errorMessage =
-              'Hatalı bilgiler, lütfen bilgilerinizi kontrol ediniz.';
+              AppLocalizations.of(event.context)!.sign_auth_exception_error;
       }
       Logger().e('FirebaseAuthException: ${e.code} - ${e.message}');
       final prefs = await SharedPreferences.getInstance();
@@ -78,7 +88,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(SignInErrorState(errorMessage));
     } catch (e) {
       Logger().e('Unexpected Error: ${e.toString()}');
-      emit(const SignInErrorState('Beklenmedik bir hata oluştu.'));
+      if (!event.context.mounted) return;
+      emit(
+        SignInErrorState(
+          AppLocalizations.of(event.context)!.sign_catch_error,
+        ),
+      );
     }
   }
 
@@ -134,9 +149,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             'auth_status': 2,
           });
         }
+        if (!event.context.mounted) return;
         emit(
-          const SignInGoogleAuthSuccess(
-            'Google Hesabınıza giriş yapılıyor.',
+          SignInGoogleAuthSuccess(
+            AppLocalizations.of(event.context)!.sign_google_success,
           ),
         );
         return null;
@@ -144,8 +160,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     } catch (error) {
       Logger().i('Hata: $error');
       emit(
-        const SignInGoogleAuthError(
-          'Giriş yaparken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        SignInGoogleAuthError(
+          AppLocalizations.of(event.context)!.sign_google_error,
         ),
       );
       return null;

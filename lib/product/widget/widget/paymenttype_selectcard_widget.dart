@@ -1,6 +1,5 @@
-import 'package:caffely/feature/account/view/saved_adress/view/savedadress_create/savedadress_create_view.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
-import 'package:caffely/product/core/base/helper/navigator_router.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:flutter/material.dart';
@@ -49,31 +48,16 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             // title
-            Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
-              ),
-              child: Row(
-                children: <Widget>[
-                  const Expanded(
-                    child: BodyMediumBlackBoldText(
-                      text: 'Teslimat Adresi',
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      CodeNoahNavigatorRouter.push(
-                        context,
-                        const SavedadressCreateView(),
-                      );
-                    },
-                    child: const BodyMediumMainColorText(
-                      text: 'Adres Ekle',
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ],
+            SizedBox(
+              width: dynamicViewExtensions.maxWidth(context),
+              child: Padding(
+                padding: PaddingSizedsUtility.vertical(
+                  PaddingSizedsUtility.mediumPaddingValue,
+                ),
+                child: BodyMediumBlackBoldText(
+                  text: AppLocalizations.of(context)!.payment_type_select_title,
+                  textAlign: TextAlign.left,
+                ),
               ),
             ),
             // payment select
@@ -93,8 +77,9 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
                           groupValue: groupValueOne,
                           onChanged: onChangedOne,
                         ),
-                        const BodyMediumBlackBoldText(
-                          text: 'Online Ödeme',
+                        BodyMediumBlackBoldText(
+                          text: AppLocalizations.of(context)!
+                              .payment_type_online_payment,
                           textAlign: TextAlign.left,
                         ),
                       ],
@@ -110,8 +95,9 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
                           groupValue: groupValueSecond,
                           onChanged: onChangedSecond,
                         ),
-                        const BodyMediumBlackBoldText(
-                          text: 'Kapıda Ödeme',
+                        BodyMediumBlackBoldText(
+                          text: AppLocalizations.of(context)!
+                              .payment_type_atthe_door,
                           textAlign: TextAlign.left,
                         ),
                       ],

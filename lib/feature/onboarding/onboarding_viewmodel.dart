@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:caffely/feature/onboarding/onboarding_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
@@ -55,8 +56,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.normalPaddingValue,
             ),
-            child: const TitleLargeBlackBoldText(
-              text: "Caffely'e Hoşgeldiniz",
+            child: TitleLargeBlackBoldText(
+              text: AppLocalizations.of(context)!.onboarding_title_one,
               textAlign: TextAlign.center,
             ),
           ),
@@ -65,8 +66,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.smallPaddingValue,
             ),
-            child: const BodyMediumBlackText(
-              text: 'Caffely ile kahvenizi hızlı bir şekilde sipariş verin.',
+            child: BodyMediumBlackText(
+              text: AppLocalizations.of(context)!.onboarding_subtitle_one,
               textAlign: TextAlign.center,
             ),
           ),
@@ -83,8 +84,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.normalPaddingValue,
             ),
-            child: const TitleLargeBlackBoldText(
-              text: "Caffely Kullanmaya Başlayın",
+            child: TitleLargeBlackBoldText(
+              text: AppLocalizations.of(context)!.onboarding_title_second,
               textAlign: TextAlign.center,
             ),
           ),
@@ -93,9 +94,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.smallPaddingValue,
             ),
-            child: const BodyMediumBlackText(
-              text:
-                  'Size en uygun kahveyi istediğiniz şubeden hemen sipariş verin.',
+            child: BodyMediumBlackText(
+              text: AppLocalizations.of(context)!.onboarding_subtitle_second,
               textAlign: TextAlign.center,
             ),
           ),
@@ -112,8 +112,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.normalPaddingValue,
             ),
-            child: const TitleLargeBlackBoldText(
-              text: "Kahve Siparişi Artık Daha Kolay",
+            child: TitleLargeBlackBoldText(
+              text: AppLocalizations.of(context)!.onboarding_title_three,
               textAlign: TextAlign.center,
             ),
           ),
@@ -122,8 +122,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
             padding: PaddingSizedsUtility.bottom(
               PaddingSizedsUtility.normalPaddingValue,
             ),
-            child: const BodyMediumBlackText(
-              text: 'Caffely ile kahve siparişi vermek için hemen giriş yapın.',
+            child: BodyMediumBlackText(
+              text: AppLocalizations.of(context)!.onboarding_subtitle_three,
               textAlign: TextAlign.center,
             ),
           ),

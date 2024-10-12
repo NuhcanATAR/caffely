@@ -2,6 +2,7 @@ import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class ProductEvent extends Equatable {
   const ProductEvent();
@@ -50,11 +51,13 @@ class ProductFavoriteCreateEvent extends ProductEvent {
   final String productId;
   final String favoriteId;
   final bool isFavoriteStatus;
+  final BuildContext context;
 
   const ProductFavoriteCreateEvent(
     this.productId,
     this.favoriteId,
     this.isFavoriteStatus,
+    this.context,
   );
 }
 
@@ -62,6 +65,8 @@ class ProductBasketAddEvent extends ProductEvent {
   final ProductModel productModel;
   final ProductState state;
   final int totalPrice;
+  final BuildContext context;
 
-  const ProductBasketAddEvent(this.productModel, this.state, this.totalPrice);
+  const ProductBasketAddEvent(
+      this.productModel, this.state, this.totalPrice, this.context);
 }

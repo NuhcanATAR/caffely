@@ -5,6 +5,7 @@ import 'package:caffely/feature/products/bloc/cubit.dart';
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/price_convert.dart';
@@ -53,11 +54,11 @@ class _ProductDetailViewState extends ProductDetailViewModel {
             stream: getFavoriteStream(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return const SizedBox(); // Hata durumu
+                return const SizedBox();
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const SizedBox(); // Yüklenme durumu
+                return const SizedBox();
               }
 
               if (snapshot.hasData) {
@@ -78,6 +79,7 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                   )['id']
                                 : '',
                             !isFavorite,
+                            context,
                           ),
                         );
                   },
@@ -109,7 +111,7 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                 );
               }
 
-              return const SizedBox(); // Veri bulunamadı durumu
+              return const SizedBox();
             },
           ),
         ],
@@ -248,8 +250,9 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                 padding: PaddingSizedsUtility.vertical(
                                   PaddingSizedsUtility.normalPaddingValue,
                                 ),
-                                child: const TitleMediumBlackBoldText(
-                                  text: 'Kahve Sıcaklığı',
+                                child: TitleMediumBlackBoldText(
+                                  text: AppLocalizations.of(context)!
+                                      .products_avaible,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -257,7 +260,6 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                             // avaible
                             Row(
                               children: <Widget>[
-                                // Hot seçeneği
                                 MinSelectButtonWidget(
                                   func: () {
                                     context.read<ProductBloc>().add(
@@ -270,11 +272,11 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                           ProductCoffeAvaibleTypeControl.hot
                                       ? ProductCoffeAvaibleTypeControl.hot
                                       : ProductCoffeAvaibleTypeControl
-                                          .notSelect, // Seçili değilse 'none'
+                                          .notSelect,
                                   icon: AppIcons.hotOutline,
-                                  buttonText: 'Sıcak',
+                                  buttonText: AppLocalizations.of(context)!
+                                      .products_hot,
                                 ),
-                                // Iced seçeneği
                                 MinSelectButtonWidget(
                                   func: () {
                                     context.read<ProductBloc>().add(
@@ -287,9 +289,10 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                           ProductCoffeAvaibleTypeControl.ice
                                       ? ProductCoffeAvaibleTypeControl.ice
                                       : ProductCoffeAvaibleTypeControl
-                                          .notSelect, // Seçili değilse 'none'
+                                          .notSelect,
                                   icon: AppIcons.icedOutline,
-                                  buttonText: 'Soğuk',
+                                  buttonText: AppLocalizations.of(context)!
+                                      .products_ice,
                                 ),
                               ],
                             ),
@@ -315,276 +318,319 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                 padding: PaddingSizedsUtility.vertical(
                                   PaddingSizedsUtility.normalPaddingValue,
                                 ),
-                                child: const TitleMediumBlackBoldText(
-                                  text: 'Boyut',
+                                child: TitleMediumBlackBoldText(
+                                  text: AppLocalizations.of(context)!
+                                      .products_size,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
                             ),
                             // avaible
-                            Row(
-                              children: <Widget>[
-                                widget.productModel.productType ==
-                                        ProductTypeControl.all.productTypeValue
-                                    ? Row(
-                                        children: <Widget>[
-                                          MinSelectButtonSecondWidget(
-                                            func: () {
-                                              context.read<ProductBloc>().add(
-                                                    const ProductCoffeSizeEvent(
-                                                      ProductTypeControl.small,
-                                                    ),
-                                                  );
-                                            },
-                                            coffeSize: state.coffeSize ==
-                                                    ProductTypeControl.small
-                                                ? ProductTypeControl.small
-                                                : ProductTypeControl.notSelect,
-                                            icon: AppIcons.hotOutline,
-                                            buttonText: 'Küçük',
-                                          ),
-                                          // middle
-                                          MinSelectButtonSecondWidget(
-                                            func: () {
-                                              context.read<ProductBloc>().add(
-                                                    const ProductCoffeSizeEvent(
-                                                      ProductTypeControl.middle,
-                                                    ),
-                                                  );
-                                            },
-                                            coffeSize: state.coffeSize ==
-                                                    ProductTypeControl.middle
-                                                ? ProductTypeControl.middle
-                                                : ProductTypeControl.notSelect,
-                                            icon: AppIcons.hotOutline,
-                                            buttonText: 'Orta',
-                                          ),
-                                          // large
-                                          MinSelectButtonSecondWidget(
-                                            func: () {
-                                              context.read<ProductBloc>().add(
-                                                    const ProductCoffeSizeEvent(
-                                                      ProductTypeControl.large,
-                                                    ),
-                                                  );
-                                            },
-                                            coffeSize: state.coffeSize ==
-                                                    ProductTypeControl.large
-                                                ? ProductTypeControl.large
-                                                : ProductTypeControl.notSelect,
-                                            icon: AppIcons.hotOutline,
-                                            buttonText: 'Büyük',
-                                          ),
-                                        ],
-                                      )
-                                    : widget.productModel.productType ==
-                                            ProductTypeControl
-                                                .small.productTypeValue
-                                        ? Row(
-                                            children: <Widget>[
-                                              MinSelectButtonSecondWidget(
-                                                func: () {
-                                                  context
-                                                      .read<ProductBloc>()
-                                                      .add(
-                                                        const ProductCoffeSizeEvent(
-                                                          ProductTypeControl
-                                                              .small,
-                                                        ),
-                                                      );
-                                                },
-                                                coffeSize: state.coffeSize ==
-                                                        ProductTypeControl.small
-                                                    ? ProductTypeControl.small
-                                                    : ProductTypeControl
-                                                        .notSelect,
-                                                icon: AppIcons.hotOutline,
-                                                buttonText: 'Küçük',
-                                              ),
-                                            ],
-                                          )
-                                        : widget.productModel.productType ==
-                                                ProductTypeControl
-                                                    .middle.productTypeValue
-                                            ? Row(
-                                                children: <Widget>[
-                                                  // middle
-                                                  MinSelectButtonSecondWidget(
-                                                    func: () {
-                                                      context
-                                                          .read<ProductBloc>()
-                                                          .add(
-                                                            const ProductCoffeSizeEvent(
-                                                              ProductTypeControl
-                                                                  .middle,
-                                                            ),
-                                                          );
-                                                    },
-                                                    coffeSize: state
-                                                                .coffeSize ==
-                                                            ProductTypeControl
-                                                                .middle
-                                                        ? ProductTypeControl
-                                                            .middle
-                                                        : ProductTypeControl
-                                                            .notSelect,
-                                                    icon: AppIcons.hotOutline,
-                                                    buttonText: 'Orta',
+                            SizedBox(
+                              width: dynamicViewExtensions.maxWidth(context),
+                              height: dynamicViewExtensions.dynamicHeight(
+                                context,
+                                0.12,
+                              ),
+                              child: widget.productModel.productType ==
+                                      ProductTypeControl.all.productTypeValue
+                                  ? ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: <Widget>[
+                                        MinSelectButtonSecondWidget(
+                                          func: () {
+                                            context.read<ProductBloc>().add(
+                                                  const ProductCoffeSizeEvent(
+                                                    ProductTypeControl.small,
                                                   ),
-                                                ],
-                                              )
-                                            : widget.productModel.productType ==
-                                                    ProductTypeControl
-                                                        .large.productTypeValue
-                                                ? Row(
-                                                    children: <Widget>[
-                                                      // large
-                                                      MinSelectButtonSecondWidget(
-                                                        func: () {
-                                                          context
-                                                              .read<
-                                                                  ProductBloc>()
-                                                              .add(
-                                                                const ProductCoffeSizeEvent(
-                                                                  ProductTypeControl
-                                                                      .large,
-                                                                ),
-                                                              );
-                                                        },
-                                                        coffeSize: state
-                                                                    .coffeSize ==
-                                                                ProductTypeControl
-                                                                    .large
-                                                            ? ProductTypeControl
-                                                                .large
-                                                            : ProductTypeControl
-                                                                .notSelect,
-                                                        icon:
-                                                            AppIcons.hotOutline,
-                                                        buttonText: 'Büyük',
-                                                      ),
-                                                    ],
-                                                  )
-                                                : widget.productModel
-                                                            .productType ==
+                                                );
+                                          },
+                                          coffeSize: state.coffeSize ==
+                                                  ProductTypeControl.small
+                                              ? ProductTypeControl.small
+                                              : ProductTypeControl.notSelect,
+                                          icon: AppIcons.hotOutline,
+                                          buttonText:
+                                              AppLocalizations.of(context)!
+                                                  .products_size_small,
+                                        ),
+                                        // middle
+                                        MinSelectButtonSecondWidget(
+                                          func: () {
+                                            context.read<ProductBloc>().add(
+                                                  const ProductCoffeSizeEvent(
+                                                    ProductTypeControl.middle,
+                                                  ),
+                                                );
+                                          },
+                                          coffeSize: state.coffeSize ==
+                                                  ProductTypeControl.middle
+                                              ? ProductTypeControl.middle
+                                              : ProductTypeControl.notSelect,
+                                          icon: AppIcons.hotOutline,
+                                          buttonText:
+                                              AppLocalizations.of(context)!
+                                                  .products_size_medium,
+                                        ),
+                                        // large
+                                        MinSelectButtonSecondWidget(
+                                          func: () {
+                                            context.read<ProductBloc>().add(
+                                                  const ProductCoffeSizeEvent(
+                                                    ProductTypeControl.large,
+                                                  ),
+                                                );
+                                          },
+                                          coffeSize: state.coffeSize ==
+                                                  ProductTypeControl.large
+                                              ? ProductTypeControl.large
+                                              : ProductTypeControl.notSelect,
+                                          icon: AppIcons.hotOutline,
+                                          buttonText:
+                                              AppLocalizations.of(context)!
+                                                  .products_size_large,
+                                        ),
+                                      ],
+                                    )
+                                  : widget.productModel.productType ==
+                                          ProductTypeControl
+                                              .small.productTypeValue
+                                      ? ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children: <Widget>[
+                                            MinSelectButtonSecondWidget(
+                                              func: () {
+                                                context.read<ProductBloc>().add(
+                                                      const ProductCoffeSizeEvent(
                                                         ProductTypeControl
-                                                            .smallMiddle
-                                                    ? Row(
-                                                        children: <Widget>[
-                                                          MinSelectButtonSecondWidget(
-                                                            func: () {
-                                                              context
-                                                                  .read<
-                                                                      ProductBloc>()
-                                                                  .add(
-                                                                    const ProductCoffeSizeEvent(
-                                                                      ProductTypeControl
-                                                                          .small,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            coffeSize: state
-                                                                        .coffeSize ==
-                                                                    ProductTypeControl
-                                                                        .small
-                                                                ? ProductTypeControl
-                                                                    .small
-                                                                : ProductTypeControl
-                                                                    .notSelect,
-                                                            icon: AppIcons
-                                                                .hotOutline,
-                                                            buttonText: 'Küçük',
-                                                          ),
-                                                          // middle
-                                                          MinSelectButtonSecondWidget(
-                                                            func: () {
-                                                              context
-                                                                  .read<
-                                                                      ProductBloc>()
-                                                                  .add(
-                                                                    const ProductCoffeSizeEvent(
-                                                                      ProductTypeControl
-                                                                          .middle,
-                                                                    ),
-                                                                  );
-                                                            },
-                                                            coffeSize: state
-                                                                        .coffeSize ==
-                                                                    ProductTypeControl
-                                                                        .middle
-                                                                ? ProductTypeControl
-                                                                    .middle
-                                                                : ProductTypeControl
-                                                                    .notSelect,
-                                                            icon: AppIcons
-                                                                .hotOutline,
-                                                            buttonText: 'Orta',
-                                                          ),
-                                                        ],
-                                                      )
-                                                    : widget.productModel
-                                                                .productType ==
+                                                            .small,
+                                                      ),
+                                                    );
+                                              },
+                                              coffeSize: state.coffeSize ==
+                                                      ProductTypeControl.small
+                                                  ? ProductTypeControl.small
+                                                  : ProductTypeControl
+                                                      .notSelect,
+                                              icon: AppIcons.hotOutline,
+                                              buttonText: AppLocalizations.of(
+                                                context,
+                                              )!
+                                                  .products_size_small,
+                                            ),
+                                          ],
+                                        )
+                                      : widget.productModel.productType ==
+                                              ProductTypeControl
+                                                  .middle.productTypeValue
+                                          ? ListView(
+                                              scrollDirection: Axis.horizontal,
+                                              children: <Widget>[
+                                                // middle
+                                                MinSelectButtonSecondWidget(
+                                                  func: () {
+                                                    context
+                                                        .read<ProductBloc>()
+                                                        .add(
+                                                          const ProductCoffeSizeEvent(
                                                             ProductTypeControl
-                                                                .middleLarge
-                                                                .productTypeValue
-                                                        ? Row(
-                                                            children: <Widget>[
-                                                              // middle
-                                                              MinSelectButtonSecondWidget(
-                                                                func: () {
-                                                                  context
-                                                                      .read<
-                                                                          ProductBloc>()
-                                                                      .add(
-                                                                        const ProductCoffeSizeEvent(
-                                                                          ProductTypeControl
-                                                                              .middle,
-                                                                        ),
-                                                                      );
-                                                                },
-                                                                coffeSize: state
-                                                                            .coffeSize ==
-                                                                        ProductTypeControl
-                                                                            .middle
-                                                                    ? ProductTypeControl
-                                                                        .middle
-                                                                    : ProductTypeControl
-                                                                        .notSelect,
-                                                                icon: AppIcons
-                                                                    .hotOutline,
-                                                                buttonText:
-                                                                    'Orta',
+                                                                .middle,
+                                                          ),
+                                                        );
+                                                  },
+                                                  coffeSize: state.coffeSize ==
+                                                          ProductTypeControl
+                                                              .middle
+                                                      ? ProductTypeControl
+                                                          .middle
+                                                      : ProductTypeControl
+                                                          .notSelect,
+                                                  icon: AppIcons.hotOutline,
+                                                  buttonText:
+                                                      AppLocalizations.of(
+                                                    context,
+                                                  )!
+                                                          .products_size_medium,
+                                                ),
+                                              ],
+                                            )
+                                          : widget.productModel.productType ==
+                                                  ProductTypeControl
+                                                      .large.productTypeValue
+                                              ? ListView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  children: <Widget>[
+                                                    // large
+                                                    MinSelectButtonSecondWidget(
+                                                      func: () {
+                                                        context
+                                                            .read<ProductBloc>()
+                                                            .add(
+                                                              const ProductCoffeSizeEvent(
+                                                                ProductTypeControl
+                                                                    .large,
                                                               ),
-                                                              // large
-                                                              MinSelectButtonSecondWidget(
-                                                                func: () {
-                                                                  context
-                                                                      .read<
-                                                                          ProductBloc>()
-                                                                      .add(
-                                                                        const ProductCoffeSizeEvent(
-                                                                          ProductTypeControl
-                                                                              .large,
-                                                                        ),
-                                                                      );
-                                                                },
-                                                                coffeSize: state
-                                                                            .coffeSize ==
+                                                            );
+                                                      },
+                                                      coffeSize: state
+                                                                  .coffeSize ==
+                                                              ProductTypeControl
+                                                                  .large
+                                                          ? ProductTypeControl
+                                                              .large
+                                                          : ProductTypeControl
+                                                              .notSelect,
+                                                      icon: AppIcons.hotOutline,
+                                                      buttonText: AppLocalizations
+                                                              .of(
+                                                        context,
+                                                      )!
+                                                          .products_size_large,
+                                                    ),
+                                                  ],
+                                                )
+                                              : widget.productModel
+                                                          .productType ==
+                                                      ProductTypeControl
+                                                          .smallMiddle
+                                                  ? ListView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      children: <Widget>[
+                                                        MinSelectButtonSecondWidget(
+                                                          func: () {
+                                                            context
+                                                                .read<
+                                                                    ProductBloc>()
+                                                                .add(
+                                                                  const ProductCoffeSizeEvent(
+                                                                    ProductTypeControl
+                                                                        .small,
+                                                                  ),
+                                                                );
+                                                          },
+                                                          coffeSize: state
+                                                                      .coffeSize ==
+                                                                  ProductTypeControl
+                                                                      .small
+                                                              ? ProductTypeControl
+                                                                  .small
+                                                              : ProductTypeControl
+                                                                  .notSelect,
+                                                          icon: AppIcons
+                                                              .hotOutline,
+                                                          buttonText:
+                                                              AppLocalizations
+                                                                      .of(
+                                                            context,
+                                                          )!
+                                                                  .products_size_small,
+                                                        ),
+                                                        // middle
+                                                        MinSelectButtonSecondWidget(
+                                                          func: () {
+                                                            context
+                                                                .read<
+                                                                    ProductBloc>()
+                                                                .add(
+                                                                  const ProductCoffeSizeEvent(
+                                                                    ProductTypeControl
+                                                                        .middle,
+                                                                  ),
+                                                                );
+                                                          },
+                                                          coffeSize: state
+                                                                      .coffeSize ==
+                                                                  ProductTypeControl
+                                                                      .middle
+                                                              ? ProductTypeControl
+                                                                  .middle
+                                                              : ProductTypeControl
+                                                                  .notSelect,
+                                                          icon: AppIcons
+                                                              .hotOutline,
+                                                          buttonText:
+                                                              AppLocalizations
+                                                                      .of(
+                                                            context,
+                                                          )!
+                                                                  .products_size_medium,
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : widget.productModel
+                                                              .productType ==
+                                                          ProductTypeControl
+                                                              .middleLarge
+                                                              .productTypeValue
+                                                      ? ListView(
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          children: <Widget>[
+                                                            // middle
+                                                            MinSelectButtonSecondWidget(
+                                                              func: () {
+                                                                context
+                                                                    .read<
+                                                                        ProductBloc>()
+                                                                    .add(
+                                                                      const ProductCoffeSizeEvent(
                                                                         ProductTypeControl
-                                                                            .large
-                                                                    ? ProductTypeControl
-                                                                        .large
-                                                                    : ProductTypeControl
-                                                                        .notSelect,
-                                                                icon: AppIcons
-                                                                    .hotOutline,
-                                                                buttonText:
-                                                                    'Büyük',
-                                                              ),
-                                                            ],
-                                                          )
-                                                        : const SizedBox(),
-                              ],
+                                                                            .middle,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                              coffeSize: state
+                                                                          .coffeSize ==
+                                                                      ProductTypeControl
+                                                                          .middle
+                                                                  ? ProductTypeControl
+                                                                      .middle
+                                                                  : ProductTypeControl
+                                                                      .notSelect,
+                                                              icon: AppIcons
+                                                                  .hotOutline,
+                                                              buttonText:
+                                                                  AppLocalizations
+                                                                          .of(
+                                                                context,
+                                                              )!
+                                                                      .products_size_medium,
+                                                            ),
+                                                            // large
+                                                            MinSelectButtonSecondWidget(
+                                                              func: () {
+                                                                context
+                                                                    .read<
+                                                                        ProductBloc>()
+                                                                    .add(
+                                                                      const ProductCoffeSizeEvent(
+                                                                        ProductTypeControl
+                                                                            .large,
+                                                                      ),
+                                                                    );
+                                                              },
+                                                              coffeSize: state
+                                                                          .coffeSize ==
+                                                                      ProductTypeControl
+                                                                          .large
+                                                                  ? ProductTypeControl
+                                                                      .large
+                                                                  : ProductTypeControl
+                                                                      .notSelect,
+                                                              icon: AppIcons
+                                                                  .hotOutline,
+                                                              buttonText:
+                                                                  AppLocalizations
+                                                                          .of(
+                                                                context,
+                                                              )!
+                                                                      .products_size_large,
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : const SizedBox(),
                             ),
                           ],
                         ),
@@ -604,8 +650,9 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                         ),
                         child: Column(
                           children: <Widget>[
-                            const LabelMediumBlackText(
-                              text: 'Toplam Fiyat',
+                            LabelMediumBlackText(
+                              text: AppLocalizations.of(context)!
+                                  .products_total_price,
                               textAlign: TextAlign.center,
                             ),
                             TitleMediumBlackBoldText(
@@ -625,7 +672,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                         builder: (BuildContext context, blocConsumertate) {
                           return CustomButtonWidget(
                             dynamicViewExtensions: dynamicViewExtensions,
-                            text: 'Sepete Ekle',
+                            text: AppLocalizations.of(context)!
+                                .products_basket_add_btn,
                             func: () => productBasketAdd(
                               state,
                               totalPrice,

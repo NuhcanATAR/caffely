@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,8 @@ class _NotificationViewState extends State<NotificationView> {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const BodyMediumBlackText(
-          text: 'Bildirimler',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.notification_appbar,
           textAlign: TextAlign.left,
         ),
       ),

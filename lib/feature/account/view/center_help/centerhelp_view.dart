@@ -3,6 +3,7 @@
 import 'package:caffely/feature/account/view/center_help/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/state.dart';
 import 'package:caffely/feature/account/view/center_help/centerhelp_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/model/centerhelp_model/centerhelp_model.dart';
@@ -39,8 +40,8 @@ class _CenterHelpViewState extends CenterHelpViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Yardım Merkezi',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_centerhelp_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -54,11 +55,12 @@ class _CenterHelpViewState extends CenterHelpViewModel {
                 PaddingSizedsUtility.normalPaddingValue,
               ),
               child: state.centerHelps.isEmpty
-                  ? const CustomResponseWidget(
+                  ? CustomResponseWidget(
                       img: AppImages.notFound,
-                      title: 'Yardım Merkezinde Henüz Birşey yok',
-                      subTitle:
-                          'Görünüşe göre yardım merkezinde henüz yeni birşey yok, daha sonra tekrar kontrol edebilirsiniz.',
+                      title: AppLocalizations.of(context)!
+                          .account_centerhelp_empty_title,
+                      subTitle: AppLocalizations.of(context)!
+                          .account_centerhelp_empty_subtitle,
                     )
                   : buildListWidget(
                       state,

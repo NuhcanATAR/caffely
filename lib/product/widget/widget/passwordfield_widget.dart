@@ -65,9 +65,12 @@ class _CustomPasswordFieldWidgetState
             controller: widget.passwordController,
 
             validator: widget.isValidator == true
-                ? (String? value) => CustomValidator(value: value).passwordCheck
+                ? (String? value) =>
+                    CustomValidator(value: value, context: context)
+                        .passwordCheck
                 : (String? value) =>
-                    CustomValidator(value: value).emptyNormalCheck,
+                    CustomValidator(value: value, context: context)
+                        .emptyNormalCheck,
             onChanged: widget.onChanged,
             // onChanged: (value) {
             //   setState(() {

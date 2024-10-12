@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/model/basket_model/basket_model.dart';
@@ -57,8 +58,8 @@ class OrderStatusCardWidget extends StatelessWidget {
                     padding: PaddingSizedsUtility.vertical(
                       PaddingSizedsUtility.mediumPaddingValue,
                     ),
-                    child: const BodyMediumBlackBoldText(
-                      text: 'Onaylandı',
+                    child: BodyMediumBlackBoldText(
+                      text: AppLocalizations.of(context)!.order_status_card_one,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -120,8 +121,9 @@ class OrderStatusCardWidget extends StatelessWidget {
                     padding: PaddingSizedsUtility.vertical(
                       PaddingSizedsUtility.mediumPaddingValue,
                     ),
-                    child: const BodyMediumBlackBoldText(
-                      text: 'Hazırlanıyor',
+                    child: BodyMediumBlackBoldText(
+                      text: AppLocalizations.of(context)!
+                          .order_status_card_second,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -183,8 +185,9 @@ class OrderStatusCardWidget extends StatelessWidget {
                     padding: PaddingSizedsUtility.vertical(
                       PaddingSizedsUtility.mediumPaddingValue,
                     ),
-                    child: const BodyMediumBlackBoldText(
-                      text: 'Teslim Edildi',
+                    child: BodyMediumBlackBoldText(
+                      text:
+                          AppLocalizations.of(context)!.order_status_card_three,
                       textAlign: TextAlign.center,
                     ),
                   ),

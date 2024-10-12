@@ -3,6 +3,7 @@ import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/mixin.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
@@ -55,22 +56,25 @@ abstract class OrderCompleteViewModel extends BaseState<OrderCompleteView>
               selectedPaymentType!,
               state.branches,
               basketProducts,
+              context,
             ),
           );
     } else if (widget.branches.isEmpty) {
       CodeNoahDialogs(context).showFlush(
         type: SnackType.warning,
-        message: 'Sepetde Henüz Şube bulunmuyor!',
+        message: AppLocalizations.of(context)!
+            .basket_order_complete_control_branches_empty,
       );
     } else if (basketProducts.isEmpty) {
       CodeNoahDialogs(context).showFlush(
         type: SnackType.warning,
-        message: 'Sepetde Henüz ürün bulunmuyor!',
+        message:
+            AppLocalizations.of(context)!.basket_order_complete_products_empty,
       );
     } else {
       CodeNoahDialogs(context).showFlush(
         type: SnackType.warning,
-        message: 'Sipariş bilgilerinizi işaretleyiniz!',
+        message: AppLocalizations.of(context)!.basket_order_complete_erorr_btn,
       );
     }
   }

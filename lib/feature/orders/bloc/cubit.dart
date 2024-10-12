@@ -1,5 +1,6 @@
 import 'package:caffely/feature/orders/bloc/event.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
@@ -35,8 +36,9 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         ),
       );
     } catch (e) {
+      if (!event.context.mounted) return;
       emit(
-        OrderError('Hata oluştu'),
+        OrderError(AppLocalizations.of(event.context)!.order_error),
       );
     }
   }
@@ -88,7 +90,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         ),
       );
     } catch (e) {
-      emit(OrderError('Hata oluştu'));
+      if (!event.context.mounted) return;
+      emit(OrderError(AppLocalizations.of(event.context)!.order_error));
     }
   }
 }

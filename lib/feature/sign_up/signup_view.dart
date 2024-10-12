@@ -4,6 +4,7 @@ import 'package:caffely/feature/sign_up/bloc/cubit.dart';
 import 'package:caffely/feature/sign_up/bloc/event.dart';
 import 'package:caffely/feature/sign_up/bloc/state.dart';
 import 'package:caffely/feature/sign_up/signup_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -69,8 +70,9 @@ class _SignUpViewState extends SignUpViewModel {
                             padding: PaddingSizedsUtility.bottom(
                               PaddingSizedsUtility.normalPaddingValue,
                             ),
-                            child: const TitleLargeBlackBoldText(
-                              text: 'Hesap Oluştur 👩‍💻',
+                            child: TitleLargeBlackBoldText(
+                              text: AppLocalizations.of(context)!
+                                  .signup_email_title,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -82,8 +84,9 @@ class _SignUpViewState extends SignUpViewModel {
                             padding: PaddingSizedsUtility.bottom(
                               PaddingSizedsUtility.normalPaddingValue,
                             ),
-                            child: const BodyMediumBlackText(
-                              text: 'Hesabını oluştur ve Caffely giriş yap.',
+                            child: BodyMediumBlackText(
+                              text: AppLocalizations.of(context)!
+                                  .signup_email_subtitle,
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -94,7 +97,7 @@ class _SignUpViewState extends SignUpViewModel {
                   // email
                   CustomEmailFieldWidget(
                     emailController: emailController,
-                    hintText: 'Email',
+                    hintText: AppLocalizations.of(context)!.signup_email,
                     onChanged: (String value) {
                       context.read<SignUpBloc>().add(SignUpEmailEvent(value));
                     },
@@ -103,7 +106,7 @@ class _SignUpViewState extends SignUpViewModel {
                   // password
                   CustomPasswordFieldWidget(
                     passwordController: passwordController,
-                    hintText: 'Şifre',
+                    hintText: AppLocalizations.of(context)!.signup_password,
                     onChanged: (String value) {
                       context
                           .read<SignUpBloc>()
@@ -137,7 +140,8 @@ class _SignUpViewState extends SignUpViewModel {
                             ),
                             child: RichText(
                               text: TextSpan(
-                                text: 'Kullanıcı Sözleşmesini kabul ediyorum.',
+                                text: AppLocalizations.of(context)!
+                                    .signup_user_agreement,
                                 style: CustomLightTheme()
                                     .themeData
                                     .textTheme
@@ -147,7 +151,8 @@ class _SignUpViewState extends SignUpViewModel {
                                     ),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' Kullanıcı Sözleşmesi',
+                                    text: AppLocalizations.of(context)!
+                                        .signup_agreement,
                                     style: CustomLightTheme()
                                         .themeData
                                         .textTheme
@@ -182,7 +187,7 @@ class _SignUpViewState extends SignUpViewModel {
                     ),
                     child: CustomButtonWidget(
                       dynamicViewExtensions: dynamicViewExtensions,
-                      text: 'Hesap Oluştur',
+                      text: AppLocalizations.of(context)!.signup_btn,
                       func:
                           blocState.email.isEmpty || blocState.password.isEmpty
                               ? () {}
@@ -193,6 +198,7 @@ class _SignUpViewState extends SignUpViewModel {
                                             SignUpUserEvent(
                                               blocState.email,
                                               blocState.password,
+                                              context,
                                             ),
                                           );
                                       emailController.clear();
@@ -201,8 +207,8 @@ class _SignUpViewState extends SignUpViewModel {
                                     } else {
                                       CodeNoahDialogs(context).showFlush(
                                         type: SnackType.warning,
-                                        message:
-                                            'Sözleşmeyi Onaylamanız gerekmektedir!',
+                                        message: AppLocalizations.of(context)!
+                                            .signup_agreement_error,
                                       );
                                     }
                                   }
@@ -229,8 +235,8 @@ class _SignUpViewState extends SignUpViewModel {
                             padding: PaddingSizedsUtility.horizontal(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackText(
-                              text: 'Hesabınız varmı?',
+                            child: BodyMediumBlackText(
+                              text: AppLocalizations.of(context)!.signup_sign,
                               textAlign: TextAlign.right,
                             ),
                           ),
@@ -250,8 +256,9 @@ class _SignUpViewState extends SignUpViewModel {
                               padding: PaddingSizedsUtility.horizontal(
                                 PaddingSizedsUtility.smallPaddingValue,
                               ),
-                              child: const BodyMediumMainColorText(
-                                text: 'Giriş yap',
+                              child: BodyMediumMainColorText(
+                                text: AppLocalizations.of(context)!
+                                    .signup_sign_btn,
                                 textAlign: TextAlign.left,
                               ),
                             ),

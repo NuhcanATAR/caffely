@@ -1,4 +1,5 @@
 import 'package:caffely/feature/account/view/notification/notification_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -31,8 +32,8 @@ class _NotificationViewState extends NotificationViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Bildirim',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_notification_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -52,13 +53,12 @@ class _NotificationViewState extends NotificationViewModel {
 
   // notification card
   Widget get buildNotificationCardWidget => ListTile(
-        title: const BodyMediumBlackBoldText(
-          text: 'Bildirim İzni',
+        title: BodyMediumBlackBoldText(
+          text: AppLocalizations.of(context)!.account_notification_title,
           textAlign: TextAlign.left,
         ),
-        subtitle: const BodyMediumBlackText(
-          text:
-              'Uygulamanın sizlere sipariş durumu hakkında veya iletişim için sizden istediği izin.',
+        subtitle: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_notification_subtitle,
           textAlign: TextAlign.left,
         ),
         trailing: Switch(

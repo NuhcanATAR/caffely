@@ -3,6 +3,7 @@
 import 'package:caffely/feature/orders/bloc/cubit.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
 import 'package:caffely/feature/orders/view/order_detail/orderdetail_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -53,8 +54,8 @@ class _OrderDetailViewState extends OrderDetailViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Sipariş Detayı',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.order_detail_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -74,11 +75,12 @@ class _OrderDetailViewState extends OrderDetailViewModel {
                 AsyncSnapshot<DocumentSnapshot> snapshot,
               ) {
                 if (snapshot.hasError) {
-                  return const CustomResponseWidget(
+                  return CustomResponseWidget(
                     img: AppImages.error,
-                    title: 'Sipariş Detayı Bulunamadı',
-                    subTitle:
-                        'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.',
+                    title: AppLocalizations.of(context)!
+                        .order_detail_basket_erorr_title,
+                    subTitle: AppLocalizations.of(context)!
+                        .order_detail_basket_error_subtitle,
                   );
                 }
 
@@ -112,20 +114,22 @@ class _OrderDetailViewState extends OrderDetailViewModel {
                   );
                 }
 
-                return const CustomResponseWidget(
+                return CustomResponseWidget(
                   img: AppImages.error,
-                  title: 'Sipariş Detayı Bulunamadı',
-                  subTitle:
-                      'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.',
+                  title: AppLocalizations.of(context)!
+                      .order_detail_basket_erorr_title,
+                  subTitle: AppLocalizations.of(context)!
+                      .order_detail_basket_error_subtitle,
                 );
               },
             );
           } else {
-            return const CustomResponseWidget(
+            return CustomResponseWidget(
               img: AppImages.error,
-              title: 'Sipariş Detayı Bulunamadı',
-              subTitle:
-                  'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.',
+              title:
+                  AppLocalizations.of(context)!.order_detail_basket_empty_title,
+              subTitle: AppLocalizations.of(context)!
+                  .order_detail_basket_empty_subtitle,
             );
           }
         },

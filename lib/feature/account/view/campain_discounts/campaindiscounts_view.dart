@@ -1,8 +1,8 @@
 import 'package:caffely/feature/account/view/campain_discounts/campaindiscounts_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/util/base_utility.dart';
-import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +13,7 @@ class CampainDiscountsView extends StatefulWidget {
   State<CampainDiscountsView> createState() => _CampainDiscountsViewState();
 }
 
+// buradan devam et
 class _CampainDiscountsViewState extends CampainDiscountsViewModel {
   @override
   Widget build(BuildContext context) {
@@ -32,16 +33,12 @@ class _CampainDiscountsViewState extends CampainDiscountsViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Kampanya ve İndirimler',
-          textAlign: TextAlign.left,
-        ),
       ),
-      body: const CustomResponseWidget(
+      body: CustomResponseWidget(
         img: AppImages.campaign,
-        title: 'Henüz kampanya ve indirim bulunmuyor.',
+        title: AppLocalizations.of(context)!.account_campaign_discaount_title,
         subTitle:
-            'Kampanya ve indirimler henüz gelmedi çok yakında buradan paylaşım yapılacak.',
+            AppLocalizations.of(context)!.account_campaign_discaount_subtitle,
       ),
     );
   }

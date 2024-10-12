@@ -3,6 +3,7 @@ import 'package:caffely/feature/complete/bloc/cubit.dart';
 import 'package:caffely/feature/complete/bloc/event.dart';
 import 'package:caffely/feature/complete/bloc/state.dart';
 import 'package:caffely/feature/complete/complete_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -61,9 +62,9 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
                                   child: FadeInLeft(
-                                    child: const TitleLargeBlackBoldText(
-                                      text:
-                                          "Caffely Hesap Bilgilerini Tamamla👤.",
+                                    child: TitleLargeBlackBoldText(
+                                      text: AppLocalizations.of(context)!
+                                          .sign_complete_title,
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -77,9 +78,9 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
                                   child: FadeInLeft(
-                                    child: const BodyMediumBlackText(
-                                      text:
-                                          "Başlamak için hesap bilgilerini tamamlamalısın.",
+                                    child: BodyMediumBlackText(
+                                      text: AppLocalizations.of(context)!
+                                          .sign_complete_subtitle,
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -91,7 +92,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                         // name surname
                         NormalTextFieldWidget(
                           controller: nameSurnameController,
-                          hintText: 'Ad Soyad',
+                          hintText: AppLocalizations.of(context)!
+                              .sign_complete_name_surname,
                           explanationStatus: false,
                           onChanged: (String value) {
                             context.read<ProfileCompleteBloc>().add(
@@ -106,7 +108,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                         // phone number
                         PhoneNumberFieldWidget(
                           phoneNumberController: phoneNumberController,
-                          hintText: 'Telefon Numarası',
+                          hintText: AppLocalizations.of(context)!
+                              .sign_complete_phone_number,
                           onChanged: (String value) {
                             context.read<ProfileCompleteBloc>().add(
                                   ProfileCompletePhoneNumberEvent(value),
@@ -126,7 +129,7 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                   FadeInUp(
                     child: CustomButtonWidget(
                       dynamicViewExtensions: dynamicViewExtensions,
-                      text: 'Tamamla',
+                      text: AppLocalizations.of(context)!.sign_complete_btn,
                       func: () {
                         if (formProfileCompleteKey.currentState!.validate()) {
                           if (selectedCity != null &&
@@ -138,12 +141,14 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                                     selectedCity!,
                                     selectedDistrict!,
                                     dynamicViewExtensions,
+                                    context,
                                   ),
                                 );
                           } else {
                             CodeNoahDialogs(context).showFlush(
                               type: SnackType.error,
-                              message: 'Lütfen Şehir ve İlçe Bilgisi seçiniz.',
+                              message: AppLocalizations.of(context)!
+                                  .sign_complete_city_error,
                             );
                           }
                         }

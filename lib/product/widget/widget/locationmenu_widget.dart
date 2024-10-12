@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/service/citydistrict_service/citydistrict_service.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -78,10 +79,10 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                 children: <Widget>[
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: BodyMediumBlackText(
-                        text: 'Şehir',
+                        text: AppLocalizations.of(context)!.location_menu_city,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -163,8 +164,9 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       padding: PaddingSizedsUtility.vertical(
                         PaddingSizedsUtility.smallPaddingValue,
                       ),
-                      child: const BodyMediumBlackText(
-                        text: 'İlçe',
+                      child: BodyMediumBlackText(
+                        text: AppLocalizations.of(context)!
+                            .location_menu_district,
                         textAlign: TextAlign.left,
                       ),
                     ),

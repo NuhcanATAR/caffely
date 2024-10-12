@@ -1,3 +1,4 @@
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
@@ -153,13 +154,14 @@ class OrderStoreCardWidget extends StatelessWidget {
             ),
             child: storeModel.status ==
                     OrderBranchStatusControl.orderRejected.value
-                ? const BodyMediumRedBoldText(
-                    text: 'Sipariş Durumu : Sipariş İptal',
+                ? BodyMediumRedBoldText(
+                    text:
+                        '${AppLocalizations.of(context)!.order_status} : ${AppLocalizations.of(context)!.order_status_rejected}',
                     textAlign: TextAlign.left,
                   )
                 : BodyMediumBlackBoldText(
                     text:
-                        'Sipariş Durumu: ${storeModel.status == OrderBranchStatusControl.orderReceived.value ? 'Sipariş Alındı' : storeModel.status == OrderBranchStatusControl.orderInProgress.value ? 'Sipariş Hazırlanıyor' : storeModel.status == OrderBranchStatusControl.orderOnTheWay.value ? 'Sipariş Yolda' : storeModel.status == OrderBranchStatusControl.orderDelivered.value ? 'Sipariş Teslim Edildi' : storeModel.status == OrderBranchStatusControl.orderRejected.value ? 'Sipari İptal Edildi' : 'Bilinmiyor'}',
+                        '${AppLocalizations.of(context)!.order_status}: ${storeModel.status == OrderBranchStatusControl.orderReceived.value ? AppLocalizations.of(context)!.order_status_received : storeModel.status == OrderBranchStatusControl.orderInProgress.value ? AppLocalizations.of(context)!.order_status_inprogress : storeModel.status == OrderBranchStatusControl.orderOnTheWay.value ? AppLocalizations.of(context)!.order_status_on_the_way : storeModel.status == OrderBranchStatusControl.orderDelivered.value ? AppLocalizations.of(context)!.order_status_delivered : storeModel.status == OrderBranchStatusControl.orderRejected.value ? AppLocalizations.of(context)!.order_status_rejected : AppLocalizations.of(context)!.order_status_unknow}',
                     textAlign: TextAlign.left,
                   ),
           ),

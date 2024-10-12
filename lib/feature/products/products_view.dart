@@ -3,6 +3,7 @@ import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
 import 'package:caffely/feature/products/products_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -46,17 +47,17 @@ class _ProductsViewState extends ProductsViewModel {
           ),
         ),
         centerTitle: true,
-        title: const BodyMediumBlackText(
-          text: 'Ürünler',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.products_appbar,
           textAlign: TextAlign.left,
         ),
       ),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           if (state is ProductsLoading) {
-            return const CustomLoadingResponseWidget(
-              title: 'Ürünler Yükleniyor',
-              subTitle: 'Lütfen Bekleyiniz.',
+            return CustomLoadingResponseWidget(
+              title: AppLocalizations.of(context)!.products_loading_title,
+              subTitle: AppLocalizations.of(context)!.products_loading_subtitle,
             );
           } else if (state is ProductLoaded) {
             return Padding(
@@ -68,7 +69,7 @@ class _ProductsViewState extends ProductsViewModel {
                   // search
                   SearchWidget(
                     controller: searchController,
-                    searchText: 'Ürün ara',
+                    searchText: AppLocalizations.of(context)!.products_search,
                     onChanged: (value) {
                       context.read<ProductBloc>().add(
                             SearchProducts(value),
@@ -78,11 +79,12 @@ class _ProductsViewState extends ProductsViewModel {
                   // list
                   Expanded(
                     child: state.products.isEmpty
-                        ? const CustomResponseWidget(
+                        ? CustomResponseWidget(
                             img: AppImages.notFoundSecond,
-                            title: 'Ürün Bulunamadı',
-                            subTitle:
-                                'Ürün bulunamadı, isterseniz diğer ürünlere göz gezdirebilirsiniz.',
+                            title: AppLocalizations.of(context)!
+                                .products_empty_title,
+                            subTitle: AppLocalizations.of(context)!
+                                .products_empty_subtitle,
                           )
                         : ListView.builder(
                             itemCount: state.products.length,
@@ -107,12 +109,6 @@ class _ProductsViewState extends ProductsViewModel {
                 ],
               ),
             );
-          } else if (state is ProductLoaded) {
-            if (state.products.isEmpty) {
-              return const Center(
-                child: Text('No product avaible'),
-              );
-            }
           }
           return const SizedBox();
         },

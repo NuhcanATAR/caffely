@@ -3,6 +3,7 @@ import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/feature/store/store_viewmodel.dart';
 import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -36,17 +37,17 @@ class _StoresViewState extends StoresViewModel {
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
-        title: const BodyMediumBlackText(
-          text: 'Şubeler',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.stores_appbar,
           textAlign: TextAlign.left,
         ),
       ),
       body: BlocBuilder<StoreBloc, StoresState>(
         builder: (context, state) {
           if (state is StoresLoading) {
-            return const CustomLoadingResponseWidget(
-              title: 'Şubeler Yükleniyor',
-              subTitle: 'Lütfen Bekleyiniz.',
+            return CustomLoadingResponseWidget(
+              title: AppLocalizations.of(context)!.stores_loading_title,
+              subTitle: AppLocalizations.of(context)!.stores_loading_subtitle,
             );
           } else if (state is StoresLoaded) {
             return Padding(
@@ -58,7 +59,7 @@ class _StoresViewState extends StoresViewModel {
                   // search
                   SearchWidget(
                     controller: searchController,
-                    searchText: 'Şube ara',
+                    searchText: AppLocalizations.of(context)!.stores_search,
                     onChanged: (value) {
                       context.read<StoreBloc>().add(SearchStores(value));
                     },
@@ -66,11 +67,12 @@ class _StoresViewState extends StoresViewModel {
                   // list
                   Expanded(
                     child: state.stores.isEmpty
-                        ? const CustomResponseWidget(
+                        ? CustomResponseWidget(
                             img: AppImages.notFound,
-                            title: 'Caffely Şubesi Bulunamadı',
-                            subTitle:
-                                'Caffely Şubesi bulunamadı, isterseniz başka bir şube arayabilirsiniz.',
+                            title: AppLocalizations.of(context)!
+                                .stores_empty_title,
+                            subTitle: AppLocalizations.of(context)!
+                                .stores_empty_subtitle,
                           )
                         : ListView.builder(
                             itemCount: state.stores.length,
@@ -95,10 +97,6 @@ class _StoresViewState extends StoresViewModel {
                 ],
               ),
             );
-          } else if (state is StoresLoaded) {
-            if (state.stores.isEmpty) {
-              return const Center(child: Text('No stores available'));
-            }
           }
           return const SizedBox();
         },

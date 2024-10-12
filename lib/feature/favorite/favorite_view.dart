@@ -3,6 +3,7 @@ import 'package:caffely/feature/favorite/bloc/state.dart';
 import 'package:caffely/feature/favorite/favorite_viewmodel.dart';
 import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
 import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -38,8 +39,8 @@ class _FavoriteViewState extends FavoriteViewModel {
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
-        title: const BodyMediumBlackText(
-          text: 'Favoriler',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.favorite_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -50,29 +51,33 @@ class _FavoriteViewState extends FavoriteViewModel {
         child: BlocBuilder<FavoriteBloc, FavoriteState>(
           builder: (context, state) {
             if (state is FavoriteLoading) {
-              return const CustomLoadingResponseWidget(
-                title: 'Ürünler Yükleniyor',
-                subTitle: 'Lütfen Bekleyiniz.',
+              return CustomLoadingResponseWidget(
+                title: AppLocalizations.of(context)!.favorite_loading_title,
+                subTitle:
+                    AppLocalizations.of(context)!.favorite_loading_subtitle,
               );
             } else if (state is FavoriteLoaded) {
               return ContainedTabBarView(
-                tabs: const [
+                tabs: [
                   BodyMediumMainColorText(
-                    text: 'Kahveler',
+                    text: AppLocalizations.of(context)!
+                        .favorite_contained_tabs_product,
                     textAlign: TextAlign.center,
                   ),
                   BodyMediumMainColorText(
-                    text: 'Şubeler',
+                    text: AppLocalizations.of(context)!
+                        .favorite_contained_tabs_stores,
                     textAlign: TextAlign.center,
                   ),
                 ],
                 views: [
                   state.products.isEmpty
-                      ? const CustomResponseWidget(
+                      ? CustomResponseWidget(
                           img: AppImages.notFoundSecond,
-                          title: 'Ürün Bulunamadı',
-                          subTitle:
-                              'Henüz favori ürününüz bulunmuyor isterseniz favori ürün oluşturmaya başlayabilirsiniz.',
+                          title: AppLocalizations.of(context)!
+                              .favorite_products_empty_title,
+                          subTitle: AppLocalizations.of(context)!
+                              .favorite_products_empty_subtitle,
                         )
                       : ListView.builder(
                           itemCount: state.products.length,
@@ -94,11 +99,12 @@ class _FavoriteViewState extends FavoriteViewModel {
                           },
                         ),
                   state.stores.isEmpty
-                      ? const CustomResponseWidget(
+                      ? CustomResponseWidget(
                           img: AppImages.notFound,
-                          title: 'Şube Bulunamadı',
-                          subTitle:
-                              'Henüz favori şubeniz bulunmuyor isterseniz favori şubenizi eklemeye başlayabilirsiniz.',
+                          title: AppLocalizations.of(context)!
+                              .favorite_stores_empty_title,
+                          subTitle: AppLocalizations.of(context)!
+                              .favorite_stores_empty_subtitle,
                         )
                       : ListView.builder(
                           itemCount: state.stores.length,
@@ -121,15 +127,6 @@ class _FavoriteViewState extends FavoriteViewModel {
                         ),
                 ],
               );
-            } else if (state is FavoriteLoaded) {
-              if (state.products.isEmpty) {
-                return const CustomResponseWidget(
-                  img: AppImages.notFoundSecond,
-                  title: 'Ürün Bulunamadı',
-                  subTitle:
-                      'Henüz favori ürününüz bulunmuyor isterseniz favori ürün oluşturmaya başlayabilirsiniz.',
-                );
-              }
             }
             return const SizedBox();
           },

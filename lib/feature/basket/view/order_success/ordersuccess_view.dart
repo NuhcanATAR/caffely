@@ -1,5 +1,6 @@
 import 'package:caffely/feature/basket/view/order_success/ordersuccess_viewmodel.dart';
 import 'package:caffely/feature/bottom_menu/bottommenu_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -25,8 +26,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const BodyMediumBlackText(
-          text: 'Siparişiniz Alındı',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.basket_success_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -59,8 +60,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.mediumPaddingValue,
               ),
-              child: const TitleLargeBlackBoldText(
-                text: 'Siparişiniz için Teşekkür Ederiz',
+              child: TitleLargeBlackBoldText(
+                text: AppLocalizations.of(context)!.basket_success_title,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -69,16 +70,15 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.mediumPaddingValue,
               ),
-              child: const BodyMediumBlackText(
-                text:
-                    'Siparişiniz size ulaştırılmak üzere hazırlanıyor profilinizde siparişler bölümünden siparişinizi takip edebilirsiniz.',
+              child: BodyMediumBlackText(
+                text: AppLocalizations.of(context)!.basket_success_subtitle,
                 textAlign: TextAlign.center,
               ),
             ),
             // button
             CustomButtonWidget(
               dynamicViewExtensions: dynamicViewExtensions,
-              text: 'Devam Et',
+              text: AppLocalizations.of(context)!.basket_success_btn,
               func: () {
                 CodeNoahNavigatorRouter.pushAndRemoveUntil(
                   context,

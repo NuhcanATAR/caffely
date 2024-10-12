@@ -1,5 +1,6 @@
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 class ProfileCompleteEvent extends Equatable {
   const ProfileCompleteEvent();
@@ -26,6 +27,7 @@ class ProfileCompleteUser extends ProfileCompleteEvent {
   final String city;
   final String district;
   final DynamicViewExtensions dynamicViewExtensions;
+  final BuildContext context;
 
   const ProfileCompleteUser(
     this.nameSurname,
@@ -33,5 +35,6 @@ class ProfileCompleteUser extends ProfileCompleteEvent {
     this.city,
     this.district,
     this.dynamicViewExtensions,
+    this.context,
   );
 }

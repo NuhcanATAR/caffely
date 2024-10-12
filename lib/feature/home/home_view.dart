@@ -27,6 +27,8 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../lang/app_localizations.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({
     super.key,
@@ -112,10 +114,11 @@ class _HomeViewState extends HomeViewModel {
                                 ),
                                 child: BodyMediumBlackText(
                                   text: timeHour > 18
-                                      ? 'İyi akşamlar 🌃'
+                                      ? '${AppLocalizations.of(context)!.home_appbar_good_evening} 🌃'
                                       : timeHour < 18
-                                          ? 'Günaydın ⛅'
-                                          : 'Bilinmiyor',
+                                          ? '${AppLocalizations.of(context)!.home_appbar_good_morning} ⛅'
+                                          : AppLocalizations.of(context)!
+                                              .home_appbar_unknown,
                                   textAlign: TextAlign.left,
                                 ),
                               ),
@@ -310,10 +313,11 @@ class _HomeViewState extends HomeViewModel {
                                 ),
                                 child: Row(
                                   children: <Widget>[
-                                    const Expanded(
+                                    Expanded(
                                       flex: 2,
                                       child: TitleMediumBlackBoldText(
-                                        text: 'Caffely Şubeleri',
+                                        text: AppLocalizations.of(context)!
+                                            .home_stores_list_title,
                                         textAlign: TextAlign.left,
                                       ),
                                     ),
@@ -329,11 +333,14 @@ class _HomeViewState extends HomeViewModel {
                                         },
                                         child: Row(
                                           children: <Widget>[
-                                            const Flexible(
+                                            Flexible(
                                               fit: FlexFit.tight,
                                               flex: 1,
                                               child: BodyMediumMainColorText(
-                                                text: 'Daha fazla',
+                                                text: AppLocalizations.of(
+                                                  context,
+                                                )!
+                                                    .home_stores_list_next,
                                                 textAlign: TextAlign.right,
                                               ),
                                             ),
@@ -406,10 +413,11 @@ class _HomeViewState extends HomeViewModel {
                                 ),
                                 child: Row(
                                   children: <Widget>[
-                                    const Expanded(
+                                    Expanded(
                                       flex: 2,
                                       child: TitleMediumBlackBoldText(
-                                        text: 'Popüler Kahveler',
+                                        text: AppLocalizations.of(context)!
+                                            .home_popular_products_list_title,
                                         textAlign: TextAlign.left,
                                       ),
                                     ),
@@ -429,11 +437,14 @@ class _HomeViewState extends HomeViewModel {
                                         },
                                         child: Row(
                                           children: <Widget>[
-                                            const Flexible(
+                                            Flexible(
                                               fit: FlexFit.tight,
                                               flex: 1,
                                               child: BodyMediumMainColorText(
-                                                text: 'Daha fazla',
+                                                text: AppLocalizations.of(
+                                                  context,
+                                                )!
+                                                    .home_popular_products_list_next,
                                                 textAlign: TextAlign.right,
                                               ),
                                             ),
@@ -494,10 +505,6 @@ class _HomeViewState extends HomeViewModel {
                 ],
               ),
             );
-          } else if (state is HomeLoaded) {
-            if (state.banners.isEmpty) {
-              return const Center(child: Text('No banners available'));
-            }
           }
           return const SizedBox();
         },
