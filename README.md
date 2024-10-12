@@ -66,9 +66,9 @@ seçeneklerine göre tercih edebilirler
 
 ## Proje Hakkında Daha Fazla Bilgi Edinmek İçin
 
-<b>Proje Hakkında ( TR ): </b> <a href="https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/document%2Fcaffely_about_tr.pdf?alt=media&token=e48992e5-1f9f-4299-8015-6cbc3e77a76e"> Proje Hakkında TR </a>
+<b>Proje Hakkında ( TR ): </b> <a href="https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/document%2Fcaffely_about_tr.pdf?alt=media&token=e48992e5-1f9f-4299-8015-6cbc3e77a76e"> Proje Hakkında TR (PDF) </a>
 <br><br><br>
-<b>About the Project( EN ): </b> <a href="https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/document%2Fcaffely_about_en.pdf?alt=media&token=a1573fe3-f450-46d0-990d-afd2a13edad8"> About the Project EN </a>
+<b>About the Project( EN ): </b> <a href="https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/document%2Fcaffely_about_en.pdf?alt=media&token=a1573fe3-f450-46d0-990d-afd2a13edad8"> About the Project EN (PDF)</a>
 
 
 ## Ekran Görüntüleri
