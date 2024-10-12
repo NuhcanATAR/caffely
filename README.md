@@ -70,6 +70,10 @@ seçeneklerine göre tercih edebilirler
 <br><br><br>
 <b>About the Project( EN ): </b> <a href="https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/document%2Fcaffely_about_en.pdf?alt=media&token=a1573fe3-f450-46d0-990d-afd2a13edad8"> About the Project EN (PDF)</a>
 
+## Veritabanı Diyagramı
+
+<img width="5056" alt="db_diagram" src="https://github.com/user-attachments/assets/2711fab0-e9a2-4518-a124-3683e5c071f1">
+
 
 ## Ekran Görüntüleri
 
