@@ -1,4 +1,5 @@
 import 'package:caffely/feature/account/view/center_help/view/helpdetail_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/model/centerhelp_model/centerhelp_model.dart';
@@ -78,7 +79,7 @@ class _HelpdetailViewState extends HelpDetailViewModel {
   // footer
   CustomButtonWidget get buildFooterWidget => CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
-        text: 'Caffely WhatsApp iletişim',
+        text: AppLocalizations.of(context)!.account_centerhelp_footer_btn,
         func: whatsAppOpen,
         btnStatus: ButtonTypes.primaryColorButton,
       );

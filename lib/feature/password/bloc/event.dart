@@ -1,5 +1,6 @@
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class PasswordEvent extends Equatable {
   const PasswordEvent();
@@ -20,6 +21,11 @@ class PasswordEmailEvent extends PasswordEvent {
 class PasswordResetEvent extends PasswordEvent {
   final String email;
   final DynamicViewExtensions dynamicViewExtensions;
+  final BuildContext context;
 
-  const PasswordResetEvent(this.email, this.dynamicViewExtensions);
+  const PasswordResetEvent(
+    this.email,
+    this.dynamicViewExtensions,
+    this.context,
+  );
 }

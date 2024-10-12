@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:caffely/feature/store/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,9 @@ mixin StoreMixin {
         break;
       case StoreFavoriteAddLoading:
         CodeNoahDialogs(context).showAlert(
-          const BodyMediumWhiteText(
-            text: 'Lütfen Bekleyiniz...',
+          BodyMediumWhiteText(
+            text: AppLocalizations.of(context)!
+                .stores_information_favorite_loading_title,
             textAlign: TextAlign.center,
           ),
         );

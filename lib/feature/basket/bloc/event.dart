@@ -3,6 +3,7 @@ import 'package:caffely/product/model/basket_branch_model/basket_branch_model.da
 import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
 import 'package:caffely/product/model/savedadress_model/savedadress_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class BasketEvent extends Equatable {
   @override
@@ -16,11 +17,13 @@ class BasketOrderCreateEvent extends BasketEvent {
   final PaymentType paymentType;
   final List<BasketBranchModel> basketBranchModel;
   final List<BasketProductModel> basketProductModel;
+  final BuildContext context;
 
   BasketOrderCreateEvent(
     this.selectAdress,
     this.paymentType,
     this.basketBranchModel,
     this.basketProductModel,
+    this.context,
   );
 }

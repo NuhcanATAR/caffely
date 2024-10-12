@@ -11,6 +11,7 @@ BasketBranchModel _$BasketBranchModelFromJson(Map<String, dynamic> json) =>
       json['id'] as String,
       (json['basket_total'] as num).toInt(),
       (json['total_quanity'] as num).toInt(),
+      json['status'] != null ? json['status'] as int : null,
     );
 
 Map<String, dynamic> _$BasketBranchModelToJson(BasketBranchModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$BasketBranchModelToJson(BasketBranchModel instance) =>
       'id': instance.id,
       'basket_total': instance.basketTotal,
       'total_quanity': instance.totalQuanity,
+      if (instance.status != null) 'status': instance.status,
     };

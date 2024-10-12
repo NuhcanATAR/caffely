@@ -2,6 +2,7 @@ import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
 import 'package:caffely/feature/account/view/saved_adress/view/savedadress_edit/savedadress_edit_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -45,8 +46,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Adresi Düzenle',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_saveadress_edit_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -81,7 +82,7 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
             // title
             NormalTextFieldWidget(
               controller: titleController,
-              hintText: 'Adres Başlığı',
+              hintText: AppLocalizations.of(context)!.account_saveadress_title,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -103,7 +104,7 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
             // street
             NormalTextFieldWidget(
               controller: streetController,
-              hintText: 'Mahalle/Sokak',
+              hintText: AppLocalizations.of(context)!.account_saveadress_street,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -125,7 +126,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
                     ),
                     child: NumberTextFieldWidget(
                       controller: apartmentController,
-                      hintText: 'Bina Numarası',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_apartment,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
                               SavedAdressApartmentNoEvent(value),
@@ -143,7 +145,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
                     ),
                     child: NumberTextFieldWidget(
                       controller: floorController,
-                      hintText: 'Kapı Numarası',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_floor,
                       onChanged: (String value) {
                         context
                             .read<SavedAdressBloc>()
@@ -159,7 +162,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
             // directions
             NormalTextFieldWidget(
               controller: directionController,
-              hintText: 'Adres Tarifi',
+              hintText:
+                  AppLocalizations.of(context)!.account_saveadress_directions,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -181,7 +185,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactNameController,
-                      hintText: 'Ad',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_contact_name,
                       explanationStatus: false,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
@@ -202,7 +207,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactSurnameController,
-                      hintText: 'Soyad',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_contact_surname,
                       explanationStatus: false,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
@@ -223,7 +229,8 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
             // contact phone number
             NumberTextFieldWidget(
               controller: contactPhoneController,
-              hintText: 'Telefon Numarası',
+              hintText: AppLocalizations.of(context)!
+                  .account_saveadress_contact_phone_number,
               onChanged: (String value) {
                 context
                     .read<SavedAdressBloc>()
@@ -239,7 +246,7 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
   // footer
   CustomButtonWidget get buildFooterWidget => CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
-        text: 'Adresi Güncelle',
+        text: AppLocalizations.of(context)!.account_saveadress_edit_btn,
         func: () {
           if (formAdressEditKey.currentState!.validate()) {
             if (selectedCity != null || selectedDistrict != null) {
@@ -255,13 +262,17 @@ class _SavedAdressEditViewState extends SavedadressEditViewmodel {
                       directionController.text,
                       contactNameController.text,
                       contactSurnameController.text,
-                      int.parse(contactPhoneController.text),
+                      int.parse(
+                        contactPhoneController.text,
+                      ),
+                      context,
                     ),
                   );
             } else {
               CodeNoahDialogs(context).showFlush(
                 type: SnackType.error,
-                message: 'Lütfen şehir ve ilçe seçimi yapınız.',
+                message:
+                    AppLocalizations.of(context)!.account_saveadress_city_error,
               );
             }
           }

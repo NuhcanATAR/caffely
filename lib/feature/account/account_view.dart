@@ -8,6 +8,7 @@ import 'package:caffely/feature/account/view/notification/notification_view.dart
 import 'package:caffely/feature/account/view/personal_information/personalinformation_view.dart';
 import 'package:caffely/feature/account/view/saved_adress/savedadress_view.dart';
 import 'package:caffely/feature/account/view/security/security_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
@@ -45,8 +46,8 @@ class _AccountViewState extends AccountViewModel {
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
-        title: const BodyMediumBlackBoldText(
-          text: 'Profil',
+        title: BodyMediumBlackBoldText(
+          text: AppLocalizations.of(context)!.account_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -203,7 +204,7 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Kayıtlı Adresler',
+            menuText: AppLocalizations.of(context)!.account_save_adress_menu,
             menuIcon: AppIcons.locationOutline,
           ),
           // voucher discounts
@@ -215,7 +216,8 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Kampanya ve İndirimler',
+            menuText:
+                AppLocalizations.of(context)!.account_campaign_discaoun_menu,
             menuIcon: AppIcons.giftOutline,
           ),
         ],
@@ -235,8 +237,8 @@ class _AccountViewState extends AccountViewModel {
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.mediumPaddingValue,
               ),
-              child: const BodyMediumBlackText(
-                text: 'Genel',
+              child: BodyMediumBlackText(
+                text: AppLocalizations.of(context)!.account_menu_group_title,
                 textAlign: TextAlign.left,
               ),
             ),
@@ -250,7 +252,8 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Kişisel Bilgiler',
+            menuText:
+                AppLocalizations.of(context)!.account_personal_information_menu,
             menuIcon: AppIcons.userOutline,
           ),
           // notification
@@ -262,7 +265,7 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Bildirimler',
+            menuText: AppLocalizations.of(context)!.account_notification_menu,
             menuIcon: AppIcons.notificationOutline,
           ),
           // security
@@ -274,7 +277,7 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Güvenlik',
+            menuText: AppLocalizations.of(context)!.account_security_menu,
             menuIcon: AppIcons.securityOutline,
           ),
           // langue
@@ -286,13 +289,13 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Dil',
+            menuText: AppLocalizations.of(context)!.account_langue_menu,
             menuIcon: AppIcons.worldOutline,
             isArrowBtn: true,
             children: <Widget>[
               BodyMediumBlackText(
                 text:
-                    ' ${languageProvider.selectedLanguage == 'en' ? 'English (EN)' : 'Turkish (TR)'}',
+                    ' ${languageProvider.selectedLanguage == 'en' ? AppLocalizations.of(context)!.account_langue_en_menu : AppLocalizations.of(context)!.account_langue_tr_menu}',
                 textAlign: TextAlign.center,
               ),
             ],
@@ -324,8 +327,9 @@ class _AccountViewState extends AccountViewModel {
               padding: PaddingSizedsUtility.vertical(
                 PaddingSizedsUtility.mediumPaddingValue,
               ),
-              child: const BodyMediumBlackText(
-                text: 'Diğer Ayarlar',
+              child: BodyMediumBlackText(
+                text: AppLocalizations.of(context)!
+                    .account_menu_group_second_title,
                 textAlign: TextAlign.left,
               ),
             ),
@@ -339,7 +343,7 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Yardım Merkezi',
+            menuText: AppLocalizations.of(context)!.account_help_menu,
             menuIcon: AppIcons.fileOutline,
           ),
           // about caffely
@@ -351,14 +355,14 @@ class _AccountViewState extends AccountViewModel {
               );
             },
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Caffely Hakkında',
+            menuText: AppLocalizations.of(context)!.account_about_menu,
             menuIcon: AppIcons.infoOutline,
           ),
           // logout
           CustomMenuCardWidget(
             func: signOut,
             dynamicViewExtensions: dynamicViewExtensions,
-            menuText: 'Çıkış yap',
+            menuText: AppLocalizations.of(context)!.account_exit_menu,
             menuIcon: AppIcons.logoutOutline,
           ),
         ],

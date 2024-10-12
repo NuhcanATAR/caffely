@@ -4,6 +4,7 @@ import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
 import 'package:caffely/feature/sign_in/signin_view.dart';
 import 'package:caffely/feature/sign_up/signup_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -51,8 +52,8 @@ class _SignViewState extends SignViewModel {
                     padding: PaddingSizedsUtility.vertical(
                       PaddingSizedsUtility.normalPaddingValue,
                     ),
-                    child: const TitleLargeBlackBoldText(
-                      text: 'Caffely Giriş Yap',
+                    child: TitleLargeBlackBoldText(
+                      text: AppLocalizations.of(context)!.sign_title,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -62,11 +63,13 @@ class _SignViewState extends SignViewModel {
                       context.read<SignInBloc>().add(
                             SignInUserGoogleEvent(
                               dynamicViewExtensions,
+                              context,
                             ),
                           );
                     },
                     appIcons: AppIcons.google,
-                    buttonText: 'Google ile giriş yap',
+                    buttonText:
+                        AppLocalizations.of(context)!.sign_google_sign_btn,
                   ),
                   // email sign in
                   SignInButtonWidget(
@@ -78,7 +81,8 @@ class _SignViewState extends SignViewModel {
                       );
                     },
                     appIcons: AppIcons.mailFill,
-                    buttonText: 'E-mail ile giriş yap',
+                    buttonText:
+                        AppLocalizations.of(context)!.sign_email_sign_btn,
                   ),
                   // sign up
                   Padding(
@@ -97,8 +101,9 @@ class _SignViewState extends SignViewModel {
                             padding: PaddingSizedsUtility.horizontal(
                               PaddingSizedsUtility.smallPaddingValue,
                             ),
-                            child: const BodyMediumBlackText(
-                              text: 'Henüz hesabınız yokmu?',
+                            child: BodyMediumBlackText(
+                              text: AppLocalizations.of(context)!
+                                  .sign_signup_title,
                               textAlign: TextAlign.right,
                             ),
                           ),
@@ -118,8 +123,9 @@ class _SignViewState extends SignViewModel {
                               padding: PaddingSizedsUtility.horizontal(
                                 PaddingSizedsUtility.smallPaddingValue,
                               ),
-                              child: const BodyMediumMainColorText(
-                                text: 'Hesap Oluştur',
+                              child: BodyMediumMainColorText(
+                                text: AppLocalizations.of(context)!
+                                    .sign_signup_btn,
                                 textAlign: TextAlign.left,
                               ),
                             ),

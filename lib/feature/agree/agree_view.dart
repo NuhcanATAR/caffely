@@ -1,4 +1,5 @@
 import 'package:caffely/feature/agree/agree_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -29,8 +30,8 @@ class _AgreeViewState extends AgreeViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Caffely Kullanıcı Sözleşmesi',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.agreement_appbar,
           textAlign: TextAlign.left,
         ),
       ),

@@ -56,7 +56,8 @@ class NormalTextFieldWidget extends StatelessWidget {
             controller: controller,
             validator: isValidator == true
                 ? (String? value) =>
-                    CustomValidator(value: value).emptyNormalCheck
+                    CustomValidator(value: value, context: context)
+                        .emptyNormalCheck
                 : null,
             onChanged: onChanged,
             keyboardType: TextInputType.text,
@@ -158,7 +159,8 @@ class NumberTextFieldWidget extends StatelessWidget {
             onChanged: onChanged,
             controller: controller,
             validator: (String? value) =>
-                CustomValidator(value: value).emptyNumberCheck,
+                CustomValidator(value: value, context: context)
+                    .emptyNumberCheck,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               hintText: isLabelText == true ? '' : hintText,

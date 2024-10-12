@@ -1,5 +1,6 @@
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/favorite_model/favorite_model.dart';
@@ -123,17 +124,21 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
           : await FirebaseCollectionReferances.favorite.collectRef
               .doc(event.favoriteId)
               .delete();
+      if (!event.context.mounted) return;
       emit(
         StoreFavoriteAddSuccess(
           event.isFavoriteStatus == true
-              ? 'Şube Favorilere eklendi!'
-              : 'Şube Favorilerden kaldırıldı!',
+              ? AppLocalizations.of(event.context)!
+                  .stores_information_favorite_add_success
+              : AppLocalizations.of(event.context)!
+                  .stores_information_favorite_delete_success,
         ),
       );
     } catch (e) {
       emit(
-        const StoreFavoriteAddError(
-          'Hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        StoreFavoriteAddError(
+          AppLocalizations.of(event.context)!
+              .stores_information_favorite_loading_title,
         ),
       );
     }

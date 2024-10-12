@@ -1,8 +1,10 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member, unused_local_variable, avoid_dynamic_calls
+// ignore_for_file: invalid_use_of_visible_for_testing_member, unused_local_variable, avoid_dynamic_calls,
 
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -51,10 +53,32 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
             )
             .toList();
 
+        final Map<String, List<BasketProductModel>> branchProducts = {};
+
+        for (final branch in branches) {
+          final QuerySnapshot productsQuery = await FirebaseCollectionReferances
+              .basket.collectRef
+              .doc(FirebaseService().authID)
+              .collection(FirebaseCollectionReferances.branch.name)
+              .doc(branch.id)
+              .collection(FirebaseCollectionReferances.product.name)
+              .get();
+
+          final List<BasketProductModel> products =
+              productsQuery.docs.map((doc) {
+            return BasketProductModel.fromJson(
+              doc.data() as Map<String, dynamic>,
+            );
+          }).toList();
+
+          branchProducts[branch.id] = products;
+        }
+
         emit(
           BasketLoaded(
             isBasket: true,
             branches: branches,
+            branchProducts: branchProducts,
           ),
         );
       } else {
@@ -62,6 +86,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
           BasketLoaded(
             isBasket: false,
             branches: const [],
+            branchProducts: const {},
           ),
         );
       }
@@ -121,11 +146,11 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         'total_quanity': FieldValue.increment(-productModel.quanity),
       });
 
-      await productDocRef.delete();
-
       if (basketProducts.length == 1) {
-        await basketDocRef.delete();
+        await productDocRef.delete();
+        await branchDocRef.delete();
         if (!context.mounted) return;
+        Navigator.pop(context);
         Navigator.pop(context);
       }
     } catch (e) {
@@ -282,7 +307,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
           context,
         ).showFlush(
           type: SnackType.warning,
-          message: 'Adet değeri minimum 1 olmalı',
+          message: AppLocalizations.of(context)!.basket_quanity_erorr,
         );
       }
     } catch (e) {
@@ -310,10 +335,13 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
   ) async {
     emit(BaskekOrderCompleteLoading());
     try {
-      await FirebaseCollectionReferances.orders.collectRef.add({
+      final orderRef =
+          await FirebaseCollectionReferances.orders.collectRef.add({
         'id': null,
         'user_id': FirebaseService().authID,
-        'payment_type': event.paymentType == PaymentType.online ? 1 : 2,
+        'payment_type': event.paymentType == PaymentType.online
+            ? OrderPaymentType.online.value
+            : OrderPaymentType.payAtTheDoor.value,
         'adress_title': event.selectAdress.adressTitle,
         'adress_city': event.selectAdress.adressCity,
         'adress_district': event.selectAdress.adressDistrict,
@@ -324,85 +352,94 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         'contact_name': event.selectAdress.contactName,
         'contact_surname': event.selectAdress.contactSurname,
         'contact_phone_number': event.selectAdress.contactPhoneNumber,
-      }).then((value) async {
-        final String orderId = value.id;
-        await value.update({'id': orderId});
+        'date': FieldValue.serverTimestamp(),
+      });
 
+      final String orderId = orderRef.id;
+      await orderRef.update({'id': orderId});
+
+      await FirebaseCollectionReferances.orders.collectRef
+          .doc(orderId)
+          .collection(FirebaseCollectionReferances.basket.name)
+          .doc(orderId)
+          .set({
+        'id': orderId,
+        'basket_status': BasketMainStatusControl.orderReceived.value,
+      });
+
+      for (final branchModel in event.basketBranchModel) {
         await FirebaseCollectionReferances.orders.collectRef
             .doc(orderId)
             .collection(FirebaseCollectionReferances.basket.name)
-            .add({
-          'id': null,
-          'basket_status': 1,
-        }).then((value) async {
-          final String basketId = value.id;
+            .doc(orderId)
+            .collection(FirebaseCollectionReferances.branch.name)
+            .doc(branchModel.id)
+            .set({
+          'id': branchModel.id,
+          'basket_total': branchModel.basketTotal,
+          'total_quanity': branchModel.totalQuanity,
+          'status': OrderBranchStatusControl.orderReceived.value,
+        });
 
-          await value.update({'id': basketId});
+        final List<BasketProductModel> productsForBranch = event
+            .basketProductModel
+            .where((product) => product.branchId == branchModel.id)
+            .toList();
 
-          for (final branchModel in event.basketBranchModel) {
-            await FirebaseCollectionReferances.orders.collectRef
-                .doc(orderId)
-                .collection(FirebaseCollectionReferances.basket.name)
-                .doc(basketId)
-                .collection(FirebaseCollectionReferances.branch.name)
-                .doc(branchModel.id)
-                .set({
-              'id': branchModel.id,
-              'basket_total': branchModel.basketTotal,
-              'total_quanity': branchModel.totalQuanity,
-              'status': 1,
-            }).then((value) async {
-              for (final productModel in event.basketProductModel) {
-                await FirebaseCollectionReferances.orders.collectRef
-                    .doc(orderId)
-                    .collection(FirebaseCollectionReferances.basket.name)
-                    .doc(basketId)
-                    .collection(FirebaseCollectionReferances.branch.name)
-                    .doc(branchModel.id)
-                    .collection(FirebaseCollectionReferances.product.name)
-                    .doc(productModel.id)
-                    .set({
-                  'id': productModel.id,
-                  'avaible': productModel.avaible,
-                  'product_id': productModel.productId,
-                  'product_total': productModel.productTotal,
-                  'quanity': productModel.quanity,
-                  'size': productModel.size,
-                  'status': productModel.status,
-                });
-              }
-            });
-          }
+        for (final productModel in productsForBranch) {
+          await FirebaseCollectionReferances.orders.collectRef
+              .doc(orderId)
+              .collection(FirebaseCollectionReferances.basket.name)
+              .doc(orderId)
+              .collection(FirebaseCollectionReferances.branch.name)
+              .doc(branchModel.id)
+              .collection(FirebaseCollectionReferances.product.name)
+              .doc(productModel.id)
+              .set({
+            'id': productModel.id,
+            'avaible': productModel.avaible,
+            'product_id': productModel.productId,
+            'product_total': productModel.productTotal,
+            'quanity': productModel.quanity,
+            'size': productModel.size,
+            'status': productModel.status,
+            'branch_id': productModel.branchId,
+          });
+        }
+      }
 
-          for (final branchModel in event.basketBranchModel) {
-            for (final productModel in event.basketProductModel) {
-              await FirebaseCollectionReferances.basket.collectRef
-                  .doc(FirebaseService().authID)
-                  .collection(FirebaseCollectionReferances.branch.name)
-                  .doc(branchModel.id)
-                  .collection(FirebaseCollectionReferances.product.name)
-                  .doc(productModel.id)
-                  .delete();
-            }
-          }
-
-          for (final branchModel in event.basketBranchModel) {
-            await FirebaseCollectionReferances.basket.collectRef
-                .doc(FirebaseService().authID)
-                .collection(FirebaseCollectionReferances.branch.name)
-                .doc(branchModel.id)
-                .delete();
-          }
-
+      for (final branchModel in event.basketBranchModel) {
+        for (final productModel in event.basketProductModel) {
           await FirebaseCollectionReferances.basket.collectRef
               .doc(FirebaseService().authID)
+              .collection(FirebaseCollectionReferances.branch.name)
+              .doc(branchModel.id)
+              .collection(FirebaseCollectionReferances.product.name)
+              .doc(productModel.id)
               .delete();
+        }
+        await FirebaseCollectionReferances.basket.collectRef
+            .doc(FirebaseService().authID)
+            .collection(FirebaseCollectionReferances.branch.name)
+            .doc(branchModel.id)
+            .delete();
+      }
 
-          emit(BasketOrderCompleteState('Siparişiniz başarıyla oluşturuldu.'));
-        });
-      });
+      await FirebaseCollectionReferances.basket.collectRef
+          .doc(FirebaseService().authID)
+          .delete();
+      if (!event.context.mounted) return;
+      emit(
+        BasketOrderCompleteState(
+          AppLocalizations.of(event.context)!.basket_order_complete_success,
+        ),
+      );
     } catch (e) {
-      emit(BasketOrderCompleteError('Sipariş Oluşturulurken bir hata oluştu'));
+      emit(
+        BasketOrderCompleteError(
+          AppLocalizations.of(event.context)!.basket_order_complete_error,
+        ),
+      );
     }
   }
 }

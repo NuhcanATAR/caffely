@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/sign_in/bloc/state.dart';
 import 'package:caffely/feature/sign_in/signin_loading_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -31,8 +32,8 @@ mixin SignInMixin {
       case SignInLoadingState:
         CodeNoahDialogs(context).showLoadingAlert(
           AppIcons.accountSignIn,
-          'Hesabınıza Giriş Yapılıyor',
-          'Lütfen Bekleyiniz...',
+          AppLocalizations.of(context)!.sign_loading_title,
+          AppLocalizations.of(context)!.sign_loading_subtitle,
           (state as SignInLoadingState).dynamicViewExtensions,
         );
         break;
@@ -63,8 +64,8 @@ mixin SignInMixin {
       case SignInGoogleAuthLoading:
         CodeNoahDialogs(context).showLoadingAlert(
           AppIcons.accountSignIn,
-          'Hesabınıza Giriş Yapılıyor',
-          'Lütfen Bekleyiniz...',
+          AppLocalizations.of(context)!.sign_loading_title,
+          AppLocalizations.of(context)!.sign_loading_subtitle,
           (state as SignInGoogleAuthLoading).dynamicViewExtensions,
         );
         break;

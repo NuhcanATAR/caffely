@@ -1,5 +1,6 @@
 import 'package:caffely/feature/password/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,22 +28,24 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
         await FirebaseService().authService.sendPasswordResetEmail(
               email: event.email,
             );
+        if (!event.context.mounted) return;
         emit(
-          const PasswordSuccessState(
-            'E-mail adresinize şifre yenileme maili gönderildi.',
+          PasswordSuccessState(
+            AppLocalizations.of(event.context)!.forgot_password_success,
           ),
         );
       } else {
+        if (!event.context.mounted) return;
         emit(
-          const PasswordErrorState(
-            'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.',
+          PasswordErrorState(
+            AppLocalizations.of(event.context)!.forgot_password_error,
           ),
         );
       }
     } catch (e) {
       emit(
-        const PasswordErrorState(
-          'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.',
+        PasswordErrorState(
+          AppLocalizations.of(event.context)!.forgot_password_email_error,
         ),
       );
     }

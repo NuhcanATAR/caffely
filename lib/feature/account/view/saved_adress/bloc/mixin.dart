@@ -16,7 +16,7 @@ mixin SavedAdressMixin {
   ) {
     switch (state.runtimeType) {
       case SaveAdressCreateSuccess:
-        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent());
+        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent(context));
         Navigator.pop(context);
         CodeNoahDialogs(context).showFlush(
           type: SnackType.success,
@@ -50,7 +50,7 @@ mixin SavedAdressMixin {
   ) {
     switch (state.runtimeType) {
       case SaveAdressUpdateSuccess:
-        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent());
+        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent(context));
         Navigator.pop(context);
         CodeNoahDialogs(context).showFlush(
           type: SnackType.success,
@@ -84,7 +84,7 @@ mixin SavedAdressMixin {
   ) {
     switch (state.runtimeType) {
       case SaveAdressDeleteSuccess:
-        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent());
+        context.read<SavedAdressBloc>().add(LoadSavedAdressEvent(context));
         Navigator.pop(context);
         CodeNoahDialogs(context).showFlush(
           type: SnackType.success,

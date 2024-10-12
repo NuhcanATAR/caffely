@@ -10,7 +10,7 @@ abstract class AccountQrCodeViewModel extends BaseState<AccountQrCodeView> {
   void initState() {
     super.initState();
     qrCodeCubit = QrCodeCubit();
-    qrCodeCubit.checkUserQrCode();
+    qrCodeCubit.checkUserQrCode(context);
   }
 
   @override

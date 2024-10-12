@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class StoresEvent extends Equatable {
   @override
@@ -37,10 +38,12 @@ class StoreFavoriteCreateEvent extends StoresEvent {
   final String storeId;
   final String favoriteId;
   final bool isFavoriteStatus;
+  final BuildContext context;
 
   StoreFavoriteCreateEvent(
     this.storeId,
     this.favoriteId,
     this.isFavoriteStatus,
+    this.context,
   );
 }

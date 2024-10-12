@@ -1,5 +1,6 @@
 import 'package:caffely/feature/account/view/personal_information/bloc/event.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,15 +25,19 @@ class PersonalInformationBloc
         'city': event.selectedCity,
         'district': event.selectedDistrict,
       });
+      if (!event.context.mounted) return;
       emit(
         PersonalInformationUpdateSuccess(
-          'Profil bilgileri başarıyla güncellendi!',
+          AppLocalizations.of(event.context)!
+              .account_personal_information_success,
         ),
       );
     } catch (e) {
+      if (!event.context.mounted) return;
       emit(
         PersonalInformationUpdateError(
-          'Profil bilgileri güncellenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+          AppLocalizations.of(event.context)!
+              .account_personal_information_error,
         ),
       );
     }

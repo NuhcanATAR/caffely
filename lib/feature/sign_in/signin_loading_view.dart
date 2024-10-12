@@ -1,6 +1,7 @@
 import 'package:caffely/feature/bottom_menu/bottommenu_view.dart';
 import 'package:caffely/feature/complete/complete_view.dart';
 import 'package:caffely/feature/sign_in/signin_loading_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -83,8 +84,8 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
                     padding: PaddingSizedsUtility.vertical(
                       PaddingSizedsUtility.normalPaddingValue,
                     ),
-                    child: const BodyMediumBlackBoldText(
-                      text: 'Lütfen Bekleyiniz...',
+                    child: BodyMediumBlackBoldText(
+                      text: AppLocalizations.of(context)!.sign_loading_subtitle,
                       textAlign: TextAlign.left,
                     ),
                   ),

@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:caffely/feature/account/view/personal_information/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,9 @@ mixin PersonalInformationMixin {
         );
       case PersonalInformationUpdateLoading:
         CodeNoahDialogs(context).showAlert(
-          const BodyMediumWhiteText(
-            text: 'Lütfen bekleyiniz...',
+          BodyMediumWhiteText(
+            text: AppLocalizations.of(context)!
+                .account_personal_information_loading,
             textAlign: TextAlign.center,
           ),
         );

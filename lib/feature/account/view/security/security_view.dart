@@ -1,5 +1,6 @@
 import 'package:caffely/feature/account/view/security/security_viewmodel.dart';
 import 'package:caffely/feature/password/password_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -33,8 +34,8 @@ class _SecurityViewState extends SecurityViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Güvenlik Ayarları',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_security_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -53,7 +54,8 @@ class _SecurityViewState extends SecurityViewModel {
                 );
               },
               dynamicViewExtensions: dynamicViewExtensions,
-              menuText: 'Şifremi Unuttum',
+              menuText: AppLocalizations.of(context)!
+                  .account_security_forgot_password_menu,
               menuIcon: AppIcons.securityOutline,
             ),
           ],

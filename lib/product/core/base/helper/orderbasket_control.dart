@@ -66,3 +66,19 @@ extension OrderBranchStatusExtension on OrderBranchStatusControl {
     }
   }
 }
+
+enum OrderPaymentType {
+  online,
+  payAtTheDoor,
+}
+
+extension OrderPaymentTypeControl on OrderPaymentType {
+  int get value {
+    switch (this) {
+      case OrderPaymentType.online:
+        return 1;
+      case OrderPaymentType.payAtTheDoor:
+        return 2;
+    }
+  }
+}

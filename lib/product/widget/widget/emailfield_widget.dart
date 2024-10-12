@@ -60,7 +60,7 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
                 ),
             controller: widget.emailController,
             validator: (String? value) =>
-                CustomValidator(value: value).emailCheck,
+                CustomValidator(value: value, context: context).emailCheck,
             onChanged: widget.onChanged,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(

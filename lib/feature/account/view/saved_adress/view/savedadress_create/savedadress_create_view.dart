@@ -2,6 +2,7 @@ import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
 import 'package:caffely/feature/account/view/saved_adress/view/savedadress_create/savedadress_create_viewmodel.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
@@ -38,8 +39,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
             IconSizedsUtility.normalSize,
           ),
         ),
-        title: const BodyMediumBlackText(
-          text: 'Adres Oluştur',
+        title: BodyMediumBlackText(
+          text: AppLocalizations.of(context)!.account_saveadress_create_appbar,
           textAlign: TextAlign.left,
         ),
       ),
@@ -74,7 +75,7 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
             // title
             NormalTextFieldWidget(
               controller: titleController,
-              hintText: 'Adres Başlığı',
+              hintText: AppLocalizations.of(context)!.account_saveadress_title,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -94,7 +95,7 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
             // street
             NormalTextFieldWidget(
               controller: streetController,
-              hintText: 'Mahalle/Sokak',
+              hintText: AppLocalizations.of(context)!.account_saveadress_street,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -116,7 +117,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                     ),
                     child: NumberTextFieldWidget(
                       controller: apartmentController,
-                      hintText: 'Bina Numarası',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_apartment,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
                               SavedAdressApartmentNoEvent(value),
@@ -134,7 +136,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                     ),
                     child: NumberTextFieldWidget(
                       controller: floorController,
-                      hintText: 'Kapı Numarası',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_floor,
                       onChanged: (String value) {
                         context
                             .read<SavedAdressBloc>()
@@ -150,7 +153,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
             // directions
             NormalTextFieldWidget(
               controller: directionController,
-              hintText: 'Adres Tarifi',
+              hintText:
+                  AppLocalizations.of(context)!.account_saveadress_directions,
               explanationStatus: false,
               onChanged: (String value) {
                 context
@@ -172,7 +176,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactNameController,
-                      hintText: 'Ad',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_contact_name,
                       explanationStatus: false,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
@@ -193,7 +198,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactSurnameController,
-                      hintText: 'Soyad',
+                      hintText: AppLocalizations.of(context)!
+                          .account_saveadress_contact_surname,
                       explanationStatus: false,
                       onChanged: (String value) {
                         context.read<SavedAdressBloc>().add(
@@ -214,7 +220,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
             // contact phone number
             NumberTextFieldWidget(
               controller: contactPhoneController,
-              hintText: 'Telefon Numarası',
+              hintText: AppLocalizations.of(context)!
+                  .account_saveadress_contact_phone_number,
               onChanged: (String value) {
                 context
                     .read<SavedAdressBloc>()
@@ -231,7 +238,7 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
   CustomButtonWidget buildFooterWidget(SavedAdressState state) =>
       CustomButtonWidget(
         dynamicViewExtensions: dynamicViewExtensions,
-        text: 'Adresi Kaydet',
+        text: AppLocalizations.of(context)!.account_saveadress_save_button,
         func: state.adressTitle.isEmpty ||
                 selectedCity == null ||
                 selectedDistrict == null ||
@@ -256,6 +263,7 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                           state.contactName,
                           state.contactSurname,
                           int.parse(state.contactPhoneNumber),
+                          context,
                         ),
                       );
                 }

@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:caffely/feature/password/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ mixin PasswordMixin {
       case PasswordLoadingState:
         CodeNoahDialogs(context).showLoadingAlert(
           AppIcons.accountPassword,
-          'Hesabınıza Giriş Yapılıyor',
-          'Lütfen Bekleyiniz...',
+          AppLocalizations.of(context)!.forgot_password_loading_title,
+          AppLocalizations.of(context)!.forgot_password_loading_subtitle,
           (state as PasswordLoadingState).dynamicViewExtensions,
         );
         break;

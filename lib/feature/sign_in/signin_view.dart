@@ -4,6 +4,7 @@ import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
 import 'package:caffely/feature/sign_in/signin_viewmodel.dart';
 import 'package:caffely/feature/sign_up/signup_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -70,8 +71,9 @@ class _SignInViewState extends SignInViewModel {
                                   padding: PaddingSizedsUtility.bottom(
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  child: const TitleLargeBlackBoldText(
-                                    text: 'Giriş Yap 👩‍💻',
+                                  child: TitleLargeBlackBoldText(
+                                    text: AppLocalizations.of(context)!
+                                        .sign_email_title,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -83,9 +85,9 @@ class _SignInViewState extends SignInViewModel {
                                   padding: PaddingSizedsUtility.bottom(
                                     PaddingSizedsUtility.normalPaddingValue,
                                   ),
-                                  child: const BodyMediumBlackText(
-                                    text:
-                                        "Hesap bilgilerinizi girin ve Caffely'e giriş yapın",
+                                  child: BodyMediumBlackText(
+                                    text: AppLocalizations.of(context)!
+                                        .sign_email_subtitle,
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
@@ -96,7 +98,7 @@ class _SignInViewState extends SignInViewModel {
                         // email
                         CustomEmailFieldWidget(
                           emailController: emailController,
-                          hintText: 'E-mail',
+                          hintText: AppLocalizations.of(context)!.sign_email,
                           onChanged: (String value) {
                             context
                                 .read<SignInBloc>()
@@ -107,7 +109,7 @@ class _SignInViewState extends SignInViewModel {
                         // password
                         CustomPasswordFieldWidget(
                           passwordController: passwordController,
-                          hintText: 'Şifre',
+                          hintText: AppLocalizations.of(context)!.sign_password,
                           onChanged: (String value) {
                             context
                                 .read<SignInBloc>()
@@ -142,8 +144,9 @@ class _SignInViewState extends SignInViewModel {
                                           PaddingSizedsUtility
                                               .smallPaddingValue,
                                         ),
-                                        child: const BodyMediumBlackText(
-                                          text: 'Beni Hatırla',
+                                        child: BodyMediumBlackText(
+                                          text: AppLocalizations.of(context)!
+                                              .sign_remember_me,
                                           textAlign: TextAlign.left,
                                         ),
                                       ),
@@ -163,8 +166,9 @@ class _SignInViewState extends SignInViewModel {
                                       direction: SlideDirection.rightToLeft,
                                     );
                                   },
-                                  child: const BodyMediumMainColorBoldText(
-                                    text: 'Şifremi Unuttum',
+                                  child: BodyMediumMainColorBoldText(
+                                    text: AppLocalizations.of(context)!
+                                        .sign_forgot_password,
                                     textAlign: TextAlign.right,
                                   ),
                                 ),
@@ -189,8 +193,9 @@ class _SignInViewState extends SignInViewModel {
                                   padding: PaddingSizedsUtility.horizontal(
                                     PaddingSizedsUtility.smallPaddingValue,
                                   ),
-                                  child: const BodyMediumBlackText(
-                                    text: 'Henüz hesabınız yokmu?',
+                                  child: BodyMediumBlackText(
+                                    text: AppLocalizations.of(context)!
+                                        .sign_signup_title,
                                     textAlign: TextAlign.right,
                                   ),
                                 ),
@@ -210,8 +215,9 @@ class _SignInViewState extends SignInViewModel {
                                     padding: PaddingSizedsUtility.horizontal(
                                       PaddingSizedsUtility.smallPaddingValue,
                                     ),
-                                    child: const BodyMediumMainColorText(
-                                      text: 'Hesap Oluştur',
+                                    child: BodyMediumMainColorText(
+                                      text: AppLocalizations.of(context)!
+                                          .sign_signup,
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -227,7 +233,7 @@ class _SignInViewState extends SignInViewModel {
                   // sign in
                   CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
-                    text: 'Giriş Yap',
+                    text: AppLocalizations.of(context)!.sign_sign_btn,
                     func: blocState.email.isEmpty || blocState.password.isEmpty
                         ? () {}
                         : () {
@@ -237,6 +243,7 @@ class _SignInViewState extends SignInViewModel {
                                       blocState.email,
                                       blocState.password,
                                       dynamicViewExtensions,
+                                      context,
                                     ),
                                   );
                               emailController.clear();

@@ -2,6 +2,7 @@
 
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -130,18 +131,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             .doc(event.favoriteId)
             .delete();
       }
-
+      if (!event.context.mounted) return;
       emit(
         ProductFavoriteAddSuccess(
           event.isFavoriteStatus
-              ? 'Şube Favorilere eklendi!'
-              : 'Şube Favorilerden kaldırıldı!',
+              ? AppLocalizations.of(event.context)!
+                  .products_store_favorite_add_success
+              : AppLocalizations.of(event.context)!
+                  .products_store_favorite_delete_success,
         ),
       );
     } catch (e) {
       emit(
-        const ProductFavoriteAddError(
-          'Hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+        ProductFavoriteAddError(
+          AppLocalizations.of(event.context)!.products_favorite_error,
         ),
       );
     }
@@ -217,6 +220,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               basketDoc,
               event.totalPrice,
               event.productModel,
+              event.productModel.storeId,
             );
             final branchQuery = await basketDoc
                 .collection(FirebaseCollectionReferances.branch.name)
@@ -262,15 +266,16 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           event.productModel,
         );
       }
+      if (!event.context.mounted) return;
       emit(
-        const ProductBasketAddSuccessState(
-          'Ürün sepete eklendi!',
+        ProductBasketAddSuccessState(
+          AppLocalizations.of(event.context)!.products_basket_add_success,
         ),
       );
     } catch (e) {
       emit(
-        const ProductBasketAddError(
-          'Ürün Sepete eklenirken bir sorun oluştu.',
+        ProductBasketAddError(
+          AppLocalizations.of(event.context)!.products_basket_add_error,
         ),
       );
     }
@@ -292,7 +297,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       'status': OrderBranchStatusControl.orderReceived.value,
     });
 
-    await addNewProductToBasket(state, basketDoc, totalPrice, productModel);
+    await addNewProductToBasket(
+      state,
+      basketDoc,
+      totalPrice,
+      productModel,
+      productModel.storeId,
+    );
   }
 
   Future<void> addNewProductToBasket(
@@ -300,6 +311,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     DocumentReference basketDoc,
     int totalPrice,
     ProductModel productModel,
+    String storeId,
   ) async {
     await basketDoc
         .collection(FirebaseCollectionReferances.branch.name)
@@ -313,6 +325,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       'status': OrderProductStatusControl.orderInProgress.value,
       'product_id': productModel.id,
       'product_total': totalPrice,
+      'branch_id': storeId,
     }).then((value) {
       final docId = value.id;
       value.update({'id': docId});

@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:caffely/feature/onboarding/onboarding_viewmodel.dart';
 import 'package:caffely/feature/sign/sign_view.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/onboarding_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
-import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -90,8 +90,10 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                           dynamicViewExtensions: dynamicViewExtensions,
                           text: selectProccessIndex >=
                                   StepProccess.secondView.value
-                              ? 'Geri'
-                              : 'Geç',
+                              ? AppLocalizations.of(context)!
+                                  .onboarding_previous_btn
+                              : AppLocalizations.of(context)!
+                                  .onboarding_late_btn,
                           func: () {
                             if (selectProccessIndex ==
                                 StepProccess.oneView.value) {
@@ -132,8 +134,10 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                           dynamicViewExtensions: dynamicViewExtensions,
                           text: selectProccessIndex ==
                                   StepProccess.threeView.value
-                              ? 'Başla'
-                              : 'Devam et',
+                              ? AppLocalizations.of(context)!
+                                  .onboarding_start_btn
+                              : AppLocalizations.of(context)!
+                                  .onboarding_continue,
                           func: () {
                             if (selectProccessIndex ==
                                 StepProccess.oneView.value) {
@@ -178,12 +182,7 @@ class _OnBoardingViewState extends OnBoardingViewModel {
         child: onBoardingImage[selectProccessIndex],
       );
     } else {
-      return const Center(
-        child: BodyMediumBlackText(
-          text: 'Seçim Yok',
-          textAlign: TextAlign.center,
-        ),
-      );
+      return const SizedBox();
     }
   }
 
@@ -201,12 +200,7 @@ class _OnBoardingViewState extends OnBoardingViewModel {
         ),
       );
     } else {
-      return const Center(
-        child: BodyMediumBlackText(
-          text: 'Seçim Yok',
-          textAlign: TextAlign.center,
-        ),
-      );
+      return const SizedBox();
     }
   }
 

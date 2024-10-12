@@ -1,9 +1,10 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member, deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously, invalid_use_of_visible_for_testing_member
 
 import 'dart:io';
 
 import 'package:caffely/feature/account/view/accountqr_code/bloc/event.dart';
 import 'package:caffely/feature/account/view/accountqr_code/bloc/state.dart';
+import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/qrcode_model/qrcode_model.dart';
@@ -21,7 +22,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
     on<QrCodeCreateEvent>(qrCodeCreate);
   }
 
-  Future<void> checkUserQrCode() async {
+  Future<void> checkUserQrCode(BuildContext context) async {
     try {
       emit(QrCodeLoadingState());
       final DocumentSnapshot documentUser = await FirebaseCollectionReferances
@@ -45,26 +46,29 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
           final qrCodeUrl = qrCodeModel.qrCode;
           emit(QrCodeExistState(qrCodeUrl));
         } else {
+          if (!context.mounted) return;
           emit(
             QrCodeNotExistState(
-              'Caffely QR Kod ile indirimli kahve alın!',
-              'Hesabınıza tanımlı bir qr kod oluşturun ve Caffely şubelerinden alacağınız kahvelerde indirim kazanma şansı yakalyın.',
+              AppLocalizations.of(context)!.account_qrcode_not_exist_title,
+              AppLocalizations.of(context)!.account_qrcode_not_exist_subtitle,
             ),
           );
         }
       } else {
+        if (!context.mounted) return;
         emit(
           QrCodeNotExistState(
-            'Caffely QR Kod ile indirimli kahve alın!',
-            'Hesabınıza tanımlı bir qr kod oluşturun ve Caffely şubelerinden alacağınız kahvelerde indirim kazanma şansı yakalyın.',
+            AppLocalizations.of(context)!.account_qrcode_not_exist_subtitle,
+            AppLocalizations.of(context)!.account_qrcode_not_exist_subtitle,
           ),
         );
       }
     } catch (e) {
+      if (!context.mounted) return;
       emit(
         QrCodeErrorState(
-          'Caffely QR Kod, Hata Oluştu',
-          'Caffely QR Kod oluşturma/gösterme esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+          AppLocalizations.of(context)!.account_qrcode_error_subtitle,
+          AppLocalizations.of(context)!.account_qrcode_error_subtitle_second,
         ),
       );
       Logger().e(e);
@@ -80,9 +84,10 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       final String authId = FirebaseService().authID!;
 
-      final qrImgFile = await generateQrCode(authId);
+      final qrImgFile = await generateQrCode(authId, event.context);
 
-      final qrCodeUrl = await uploadQrCodeToStorage(qrImgFile, authId);
+      final qrCodeUrl =
+          await uploadQrCodeToStorage(qrImgFile, authId, event.context);
 
       await FirebaseCollectionReferances.qr_code.collectRef.doc(authId).set({
         'id': authId,
@@ -95,16 +100,18 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       emit(QrCodeExistState(qrCodeUrl));
     } catch (e) {
+      if (!event.context.mounted) return;
       emit(
         QrCodeErrorState(
-          'QR Kod Oluşturma Hatası ',
-          'QR Kod oluşturma esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.',
+          AppLocalizations.of(event.context)!.account_qrcode_error_subtitle,
+          AppLocalizations.of(event.context)!
+              .account_qrcode_error_subtitle_second,
         ),
       );
     }
   }
 
-  Future<File> generateQrCode(String data) async {
+  Future<File> generateQrCode(String data, BuildContext context) async {
     final qrValidationResult = QrValidator.validate(
       data: data,
       version: QrVersions.auto,
@@ -129,11 +136,17 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       return file;
     } else {
-      throw Exception('Geçersiz QR kod verisi.');
+      throw Exception(
+        AppLocalizations.of(context)!.account_qrcode_error_subtitle,
+      );
     }
   }
 
-  Future<String> uploadQrCodeToStorage(File qrImgFile, String authId) async {
+  Future<String> uploadQrCodeToStorage(
+    File qrImgFile,
+    String authId,
+    BuildContext context,
+  ) async {
     try {
       final storageReference = FirebaseStorage.instance.ref().child(
             'qr_codes/$authId.png',
@@ -144,7 +157,9 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       return await snapshot.ref.getDownloadURL();
     } catch (e) {
-      throw Exception('QR kod Firebase Storage\'a yüklenemedi.');
+      throw Exception(
+        AppLocalizations.of(context)!.account_qrcode_error_subtitle,
+      );
     }
   }
 }
