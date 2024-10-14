@@ -22,25 +22,29 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboarding_title_one => 'Caffely\'e Hoşgeldiniz';
 
   @override
-  String get onboarding_subtitle_one => 'Caffely ile kahvenizi hzlı bir şekilde sipariş verin.';
+  String get onboarding_subtitle_one =>
+      'Caffely ile kahvenizi hzlı bir şekilde sipariş verin.';
 
   @override
   String get onboarding_title_second => 'Caffely Kullanmaya Başlayın';
 
   @override
-  String get onboarding_subtitle_second => 'Size en uygun kahveyi istediğiniz şubeden hemen sipariş verin.';
+  String get onboarding_subtitle_second =>
+      'Size en uygun kahveyi istediğiniz şubeden hemen sipariş verin.';
 
   @override
   String get onboarding_title_three => 'Kahve Siparişi Artık Daha Kolay';
 
   @override
-  String get onboarding_subtitle_three => 'Caffely ile kahve siparişi vermek için hemen giriş yapın.';
+  String get onboarding_subtitle_three =>
+      'Caffely ile kahve siparişi vermek için hemen giriş yapın.';
 
   @override
   String get version_title => 'Yeni Versiyon Çıktı!';
 
   @override
-  String get version_subtitle => 'Caffely Uygulamasanın yeni versiyonu yayınlandı hemen uygulama mağazanızdan güncelleyebilirsiniz.';
+  String get version_subtitle =>
+      'Caffely Uygulamasanın yeni versiyonu yayınlandı hemen uygulama mağazanızdan güncelleyebilirsiniz.';
 
   @override
   String get version_btn => 'Mağazaya Git';
@@ -64,7 +68,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sign_email_title => 'Giriş Yap👩‍💻';
 
   @override
-  String get sign_email_subtitle => 'Hesap bilgilerinizi girin ve Caffely\'e giriş yapın';
+  String get sign_email_subtitle =>
+      'Hesap bilgilerinizi girin ve Caffely\'e giriş yapın';
 
   @override
   String get sign_email => 'E-mail';
@@ -97,13 +102,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sign_wrong_password => 'E-mail veya şifre hatalı';
 
   @override
-  String get sign_too_many_request => 'Çok fazla hatalı giriş yaptınız, o yüzden hesabınız engellendi. Bir süre sonra tekrar deneyiniz.';
+  String get sign_too_many_request =>
+      'Çok fazla hatalı giriş yaptınız, o yüzden hesabınız engellendi. Bir süre sonra tekrar deneyiniz.';
 
   @override
   String get sign_user_disabled => 'Bu hesap engellenmiştir';
 
   @override
-  String get sign_auth_exception_error => 'Hatalı bilgiler, lütfen bilgilerinizi kontrol ediniz.';
+  String get sign_auth_exception_error =>
+      'Hatalı bilgiler, lütfen bilgilerinizi kontrol ediniz.';
 
   @override
   String get sign_catch_error => 'Beklenmedik bir hata oluştu';
@@ -112,7 +119,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sign_google_success => 'Google Hesabınıza giriş yapılıyor.';
 
   @override
-  String get sign_google_error => 'Giriş yaparken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get sign_google_error =>
+      'Giriş yaparken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get sign_loading_title => 'Hesabınıza Giriş Yapılıyor';
@@ -169,7 +177,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sign_complete_title => 'Caffely Hesap Bilgilerini Tamamla👤';
 
   @override
-  String get sign_complete_subtitle => 'Başlamak için hesap bilgilerini tamamlamalısın.';
+  String get sign_complete_subtitle =>
+      'Başlamak için hesap bilgilerini tamamlamalısın.';
 
   @override
   String get sign_complete_name_surname => 'Ad Soyad';
@@ -187,13 +196,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sign_complete_success_title => 'Herşey Tamamlandı!';
 
   @override
-  String get sign_complete_success_subtitle => 'Caffely Hesap bilgileriniz tamamlandığına göre hesabınıza giriş yapabilirsiniz.';
+  String get sign_complete_success_subtitle =>
+      'Caffely Hesap bilgileriniz tamamlandığına göre hesabınıza giriş yapabilirsiniz.';
 
   @override
   String get sign_complete_start_btn => 'Başla';
 
   @override
-  String get sign_complete_error => 'Profil Tamamlama sırasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get sign_complete_error =>
+      'Profil Tamamlama sırasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get sign_complete_loading_title => 'Hesabınıza Giriş Yapılıyor';
@@ -253,7 +264,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_aboutapp_title => 'Caffely Uygulaması Hakkında';
 
   @override
-  String get account_aboutapp_subtitle => 'Caffely projesi, Nuhcan ATAR tarafından geliştirildi ve benim için bir öğrenme, keşfetme ve mobil uygulama geliştirme alanında kendimi daha da geliştirme fırsatı oldu. Bu projeyi geliştirirken, kısıtlı zamanımı en verimli şekilde kullanarak uygulamaya odaklandım. Caffely, tamamen ticari bir çıkar gözetmeden, kişisel gelişimimi ve toplulukla bilgi paylaşımını hedefleyen bir proje olarak ortaya çıktı. Proje sürecinde öğrendiklerimi hayata geçirmenin yanı sıra, mobil uygulama geliştirme topluluğuyla bilgi paylaşımının gücüne inanarak, projeyi GitHub üzerinde açık kaynak olarak paylaşıma sundum.\nGitHub üzerindeki Nuhcan ATAR hesabımda bulabileceğiniz bu projeye, mobil uygulama geliştirme dünyasına katkı sağlamak isteyen herkes ulaşabilir. Eğer siz de bir mobil geliştiriciyseniz, projenin açık kaynak kodlarını inceleyebilir, katkıda bulunabilir veya öneri ve görüşlerinizi paylaşabilirsiniz. Bu geri bildirimler hem proje hem de kişisel gelişimim açısından çok değerli. Amacım, ne kadar çok insanın mobil geliştirme dünyasında fayda sağlayabileceği projeler üretip, bu alana katkıda bulunabilirsem, o kadar anlamlı bir sonuç elde etmek.\nSonuç olarak, Caffely sadece bir uygulama değil; aynı zamanda mobil geliştiriciler için bir bilgi paylaşım aracı, kişisel gelişim için bir fırsat ve yaratıcı projeler geliştirme sürecimin bir yansımasıdır. Herkesin katkısına açık olan bu projeyi GitHub üzerinden inceleyebilir, dilediğiniz gibi geliştirebilir ve mobil uygulama geliştirme alanındaki bilgi birikimimizi genişletme yolculuğumda bana katılabilirsiniz!\n';
+  String get account_aboutapp_subtitle =>
+      'Caffely projesi, Nuhcan ATAR tarafından geliştirildi ve benim için bir öğrenme, keşfetme ve mobil uygulama geliştirme alanında kendimi daha da geliştirme fırsatı oldu. Bu projeyi geliştirirken, kısıtlı zamanımı en verimli şekilde kullanarak uygulamaya odaklandım. Caffely, tamamen ticari bir çıkar gözetmeden, kişisel gelişimimi ve toplulukla bilgi paylaşımını hedefleyen bir proje olarak ortaya çıktı. Proje sürecinde öğrendiklerimi hayata geçirmenin yanı sıra, mobil uygulama geliştirme topluluğuyla bilgi paylaşımının gücüne inanarak, projeyi GitHub üzerinde açık kaynak olarak paylaşıma sundum.\nGitHub üzerindeki Nuhcan ATAR hesabımda bulabileceğiniz bu projeye, mobil uygulama geliştirme dünyasına katkı sağlamak isteyen herkes ulaşabilir. Eğer siz de bir mobil geliştiriciyseniz, projenin açık kaynak kodlarını inceleyebilir, katkıda bulunabilir veya öneri ve görüşlerinizi paylaşabilirsiniz. Bu geri bildirimler hem proje hem de kişisel gelişimim açısından çok değerli. Amacım, ne kadar çok insanın mobil geliştirme dünyasında fayda sağlayabileceği projeler üretip, bu alana katkıda bulunabilirsem, o kadar anlamlı bir sonuç elde etmek.\nSonuç olarak, Caffely sadece bir uygulama değil; aynı zamanda mobil geliştiriciler için bir bilgi paylaşım aracı, kişisel gelişim için bir fırsat ve yaratıcı projeler geliştirme sürecimin bir yansımasıdır. Herkesin katkısına açık olan bu projeyi GitHub üzerinden inceleyebilir, dilediğiniz gibi geliştirebilir ve mobil uygulama geliştirme alanındaki bilgi birikimimizi genişletme yolculuğumda bana katılabilirsiniz!\n';
 
   @override
   String get account_qrcode_appbar => 'Caffely Profil QR Kod';
@@ -268,37 +280,46 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_qrcode_create_loading_title => 'Qr Kod Oluşturuluyor';
 
   @override
-  String get account_qrcode_create_loading_subtitle => 'Bu biraz zaman alabilir, lütfen bekleyiniz.';
+  String get account_qrcode_create_loading_subtitle =>
+      'Bu biraz zaman alabilir, lütfen bekleyiniz.';
 
   @override
-  String get account_qrcode_not_exist_title => 'Caffely QR Kod ile indirimli kahve alın!';
+  String get account_qrcode_not_exist_title =>
+      'Caffely QR Kod ile indirimli kahve alın!';
 
   @override
-  String get account_qrcode_not_exist_subtitle => 'Hesabınıza tanımlı bir qr kod oluşturun ve Caffely şubelerinden alacağınız kahvelerde indirim kazanma şansı yakalyın.';
+  String get account_qrcode_not_exist_subtitle =>
+      'Hesabınıza tanımlı bir qr kod oluşturun ve Caffely şubelerinden alacağınız kahvelerde indirim kazanma şansı yakalyın.';
 
   @override
   String get account_qrcode_error_title => 'Caffely QR Kod, Hata Oluştu';
 
   @override
-  String get account_qrcode_error_subtitle => 'Caffely QR Kod oluşturma/gösterme esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get account_qrcode_error_subtitle =>
+      'Caffely QR Kod oluşturma/gösterme esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
-  String get account_qrcode_error_subtitle_second => 'QR Kod oluşturma esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get account_qrcode_error_subtitle_second =>
+      'QR Kod oluşturma esnasında bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
-  String get account_campaign_discaount_title => 'Henüz kampanya ve indirim bulunmuyor.';
+  String get account_campaign_discaount_title =>
+      'Henüz kampanya ve indirim bulunmuyor.';
 
   @override
-  String get account_campaign_discaount_subtitle => 'Kampanya ve indirimler henüz gelmedi çok yakında buradan paylaşım yapılacak.';
+  String get account_campaign_discaount_subtitle =>
+      'Kampanya ve indirimler henüz gelmedi çok yakında buradan paylaşım yapılacak.';
 
   @override
   String get account_centerhelp_appbar => 'Yardım Merkez';
 
   @override
-  String get account_centerhelp_empty_title => 'Yardım Merkezinde Henüz Birşey yok';
+  String get account_centerhelp_empty_title =>
+      'Yardım Merkezinde Henüz Birşey yok';
 
   @override
-  String get account_centerhelp_empty_subtitle => 'Görünüşe göre yardım merkezinde henüz yeni birşey yok, daha sonra tekrar kontrol edebilirsiniz.';
+  String get account_centerhelp_empty_subtitle =>
+      'Görünüşe göre yardım merkezinde henüz yeni birşey yok, daha sonra tekrar kontrol edebilirsiniz.';
 
   @override
   String get account_centerhelp_footer_btn => 'Caffely WhatsApp iletişim';
@@ -313,7 +334,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_notification_title => 'Bildirim İzni';
 
   @override
-  String get account_notification_subtitle => 'Uygulamanın sizlere sipariş durumu hakkında veya iletişim için sizden istediği izin.';
+  String get account_notification_subtitle =>
+      'Uygulamanın sizlere sipariş durumu hakkında veya iletişim için sizden istediği izin.';
 
   @override
   String get account_personal_information_appbar => 'Kişisel Bilgiler';
@@ -328,13 +350,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_personal_information_footer_btn => 'Profili Güncelle';
 
   @override
-  String get account_personal_information_city_error => 'Lütfen şehir ve ilçe seçimi yapınız.';
+  String get account_personal_information_city_error =>
+      'Lütfen şehir ve ilçe seçimi yapınız.';
 
   @override
-  String get account_personal_information_success => 'Profil bilgileri başarıyla güncellendi!';
+  String get account_personal_information_success =>
+      'Profil bilgileri başarıyla güncellendi!';
 
   @override
-  String get account_personal_information_error => 'Profil bilgileri güncellenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get account_personal_information_error =>
+      'Profil bilgileri güncellenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get account_personal_information_loading => 'Lütfen Bekleyiniz...';
@@ -346,7 +371,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_saveadress_empty_title => 'Kayıtlı Adres Bulunmuyor.';
 
   @override
-  String get account_saveadress_empty_subtitle => 'Henüz yeni bir kayıtlı adresiniz bulunmuyor, hemen yeni bi adres oluşturaiblirsiniz.';
+  String get account_saveadress_empty_subtitle =>
+      'Henüz yeni bir kayıtlı adresiniz bulunmuyor, hemen yeni bi adres oluşturaiblirsiniz.';
 
   @override
   String get account_saveadress_create_appbar => 'Adres Oluştur';
@@ -385,28 +411,33 @@ class AppLocalizationsTr extends AppLocalizations {
   String get account_saveadress_edit_btn => 'Adresi Güncelle';
 
   @override
-  String get account_saveadress_city_error => 'Lütfen şehir ve ilçe seçimi yapınız.';
+  String get account_saveadress_city_error =>
+      'Lütfen şehir ve ilçe seçimi yapınız.';
 
   @override
-  String get account_saveadress_load_error => 'Adres Kayıt yapılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz';
+  String get account_saveadress_load_error =>
+      'Adres Kayıt yapılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz';
 
   @override
   String get account_saveadress_create_succcess => 'Adres başarıyla kaydedildi';
 
   @override
-  String get account_saveadress_create_error => 'Adres kaydedilirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz';
+  String get account_saveadress_create_error =>
+      'Adres kaydedilirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz';
 
   @override
   String get account_saveadress_delete_success => 'Adres başarıyla silindi';
 
   @override
-  String get account_saveadress_delete_error => 'Adres kaldırılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get account_saveadress_delete_error =>
+      'Adres kaldırılırken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get account_saveadress_edit_success => 'Adres başarıyla güncellendi';
 
   @override
-  String get account_saveadress_edit_error => 'Adres güncellenirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz';
+  String get account_saveadress_edit_error =>
+      'Adres güncellenirken bir sorun oluştu lütfen daha sonra tekrar deneyiniz';
 
   @override
   String get account_security_appbar => 'Güvenlik Ayarları';
@@ -436,10 +467,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get home_popular_products_list_next => 'Daha fazla';
 
   @override
-  String get forgot_password_title => 'Şifrenimizimi Unuttunuz? 🔑';
+  String get forgot_password_title => 'Şifrenizimi Unuttunuz? 🔑';
 
   @override
-  String get forgot_password_subtitle => 'Hesabınıza kayıtlı email adresini girin ve şifrenizi hızlıca yenileyin.';
+  String get forgot_password_subtitle =>
+      'Hesabınıza kayıtlı email adresini girin ve şifrenizi hızlıca yenileyin.';
 
   @override
   String get forgot_password_email => 'E-mail';
@@ -448,13 +480,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get forgot_password_correct_btn => 'DOĞRULA';
 
   @override
-  String get forgot_password_success => 'E-mail adresinize şifre yenileme maili gönderildi.';
+  String get forgot_password_success =>
+      'E-mail adresinize şifre yenileme maili gönderildi.';
 
   @override
-  String get forgot_password_error => 'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.';
+  String get forgot_password_error =>
+      'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.';
 
   @override
-  String get forgot_password_email_error => 'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.';
+  String get forgot_password_email_error =>
+      'E-mail adresi bulunamadı, lütfen e-mail adresinizi kontrol ediniz.';
 
   @override
   String get forgot_password_loading_title => 'Hesabınıza Giriş Yapılıyor';
@@ -478,7 +513,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get products_empty_title => 'Ürün Bulunamadı';
 
   @override
-  String get products_empty_subtitle => 'Ürün bulunamadı, isterseniz diğer ürünlere göz gezdirebilirsiniz.';
+  String get products_empty_subtitle =>
+      'Ürün bulunamadı, isterseniz diğer ürünlere göz gezdirebilirsiniz.';
 
   @override
   String get products_avaible => 'Kahve Sıcaklığı';
@@ -508,22 +544,26 @@ class AppLocalizationsTr extends AppLocalizations {
   String get products_basket_add_btn => 'Sepete Ekle';
 
   @override
-  String get products_basket_add_select_error => 'Lütfen kahve seçiminizi yapınız';
+  String get products_basket_add_select_error =>
+      'Lütfen kahve seçiminizi yapınız';
 
   @override
   String get products_store_favorite_add_success => 'Şube Favorilere eklendi!';
 
   @override
-  String get products_store_favorite_delete_success => 'Şube Favorilerden kaldırıldı!';
+  String get products_store_favorite_delete_success =>
+      'Şube Favorilerden kaldırıldı!';
 
   @override
-  String get products_favorite_error => 'Hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get products_favorite_error =>
+      'Hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get products_basket_add_success => 'Ürün sepete eklendi!';
 
   @override
-  String get products_basket_add_error => 'Ürün Sepete eklenirken bir sorun oluştu.';
+  String get products_basket_add_error =>
+      'Ürün Sepete eklenirken bir sorun oluştu.';
 
   @override
   String get favorite_appbar => 'Favoriler';
@@ -544,13 +584,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get favorite_stores_empty_title => 'Şube Bulunamadı';
 
   @override
-  String get favorite_stores_empty_subtitle => 'Henüz favori şubeniz bulunmuyor isterseniz favori şubenizi eklemeye başlayabilirsiniz.';
+  String get favorite_stores_empty_subtitle =>
+      'Henüz favori şubeniz bulunmuyor isterseniz favori şubenizi eklemeye başlayabilirsiniz.';
 
   @override
   String get favorite_products_empty_title => 'Ürün Bulunamadı';
 
   @override
-  String get favorite_products_empty_subtitle => 'Henüz favori ürününüz bulunmuyor isterseniz favori ürün oluşturmaya başlayabilirsiniz.';
+  String get favorite_products_empty_subtitle =>
+      'Henüz favori ürününüz bulunmuyor isterseniz favori ürün oluşturmaya başlayabilirsiniz.';
 
   @override
   String get stores_appbar => 'Şubeler';
@@ -568,7 +610,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stores_empty_title => 'Caffely Şubesi Bulunamadı';
 
   @override
-  String get stores_empty_subtitle => 'Caffely Şubesi bulunamadı, isterseniz başka bir şube arayabilirsiniz.';
+  String get stores_empty_subtitle =>
+      'Caffely Şubesi bulunamadı, isterseniz başka bir şube arayabilirsiniz.';
 
   @override
   String get stores_detail_location_not_found => 'Url Adresi Bulunamadı';
@@ -592,7 +635,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stores_information_delivery_type => 'Teslimat Ücreti';
 
   @override
-  String get stores_information_delivery_type_explanation => 'Teslimat ücreti, mesafeye ve günün hangi saati olduğuna göre belirlenir.';
+  String get stores_information_delivery_type_explanation =>
+      'Teslimat ücreti, mesafeye ve günün hangi saati olduğuna göre belirlenir.';
 
   @override
   String get stores_information_min_basket_value => 'Min. Sepet Tutarı';
@@ -601,7 +645,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stores_information_min_basket_explanation => 'Bu şube';
 
   @override
-  String get stores_information_min_basket_explanation_second => 'TL\'den daha düşük tutarlı siparişleri kabul etmemektedir.';
+  String get stores_information_min_basket_explanation_second =>
+      'TL\'den daha düşük tutarlı siparişleri kabul etmemektedir.';
 
   @override
   String get stores_information_location_btn => 'Yol Tarifi Al';
@@ -616,16 +661,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stores_information_call_error => 'Telefon Numarası bulunamadı!';
 
   @override
-  String get stores_information_favorite_add_success => 'Şube Favorilere eklendi!';
+  String get stores_information_favorite_add_success =>
+      'Şube Favorilere eklendi!';
 
   @override
-  String get stores_information_favorite_delete_success => 'Şube Favorilerden kaldırıldı!';
+  String get stores_information_favorite_delete_success =>
+      'Şube Favorilerden kaldırıldı!';
 
   @override
-  String get stores_information_favorite_add_error => 'An error occurred, please try again later.';
+  String get stores_information_favorite_add_error =>
+      'An error occurred, please try again later.';
 
   @override
-  String get stores_information_favorite_loading_title => 'Lütfen Bekleyiniz...';
+  String get stores_information_favorite_loading_title =>
+      'Lütfen Bekleyiniz...';
 
   @override
   String get notification_appbar => 'Bildirimler';
@@ -637,7 +686,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get basket_product_empty_title => 'Sepetde Henüz Ürün Bulunmuyor';
 
   @override
-  String get basket_product_empty_subtitle => 'Sepetinizde henüz ürün bulunmuyor, isterseniz sepetinze ürün ekemeye başlayabilirsiniz.';
+  String get basket_product_empty_subtitle =>
+      'Sepetinizde henüz ürün bulunmuyor, isterseniz sepetinze ürün ekemeye başlayabilirsiniz.';
 
   @override
   String get basket_product_error => 'Hatalı';
@@ -667,13 +717,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get basket_order_complete_create_btn => 'Siparişi Oluştur';
 
   @override
-  String get basket_order_complete_control_branches_empty => 'Sepetde Henüz Şube bulunmuyor!';
+  String get basket_order_complete_control_branches_empty =>
+      'Sepetde Henüz Şube bulunmuyor!';
 
   @override
-  String get basket_order_complete_products_empty => 'Sepetde Henüz ürün bulunmuyor!';
+  String get basket_order_complete_products_empty =>
+      'Sepetde Henüz ürün bulunmuyor!';
 
   @override
-  String get basket_order_complete_erorr_btn => 'Sipariş bilgilerinizi işaretleyiniz!';
+  String get basket_order_complete_erorr_btn =>
+      'Sipariş bilgilerinizi işaretleyiniz!';
 
   @override
   String get basket_success_appbar => 'Siparişiniz Alındı';
@@ -682,7 +735,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get basket_success_title => 'Siparişiniz için Teşekkür Ederiz';
 
   @override
-  String get basket_success_subtitle => 'Siparişiniz size ulaştırılmak üzere hazırlanıyor profilinizde siparişler bölümünden siparişinizi takip edebilirsiniz.';
+  String get basket_success_subtitle =>
+      'Siparişiniz size ulaştırılmak üzere hazırlanıyor profilinizde siparişler bölümünden siparişinizi takip edebilirsiniz.';
 
   @override
   String get basket_success_btn => 'Devam Et';
@@ -691,10 +745,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get basket_quanity_erorr => 'Adet değeri minimum 1 olmalı';
 
   @override
-  String get basket_order_complete_success => 'Siparişiniz başarıyla oluşturuldu.';
+  String get basket_order_complete_success =>
+      'Siparişiniz başarıyla oluşturuldu.';
 
   @override
-  String get basket_order_complete_error => 'Sipariş Oluşturulurken bir hata oluştu';
+  String get basket_order_complete_error =>
+      'Sipariş Oluşturulurken bir hata oluştu';
 
   @override
   String get basket_loading_title => 'Lütfen Bekleyiniz...';
@@ -706,13 +762,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get order_error_title => 'Siparişler Bulunamadı';
 
   @override
-  String get order_error_subtitle => 'Siparişler yüklenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get order_error_subtitle =>
+      'Siparişler yüklenirken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get order_empty_title => 'Siparişiniz Bulunmuyor';
 
   @override
-  String get order_empty_subtitle => 'Henüz yeni bir sipariş oluşturmadınız, isterseniz yeni sipariş oluşturmaya başlayabilirsiniz.';
+  String get order_empty_subtitle =>
+      'Henüz yeni bir sipariş oluşturmadınız, isterseniz yeni sipariş oluşturmaya başlayabilirsiniz.';
 
   @override
   String get order_detail_appbar => 'Sipariş Detayı';
@@ -721,13 +779,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get order_detail_basket_erorr_title => 'Sipariş Detayı Bulunamadı';
 
   @override
-  String get order_detail_basket_error_subtitle => 'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get order_detail_basket_error_subtitle =>
+      'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get order_detail_basket_empty_title => 'Sipariş Detayı Bulunamadı';
 
   @override
-  String get order_detail_basket_empty_subtitle => 'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.';
+  String get order_detail_basket_empty_subtitle =>
+      'Sipariş bilgileri yüklenirken bir sorun oluştu, lütfen daha sonra tekrar deneyiniz.';
 
   @override
   String get order_error => 'Hata oluştu';
@@ -751,7 +811,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get permission_title => 'İzinleri Kapatamazsın!';
 
   @override
-  String get permission_subtitle => 'Uygulama içerisinden izinleri açabilirsiniz ama izinleri kapatmazsınız, izinleri kapatmak için uygulama ayarlarından yönetebilirsiniz.';
+  String get permission_subtitle =>
+      'Uygulama içerisinden izinleri açabilirsiniz ama izinleri kapatmazsınız, izinleri kapatmak için uygulama ayarlarından yönetebilirsiniz.';
 
   @override
   String get permission_app_setting_btn => 'UYGULAMA AYARLARINA GİT';
@@ -772,19 +833,24 @@ class AppLocalizationsTr extends AppLocalizations {
   String get validator_password_empty => 'Şifre alanı boş bırakılamaz';
 
   @override
-  String get validator_password_error_one => 'Şifre en az 8 karakter uzunluğunda olmalıdır';
+  String get validator_password_error_one =>
+      'Şifre en az 8 karakter uzunluğunda olmalıdır';
 
   @override
-  String get validator_password_error_second => 'Şifre en az bir büyük harf içermelidir';
+  String get validator_password_error_second =>
+      'Şifre en az bir büyük harf içermelidir';
 
   @override
-  String get validator_password_error_three => 'Şifre en az bir küçük harf içermelidir';
+  String get validator_password_error_three =>
+      'Şifre en az bir küçük harf içermelidir';
 
   @override
-  String get validator_password_error_four => 'Şifre en az bir rakam içermelidir';
+  String get validator_password_error_four =>
+      'Şifre en az bir rakam içermelidir';
 
   @override
-  String get validator_password_error_five => 'Şifre en az bir özel karakter içermelidir';
+  String get validator_password_error_five =>
+      'Şifre en az bir özel karakter içermelidir';
 
   @override
   String get validator_phone_number_empty => 'Zorunlu Alan';
