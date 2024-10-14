@@ -98,8 +98,13 @@ seçeneklerine göre tercih edebilirler
   </tr>
     <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/da77c2c9-a140-464f-99a3-7585e96a8b0e" width=%100, height=400/>
+      <img src="https://github.com/user-attachments/assets/ec32ad96-5e37-4d5a-8864-2bc73a65aab7" width=%100, height=400/>
     </td>
+
+
+
+
+     
   </tr>
     <tr>
     <td>
