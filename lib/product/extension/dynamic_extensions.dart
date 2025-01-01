@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class DynamicViewExtensions {
   double maxWidth(BuildContext context) =>
-      ViewSizeModelExtension(context).mediaSize.width;
+      ViewExtension(context).mediaSize.width;
   double maxHeight(BuildContext context) =>
-      ViewSizeModelExtension(context).mediaSize.height;
+      ViewExtension(context).mediaSize.height;
 
   double dynamicWidth(BuildContext context, double value) =>
       maxWidth(context) * value;

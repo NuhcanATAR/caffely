@@ -1,4 +1,4 @@
-import 'package:caffely/product/model/favorite_model/favorite_model.dart';
+import 'package:caffely/product/model/timestamp_model/timestamp_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 
