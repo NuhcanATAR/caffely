@@ -66,32 +66,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
                 );
               });
             }
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: LoadingAnimationWidget.hexagonDots(
-                      color: Theme.of(context).colorScheme.primary,
-                      size: BaseUtility.iconLargeSize,
-                    ),
-                  ),
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: BodyMediumBlackBoldText(
-                      text: AppLocalizations.of(context)!.sign_loading_subtitle,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return buildBodyWidget;
           } else {
             return const SizedBox();
           }
@@ -99,4 +74,32 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
       ),
     );
   }
+
+  // body
+  Widget get buildBodyWidget => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: LoadingAnimationWidget.hexagonDots(
+                color: Theme.of(context).colorScheme.primary,
+                size: BaseUtility.iconLargeSize,
+              ),
+            ),
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: BodyMediumBlackBoldText(
+                text: AppLocalizations.of(context)!.sign_loading_subtitle,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      );
 }

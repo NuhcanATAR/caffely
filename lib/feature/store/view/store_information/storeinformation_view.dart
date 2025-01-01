@@ -55,291 +55,295 @@ class _StoreInformationViewState extends StoreInformationViewModel {
         child: Column(
           children: <Widget>[
             // body
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  // opening time
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        AppIcons.timeOutline.toSvgImg(
-                          Colors.black,
-                          BaseUtility.iconNormalSize,
-                          BaseUtility.iconNormalSize,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: BaseUtility.horizontal(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text:
-                                  "${AppLocalizations.of(context)!.stores_information_opening_time} ${openDateTime.hour}:${openDateTime.minute}",
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // close time
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        AppIcons.timeOutline.toSvgImg(
-                          Colors.black,
-                          BaseUtility.iconNormalSize,
-                          BaseUtility.iconNormalSize,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: BaseUtility.horizontal(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text:
-                                  '${AppLocalizations.of(context)!.stores_information_close_time}: ${closeDateTime.hour}:${closeDateTime.minute}',
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // adress
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        AppIcons.locationFill.toSvgImg(
-                          Colors.black,
-                          BaseUtility.iconNormalSize,
-                          BaseUtility.iconNormalSize,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: BaseUtility.horizontal(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text:
-                                  '${widget.storeModel.locationNeighborhood} ${widget.storeModel.locationStreet} (${widget.storeModel.locationCity}/${widget.storeModel.locationDistrict}) ',
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // trade name
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text: AppLocalizations.of(context)!
-                                  .stores_information_trade_name,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text: widget.storeModel.tradeName,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // paymnet types
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text: AppLocalizations.of(context)!
-                                  .stores_information_payment_type,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text: widget.storeModel.paymentTypes,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // delivery type
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text: AppLocalizations.of(context)!
-                                  .stores_information_delivery_type,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text: AppLocalizations.of(context)!
-                                  .stores_information_delivery_type_explanation,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // min basket value
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackBoldText(
-                              text: AppLocalizations.of(context)!
-                                  .stores_information_min_basket_value,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.vertical(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text:
-                                  "${AppLocalizations.of(context)!.stores_information_min_basket_explanation} ${widget.storeModel.minBasketAmount}${AppLocalizations.of(context)!.stores_information_min_basket_explanation_second}",
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            buildBodyWidget,
             // footer buttons
-            Column(
-              children: <Widget>[
-                // google maps
-                CustomButtonWidget(
-                  dynamicViewExtensions: dynamicViewExtensions,
-                  text: AppLocalizations.of(context)!
-                      .stores_information_location_btn,
-                  func: () async {
-                    if (widget.storeModel.locationUrl.isEmpty) {
-                      unawaited(
-                        CodeNoahDialogs(context).showFlush(
-                          type: SnackType.error,
-                          message: AppLocalizations.of(context)!
-                              .stores_information_location_not_found,
-                        ),
-                      );
-                    } else {
-                      if (!await launchUrl(
-                        Uri.parse(widget.storeModel.locationUrl),
-                      )) {
-                        throw ServiceException('Could not launch url');
-                      }
-                    }
-                  },
-                  btnStatus: ButtonTypes.borderPrimaryColorButton,
-                ),
-                // call
-                CustomButtonWidget(
-                  dynamicViewExtensions: dynamicViewExtensions,
-                  text:
-                      AppLocalizations.of(context)!.stores_information_call_btn,
-                  func: () async {
-                    if (widget.storeModel.phoneNumber == 0) {
-                      unawaited(
-                        CodeNoahDialogs(context).showFlush(
-                          type: SnackType.error,
-                          message: AppLocalizations.of(context)!
-                              .stores_information_call_error,
-                        ),
-                      );
-                    } else {
-                      if (!await launchUrl(
-                        Uri.parse('tel:${widget.storeModel.phoneNumber}'),
-                      )) {
-                        throw ServiceException('Could not launch url');
-                      }
-                    }
-                  },
-                  btnStatus: ButtonTypes.primaryColorButton,
-                ),
-              ],
-            ),
+            buildFooterButtonsWidget,
           ],
         ),
       ),
     );
   }
+
+  // body
+  Widget get buildBodyWidget => Expanded(
+        child: ListView(
+          children: <Widget>[
+            // opening time
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Row(
+                children: <Widget>[
+                  AppIcons.timeOutline.toSvgImg(
+                    Colors.black,
+                    BaseUtility.iconNormalSize,
+                    BaseUtility.iconNormalSize,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: BaseUtility.horizontal(
+                        BaseUtility.paddingNormalValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text:
+                            "${AppLocalizations.of(context)!.stores_information_opening_time} ${openDateTime.hour}:${openDateTime.minute}",
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // close time
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Row(
+                children: <Widget>[
+                  AppIcons.timeOutline.toSvgImg(
+                    Colors.black,
+                    BaseUtility.iconNormalSize,
+                    BaseUtility.iconNormalSize,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: BaseUtility.horizontal(
+                        BaseUtility.paddingNormalValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text:
+                            '${AppLocalizations.of(context)!.stores_information_close_time}: ${closeDateTime.hour}:${closeDateTime.minute}',
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // adress
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Row(
+                children: <Widget>[
+                  AppIcons.locationFill.toSvgImg(
+                    Colors.black,
+                    BaseUtility.iconNormalSize,
+                    BaseUtility.iconNormalSize,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: BaseUtility.horizontal(
+                        BaseUtility.paddingNormalValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text:
+                            '${widget.storeModel.locationNeighborhood} ${widget.storeModel.locationStreet} (${widget.storeModel.locationCity}/${widget.storeModel.locationDistrict}) ',
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // trade name
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text: AppLocalizations.of(context)!
+                            .stores_information_trade_name,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackText(
+                        text: widget.storeModel.tradeName,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // paymnet types
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text: AppLocalizations.of(context)!
+                            .stores_information_payment_type,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackText(
+                        text: widget.storeModel.paymentTypes,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // delivery type
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text: AppLocalizations.of(context)!
+                            .stores_information_delivery_type,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackText(
+                        text: AppLocalizations.of(context)!
+                            .stores_information_delivery_type_explanation,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // min basket value
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackBoldText(
+                        text: AppLocalizations.of(context)!
+                            .stores_information_min_basket_value,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackText(
+                        text:
+                            "${AppLocalizations.of(context)!.stores_information_min_basket_explanation} ${widget.storeModel.minBasketAmount}${AppLocalizations.of(context)!.stores_information_min_basket_explanation_second}",
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+
+  // footer buttons
+  Widget get buildFooterButtonsWidget => Column(
+        children: <Widget>[
+          // google maps
+          CustomButtonWidget(
+            dynamicViewExtensions: dynamicViewExtensions,
+            text: AppLocalizations.of(context)!.stores_information_location_btn,
+            func: () async {
+              if (widget.storeModel.locationUrl.isEmpty) {
+                unawaited(
+                  CodeNoahDialogs(context).showFlush(
+                    type: SnackType.error,
+                    message: AppLocalizations.of(context)!
+                        .stores_information_location_not_found,
+                  ),
+                );
+              } else {
+                if (!await launchUrl(
+                  Uri.parse(widget.storeModel.locationUrl),
+                )) {
+                  throw ServiceException('Could not launch url');
+                }
+              }
+            },
+            btnStatus: ButtonTypes.borderPrimaryColorButton,
+          ),
+          // call
+          CustomButtonWidget(
+            dynamicViewExtensions: dynamicViewExtensions,
+            text: AppLocalizations.of(context)!.stores_information_call_btn,
+            func: () async {
+              if (widget.storeModel.phoneNumber == 0) {
+                unawaited(
+                  CodeNoahDialogs(context).showFlush(
+                    type: SnackType.error,
+                    message: AppLocalizations.of(context)!
+                        .stores_information_call_error,
+                  ),
+                );
+              } else {
+                if (!await launchUrl(
+                  Uri.parse('tel:${widget.storeModel.phoneNumber}'),
+                )) {
+                  throw ServiceException('Could not launch url');
+                }
+              }
+            },
+            btnStatus: ButtonTypes.primaryColorButton,
+          ),
+        ],
+      );
 }

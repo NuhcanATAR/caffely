@@ -58,201 +58,18 @@ class _SignInViewState extends SignInViewModel {
                     child: ListView(
                       children: <Widget>[
                         // title & sub title
-                        Padding(
-                          padding: BaseUtility.vertical(
-                            BaseUtility.paddingNormalValue,
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              // title
-                              SizedBox(
-                                width: dynamicViewExtensions.maxWidth(context),
-                                child: Padding(
-                                  padding: BaseUtility.bottom(
-                                    BaseUtility.paddingNormalValue,
-                                  ),
-                                  child: TitleLargeBlackBoldText(
-                                    text: AppLocalizations.of(context)!
-                                        .sign_email_title,
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                              ),
-                              // sub title
-                              SizedBox(
-                                width: dynamicViewExtensions.maxWidth(context),
-                                child: Padding(
-                                  padding: BaseUtility.bottom(
-                                    BaseUtility.paddingNormalValue,
-                                  ),
-                                  child: BodyMediumBlackText(
-                                    text: AppLocalizations.of(context)!
-                                        .sign_email_subtitle,
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // email
-                        CustomEmailFieldWidget(
-                          emailController: emailController,
-                          hintText: AppLocalizations.of(context)!.sign_email,
-                          onChanged: (String value) {
-                            context
-                                .read<SignInBloc>()
-                                .add(SignInEmailEvent(value));
-                          },
-                          isLabelText: true,
-                        ),
-                        // password
-                        CustomPasswordFieldWidget(
-                          passwordController: passwordController,
-                          hintText: AppLocalizations.of(context)!.sign_password,
-                          onChanged: (String value) {
-                            context
-                                .read<SignInBloc>()
-                                .add(SignInPasswordEvent(value));
-                          },
-                          isValidator: false,
-                          isLabelText: true,
-                        ),
+                        buildTitleSubTitleWidget,
+                        // email & password
+                        buildEmailPasswordWidget,
                         // remember me & forgot password
-                        Padding(
-                          padding: BaseUtility.vertical(
-                            BaseUtility.paddingNormalValue,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              // remember me
-                              Flexible(
-                                fit: FlexFit.tight,
-                                flex: 1,
-                                child: Row(
-                                  children: <Widget>[
-                                    Checkbox(
-                                      value: isRememberMe,
-                                      onChanged: rememberMeOnChanged,
-                                      activeColor:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: BaseUtility.horizontal(
-                                          BaseUtility.paddingSmallValue,
-                                        ),
-                                        child: BodyMediumBlackText(
-                                          text: AppLocalizations.of(context)!
-                                              .sign_remember_me,
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              // forgot password
-                              Flexible(
-                                fit: FlexFit.tight,
-                                flex: 1,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    CodeNoahNavigatorRouter.push(
-                                      context,
-                                      const PasswordView(),
-                                      direction: SlideDirection.rightToLeft,
-                                    );
-                                  },
-                                  child: BodyMediumMainColorBoldText(
-                                    text: AppLocalizations.of(context)!
-                                        .sign_forgot_password,
-                                    textAlign: TextAlign.right,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        buildRememberMeForgotPasswordWidget,
                         // sign up
-                        Padding(
-                          padding: BaseUtility.top(
-                            BaseUtility.paddingHightValue,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              const Spacer(),
-                              Flexible(
-                                fit: FlexFit.tight,
-                                flex: 5,
-                                child: Padding(
-                                  padding: BaseUtility.horizontal(
-                                    BaseUtility.paddingSmallValue,
-                                  ),
-                                  child: BodyMediumBlackText(
-                                    text: AppLocalizations.of(context)!
-                                        .sign_signup_title,
-                                    textAlign: TextAlign.right,
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                fit: FlexFit.tight,
-                                flex: 3,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    CodeNoahNavigatorRouter.push(
-                                      context,
-                                      const SignUpView(),
-                                      direction: SlideDirection.rightToLeft,
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: BaseUtility.horizontal(
-                                      BaseUtility.paddingSmallValue,
-                                    ),
-                                    child: BodyMediumMainColorText(
-                                      text: AppLocalizations.of(context)!
-                                          .sign_signup,
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                            ],
-                          ),
-                        ),
+                        buildSignUpWidget,
                       ],
                     ),
                   ),
                   // sign in
-                  CustomButtonWidget(
-                    dynamicViewExtensions: dynamicViewExtensions,
-                    text: AppLocalizations.of(context)!.sign_sign_btn,
-                    func: blocState.email.isEmpty || blocState.password.isEmpty
-                        ? () {}
-                        : () {
-                            if (formSignInKey.currentState!.validate()) {
-                              context.read<SignInBloc>().add(
-                                    SignInUserEvent(
-                                      blocState.email,
-                                      blocState.password,
-                                      dynamicViewExtensions,
-                                      context,
-                                    ),
-                                  );
-                              emailController.clear();
-                              passwordController.clear();
-                            }
-                          },
-                    btnStatus:
-                        blocState.email.isEmpty || blocState.password.isEmpty
-                            ? ButtonTypes.borderPrimaryColorButton
-                            : ButtonTypes.primaryColorButton,
-                  ),
+                  buildSignInWidget(blocState),
                 ],
               ),
             ),
@@ -261,4 +78,195 @@ class _SignInViewState extends SignInViewModel {
       ),
     );
   }
+
+  // title & sub title
+  Widget get buildTitleSubTitleWidget => Padding(
+        padding: BaseUtility.vertical(
+          BaseUtility.paddingNormalValue,
+        ),
+        child: Column(
+          children: <Widget>[
+            // title
+            SizedBox(
+              width: dynamicViewExtensions.maxWidth(context),
+              child: Padding(
+                padding: BaseUtility.bottom(
+                  BaseUtility.paddingNormalValue,
+                ),
+                child: TitleLargeBlackBoldText(
+                  text: AppLocalizations.of(context)!.sign_email_title,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ),
+            // sub title
+            SizedBox(
+              width: dynamicViewExtensions.maxWidth(context),
+              child: Padding(
+                padding: BaseUtility.bottom(
+                  BaseUtility.paddingNormalValue,
+                ),
+                child: BodyMediumBlackText(
+                  text: AppLocalizations.of(context)!.sign_email_subtitle,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+  // email & password
+  Widget get buildEmailPasswordWidget => Column(
+        children: <Widget>[
+          // email
+          CustomEmailFieldWidget(
+            emailController: emailController,
+            hintText: AppLocalizations.of(context)!.sign_email,
+            onChanged: (String value) {
+              context.read<SignInBloc>().add(SignInEmailEvent(value));
+            },
+            isLabelText: true,
+          ),
+          // password
+          CustomPasswordFieldWidget(
+            passwordController: passwordController,
+            hintText: AppLocalizations.of(context)!.sign_password,
+            onChanged: (String value) {
+              context.read<SignInBloc>().add(SignInPasswordEvent(value));
+            },
+            isValidator: false,
+            isLabelText: true,
+          ),
+        ],
+      );
+
+  // remember me & forgot password
+  Widget get buildRememberMeForgotPasswordWidget => Padding(
+        padding: BaseUtility.vertical(
+          BaseUtility.paddingNormalValue,
+        ),
+        child: Row(
+          children: <Widget>[
+            // remember me
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 1,
+              child: Row(
+                children: <Widget>[
+                  Checkbox(
+                    value: isRememberMe,
+                    onChanged: rememberMeOnChanged,
+                    activeColor: Theme.of(context).colorScheme.primary,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: BaseUtility.horizontal(
+                        BaseUtility.paddingSmallValue,
+                      ),
+                      child: BodyMediumBlackText(
+                        text: AppLocalizations.of(context)!.sign_remember_me,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // forgot password
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  CodeNoahNavigatorRouter.push(
+                    context,
+                    const PasswordView(),
+                    direction: SlideDirection.rightToLeft,
+                  );
+                },
+                child: BodyMediumMainColorBoldText(
+                  text: AppLocalizations.of(context)!.sign_forgot_password,
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+  // sign up
+  Widget get buildSignUpWidget => Padding(
+        padding: BaseUtility.top(
+          BaseUtility.paddingHightValue,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const Spacer(),
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 5,
+              child: Padding(
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingSmallValue,
+                ),
+                child: BodyMediumBlackText(
+                  text: AppLocalizations.of(context)!.sign_signup_title,
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ),
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 3,
+              child: GestureDetector(
+                onTap: () {
+                  CodeNoahNavigatorRouter.push(
+                    context,
+                    const SignUpView(),
+                    direction: SlideDirection.rightToLeft,
+                  );
+                },
+                child: Padding(
+                  padding: BaseUtility.horizontal(
+                    BaseUtility.paddingSmallValue,
+                  ),
+                  child: BodyMediumMainColorText(
+                    text: AppLocalizations.of(context)!.sign_signup,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ),
+            ),
+            const Spacer(),
+          ],
+        ),
+      );
+
+  // sign in
+  Widget buildSignInWidget(SignInState blocState) => CustomButtonWidget(
+        dynamicViewExtensions: dynamicViewExtensions,
+        text: AppLocalizations.of(context)!.sign_sign_btn,
+        func: blocState.email.isEmpty || blocState.password.isEmpty
+            ? () {}
+            : () {
+                if (formSignInKey.currentState!.validate()) {
+                  context.read<SignInBloc>().add(
+                        SignInUserEvent(
+                          blocState.email,
+                          blocState.password,
+                          dynamicViewExtensions,
+                          context,
+                        ),
+                      );
+                  emailController.clear();
+                  passwordController.clear();
+                }
+              },
+        btnStatus: blocState.email.isEmpty || blocState.password.isEmpty
+            ? ButtonTypes.borderPrimaryColorButton
+            : ButtonTypes.primaryColorButton,
+      );
 }

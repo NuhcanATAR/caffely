@@ -44,118 +44,9 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
               child: Column(
                 children: <Widget>[
                   // body
-                  Expanded(
-                    child: ListView(
-                      children: <Widget>[
-                        // title & sub title
-                        Padding(
-                          padding: BaseUtility.vertical(
-                            BaseUtility.paddingNormalValue,
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              // title
-                              SizedBox(
-                                width: dynamicViewExtensions.maxWidth(context),
-                                child: Padding(
-                                  padding: BaseUtility.bottom(
-                                    BaseUtility.paddingNormalValue,
-                                  ),
-                                  child: FadeInLeft(
-                                    child: TitleLargeBlackBoldText(
-                                      text: AppLocalizations.of(context)!
-                                          .sign_complete_title,
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              // sub title
-                              SizedBox(
-                                width: dynamicViewExtensions.maxWidth(context),
-                                child: Padding(
-                                  padding: BaseUtility.bottom(
-                                    BaseUtility.paddingNormalValue,
-                                  ),
-                                  child: FadeInLeft(
-                                    child: BodyMediumBlackText(
-                                      text: AppLocalizations.of(context)!
-                                          .sign_complete_subtitle,
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // name surname
-                        NormalTextFieldWidget(
-                          controller: nameSurnameController,
-                          hintText: AppLocalizations.of(context)!
-                              .sign_complete_name_surname,
-                          explanationStatus: false,
-                          onChanged: (String value) {
-                            context.read<ProfileCompleteBloc>().add(
-                                  ProfileCompleteNameSurnameEvent(value),
-                                );
-                          },
-                          isValidator: true,
-                          enabled: true,
-                          isLabelText: true,
-                          dynamicViewExtensions: dynamicViewExtensions,
-                        ),
-                        // phone number
-                        PhoneNumberFieldWidget(
-                          phoneNumberController: phoneNumberController,
-                          hintText: AppLocalizations.of(context)!
-                              .sign_complete_phone_number,
-                          onChanged: (String value) {
-                            context.read<ProfileCompleteBloc>().add(
-                                  ProfileCompletePhoneNumberEvent(value),
-                                );
-                          },
-                          isLabelText: true,
-                        ),
-                        // city & district
-                        LocationMenuWidget(
-                          onCityChanged: handleCityChanged,
-                          onDistrictChanged: handleDistrictChanged,
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildBodyWidget,
                   // footer button
-                  FadeInUp(
-                    child: CustomButtonWidget(
-                      dynamicViewExtensions: dynamicViewExtensions,
-                      text: AppLocalizations.of(context)!.sign_complete_btn,
-                      func: () {
-                        if (formProfileCompleteKey.currentState!.validate()) {
-                          if (selectedCity != null &&
-                              selectedDistrict != null) {
-                            context.read<ProfileCompleteBloc>().add(
-                                  ProfileCompleteUser(
-                                    state.nameSurname,
-                                    int.parse(state.phoneNumber),
-                                    selectedCity!,
-                                    selectedDistrict!,
-                                    dynamicViewExtensions,
-                                    context,
-                                  ),
-                                );
-                          } else {
-                            CodeNoahDialogs(context).showFlush(
-                              type: SnackType.error,
-                              message: AppLocalizations.of(context)!
-                                  .sign_complete_city_error,
-                            );
-                          }
-                        }
-                      },
-                      btnStatus: ButtonTypes.primaryColorButton,
-                    ),
-                  ),
+                  buildFooterButtonWidget(state),
                 ],
               ),
             ),
@@ -164,4 +55,118 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
       ),
     );
   }
+
+  // body
+  Widget get buildBodyWidget => Expanded(
+        child: ListView(
+          children: <Widget>[
+            // title & sub title
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: Column(
+                children: <Widget>[
+                  // title
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.bottom(
+                        BaseUtility.paddingNormalValue,
+                      ),
+                      child: FadeInLeft(
+                        child: TitleLargeBlackBoldText(
+                          text:
+                              AppLocalizations.of(context)!.sign_complete_title,
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // sub title
+                  SizedBox(
+                    width: dynamicViewExtensions.maxWidth(context),
+                    child: Padding(
+                      padding: BaseUtility.bottom(
+                        BaseUtility.paddingNormalValue,
+                      ),
+                      child: FadeInLeft(
+                        child: BodyMediumBlackText(
+                          text: AppLocalizations.of(context)!
+                              .sign_complete_subtitle,
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // name surname
+            NormalTextFieldWidget(
+              controller: nameSurnameController,
+              hintText:
+                  AppLocalizations.of(context)!.sign_complete_name_surname,
+              explanationStatus: false,
+              onChanged: (String value) {
+                context.read<ProfileCompleteBloc>().add(
+                      ProfileCompleteNameSurnameEvent(value),
+                    );
+              },
+              isValidator: true,
+              enabled: true,
+              isLabelText: true,
+              dynamicViewExtensions: dynamicViewExtensions,
+            ),
+            // phone number
+            PhoneNumberFieldWidget(
+              phoneNumberController: phoneNumberController,
+              hintText:
+                  AppLocalizations.of(context)!.sign_complete_phone_number,
+              onChanged: (String value) {
+                context.read<ProfileCompleteBloc>().add(
+                      ProfileCompletePhoneNumberEvent(value),
+                    );
+              },
+              isLabelText: true,
+            ),
+            // city & district
+            LocationMenuWidget(
+              onCityChanged: handleCityChanged,
+              onDistrictChanged: handleDistrictChanged,
+            ),
+          ],
+        ),
+      );
+
+  // footer button
+  Widget buildFooterButtonWidget(ProfileCompleteState state) => FadeInUp(
+        child: CustomButtonWidget(
+          dynamicViewExtensions: dynamicViewExtensions,
+          text: AppLocalizations.of(context)!.sign_complete_btn,
+          func: () {
+            if (formProfileCompleteKey.currentState!.validate()) {
+              if (selectedCity != null && selectedDistrict != null) {
+                context.read<ProfileCompleteBloc>().add(
+                      ProfileCompleteUser(
+                        state.nameSurname,
+                        int.parse(state.phoneNumber),
+                        selectedCity!,
+                        selectedDistrict!,
+                        dynamicViewExtensions,
+                        context,
+                      ),
+                    );
+              } else {
+                CodeNoahDialogs(context).showFlush(
+                  type: SnackType.error,
+                  message:
+                      AppLocalizations.of(context)!.sign_complete_city_error,
+                );
+              }
+            }
+          },
+          btnStatus: ButtonTypes.primaryColorButton,
+        ),
+      );
 }

@@ -17,9 +17,8 @@ class TitleMediumBlackBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.titleMedium!.copyWith(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
           ),
     );
   }
@@ -40,9 +39,8 @@ class TitleMediumWhiteBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.titleMedium!.copyWith(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
             color: Colors.white,
           ),
     );
@@ -64,9 +62,7 @@ class TitleMediumBlackText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleMedium!.copyWith(
-            fontFamily: 'Nunito Regular',
-          ),
+      style: CustomLightTheme().themeData.textTheme.titleMedium!,
     );
   }
 }
@@ -87,10 +83,10 @@ class TitleMediumWhiteText extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: CustomLightTheme()
-          .themeData
+          .themeDataSecond
           .textTheme
           .titleMedium!
-          .copyWith(fontFamily: 'Nunito Bold', color: Colors.white),
+          .copyWith(color: Colors.white),
     );
   }
 }
@@ -111,10 +107,10 @@ class TitleHeaderWhiteText extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: CustomLightTheme()
-          .themeData
+          .themeDataSecond
           .textTheme
           .titleLarge!
-          .copyWith(fontFamily: 'Nunito Bold', color: Colors.white),
+          .copyWith(color: Colors.white),
     );
   }
 }
@@ -134,8 +130,7 @@ class TitleMediumMainColorText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleMedium!.copyWith(
-            fontFamily: 'Nunito Bold',
+      style: CustomLightTheme().themeDataSecond.textTheme.titleMedium!.copyWith(
             color: Theme.of(context).colorScheme.primary,
           ),
     );

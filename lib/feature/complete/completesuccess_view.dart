@@ -30,83 +30,89 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
         child: Column(
           children: <Widget>[
             // body
-            Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    FadeInDown(
-                      child: SizedBox(
-                        width: 150,
-                        height: 150,
-                        child: Container(
-                          margin: BaseUtility.all(
-                            BaseUtility.marginNormalValue,
-                          ),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(
-                                BaseUtility.radiusCircularHighValue,
-                              ),
-                            ),
-                          ),
-                          child: AppIcons.doneOutline.toSvgImg(
-                            Colors.white,
-                            BaseUtility.iconLargeSecondSize,
-                            BaseUtility.iconLargeSecondSize,
-                          ),
-                        ),
-                      ),
-                    ),
-                    FadeInUp(
-                      child: Padding(
-                        padding: BaseUtility.vertical(
-                          BaseUtility.paddingNormalValue,
-                        ),
-                        child: TitleLargeBlackBoldText(
-                          text: AppLocalizations.of(context)!
-                              .sign_complete_success_title,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    FadeInUp(
-                      child: Padding(
-                        padding: BaseUtility.bottom(
-                          BaseUtility.paddingNormalValue,
-                        ),
-                        child: BodyMediumBlackText(
-                          text: AppLocalizations.of(context)!
-                              .sign_complete_success_subtitle,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            buildBodyWidget,
             // footer button
-            FadeInUp(
-              child: CustomButtonWidget(
-                dynamicViewExtensions: dynamicViewExtensions,
-                text: AppLocalizations.of(context)!.sign_complete_start_btn,
-                func: () {
-                  CodeNoahNavigatorRouter.pushAndRemoveUntil(
-                    context,
-                    const BottomMenuView(),
-                    direction: SlideDirection.rightToLeft,
-                  );
-                },
-                btnStatus: ButtonTypes.primaryColorButton,
-              ),
-            ),
+            buildFooterButtonWidget,
           ],
         ),
       ),
     );
   }
+
+  // body
+  Widget get buildBodyWidget => Expanded(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              FadeInDown(
+                child: SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: Container(
+                    margin: BaseUtility.all(
+                      BaseUtility.marginNormalValue,
+                    ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(
+                          BaseUtility.radiusCircularHighValue,
+                        ),
+                      ),
+                    ),
+                    child: AppIcons.doneOutline.toSvgImg(
+                      Colors.white,
+                      BaseUtility.iconLargeSecondSize,
+                      BaseUtility.iconLargeSecondSize,
+                    ),
+                  ),
+                ),
+              ),
+              FadeInUp(
+                child: Padding(
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
+                  ),
+                  child: TitleLargeBlackBoldText(
+                    text: AppLocalizations.of(context)!
+                        .sign_complete_success_title,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              FadeInUp(
+                child: Padding(
+                  padding: BaseUtility.bottom(
+                    BaseUtility.paddingNormalValue,
+                  ),
+                  child: BodyMediumBlackText(
+                    text: AppLocalizations.of(context)!
+                        .sign_complete_success_subtitle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  // footer button
+  Widget get buildFooterButtonWidget => FadeInUp(
+        child: CustomButtonWidget(
+          dynamicViewExtensions: dynamicViewExtensions,
+          text: AppLocalizations.of(context)!.sign_complete_start_btn,
+          func: () {
+            CodeNoahNavigatorRouter.pushAndRemoveUntil(
+              context,
+              const BottomMenuView(),
+              direction: SlideDirection.rightToLeft,
+            );
+          },
+          btnStatus: ButtonTypes.primaryColorButton,
+        ),
+      );
 }

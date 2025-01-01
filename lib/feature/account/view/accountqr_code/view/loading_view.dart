@@ -41,40 +41,51 @@ class _AccountQrCodeCreateLoadingViewState
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             // loading
-            Padding(
-              padding: BaseUtility.vertical(
-                BaseUtility.paddingNormalValue,
-              ),
-              child: LoadingAnimationWidget.hexagonDots(
-                color: Theme.of(context).colorScheme.primary,
-                size: BaseUtility.iconLargeSize,
-              ),
-            ),
-            // titles
-            Padding(
-              padding: BaseUtility.vertical(
-                BaseUtility.paddingSmallValue,
-              ),
-              child: BodyMediumBlackBoldText(
-                text: AppLocalizations.of(context)!
-                    .account_qrcode_create_loading_title,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            // sub title
-            Padding(
-              padding: BaseUtility.vertical(
-                BaseUtility.paddingSmallValue,
-              ),
-              child: BodyMediumBlackText(
-                text: AppLocalizations.of(context)!
-                    .account_qrcode_create_loading_subtitle,
-                textAlign: TextAlign.center,
-              ),
-            ),
+            buildLoadingWidget,
+            // title & subtitle
+            buildTitleSubTitleWidget,
           ],
         ),
       ),
     );
   }
+
+  // loading
+  Widget get buildLoadingWidget => Padding(
+        padding: BaseUtility.vertical(
+          BaseUtility.paddingNormalValue,
+        ),
+        child: LoadingAnimationWidget.hexagonDots(
+          color: Theme.of(context).colorScheme.primary,
+          size: BaseUtility.iconLargeSize,
+        ),
+      );
+
+  // title &  subtitle
+  Widget get buildTitleSubTitleWidget => Column(
+        children: <Widget>[
+          // titles
+          Padding(
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingSmallValue,
+            ),
+            child: BodyMediumBlackBoldText(
+              text: AppLocalizations.of(context)!
+                  .account_qrcode_create_loading_title,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          // sub title
+          Padding(
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingSmallValue,
+            ),
+            child: BodyMediumBlackText(
+              text: AppLocalizations.of(context)!
+                  .account_qrcode_create_loading_subtitle,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      );
 }

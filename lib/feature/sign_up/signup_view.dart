@@ -57,216 +57,15 @@ class _SignUpViewState extends SignUpViewModel {
               child: ListView(
                 children: <Widget>[
                   // title & sub title
-                  Padding(
-                    padding: BaseUtility.vertical(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        // title
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.bottom(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: TitleLargeBlackBoldText(
-                              text: AppLocalizations.of(context)!
-                                  .signup_email_title,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                        // sub title
-                        SizedBox(
-                          width: dynamicViewExtensions.maxWidth(context),
-                          child: Padding(
-                            padding: BaseUtility.bottom(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text: AppLocalizations.of(context)!
-                                  .signup_email_subtitle,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // email
-                  CustomEmailFieldWidget(
-                    emailController: emailController,
-                    hintText: AppLocalizations.of(context)!.signup_email,
-                    onChanged: (String value) {
-                      context.read<SignUpBloc>().add(SignUpEmailEvent(value));
-                    },
-                    isLabelText: true,
-                  ),
-                  // password
-                  CustomPasswordFieldWidget(
-                    passwordController: passwordController,
-                    hintText: AppLocalizations.of(context)!.signup_password,
-                    onChanged: (String value) {
-                      context
-                          .read<SignUpBloc>()
-                          .add(SignUpPasswordEvent(value));
-                    },
-                    isValidator: true,
-                    isLabelText: true,
-                  ),
+                  buildTitleSubTitleWidget,
+                  // email & password
+                  buildEmailPasswordWidget,
                   // agree
-                  Padding(
-                    padding: BaseUtility.top(
-                      BaseUtility.paddingNormalValue,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        // check box
-                        Checkbox(
-                          value: isAgree,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              isAgree = value!;
-                            });
-                          },
-                          activeColor: Theme.of(context).colorScheme.primary,
-                        ),
-                        // agree text
-                        Expanded(
-                          child: Padding(
-                            padding: BaseUtility.horizontal(
-                              BaseUtility.paddingNormalValue,
-                            ),
-                            child: RichText(
-                              text: TextSpan(
-                                text: AppLocalizations.of(context)!
-                                    .signup_user_agreement,
-                                style: CustomLightTheme()
-                                    .themeData
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      color: Colors.black,
-                                    ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: AppLocalizations.of(context)!
-                                        .signup_agreement,
-                                    style: CustomLightTheme()
-                                        .themeData
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        CodeNoahNavigatorRouter.push(
-                                          context,
-                                          const AgreeView(),
-                                          direction: SlideDirection.rightToLeft,
-                                        );
-                                      },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
+                  buildAgreeWidget,
                   // sign up
-                  Container(
-                    margin: BaseUtility.top(
-                      BaseUtility.marginNormalValue,
-                    ),
-                    child: CustomButtonWidget(
-                      dynamicViewExtensions: dynamicViewExtensions,
-                      text: AppLocalizations.of(context)!.signup_btn,
-                      func:
-                          blocState.email.isEmpty || blocState.password.isEmpty
-                              ? () {}
-                              : () {
-                                  if (formSignUpKey.currentState!.validate()) {
-                                    if (isAgree == true) {
-                                      context.read<SignUpBloc>().add(
-                                            SignUpUserEvent(
-                                              blocState.email,
-                                              blocState.password,
-                                              context,
-                                            ),
-                                          );
-                                      emailController.clear();
-                                      passwordController.clear();
-                                      isAgree = false;
-                                    } else {
-                                      CodeNoahDialogs(context).showFlush(
-                                        type: SnackType.warning,
-                                        message: AppLocalizations.of(context)!
-                                            .signup_agreement_error,
-                                      );
-                                    }
-                                  }
-                                },
-                      btnStatus:
-                          blocState.email.isEmpty || blocState.password.isEmpty
-                              ? ButtonTypes.borderPrimaryColorButton
-                              : ButtonTypes.primaryColorButton,
-                    ),
-                  ),
+                  buildSignUpWidget(blocState),
                   // sign in
-                  Padding(
-                    padding: BaseUtility.top(
-                      BaseUtility.paddingHightValue,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Flexible(
-                          fit: FlexFit.tight,
-                          flex: 1,
-                          child: Padding(
-                            padding: BaseUtility.horizontal(
-                              BaseUtility.paddingSmallValue,
-                            ),
-                            child: BodyMediumBlackText(
-                              text: AppLocalizations.of(context)!.signup_sign,
-                              textAlign: TextAlign.right,
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                          fit: FlexFit.tight,
-                          flex: 1,
-                          child: GestureDetector(
-                            onTap: () {
-                              CodeNoahNavigatorRouter.push(
-                                context,
-                                const SignInView(),
-                                direction: SlideDirection.leftToRight,
-                              );
-                            },
-                            child: Padding(
-                              padding: BaseUtility.horizontal(
-                                BaseUtility.paddingSmallValue,
-                              ),
-                              child: BodyMediumMainColorText(
-                                text: AppLocalizations.of(context)!
-                                    .signup_sign_btn,
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildSignInWidget,
                 ],
               ),
             ),
@@ -275,4 +74,213 @@ class _SignUpViewState extends SignUpViewModel {
       ),
     );
   }
+
+  // title & sub title
+  Widget get buildTitleSubTitleWidget => Padding(
+        padding: BaseUtility.vertical(
+          BaseUtility.paddingNormalValue,
+        ),
+        child: Column(
+          children: <Widget>[
+            // title
+            SizedBox(
+              width: dynamicViewExtensions.maxWidth(context),
+              child: Padding(
+                padding: BaseUtility.bottom(
+                  BaseUtility.paddingNormalValue,
+                ),
+                child: TitleLargeBlackBoldText(
+                  text: AppLocalizations.of(context)!.signup_email_title,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ),
+            // sub title
+            SizedBox(
+              width: dynamicViewExtensions.maxWidth(context),
+              child: Padding(
+                padding: BaseUtility.bottom(
+                  BaseUtility.paddingNormalValue,
+                ),
+                child: BodyMediumBlackText(
+                  text: AppLocalizations.of(context)!.signup_email_subtitle,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+  // email & password
+  Widget get buildEmailPasswordWidget => Column(
+        children: <Widget>[
+          // email
+          CustomEmailFieldWidget(
+            emailController: emailController,
+            hintText: AppLocalizations.of(context)!.signup_email,
+            onChanged: (String value) {
+              context.read<SignUpBloc>().add(SignUpEmailEvent(value));
+            },
+            isLabelText: true,
+          ),
+          // password
+          CustomPasswordFieldWidget(
+            passwordController: passwordController,
+            hintText: AppLocalizations.of(context)!.signup_password,
+            onChanged: (String value) {
+              context.read<SignUpBloc>().add(SignUpPasswordEvent(value));
+            },
+            isValidator: true,
+            isLabelText: true,
+          ),
+        ],
+      );
+
+  // agree
+  Widget get buildAgreeWidget => Padding(
+        padding: BaseUtility.top(
+          BaseUtility.paddingNormalValue,
+        ),
+        child: Row(
+          children: <Widget>[
+            // check box
+            Checkbox(
+              value: isAgree,
+              onChanged: (bool? value) {
+                setState(() {
+                  isAgree = value!;
+                });
+              },
+              activeColor: Theme.of(context).colorScheme.primary,
+            ),
+            // agree text
+            Expanded(
+              child: Padding(
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingNormalValue,
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    text: AppLocalizations.of(context)!.signup_user_agreement,
+                    style: CustomLightTheme()
+                        .themeData
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(
+                          color: Colors.black,
+                        ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: AppLocalizations.of(context)!.signup_agreement,
+                        style: CustomLightTheme()
+                            .themeData
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            CodeNoahNavigatorRouter.push(
+                              context,
+                              const AgreeView(),
+                              direction: SlideDirection.rightToLeft,
+                            );
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+  // sign up
+  Widget buildSignUpWidget(SignUpState blocState) => Container(
+        margin: BaseUtility.top(
+          BaseUtility.marginNormalValue,
+        ),
+        child: CustomButtonWidget(
+          dynamicViewExtensions: dynamicViewExtensions,
+          text: AppLocalizations.of(context)!.signup_btn,
+          func: blocState.email.isEmpty || blocState.password.isEmpty
+              ? () {}
+              : () {
+                  if (formSignUpKey.currentState!.validate()) {
+                    if (isAgree == true) {
+                      context.read<SignUpBloc>().add(
+                            SignUpUserEvent(
+                              blocState.email,
+                              blocState.password,
+                              context,
+                            ),
+                          );
+                      emailController.clear();
+                      passwordController.clear();
+                      isAgree = false;
+                    } else {
+                      CodeNoahDialogs(context).showFlush(
+                        type: SnackType.warning,
+                        message: AppLocalizations.of(context)!
+                            .signup_agreement_error,
+                      );
+                    }
+                  }
+                },
+          btnStatus: blocState.email.isEmpty || blocState.password.isEmpty
+              ? ButtonTypes.borderPrimaryColorButton
+              : ButtonTypes.primaryColorButton,
+        ),
+      );
+
+  // sign in
+  Widget get buildSignInWidget => Padding(
+        padding: BaseUtility.top(
+          BaseUtility.paddingHightValue,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 1,
+              child: Padding(
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingSmallValue,
+                ),
+                child: BodyMediumBlackText(
+                  text: AppLocalizations.of(context)!.signup_sign,
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ),
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  CodeNoahNavigatorRouter.push(
+                    context,
+                    const SignInView(),
+                    direction: SlideDirection.leftToRight,
+                  );
+                },
+                child: Padding(
+                  padding: BaseUtility.horizontal(
+                    BaseUtility.paddingSmallValue,
+                  ),
+                  child: BodyMediumMainColorText(
+                    text: AppLocalizations.of(context)!.signup_sign_btn,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
 }

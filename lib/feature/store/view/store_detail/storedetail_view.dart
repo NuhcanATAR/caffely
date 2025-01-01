@@ -182,249 +182,261 @@ class _StoreDetailViewState extends StoreDetailViewModel {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: SizedBox(
-              width: dynamicViewExtensions.maxWidth(context),
-              height: dynamicViewExtensions.dynamicHeight(context, 0.4),
-              child: Stack(
-                children: <Widget>[
-                  // slider
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                        height: dynamicViewExtensions.dynamicHeight(
-                          context,
-                          0.4,
-                        ),
-                        enableInfiniteScroll: false,
-                        viewportFraction: 1.0,
-                        enlargeCenterPage: true,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            current = index;
-                          });
-                        },
-                      ),
-                      items: coverImages
-                          .map(
-                            (item) => CachedNetworkImage(
-                              imageUrl: item.toString(),
-                              imageBuilder: (context, imageProvider) {
-                                return Container(
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: imageProvider,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                );
-                              },
-                              placeholder: (context, url) => Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) => Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                  // status bar
-                  const Positioned(
-                    bottom: 20,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: BaseUtility.all(
-                BaseUtility.paddingNormalValue,
-              ),
-              child: Column(
-                children: <Widget>[
-                  // title
-                  SizedBox(
-                    width: dynamicViewExtensions.maxWidth(context),
-                    child: GestureDetector(
-                      onTap: () {
-                        CodeNoahNavigatorRouter.push(
-                          context,
-                          StoreInformationView(
-                            storeModel: widget.storeModel,
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: BaseUtility.vertical(
-                          BaseUtility.paddingNormalValue,
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: TitleLargeBlackBoldText(
-                                text: widget.storeModel.storeName,
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                            AppIcons.arrowRight.toSvgImg(
-                              Colors.black,
-                              BaseUtility.iconNormalSize,
-                              BaseUtility.iconNormalSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  // location
-                  SizedBox(
-                    width: dynamicViewExtensions.maxWidth(context),
-                    child: GestureDetector(
-                      onTap: () async {
-                        if (widget.storeModel.locationUrl.isEmpty) {
-                          unawaited(
-                            CodeNoahDialogs(context).showFlush(
-                              type: SnackType.error,
-                              message: AppLocalizations.of(context)!
-                                  .stores_detail_location_not_found,
-                            ),
-                          );
-                        } else {
-                          if (!await launchUrl(
-                            Uri.parse(
-                              widget.storeModel.locationUrl,
-                            ),
-                          )) {
-                            throw ServiceException('Could not launch url');
-                          }
-                        }
-                      },
-                      child: Padding(
-                        padding: BaseUtility.vertical(
-                          BaseUtility.paddingNormalValue,
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              padding: BaseUtility.bottom(
-                                BaseUtility.paddingNormalValue,
-                              ),
-                              child: AppIcons.locationFill.toSvgImg(
-                                Theme.of(context).colorScheme.primary,
-                                BaseUtility.iconNormalSize,
-                                BaseUtility.iconNormalSize,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: BaseUtility.horizontal(
-                                  BaseUtility.paddingNormalValue,
-                                ),
-                                child: Column(
-                                  children: <Widget>[
-                                    // location
-                                    SizedBox(
-                                      width: dynamicViewExtensions
-                                          .maxWidth(context),
-                                      child: Padding(
-                                        padding: BaseUtility.bottom(
-                                          BaseUtility.paddingSmallValue,
-                                        ),
-                                        child: BodyMediumBlackBoldText(
-                                          text:
-                                              '${widget.storeModel.locationCity} / ${widget.storeModel.locationDistrict} / ${widget.storeModel.locationNeighborhood}',
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      ),
-                                    ),
-                                    // open time
-                                    SizedBox(
-                                      width: dynamicViewExtensions
-                                          .maxWidth(context),
-                                      child: Padding(
-                                        padding: BaseUtility.bottom(
-                                          BaseUtility.paddingNormalValue,
-                                        ),
-                                        child: BodyMediumBlackText(
-                                          text:
-                                              '${openDateTime.hour}:${openDateTime.minute} / ${closeDateTime.hour}:${closeDateTime.minute}',
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          BlocBuilder<StoreBloc, StoresState>(
-            builder: (context, state) {
-              if (state is StoresLoading) {
-                return const SliverToBoxAdapter(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                );
-              } else if (state is StoreDetailLoaded) {
-                final productList = state.products;
-                return SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300.0,
-                    mainAxisSpacing: 40.0,
-                    crossAxisSpacing: 5.0,
-                    childAspectRatio: 0.8,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      final product = productList[index];
-                      return ProductCardWidget(
-                        product: product,
-                        dynamicViewExtensions: dynamicViewExtensions,
-                        func: () {
-                          CodeNoahNavigatorRouter.push(
-                            context,
-                            ProductDetailView(
-                              productModel: product,
-                            ),
-                          );
-                        },
-                        isCardStatus: ProductCardType.horizontal,
-                      );
-                    },
-                    childCount: productList.length,
-                  ),
-                );
-              } else if (state is StoresError) {
-                return const SliverToBoxAdapter(child: SizedBox());
-              } else {
-                return const SliverToBoxAdapter();
-              }
-            },
-          ),
+          // store images
+          buildStoreImages,
+          // store information
+          buildStoreInformationWidget,
+          // store products
+          buildStoreProductsWidget,
         ],
       ),
     );
   }
+
+  // store images
+  SliverToBoxAdapter get buildStoreImages => SliverToBoxAdapter(
+        child: SizedBox(
+          width: dynamicViewExtensions.maxWidth(context),
+          height: dynamicViewExtensions.dynamicHeight(context, 0.4),
+          child: Stack(
+            children: <Widget>[
+              // slider
+              Positioned(
+                left: 0,
+                right: 0,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: dynamicViewExtensions.dynamicHeight(
+                      context,
+                      0.4,
+                    ),
+                    enableInfiniteScroll: false,
+                    viewportFraction: 1.0,
+                    enlargeCenterPage: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        current = index;
+                      });
+                    },
+                  ),
+                  items: coverImages
+                      .map(
+                        (item) => CachedNetworkImage(
+                          imageUrl: item.toString(),
+                          imageBuilder: (context, imageProvider) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          },
+                          placeholder: (context, url) => Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(0.2),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(0.2),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+              // status bar
+              const Positioned(
+                bottom: 20,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  // store information
+  Widget get buildStoreInformationWidget => SliverToBoxAdapter(
+        child: Padding(
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
+          ),
+          child: Column(
+            children: <Widget>[
+              // title
+              SizedBox(
+                width: dynamicViewExtensions.maxWidth(context),
+                child: GestureDetector(
+                  onTap: () {
+                    CodeNoahNavigatorRouter.push(
+                      context,
+                      StoreInformationView(
+                        storeModel: widget.storeModel,
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: TitleLargeBlackBoldText(
+                            text: widget.storeModel.storeName,
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                        AppIcons.arrowRight.toSvgImg(
+                          Colors.black,
+                          BaseUtility.iconNormalSize,
+                          BaseUtility.iconNormalSize,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // location
+              SizedBox(
+                width: dynamicViewExtensions.maxWidth(context),
+                child: GestureDetector(
+                  onTap: () async {
+                    if (widget.storeModel.locationUrl.isEmpty) {
+                      unawaited(
+                        CodeNoahDialogs(context).showFlush(
+                          type: SnackType.error,
+                          message: AppLocalizations.of(context)!
+                              .stores_detail_location_not_found,
+                        ),
+                      );
+                    } else {
+                      if (!await launchUrl(
+                        Uri.parse(
+                          widget.storeModel.locationUrl,
+                        ),
+                      )) {
+                        throw ServiceException('Could not launch url');
+                      }
+                    }
+                  },
+                  child: Padding(
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          padding: BaseUtility.bottom(
+                            BaseUtility.paddingNormalValue,
+                          ),
+                          child: AppIcons.locationFill.toSvgImg(
+                            Theme.of(context).colorScheme.primary,
+                            BaseUtility.iconNormalSize,
+                            BaseUtility.iconNormalSize,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingNormalValue,
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                // location
+                                SizedBox(
+                                  width:
+                                      dynamicViewExtensions.maxWidth(context),
+                                  child: Padding(
+                                    padding: BaseUtility.bottom(
+                                      BaseUtility.paddingSmallValue,
+                                    ),
+                                    child: BodyMediumBlackBoldText(
+                                      text:
+                                          '${widget.storeModel.locationCity} / ${widget.storeModel.locationDistrict} / ${widget.storeModel.locationNeighborhood}',
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                                // open time
+                                SizedBox(
+                                  width:
+                                      dynamicViewExtensions.maxWidth(context),
+                                  child: Padding(
+                                    padding: BaseUtility.bottom(
+                                      BaseUtility.paddingNormalValue,
+                                    ),
+                                    child: BodyMediumBlackText(
+                                      text:
+                                          '${openDateTime.hour}:${openDateTime.minute} / ${closeDateTime.hour}:${closeDateTime.minute}',
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  // store products
+  Widget get buildStoreProductsWidget => BlocBuilder<StoreBloc, StoresState>(
+        builder: (context, state) {
+          if (state is StoresLoading) {
+            return const SliverToBoxAdapter(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else if (state is StoreDetailLoaded) {
+            final productList = state.products;
+            return SliverGrid(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 300.0,
+                mainAxisSpacing: 40.0,
+                crossAxisSpacing: 5.0,
+                childAspectRatio: 0.8,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  final product = productList[index];
+                  return ProductCardWidget(
+                    product: product,
+                    dynamicViewExtensions: dynamicViewExtensions,
+                    func: () {
+                      CodeNoahNavigatorRouter.push(
+                        context,
+                        ProductDetailView(
+                          productModel: product,
+                        ),
+                      );
+                    },
+                    isCardStatus: ProductCardType.horizontal,
+                  );
+                },
+                childCount: productList.length,
+              ),
+            );
+          } else if (state is StoresError) {
+            return const SliverToBoxAdapter(child: SizedBox());
+          } else {
+            return const SliverToBoxAdapter();
+          }
+        },
+      );
 }
