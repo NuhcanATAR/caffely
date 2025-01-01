@@ -20,7 +20,7 @@ abstract class SignInLoadingViewmodel extends BaseState<SignInLoadingView> {
     SharedPreferences.getInstance().then((valuePrefs) {
       valuePrefs.setString('user_id', FirebaseService().authID.toString());
     });
-    logger.i('Oturum ID Kaydedildi!');
+    loggerPrint.printInfoLog('Oturum ID Kaydedildi!');
   }
 
   void getUserId() {

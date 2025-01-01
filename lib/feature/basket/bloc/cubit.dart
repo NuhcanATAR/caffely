@@ -4,6 +4,7 @@ import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
 import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
@@ -15,11 +16,12 @@ import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
 import '../../../product/model/savedadress_model/savedadress_model.dart';
 
 class BasketBloc extends Bloc<BasketEvent, BasketState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
   BasketBloc() : super(BasketInitialState()) {
     on<LoadBasketEvent>(basketList);
 
@@ -154,7 +156,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         Navigator.pop(context);
       }
     } catch (e) {
-      Logger().f('Hata:  $e');
+      loggerPrint.printErrorLog('Hata:  $e');
     }
   }
 
@@ -225,7 +227,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         });
       }
     } catch (e) {
-      Logger().f(
+      loggerPrint.printErrorLog(
         'Hata: $e',
       );
     }
@@ -311,7 +313,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         );
       }
     } catch (e) {
-      Logger().f(
+      loggerPrint.printErrorLog(
         'Hata: $e',
       );
     }

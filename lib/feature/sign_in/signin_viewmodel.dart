@@ -7,7 +7,6 @@ import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
@@ -49,7 +48,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
       final bool rememberMe = prefs.getBool('remember_me') ?? false;
 
       if (rememberMe) {
-        Logger().i('Beni hatırla açık');
+        loggerPrint.printInfoLog('Beni hatırla açık');
         setState(() {
           isRememberMe = true;
         });
@@ -61,7 +60,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
 
         if (user != null) {
           final String authID = user.uid;
-          logger.i('Current User ID: ${authID.toString()}');
+          loggerPrint.printInfoLog('Current User ID: ${authID.toString()}');
           if (!mounted) return;
           CodeNoahNavigatorRouter.pushAndRemoveUntil(
             context,
@@ -69,7 +68,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
             direction: SlideDirection.rightToLeft,
           );
         } else {
-          logger.e('Error: No user found in current session!');
+          loggerPrint.printErrorLog('Error: No user found in current session!');
           if (!mounted) return;
           await CodeNoahDialogs(context).showFlush(
             type: SnackType.error,
@@ -78,7 +77,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
         }
       }
     } catch (e) {
-      logger.i("Error: ${e.toString()}");
+      loggerPrint.printErrorLog("Error: ${e.toString()}");
       if (!mounted) return;
       await CodeNoahDialogs(context).showFlush(
         type: SnackType.error,

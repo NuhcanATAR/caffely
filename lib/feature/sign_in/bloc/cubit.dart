@@ -3,16 +3,18 @@
 import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
   SignInBloc() : super(const SignInState()) {
     on<SignInEmailEvent>((event, emit) {
       emit(state.copyWith(email: event.email));
@@ -81,13 +83,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           errorMessage =
               AppLocalizations.of(event.context)!.sign_auth_exception_error;
       }
-      Logger().e('FirebaseAuthException: ${e.code} - ${e.message}');
+      loggerPrint
+          .printErrorLog('FirebaseAuthException: ${e.code} - ${e.message}');
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('remember_me', false);
 
       emit(SignInErrorState(errorMessage));
     } catch (e) {
-      Logger().e('Unexpected Error: ${e.toString()}');
+      loggerPrint.printErrorLog('Unexpected Error: ${e.toString()}');
       if (!event.context.mounted) return;
       emit(
         SignInErrorState(
@@ -158,7 +161,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         return null;
       });
     } catch (error) {
-      Logger().i('Hata: $error');
+      loggerPrint.printErrorLog('Hata: $error');
       emit(
         SignInGoogleAuthError(
           AppLocalizations.of(event.context)!.sign_google_error,

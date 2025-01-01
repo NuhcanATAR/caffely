@@ -3,6 +3,7 @@
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
@@ -13,6 +14,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
+
   List<ProductModel> productList = [];
   List<ProductModel> allProducts = [];
 
@@ -160,7 +164,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       final basketCollection = await basketDoc.get();
 
       if (basketCollection.exists) {
-        Logger().i('Sepette ürün var');
+        loggerPrint.printInfoLog('Sepette ürün var');
 
         final branchDoc = basketDoc
             .collection(FirebaseCollectionReferances.branch.name)
@@ -193,7 +197,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               'product_total': FieldValue.increment(event.totalPrice),
             });
 
-            Logger().i('Ürün miktarı güncellendi: $newQuantity');
+            loggerPrint.printInfoLog('Ürün miktarı güncellendi: $newQuantity');
 
             final branchQuery = await basketDoc
                 .collection(FirebaseCollectionReferances.branch.name)
@@ -210,7 +214,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
                 'status': OrderBranchStatusControl.orderReceived.value,
               });
 
-              Logger().i(
+              loggerPrint.printInfoLog(
                 'Şube bilgileri güncellendi: basket_total ve total_quanity',
               );
             }
@@ -237,13 +241,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
                 'status': OrderBranchStatusControl.orderReceived.value,
               });
 
-              Logger().i(
+              loggerPrint.printInfoLog(
                 'Şube bilgileri güncellendi: basket_total ve total_quanity',
               );
             }
           }
         } else {
-          Logger().f('Yeni şube sepete ekleniyor');
+          loggerPrint.printInfoLog('Yeni şube sepete ekleniyor');
           await addNewBranchToBasket(
             state,
             basketDoc,
@@ -252,7 +256,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           );
         }
       } else {
-        Logger().f('Sepet Henüz Açılmamış');
+        loggerPrint.printInfoLog('Sepet Henüz Açılmamış');
 
         await basketDoc.set({
           'id': FirebaseService().authID,
@@ -329,7 +333,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }).then((value) {
       final docId = value.id;
       value.update({'id': docId});
-      Logger().i('Yeni ürün sepete eklendi: $docId');
+      loggerPrint.printInfoLog('Yeni ürün sepete eklendi: $docId');
     });
   }
 }

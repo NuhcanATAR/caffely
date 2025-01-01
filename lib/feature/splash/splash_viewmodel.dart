@@ -1,17 +1,16 @@
 import 'package:caffely/feature/sign/sign_view.dart';
 import 'package:caffely/feature/splash/splash_view.dart';
 import 'package:caffely/feature/version/version_view.dart';
+import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/auth_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
-import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../onboarding/onboarding_view.dart';
 
-abstract class SplashViewModel extends State<SplashView> {
+abstract class SplashViewModel extends BaseState<SplashView> {
   @override
   void initState() {
     super.initState();
@@ -38,7 +37,7 @@ abstract class SplashViewModel extends State<SplashView> {
         await checkVersion(false);
       }
     } catch (e) {
-      Logger().e('Hata Oluştu: $e');
+      loggerPrint.printErrorLog('Hata Oluştu: $e');
     }
   }
 
@@ -89,7 +88,7 @@ abstract class SplashViewModel extends State<SplashView> {
         );
       }
     } else {
-      Logger().e('Version document does not exist');
+      loggerPrint.printErrorLog('Version document does not exist');
     }
   }
 }

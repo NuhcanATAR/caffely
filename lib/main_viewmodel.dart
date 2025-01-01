@@ -36,18 +36,18 @@ abstract class MainViewModel extends BaseState<FirsView> {
     final String userId = prefs.getString('current_user') ?? '';
 
     if (userId.isEmpty) {
-      logger.i('Oturum ID Bulunmuyor Henüz');
+      loggerPrint.printInfoLog('Oturum ID Bulunmuyor Henüz');
     } else {
-      logger.i('Bildirim için kullanıcı Oturum ID: $userId');
+      loggerPrint.printInfoLog('Bildirim için kullanıcı Oturum ID: $userId');
     }
   }
 
   Future<void> requestNotificationPermission() async {
     final PermissionStatus status = await Permission.notification.request();
     if (status.isGranted) {
-      logger.i('Bildirim izni verildi');
+      loggerPrint.printInfoLog('Bildirim izni verildi');
     } else if (status.isDenied) {
-      logger.i('Bildirim izni reddedildi.');
+      loggerPrint.printInfoLog('Bildirim izni reddedildi.');
     }
   }
 }
