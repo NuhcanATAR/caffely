@@ -39,9 +39,9 @@ class SliderCardWidget extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
               ),
               image: DecorationImage(
@@ -54,9 +54,9 @@ class SliderCardWidget extends StatelessWidget {
       },
       placeholder: (context, url) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
           color: Colors.grey.withOpacity(0.4),
@@ -64,9 +64,9 @@ class SliderCardWidget extends StatelessWidget {
       ),
       errorWidget: (context, url, error) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
           color: Colors.grey.withOpacity(0.4),

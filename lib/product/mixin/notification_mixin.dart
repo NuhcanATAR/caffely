@@ -18,20 +18,19 @@ mixin NotificationMixin {
   ) {
     CodeNoahDialogs(context).showModalBottom(
       Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
             topRight: Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
         ),
         child: Padding(
-          padding:
-              PaddingSizedsUtility.all(PaddingSizedsUtility.normalPaddingValue),
+          padding: BaseUtility.all(BaseUtility.paddingNormalValue),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -55,8 +54,8 @@ mixin NotificationMixin {
                         },
                         child: AppIcons.close.toSvgImg(
                           Theme.of(context).colorScheme.onSurface,
-                          IconSizedsUtility.normalSize,
-                          IconSizedsUtility.normalSize,
+                          BaseUtility.iconNormalSize,
+                          BaseUtility.iconNormalSize,
                         ),
                       ),
                     ],
@@ -70,8 +69,8 @@ mixin NotificationMixin {
                 ),
                 // title
                 Padding(
-                  padding: PaddingSizedsUtility.top(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.top(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: TitleLargeBlackBoldText(
                     text: AppLocalizations.of(context)!.permission_title,
@@ -80,8 +79,8 @@ mixin NotificationMixin {
                 ),
                 // sub title
                 Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: AppLocalizations.of(context)!.permission_subtitle,

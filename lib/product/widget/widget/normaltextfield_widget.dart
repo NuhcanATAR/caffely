@@ -35,8 +35,8 @@ class NormalTextFieldWidget extends StatelessWidget {
             ? SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: hintText,
@@ -72,13 +72,13 @@ class NormalTextFieldWidget extends StatelessWidget {
                   ),
               filled: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: PaddingSizedsUtility.normalPaddingValue,
-                vertical: PaddingSizedsUtility.smallPaddingValue,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: BaseUtility.paddingNormalValue,
+                vertical: BaseUtility.paddingSmallValue,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -87,7 +87,7 @@ class NormalTextFieldWidget extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -95,7 +95,7 @@ class NormalTextFieldWidget extends StatelessWidget {
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -103,7 +103,7 @@ class NormalTextFieldWidget extends StatelessWidget {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -139,8 +139,8 @@ class NumberTextFieldWidget extends StatelessWidget {
             ? SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: hintText,
@@ -171,13 +171,13 @@ class NumberTextFieldWidget extends StatelessWidget {
                   ),
               filled: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: PaddingSizedsUtility.normalPaddingValue,
-                vertical: PaddingSizedsUtility.smallPaddingValue,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: BaseUtility.paddingNormalValue,
+                vertical: BaseUtility.paddingSmallValue,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -186,7 +186,7 @@ class NumberTextFieldWidget extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -194,7 +194,7 @@ class NumberTextFieldWidget extends StatelessWidget {
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -202,7 +202,7 @@ class NumberTextFieldWidget extends StatelessWidget {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,

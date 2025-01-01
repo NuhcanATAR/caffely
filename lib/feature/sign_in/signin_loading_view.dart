@@ -72,17 +72,17 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: LoadingAnimationWidget.hexagonDots(
                       color: Theme.of(context).colorScheme.primary,
-                      size: IconSizedsUtility.largeSize,
+                      size: BaseUtility.iconLargeSize,
                     ),
                   ),
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: BodyMediumBlackBoldText(
                       text: AppLocalizations.of(context)!.sign_loading_subtitle,

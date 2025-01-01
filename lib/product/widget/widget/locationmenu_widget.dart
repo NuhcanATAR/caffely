@@ -91,13 +91,13 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.transparent,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: PaddingSizedsUtility.normalPaddingValue,
-                        vertical: PaddingSizedsUtility.smallPaddingValue,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: BaseUtility.paddingNormalValue,
+                        vertical: BaseUtility.paddingSmallValue,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -106,7 +106,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -114,7 +114,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -122,7 +122,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -131,8 +131,8 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                     ),
                     icon: AppIcons.arrowDropDown.toSvgImg(
                       Colors.black,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                     value: selectCity, // Seçili şehir
                     onChanged: (String? value) {
@@ -161,8 +161,8 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: PaddingSizedsUtility.vertical(
-                        PaddingSizedsUtility.smallPaddingValue,
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
                       ),
                       child: BodyMediumBlackText(
                         text: AppLocalizations.of(context)!
@@ -175,13 +175,13 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.transparent,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: PaddingSizedsUtility.normalPaddingValue,
-                        vertical: PaddingSizedsUtility.smallPaddingValue,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: BaseUtility.paddingNormalValue,
+                        vertical: BaseUtility.paddingSmallValue,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -190,7 +190,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -198,7 +198,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -206,7 +206,7 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                       ),
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                         borderSide: const BorderSide(
                           color: Colors.transparent,
@@ -215,8 +215,8 @@ class _LocationMenuWidgetState extends State<LocationMenuWidget> {
                     ),
                     icon: AppIcons.arrowDropDown.toSvgImg(
                       Colors.black,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                     value: selectDistrict, // Seçili ilçe
                     onChanged: (String? value) {

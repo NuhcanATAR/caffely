@@ -50,8 +50,8 @@ class _OrderDetailViewState extends OrderDetailViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -96,8 +96,8 @@ class _OrderDetailViewState extends OrderDetailViewModel {
                   final BasketModel basketModel =
                       BasketModel.fromJson(basketData);
                   return Padding(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingMediumValue,
                     ),
                     child: ListView(
                       children: <Widget>[
@@ -153,16 +153,15 @@ class _OrderDetailViewState extends OrderDetailViewModel {
   Widget buildStoresAndProductsCardWidget(OrderLoaded state) => SizedBox(
         width: dynamicViewExtensions.maxWidth(context),
         child: Container(
-          margin:
-              MarginSizedsUtility.top(MarginSizedsUtility.normalMarginValue),
+          margin: BaseUtility.top(BaseUtility.marginNormalValue),
           decoration: BoxDecoration(
             border: Border.all(
               color: Theme.of(context).colorScheme.outline,
               width: 0.5,
             ),
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
-                RadiusUtility.normalRadiusValue,
+                BaseUtility.radiusNormalValue,
               ),
             ),
           ),
@@ -174,11 +173,11 @@ class _OrderDetailViewState extends OrderDetailViewModel {
               final storeModel = state.branches[index];
 
               return Container(
-                margin: MarginSizedsUtility.vertical(
-                  MarginSizedsUtility.mediumMarginValue,
+                margin: BaseUtility.vertical(
+                  BaseUtility.marginMediumValue,
                 ),
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.mediumPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingMediumValue,
                 ),
                 decoration: state.branches.length > 1
                     ? BoxDecoration(

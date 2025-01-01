@@ -72,8 +72,8 @@ class _OnBoardingViewState extends OnBoardingViewModel {
             fit: FlexFit.tight,
             flex: 2,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingMediumValue,
               ),
               child: Row(
                 children: <Widget>[
@@ -83,8 +83,8 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                     flex: 1,
                     child: FadeInLeft(
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: CustomButtonWidget(
                           dynamicViewExtensions: dynamicViewExtensions,
@@ -127,8 +127,8 @@ class _OnBoardingViewState extends OnBoardingViewModel {
                     flex: 1,
                     child: FadeInRight(
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: CustomButtonWidget(
                           dynamicViewExtensions: dynamicViewExtensions,
@@ -193,8 +193,8 @@ class _OnBoardingViewState extends OnBoardingViewModel {
         fit: FlexFit.tight,
         flex: 2,
         child: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
           ),
           child: onBoardingText[selectProccessIndex],
         ),
@@ -208,13 +208,13 @@ class _OnBoardingViewState extends OnBoardingViewModel {
     return AnimatedContainer(
       width: width,
       height: 8,
-      margin: PaddingSizedsUtility.horizontal(
-        PaddingSizedsUtility.smallPaddingValue,
+      margin: BaseUtility.horizontal(
+        BaseUtility.paddingSmallValue,
       ),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.all(
-          Radius.circular(RadiusUtility.circularMediumValue),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(BaseUtility.radiusCircularMediumValue),
         ),
       ),
       duration: const Duration(milliseconds: 300), // Animasyon süresi

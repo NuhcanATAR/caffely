@@ -32,8 +32,8 @@ class _StoresViewState extends StoresViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -51,8 +51,8 @@ class _StoresViewState extends StoresViewModel {
             );
           } else if (state is StoresLoaded) {
             return Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[

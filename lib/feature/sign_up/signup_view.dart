@@ -40,8 +40,8 @@ class _SignUpViewState extends SignUpViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
       ),
@@ -51,15 +51,15 @@ class _SignUpViewState extends SignUpViewModel {
           return Form(
             key: formSignUpKey,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: ListView(
                 children: <Widget>[
                   // title & sub title
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
@@ -67,8 +67,8 @@ class _SignUpViewState extends SignUpViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.bottom(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.bottom(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: TitleLargeBlackBoldText(
                               text: AppLocalizations.of(context)!
@@ -81,8 +81,8 @@ class _SignUpViewState extends SignUpViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.bottom(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.bottom(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackText(
                               text: AppLocalizations.of(context)!
@@ -117,8 +117,8 @@ class _SignUpViewState extends SignUpViewModel {
                   ),
                   // agree
                   Padding(
-                    padding: PaddingSizedsUtility.top(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.top(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Row(
                       children: <Widget>[
@@ -135,8 +135,8 @@ class _SignUpViewState extends SignUpViewModel {
                         // agree text
                         Expanded(
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: RichText(
                               text: TextSpan(
@@ -182,8 +182,8 @@ class _SignUpViewState extends SignUpViewModel {
 
                   // sign up
                   Container(
-                    margin: MarginSizedsUtility.top(
-                      MarginSizedsUtility.normalMarginValue,
+                    margin: BaseUtility.top(
+                      BaseUtility.marginNormalValue,
                     ),
                     child: CustomButtonWidget(
                       dynamicViewExtensions: dynamicViewExtensions,
@@ -221,8 +221,8 @@ class _SignUpViewState extends SignUpViewModel {
                   ),
                   // sign in
                   Padding(
-                    padding: PaddingSizedsUtility.top(
-                      PaddingSizedsUtility.hightPaddingValue,
+                    padding: BaseUtility.top(
+                      BaseUtility.paddingHightValue,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -232,8 +232,8 @@ class _SignUpViewState extends SignUpViewModel {
                           fit: FlexFit.tight,
                           flex: 1,
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: AppLocalizations.of(context)!.signup_sign,
@@ -253,8 +253,8 @@ class _SignUpViewState extends SignUpViewModel {
                               );
                             },
                             child: Padding(
-                              padding: PaddingSizedsUtility.horizontal(
-                                PaddingSizedsUtility.smallPaddingValue,
+                              padding: BaseUtility.horizontal(
+                                BaseUtility.paddingSmallValue,
                               ),
                               child: BodyMediumMainColorText(
                                 text: AppLocalizations.of(context)!

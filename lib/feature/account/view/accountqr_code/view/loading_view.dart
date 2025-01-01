@@ -42,18 +42,18 @@ class _AccountQrCodeCreateLoadingViewState
           children: <Widget>[
             // loading
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
               ),
               child: LoadingAnimationWidget.hexagonDots(
                 color: Theme.of(context).colorScheme.primary,
-                size: IconSizedsUtility.largeSize,
+                size: BaseUtility.iconLargeSize,
               ),
             ),
             // titles
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingSmallValue,
               ),
               child: BodyMediumBlackBoldText(
                 text: AppLocalizations.of(context)!
@@ -63,8 +63,8 @@ class _AccountQrCodeCreateLoadingViewState
             ),
             // sub title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingSmallValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!

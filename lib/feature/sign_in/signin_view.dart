@@ -37,8 +37,8 @@ class _SignInViewState extends SignInViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
       ),
@@ -48,8 +48,8 @@ class _SignInViewState extends SignInViewModel {
           return Form(
             key: formSignInKey,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -59,8 +59,8 @@ class _SignInViewState extends SignInViewModel {
                       children: <Widget>[
                         // title & sub title
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Column(
                             children: <Widget>[
@@ -68,8 +68,8 @@ class _SignInViewState extends SignInViewModel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: TitleLargeBlackBoldText(
                                     text: AppLocalizations.of(context)!
@@ -82,8 +82,8 @@ class _SignInViewState extends SignInViewModel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: BodyMediumBlackText(
                                     text: AppLocalizations.of(context)!
@@ -120,8 +120,8 @@ class _SignInViewState extends SignInViewModel {
                         ),
                         // remember me & forgot password
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Row(
                             children: <Widget>[
@@ -139,10 +139,8 @@ class _SignInViewState extends SignInViewModel {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding:
-                                            PaddingSizedsUtility.horizontal(
-                                          PaddingSizedsUtility
-                                              .smallPaddingValue,
+                                        padding: BaseUtility.horizontal(
+                                          BaseUtility.paddingSmallValue,
                                         ),
                                         child: BodyMediumBlackText(
                                           text: AppLocalizations.of(context)!
@@ -178,8 +176,8 @@ class _SignInViewState extends SignInViewModel {
                         ),
                         // sign up
                         Padding(
-                          padding: PaddingSizedsUtility.top(
-                            PaddingSizedsUtility.hightPaddingValue,
+                          padding: BaseUtility.top(
+                            BaseUtility.paddingHightValue,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -190,8 +188,8 @@ class _SignInViewState extends SignInViewModel {
                                 fit: FlexFit.tight,
                                 flex: 5,
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.horizontal(
-                                    PaddingSizedsUtility.smallPaddingValue,
+                                  padding: BaseUtility.horizontal(
+                                    BaseUtility.paddingSmallValue,
                                   ),
                                   child: BodyMediumBlackText(
                                     text: AppLocalizations.of(context)!
@@ -212,8 +210,8 @@ class _SignInViewState extends SignInViewModel {
                                     );
                                   },
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.horizontal(
-                                      PaddingSizedsUtility.smallPaddingValue,
+                                    padding: BaseUtility.horizontal(
+                                      BaseUtility.paddingSmallValue,
                                     ),
                                     child: BodyMediumMainColorText(
                                       text: AppLocalizations.of(context)!

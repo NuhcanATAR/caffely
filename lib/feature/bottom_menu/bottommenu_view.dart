@@ -37,13 +37,13 @@ class _BottomMenuViewState extends BottomMenuViewModel {
             NavigationDestination(
               selectedIcon: AppIcons.homeFill.toSvgImg(
                 Theme.of(context).colorScheme.primary,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               icon: AppIcons.homeOutline.toSvgImg(
                 Theme.of(context).colorScheme.outline,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               label: '',
             ),
@@ -51,13 +51,13 @@ class _BottomMenuViewState extends BottomMenuViewModel {
             NavigationDestination(
               selectedIcon: AppIcons.shopFill.toSvgImg(
                 Theme.of(context).colorScheme.primary,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               icon: AppIcons.shopOutline.toSvgImg(
                 Theme.of(context).colorScheme.outline,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               label: '',
             ),
@@ -65,13 +65,13 @@ class _BottomMenuViewState extends BottomMenuViewModel {
             NavigationDestination(
               selectedIcon: AppIcons.orderFill.toSvgImg(
                 Theme.of(context).colorScheme.primary,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               icon: AppIcons.orderOutline.toSvgImg(
                 Theme.of(context).colorScheme.outline,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               label: '',
             ),
@@ -79,13 +79,13 @@ class _BottomMenuViewState extends BottomMenuViewModel {
             NavigationDestination(
               selectedIcon: AppIcons.favoriteFill.toSvgImg(
                 Theme.of(context).colorScheme.primary,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               icon: AppIcons.favoriteOutline.toSvgImg(
                 Theme.of(context).colorScheme.outline,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               label: '',
             ),
@@ -93,13 +93,13 @@ class _BottomMenuViewState extends BottomMenuViewModel {
             NavigationDestination(
               selectedIcon: AppIcons.userFill.toSvgImg(
                 Theme.of(context).colorScheme.primary,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               icon: AppIcons.userOutline.toSvgImg(
                 Theme.of(context).colorScheme.outline,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               label: '',
             ),

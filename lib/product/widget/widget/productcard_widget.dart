@@ -30,8 +30,8 @@ class ProductCardWidget extends StatelessWidget {
     return isCardStatus.cardTypeValue ==
             ProductCardType.horizontal.cardTypeValue
         ? Padding(
-            padding: PaddingSizedsUtility.right(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.right(
+              BaseUtility.paddingNormalValue,
             ),
             child: GestureDetector(
               onTap: func,
@@ -41,14 +41,14 @@ class ProductCardWidget extends StatelessWidget {
                   0.4,
                 ),
                 child: Container(
-                  padding: PaddingSizedsUtility.all(
-                    PaddingSizedsUtility.smallPaddingValue,
+                  padding: BaseUtility.all(
+                    BaseUtility.paddingSmallValue,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                     ),
                   ),
@@ -64,8 +64,8 @@ class ProductCardWidget extends StatelessWidget {
                             imageProvider,
                           ) {
                             return Container(
-                              padding: PaddingSizedsUtility.all(
-                                PaddingSizedsUtility.smallPaddingValue,
+                              padding: BaseUtility.all(
+                                BaseUtility.paddingSmallValue,
                               ),
                               alignment: Alignment.topLeft,
                               decoration: BoxDecoration(
@@ -74,9 +74,9 @@ class ProductCardWidget extends StatelessWidget {
                                   image: imageProvider,
                                   fit: BoxFit.cover,
                                 ),
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(
-                                    RadiusUtility.circularMediumValue,
+                                    BaseUtility.radiusCircularMediumValue,
                                   ),
                                 ),
                               ),
@@ -85,12 +85,12 @@ class ProductCardWidget extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.4),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -98,12 +98,12 @@ class ProductCardWidget extends StatelessWidget {
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.4),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -126,8 +126,8 @@ class ProductCardWidget extends StatelessWidget {
                                     context,
                                   ),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.all(
-                                      PaddingSizedsUtility.mediumPaddingValue,
+                                    padding: BaseUtility.all(
+                                      BaseUtility.paddingMediumValue,
                                     ),
                                     child: BodyMediumBlackBoldText(
                                       text: product.title,
@@ -141,8 +141,8 @@ class ProductCardWidget extends StatelessWidget {
                                     context,
                                   ),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.horizontal(
-                                      PaddingSizedsUtility.mediumPaddingValue,
+                                    padding: BaseUtility.horizontal(
+                                      BaseUtility.paddingMediumValue,
                                     ),
                                     child: Row(
                                       children: <Widget>[
@@ -150,14 +150,13 @@ class ProductCardWidget extends StatelessWidget {
                                           Theme.of(
                                             context,
                                           ).colorScheme.primary,
-                                          IconSizedsUtility.mediumSize,
-                                          IconSizedsUtility.mediumSize,
+                                          BaseUtility.iconMediumSize,
+                                          BaseUtility.iconMediumSize,
                                         ),
                                         Expanded(
                                           child: Padding(
-                                            padding: PaddingSizedsUtility.left(
-                                              PaddingSizedsUtility
-                                                  .smallPaddingValue,
+                                            padding: BaseUtility.left(
+                                              BaseUtility.paddingSmallValue,
                                             ),
                                             child: BodyMediumMainColorText(
                                               text: '${product.price}₺',
@@ -181,20 +180,20 @@ class ProductCardWidget extends StatelessWidget {
             ),
           )
         : Padding(
-            padding: PaddingSizedsUtility.top(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.top(
+              BaseUtility.paddingNormalValue,
             ),
             child: GestureDetector(
               onTap: func,
               child: Container(
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingSmallValue,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(
                     Radius.circular(
-                      RadiusUtility.circularMediumValue,
+                      BaseUtility.radiusCircularMediumValue,
                     ),
                   ),
                 ),
@@ -216,9 +215,9 @@ class ProductCardWidget extends StatelessWidget {
                                 image: imageProvider,
                                 fit: BoxFit.cover,
                               ),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -226,9 +225,9 @@ class ProductCardWidget extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.2),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -236,9 +235,9 @@ class ProductCardWidget extends StatelessWidget {
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.2),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -250,8 +249,8 @@ class ProductCardWidget extends StatelessWidget {
                     Expanded(
                       flex: 5,
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Column(
                           children: <Widget>[
@@ -259,8 +258,8 @@ class ProductCardWidget extends StatelessWidget {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: TitleMediumBlackBoldText(
                                   text: product.title,
@@ -272,8 +271,8 @@ class ProductCardWidget extends StatelessWidget {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: BodyMediumMainColorText(
                                   text:

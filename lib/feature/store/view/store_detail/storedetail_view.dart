@@ -48,32 +48,32 @@ class _StoreDetailViewState extends StoreDetailViewModel {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
             },
             child: Container(
-              margin: MarginSizedsUtility.all(
-                MarginSizedsUtility.smallMarginValue,
+              margin: BaseUtility.all(
+                BaseUtility.marginSmallValue,
               ),
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingSmallValue,
               ),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.6),
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(
-                    RadiusUtility.circularHighValue,
+                    BaseUtility.radiusCircularHighValue,
                   ),
                 ),
               ),
               child: AppIcons.arrowLeft.toSvgImg(
                 Colors.white,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
             ),
           ),
@@ -137,34 +137,34 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                     }
                   },
                   child: Padding(
-                    padding: PaddingSizedsUtility.right(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.right(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: SizedBox(
                       width: 35,
                       height: 35,
                       child: Container(
-                        padding: PaddingSizedsUtility.all(
-                          PaddingSizedsUtility.smallPaddingValue,
+                        padding: BaseUtility.all(
+                          BaseUtility.paddingSmallValue,
                         ),
                         decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.6),
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(
-                              RadiusUtility.circularHighValue,
+                              BaseUtility.radiusCircularHighValue,
                             ),
                           ),
                         ),
                         child: isFavorite == true
                             ? AppIcons.favoriteFill.toSvgImg(
                                 Colors.red,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
+                                BaseUtility.iconNormalSize,
+                                BaseUtility.iconNormalSize,
                               )
                             : AppIcons.favoriteOutline.toSvgImg(
                                 Colors.white,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
+                                BaseUtility.iconNormalSize,
+                                BaseUtility.iconNormalSize,
                               ),
                       ),
                     ),
@@ -251,8 +251,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -269,8 +269,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                         );
                       },
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Row(
                           children: <Widget>[
@@ -282,8 +282,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                             ),
                             AppIcons.arrowRight.toSvgImg(
                               Colors.black,
-                              IconSizedsUtility.normalSize,
-                              IconSizedsUtility.normalSize,
+                              BaseUtility.iconNormalSize,
+                              BaseUtility.iconNormalSize,
                             ),
                           ],
                         ),
@@ -314,25 +314,25 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                         }
                       },
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: PaddingSizedsUtility.bottom(
-                                PaddingSizedsUtility.normalPaddingValue,
+                              padding: BaseUtility.bottom(
+                                BaseUtility.paddingNormalValue,
                               ),
                               child: AppIcons.locationFill.toSvgImg(
                                 Theme.of(context).colorScheme.primary,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
+                                BaseUtility.iconNormalSize,
+                                BaseUtility.iconNormalSize,
                               ),
                             ),
                             Expanded(
                               child: Padding(
-                                padding: PaddingSizedsUtility.horizontal(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.horizontal(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: Column(
                                   children: <Widget>[
@@ -341,9 +341,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                                       width: dynamicViewExtensions
                                           .maxWidth(context),
                                       child: Padding(
-                                        padding: PaddingSizedsUtility.bottom(
-                                          PaddingSizedsUtility
-                                              .smallPaddingValue,
+                                        padding: BaseUtility.bottom(
+                                          BaseUtility.paddingSmallValue,
                                         ),
                                         child: BodyMediumBlackBoldText(
                                           text:
@@ -357,9 +356,8 @@ class _StoreDetailViewState extends StoreDetailViewModel {
                                       width: dynamicViewExtensions
                                           .maxWidth(context),
                                       child: Padding(
-                                        padding: PaddingSizedsUtility.bottom(
-                                          PaddingSizedsUtility
-                                              .normalPaddingValue,
+                                        padding: BaseUtility.bottom(
+                                          BaseUtility.paddingNormalValue,
                                         ),
                                         child: BodyMediumBlackText(
                                           text:

@@ -25,25 +25,25 @@ class SocialMediaButtonWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
           ),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
           child: Row(
             children: <Widget>[
               icon.toSvgImg(
                 Colors.white,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               Padding(
-                padding: PaddingSizedsUtility.horizontal(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingSmallValue,
                 ),
                 child: BodyMediumWhiteText(
                   text: btnText,

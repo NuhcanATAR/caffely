@@ -23,11 +23,11 @@ class OrderCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: MarginSizedsUtility.vertical(
-        MarginSizedsUtility.mediumMarginValue,
+      margin: BaseUtility.vertical(
+        BaseUtility.marginMediumValue,
       ),
-      padding: PaddingSizedsUtility.all(
-        PaddingSizedsUtility.mediumPaddingValue,
+      padding: BaseUtility.all(
+        BaseUtility.paddingMediumValue,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -35,9 +35,9 @@ class OrderCardWidget extends StatelessWidget {
           color: Theme.of(context).colorScheme.outline,
           width: 0.5,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(
-            RadiusUtility.lowRadiusValue,
+            BaseUtility.radiusLowValue,
           ),
         ),
       ),
@@ -45,8 +45,8 @@ class OrderCardWidget extends StatelessWidget {
         children: <Widget>[
           // order date
           Padding(
-            padding: PaddingSizedsUtility.vertical(
-              PaddingSizedsUtility.mediumPaddingValue,
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingMediumValue,
             ),
             child: Row(
               children: <Widget>[
@@ -69,8 +69,8 @@ class OrderCardWidget extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.mediumPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingMediumValue,
                         ),
                         child: BodyMediumMainColorText(
                           text: AppLocalizations.of(context)!
@@ -80,8 +80,8 @@ class OrderCardWidget extends StatelessWidget {
                       ),
                       AppIcons.arrowRight.toSvgImg(
                         Theme.of(context).colorScheme.primary,
-                        IconSizedsUtility.normalSize,
-                        IconSizedsUtility.normalSize,
+                        BaseUtility.iconNormalSize,
+                        BaseUtility.iconNormalSize,
                       ),
                     ],
                   ),
@@ -91,20 +91,20 @@ class OrderCardWidget extends StatelessWidget {
           ),
           // payment type
           Padding(
-            padding: PaddingSizedsUtility.vertical(
-              PaddingSizedsUtility.mediumPaddingValue,
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingMediumValue,
             ),
             child: Row(
               children: <Widget>[
                 AppIcons.moneyOutline.toSvgImg(
                   Theme.of(context).colorScheme.primary,
-                  IconSizedsUtility.normalSize,
-                  IconSizedsUtility.normalSize,
+                  BaseUtility.iconNormalSize,
+                  BaseUtility.iconNormalSize,
                 ),
                 Expanded(
                   child: Padding(
-                    padding: PaddingSizedsUtility.horizontal(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.horizontal(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: LabelMediumBlackText(
                       text: model.paymentType == OrderPaymentType.online.value

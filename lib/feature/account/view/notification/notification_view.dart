@@ -28,8 +28,8 @@ class _NotificationViewState extends NotificationViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -38,8 +38,8 @@ class _NotificationViewState extends NotificationViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: ListView(
           children: <Widget>[

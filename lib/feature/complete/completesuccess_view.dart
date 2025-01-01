@@ -24,8 +24,8 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: Column(
           children: <Widget>[
@@ -41,30 +41,30 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
                         width: 150,
                         height: 150,
                         child: Container(
-                          margin: MarginSizedsUtility.all(
-                            MarginSizedsUtility.normalMarginValue,
+                          margin: BaseUtility.all(
+                            BaseUtility.marginNormalValue,
                           ),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.primary,
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularHighValue,
+                                BaseUtility.radiusCircularHighValue,
                               ),
                             ),
                           ),
                           child: AppIcons.doneOutline.toSvgImg(
                             Colors.white,
-                            IconSizedsUtility.largeSecondSize,
-                            IconSizedsUtility.largeSecondSize,
+                            BaseUtility.iconLargeSecondSize,
+                            BaseUtility.iconLargeSecondSize,
                           ),
                         ),
                       ),
                     ),
                     FadeInUp(
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: TitleLargeBlackBoldText(
                           text: AppLocalizations.of(context)!
@@ -75,8 +75,8 @@ class _CompleteSuccessViewState extends BaseState<CompleteSuccessView> {
                     ),
                     FadeInUp(
                       child: Padding(
-                        padding: PaddingSizedsUtility.bottom(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.bottom(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: BodyMediumBlackText(
                           text: AppLocalizations.of(context)!

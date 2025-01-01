@@ -29,8 +29,8 @@ class AdressSelectCardWidget extends StatelessWidget {
     return SizedBox(
       width: dynamicViewExtensions.maxWidth(context),
       child: Container(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -38,9 +38,9 @@ class AdressSelectCardWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.outline,
             width: 0.5,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.normalRadiusValue,
+              BaseUtility.radiusNormalValue,
             ),
           ),
         ),
@@ -48,8 +48,8 @@ class AdressSelectCardWidget extends StatelessWidget {
           children: <Widget>[
             // title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: Row(
                 children: <Widget>[
@@ -77,8 +77,8 @@ class AdressSelectCardWidget extends StatelessWidget {
 
             // adress select
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
               ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<SavedAdressModel>(
@@ -86,8 +86,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                   dropdownColor: Colors.white,
                   icon: AppIcons.arrowDropDown.toSvgImg(
                     Colors.black,
-                    IconSizedsUtility.normalSize,
-                    IconSizedsUtility.normalSize,
+                    BaseUtility.iconNormalSize,
+                    BaseUtility.iconNormalSize,
                   ),
                   hint: BodyMediumBlackText(
                     text: AppLocalizations.of(context)!.adress_select,
@@ -110,17 +110,17 @@ class AdressSelectCardWidget extends StatelessWidget {
             // select adress
             if (selectedAddress != null)
               Container(
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingNormalValue,
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
                     width: 0.5,
                   ),
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      RadiusUtility.circularMediumValue,
+                      BaseUtility.radiusCircularMediumValue,
                     ),
                   ),
                 ),
@@ -130,8 +130,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Container(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         decoration: const BoxDecoration(
                           border: Border(
@@ -154,8 +154,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
@@ -168,8 +168,8 @@ class AdressSelectCardWidget extends StatelessWidget {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.bottom(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.bottom(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackText(
                               text:

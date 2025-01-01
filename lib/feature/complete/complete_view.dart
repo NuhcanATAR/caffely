@@ -38,8 +38,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
           return Form(
             key: formProfileCompleteKey,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -49,8 +49,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                       children: <Widget>[
                         // title & sub title
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Column(
                             children: <Widget>[
@@ -58,8 +58,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: FadeInLeft(
                                     child: TitleLargeBlackBoldText(
@@ -74,8 +74,8 @@ class _ProfileCompleteViewState extends ProfileCompleteViewModel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: FadeInLeft(
                                     child: BodyMediumBlackText(

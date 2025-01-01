@@ -19,8 +19,8 @@ class CustomResponseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.all(
-        PaddingSizedsUtility.normalPaddingValue,
+      padding: BaseUtility.all(
+        BaseUtility.paddingNormalValue,
       ),
       child: Center(
         child: SingleChildScrollView(
@@ -36,8 +36,8 @@ class CustomResponseWidget extends StatelessWidget {
               ),
               // title
               Padding(
-                padding: PaddingSizedsUtility.top(
-                  PaddingSizedsUtility.hightPaddingValue,
+                padding: BaseUtility.top(
+                  BaseUtility.paddingHightValue,
                 ),
                 child: TitleLargeBlackBoldText(
                   text: title,
@@ -46,8 +46,8 @@ class CustomResponseWidget extends StatelessWidget {
               ),
               // sub title
               Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: BodyMediumBlackText(
                   text: subTitle,
@@ -75,8 +75,8 @@ class CustomLoadingResponseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.all(
-        PaddingSizedsUtility.normalPaddingValue,
+      padding: BaseUtility.all(
+        BaseUtility.paddingNormalValue,
       ),
       child: Center(
         child: Column(
@@ -86,12 +86,12 @@ class CustomLoadingResponseWidget extends StatelessWidget {
             // loading
             LoadingAnimationWidget.hexagonDots(
               color: Theme.of(context).colorScheme.primary,
-              size: IconSizedsUtility.largeSize,
+              size: BaseUtility.iconLargeSize,
             ),
             // title
             Padding(
-              padding: PaddingSizedsUtility.top(
-                PaddingSizedsUtility.hightPaddingValue,
+              padding: BaseUtility.top(
+                BaseUtility.paddingHightValue,
               ),
               child: BodyMediumBlackBoldText(
                 text: title,
@@ -100,8 +100,8 @@ class CustomLoadingResponseWidget extends StatelessWidget {
             ),
             // sub title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingSmallValue,
               ),
               child: BodyMediumBlackText(
                 text: subTitle,

@@ -34,8 +34,8 @@ class _LangueViewState extends LangueViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -44,8 +44,8 @@ class _LangueViewState extends LangueViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.smallPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingSmallValue,
         ),
         child: Column(
           children: <Widget>[
@@ -54,8 +54,8 @@ class _LangueViewState extends LangueViewModel {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    contentPadding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    contentPadding: BaseUtility.all(
+                      BaseUtility.paddingNormalValue,
                     ),
                     title: const BodyMediumBlackText(
                       text: 'English',

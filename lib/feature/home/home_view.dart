@@ -47,7 +47,7 @@ class _HomeViewState extends HomeViewModel {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         automaticallyImplyLeading: false,
         toolbarHeight: 120,
-        titleSpacing: PaddingSizedsUtility.normalPaddingValue,
+        titleSpacing: BaseUtility.paddingNormalValue,
         title: FutureBuilder<UserModel>(
           future: getUserFromFireStore(FirebaseService().authID.toString()),
           builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
@@ -76,7 +76,7 @@ class _HomeViewState extends HomeViewModel {
                             ? BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
                                 borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
+                                  BaseUtility.radiusCircularHighValue,
                                 ),
                               )
                             : BoxDecoration(
@@ -85,23 +85,23 @@ class _HomeViewState extends HomeViewModel {
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
+                                  BaseUtility.radiusCircularHighValue,
                                 ),
                               ),
                         child: user.authStatus ==
                                 AuthControl.emailPasswordAuth.valueAuth
                             ? AppIcons.userOutline.toSvgImg(
                                 Colors.white,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
+                                BaseUtility.iconNormalSize,
+                                BaseUtility.iconNormalSize,
                               )
                             : const SizedBox(),
                       ),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Column(
                           children: <Widget>[
@@ -109,8 +109,8 @@ class _HomeViewState extends HomeViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: BodyMediumBlackText(
                                   text: timeHour > 18
@@ -127,8 +127,8 @@ class _HomeViewState extends HomeViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.bottom(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.bottom(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: TitleMediumBlackBoldText(
                                   text: user.nameSurname,
@@ -158,8 +158,8 @@ class _HomeViewState extends HomeViewModel {
               );
             },
             child: Container(
-              margin: MarginSizedsUtility.right(
-                MarginSizedsUtility.normalMarginValue,
+              margin: BaseUtility.right(
+                BaseUtility.marginNormalValue,
               ),
               child: SizedBox(
                 width: 40,
@@ -172,16 +172,16 @@ class _HomeViewState extends HomeViewModel {
                       color: Theme.of(context).colorScheme.outline,
                       width: 0.5,
                     ),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                   ),
                   child: AppIcons.basketOutline.toSvgImg(
                     null,
-                    IconSizedsUtility.mediumSecondSize,
-                    IconSizedsUtility.mediumSecondSize,
+                    BaseUtility.iconMediumSecondSize,
+                    BaseUtility.iconMediumSecondSize,
                   ),
                 ),
               ),
@@ -196,8 +196,8 @@ class _HomeViewState extends HomeViewModel {
               );
             },
             child: Container(
-              margin: MarginSizedsUtility.right(
-                MarginSizedsUtility.normalMarginValue,
+              margin: BaseUtility.right(
+                BaseUtility.marginNormalValue,
               ),
               child: SizedBox(
                 width: 40,
@@ -210,16 +210,16 @@ class _HomeViewState extends HomeViewModel {
                       color: Theme.of(context).colorScheme.outline,
                       width: 0.5,
                     ),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                   ),
                   child: AppIcons.notificationOutline.toSvgImg(
                     null,
-                    IconSizedsUtility.normalSize,
-                    IconSizedsUtility.normalSize,
+                    BaseUtility.iconNormalSize,
+                    BaseUtility.iconNormalSize,
                   ),
                 ),
               ),
@@ -233,8 +233,8 @@ class _HomeViewState extends HomeViewModel {
             return const Center(child: CircularProgressIndicator());
           } else if (state is HomeLoaded) {
             return Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: ListView(
                 children: <Widget>[
@@ -264,22 +264,22 @@ class _HomeViewState extends HomeViewModel {
                                   .toList(),
                             ),
                             Padding(
-                              padding: PaddingSizedsUtility.vertical(
-                                PaddingSizedsUtility.normalPaddingValue,
+                              padding: BaseUtility.vertical(
+                                BaseUtility.paddingNormalValue,
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children:
                                     state.banners.asMap().entries.map((entry) {
                                   return Padding(
-                                    padding: PaddingSizedsUtility.horizontal(
-                                      PaddingSizedsUtility.smallPaddingValue,
+                                    padding: BaseUtility.horizontal(
+                                      BaseUtility.paddingSmallValue,
                                     ),
                                     child: GestureDetector(
                                       onTap: () => carouselController,
                                       child: Icon(
                                         Icons.circle,
-                                        size: IconSizedsUtility.xSmallSize,
+                                        size: BaseUtility.iconXSmallSize,
                                         color: (Theme.of(context).brightness ==
                                                     Brightness.dark
                                                 ? Colors.white
@@ -301,15 +301,15 @@ class _HomeViewState extends HomeViewModel {
                   state.stores.isEmpty
                       ? const SizedBox()
                       : Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Column(
                             children: <Widget>[
                               // title
                               Padding(
-                                padding: PaddingSizedsUtility.bottom(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.bottom(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: Row(
                                   children: <Widget>[
@@ -348,10 +348,8 @@ class _HomeViewState extends HomeViewModel {
                                               Theme.of(context)
                                                   .colorScheme
                                                   .primary,
-                                              IconSizedsUtility
-                                                  .mediumSecondSize,
-                                              IconSizedsUtility
-                                                  .mediumSecondSize,
+                                              BaseUtility.iconMediumSecondSize,
+                                              BaseUtility.iconMediumSecondSize,
                                             ),
                                           ],
                                         ),
@@ -368,8 +366,8 @@ class _HomeViewState extends HomeViewModel {
                                   0.3,
                                 ),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.vertical(
-                                    PaddingSizedsUtility.smallPaddingValue,
+                                  padding: BaseUtility.vertical(
+                                    BaseUtility.paddingSmallValue,
                                   ),
                                   child: ListView.builder(
                                     itemCount: state.stores.length,
@@ -401,15 +399,15 @@ class _HomeViewState extends HomeViewModel {
                   state.products.isEmpty
                       ? const SizedBox()
                       : Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Column(
                             children: <Widget>[
                               // title
                               Padding(
-                                padding: PaddingSizedsUtility.bottom(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.bottom(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: Row(
                                   children: <Widget>[
@@ -452,10 +450,8 @@ class _HomeViewState extends HomeViewModel {
                                               Theme.of(context)
                                                   .colorScheme
                                                   .primary,
-                                              IconSizedsUtility
-                                                  .mediumSecondSize,
-                                              IconSizedsUtility
-                                                  .mediumSecondSize,
+                                              BaseUtility.iconMediumSecondSize,
+                                              BaseUtility.iconMediumSecondSize,
                                             ),
                                           ],
                                         ),
@@ -472,8 +468,8 @@ class _HomeViewState extends HomeViewModel {
                                   0.3,
                                 ),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.vertical(
-                                    PaddingSizedsUtility.smallPaddingValue,
+                                  padding: BaseUtility.vertical(
+                                    BaseUtility.paddingSmallValue,
                                   ),
                                   child: ListView.builder(
                                     itemCount: state.products.length,

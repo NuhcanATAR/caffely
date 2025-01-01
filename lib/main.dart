@@ -104,10 +104,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<OrderBloc>(
           create: (BuildContext context) => OrderBloc()
             ..add(LoadOrderEvent(context))
-            ..add(LoadBranchesEvent(
-              "",
-              context,
-            ),),
+            ..add(
+              LoadBranchesEvent(
+                "",
+                context,
+              ),
+            ),
         ),
       ],
       child: MaterialApp(
@@ -146,18 +148,18 @@ class _FirsViewState extends MainViewModel {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: PaddingSizedsUtility.all(
+          padding: BaseUtility.all(
             130,
           ),
           child: Center(
             child: Container(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingSmallValue,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(
-                    RadiusUtility.circularMediumValue,
+                    BaseUtility.radiusCircularMediumValue,
                   ),
                 ),
                 color: Theme.of(context).colorScheme.primary,

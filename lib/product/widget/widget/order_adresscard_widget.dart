@@ -22,8 +22,8 @@ class OrderAdressCardWidget extends StatelessWidget {
     return SizedBox(
       width: dynamicViewExtensions.maxWidth(context),
       child: Container(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -32,23 +32,23 @@ class OrderAdressCardWidget extends StatelessWidget {
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(
-            RadiusUtility.normalRadiusValue,
+            BaseUtility.radiusNormalValue,
           ),
         ),
         child: Row(
           children: <Widget>[
             Padding(
-              padding: PaddingSizedsUtility.top(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.top(
+                BaseUtility.paddingMediumValue,
               ),
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: MarginSizedsUtility.right(
-                      MarginSizedsUtility.normalMarginValue,
+                    margin: BaseUtility.right(
+                      BaseUtility.marginNormalValue,
                     ),
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingMediumValue,
                     ),
                     decoration: BoxDecoration(
                       color:
@@ -58,13 +58,13 @@ class OrderAdressCardWidget extends StatelessWidget {
                         width: 0.5,
                       ),
                       borderRadius: BorderRadius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                     child: AppIcons.locationOutline.toSvgImg(
                       Colors.black,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                   ),
                 ],
@@ -73,8 +73,8 @@ class OrderAdressCardWidget extends StatelessWidget {
             // adress information
             Expanded(
               child: Padding(
-                padding: PaddingSizedsUtility.horizontal(
-                  PaddingSizedsUtility.mediumPaddingValue,
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingMediumValue,
                 ),
                 child: Column(
                   children: <Widget>[
@@ -82,8 +82,8 @@ class OrderAdressCardWidget extends StatelessWidget {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.smallPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingSmallValue,
                         ),
                         child: TitleMediumBlackBoldText(
                           text: orderModel.adressTitle,
@@ -95,8 +95,8 @@ class OrderAdressCardWidget extends StatelessWidget {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.bottom(
-                          PaddingSizedsUtility.mediumPaddingValue,
+                        padding: BaseUtility.bottom(
+                          BaseUtility.paddingMediumValue,
                         ),
                         child: BodyMediumBlackText(
                           text: orderModel.adressDirections,
@@ -108,20 +108,20 @@ class OrderAdressCardWidget extends StatelessWidget {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.bottom(
-                          PaddingSizedsUtility.mediumPaddingValue,
+                        padding: BaseUtility.bottom(
+                          BaseUtility.paddingMediumValue,
                         ),
                         child: Row(
                           children: <Widget>[
                             AppIcons.locationFill.toSvgImg(
                               Colors.grey,
-                              IconSizedsUtility.mediumSize,
-                              IconSizedsUtility.mediumSize,
+                              BaseUtility.iconMediumSize,
+                              BaseUtility.iconMediumSize,
                             ),
                             Expanded(
                               child: Padding(
-                                padding: PaddingSizedsUtility.left(
-                                  PaddingSizedsUtility.mediumPaddingValue,
+                                padding: BaseUtility.left(
+                                  BaseUtility.paddingMediumValue,
                                 ),
                                 child: BodyMediumBlackText(
                                   text:

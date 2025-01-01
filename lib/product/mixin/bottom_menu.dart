@@ -19,8 +19,8 @@ mixin BottomMenuMixin {
               text: AppLocalizations.of(context)!.account_exit_subtitle,
               textAlign: TextAlign.center,
             ),
-            actionsPadding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            actionsPadding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             actions: [
               Row(

@@ -17,11 +17,11 @@ class MinButtonWidget extends StatelessWidget {
     return GestureDetector(
       onTap: func,
       child: Container(
-        margin: MarginSizedsUtility.horizontal(
-          MarginSizedsUtility.smallMarginValue,
+        margin: BaseUtility.horizontal(
+          BaseUtility.marginSmallValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.mediumPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingMediumValue,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -29,16 +29,16 @@ class MinButtonWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
             width: 0.5,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
         ),
         child: icon.toSvgImg(
           Theme.of(context).colorScheme.primary,
-          IconSizedsUtility.normalSize,
-          IconSizedsUtility.normalSize,
+          BaseUtility.iconNormalSize,
+          BaseUtility.iconNormalSize,
         ),
       ),
     );

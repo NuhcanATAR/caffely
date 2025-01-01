@@ -34,8 +34,8 @@ class _FavoriteViewState extends FavoriteViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -45,8 +45,8 @@ class _FavoriteViewState extends FavoriteViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: BlocBuilder<FavoriteBloc, FavoriteState>(
           builder: (context, state) {

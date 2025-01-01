@@ -35,8 +35,8 @@ class _SavedAdressViewState extends SavedAdressViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -45,8 +45,8 @@ class _SavedAdressViewState extends SavedAdressViewModel {
         ),
         actions: [
           Padding(
-            padding: PaddingSizedsUtility.horizontal(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.horizontal(
+              BaseUtility.paddingNormalValue,
             ),
             child: IconButton(
               onPressed: () {
@@ -57,8 +57,8 @@ class _SavedAdressViewState extends SavedAdressViewModel {
               },
               icon: AppIcons.add.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
             ),
           ),

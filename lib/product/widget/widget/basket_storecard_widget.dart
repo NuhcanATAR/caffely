@@ -28,8 +28,8 @@ class BasketStoreCardWidget extends StatelessWidget {
     return SizedBox(
       width: dynamicViewExtensions.maxWidth(context),
       child: Padding(
-        padding: PaddingSizedsUtility.vertical(
-          PaddingSizedsUtility.mediumPaddingValue,
+        padding: BaseUtility.vertical(
+          BaseUtility.paddingMediumValue,
         ),
         child: Row(
           children: <Widget>[
@@ -38,17 +38,17 @@ class BasketStoreCardWidget extends StatelessWidget {
               width: 40,
               height: 40,
               child: Container(
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingSmallValue,
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Theme.of(context).colorScheme.outline,
                     width: 0.5,
                   ),
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      RadiusUtility.circularHighValue,
+                      BaseUtility.radiusCircularHighValue,
                     ),
                   ),
                 ),
@@ -91,8 +91,8 @@ class BasketStoreCardWidget extends StatelessWidget {
                         );
                       },
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Column(
                           children: <Widget>[
@@ -102,8 +102,8 @@ class BasketStoreCardWidget extends StatelessWidget {
                                 context,
                               ),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: BodyMediumBlackBoldText(
                                   text: storeModel.storeName,
@@ -117,8 +117,8 @@ class BasketStoreCardWidget extends StatelessWidget {
                                 context,
                               ),
                               child: Padding(
-                                padding: PaddingSizedsUtility.bottom(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.bottom(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: BodyMediumBlackText(
                                   text:
@@ -139,15 +139,15 @@ class BasketStoreCardWidget extends StatelessWidget {
             ),
             // button
             Padding(
-              padding: PaddingSizedsUtility.right(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.right(
+                BaseUtility.paddingMediumValue,
               ),
               child: GestureDetector(
                 onTap: hideOnTap,
                 child: AppIcons.arrowDropDown.toSvgImg(
                   Theme.of(context).colorScheme.primary,
-                  IconSizedsUtility.normalSize,
-                  IconSizedsUtility.normalSize,
+                  BaseUtility.iconNormalSize,
+                  BaseUtility.iconNormalSize,
                 ),
               ),
             ),

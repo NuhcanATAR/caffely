@@ -39,8 +39,8 @@ class _CustomPasswordFieldWidgetState
             ? SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: widget.hintText,
@@ -51,9 +51,9 @@ class _CustomPasswordFieldWidgetState
             : const SizedBox(),
         Container(
           margin: widget.isLabelText == true
-              ? EdgeInsets.only(
-                  left: MarginSizedsUtility.normalMarginValue,
-                  bottom: MarginSizedsUtility.smallMarginValue,
+              ? const EdgeInsets.only(
+                  left: BaseUtility.marginNormalValue,
+                  bottom: BaseUtility.marginNormalValue,
                 )
               : context.padding.onlyBottomLow,
           child: TextFormField(
@@ -91,29 +91,29 @@ class _CustomPasswordFieldWidgetState
                 icon: isPassObscured == true
                     ? AppIcons.eyeOutline.toSvgImg(
                         Colors.black,
-                        IconSizedsUtility.normalSize,
-                        IconSizedsUtility.normalSize,
+                        BaseUtility.iconNormalSize,
+                        BaseUtility.iconNormalSize,
                       )
                     : AppIcons.eyeCloseOutline.toSvgImg(
                         Colors.black,
-                        IconSizedsUtility.normalSize,
-                        IconSizedsUtility.normalSize,
+                        BaseUtility.iconNormalSize,
+                        BaseUtility.iconNormalSize,
                       ),
               ),
               icon: AppIcons.lockFill.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               filled: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: PaddingSizedsUtility.normalPaddingValue,
-                vertical: PaddingSizedsUtility.smallPaddingValue,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: BaseUtility.paddingNormalValue,
+                vertical: BaseUtility.paddingSmallValue,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -121,7 +121,7 @@ class _CustomPasswordFieldWidgetState
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -129,7 +129,7 @@ class _CustomPasswordFieldWidgetState
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -137,7 +137,7 @@ class _CustomPasswordFieldWidgetState
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -149,20 +149,20 @@ class _CustomPasswordFieldWidgetState
         // validator error
         if (errorText != null)
           Padding(
-            padding: PaddingSizedsUtility.vertical(
-              PaddingSizedsUtility.mediumPaddingValue,
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingMediumValue,
             ),
             child: Row(
               children: [
                 AppIcons.warningCircle.toSvgImg(
                   Theme.of(context).colorScheme.error,
-                  IconSizedsUtility.smallSize,
-                  IconSizedsUtility.smallSize,
+                  BaseUtility.iconSmallSize,
+                  BaseUtility.iconSmallSize,
                 ),
                 Expanded(
                   child: Padding(
-                    padding: PaddingSizedsUtility.left(
-                      PaddingSizedsUtility.smallPaddingValue,
+                    padding: BaseUtility.left(
+                      BaseUtility.paddingSmallValue,
                     ),
                     child: BodyMediumRedText(
                       text: errorText!,

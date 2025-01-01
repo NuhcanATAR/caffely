@@ -40,8 +40,8 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -54,8 +54,8 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
         listener: personalInformationUpdateListenerBloc,
         builder: (context, state) {
           return Padding(
-            padding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             child: Column(
               children: <Widget>[

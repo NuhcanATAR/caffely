@@ -31,8 +31,8 @@ class _SignViewState extends SignViewModel {
         listener: signInGoogleListenerBloc,
         builder: (BuildContext context, state) {
           return Padding(
-            padding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             child: Center(
               child: Column(
@@ -41,16 +41,16 @@ class _SignViewState extends SignViewModel {
                 children: <Widget>[
                   // logo
                   Padding(
-                    padding: PaddingSizedsUtility.horizontal(
-                      PaddingSizedsUtility.hugePaddingValue,
+                    padding: BaseUtility.horizontal(
+                      BaseUtility.paddingHugeValue,
                     ),
                     child: AppLogoConstants
                         .appLogoTextNoBackgroundColorPrimary.toImg,
                   ),
                   // title
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: TitleLargeBlackBoldText(
                       text: AppLocalizations.of(context)!.sign_title,
@@ -86,8 +86,8 @@ class _SignViewState extends SignViewModel {
                   ),
                   // sign up
                   Padding(
-                    padding: PaddingSizedsUtility.top(
-                      PaddingSizedsUtility.hightPaddingValue,
+                    padding: BaseUtility.top(
+                      BaseUtility.paddingHightValue,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -98,8 +98,8 @@ class _SignViewState extends SignViewModel {
                           fit: FlexFit.tight,
                           flex: 5,
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: AppLocalizations.of(context)!
@@ -120,8 +120,8 @@ class _SignViewState extends SignViewModel {
                               );
                             },
                             child: Padding(
-                              padding: PaddingSizedsUtility.horizontal(
-                                PaddingSizedsUtility.smallPaddingValue,
+                              padding: BaseUtility.horizontal(
+                                BaseUtility.paddingSmallValue,
                               ),
                               child: BodyMediumMainColorText(
                                 text: AppLocalizations.of(context)!

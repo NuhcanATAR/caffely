@@ -38,8 +38,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         centerTitle: true,
@@ -49,8 +49,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: Column(
           children: <Widget>[
@@ -60,20 +60,20 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                 children: <Widget>[
                   // opening time
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Row(
                       children: <Widget>[
                         AppIcons.timeOutline.toSvgImg(
                           Colors.black,
-                          IconSizedsUtility.normalSize,
-                          IconSizedsUtility.normalSize,
+                          BaseUtility.iconNormalSize,
+                          BaseUtility.iconNormalSize,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
@@ -87,20 +87,20 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // close time
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Row(
                       children: <Widget>[
                         AppIcons.timeOutline.toSvgImg(
                           Colors.black,
-                          IconSizedsUtility.normalSize,
-                          IconSizedsUtility.normalSize,
+                          BaseUtility.iconNormalSize,
+                          BaseUtility.iconNormalSize,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
@@ -114,20 +114,20 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // adress
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Row(
                       children: <Widget>[
                         AppIcons.locationFill.toSvgImg(
                           Colors.black,
-                          IconSizedsUtility.normalSize,
-                          IconSizedsUtility.normalSize,
+                          BaseUtility.iconNormalSize,
+                          BaseUtility.iconNormalSize,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text:
@@ -141,16 +141,16 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // trade name
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text: AppLocalizations.of(context)!
@@ -162,8 +162,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: widget.storeModel.tradeName,
@@ -176,16 +176,16 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // paymnet types
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text: AppLocalizations.of(context)!
@@ -197,8 +197,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: widget.storeModel.paymentTypes,
@@ -211,16 +211,16 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // delivery type
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text: AppLocalizations.of(context)!
@@ -232,8 +232,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: AppLocalizations.of(context)!
@@ -247,16 +247,16 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                   ),
                   // min basket value
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackBoldText(
                               text: AppLocalizations.of(context)!
@@ -268,8 +268,8 @@ class _StoreInformationViewState extends StoreInformationViewModel {
                         SizedBox(
                           width: dynamicViewExtensions.maxWidth(context),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text:

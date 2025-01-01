@@ -32,8 +32,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: buildBodyWidget,
       ),
@@ -46,8 +46,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
           children: <Widget>[
             // icon
             Padding(
-              padding: PaddingSizedsUtility.bottom(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.bottom(
+                BaseUtility.paddingNormalValue,
               ),
               child: AppImages.thankYou.toSvgImg(
                 null,
@@ -57,8 +57,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
             ),
             // title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: TitleLargeBlackBoldText(
                 text: AppLocalizations.of(context)!.basket_success_title,
@@ -67,8 +67,8 @@ class _OrderSuccessViewState extends OrderSuccessViewModel {
             ),
             // sub title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!.basket_success_subtitle,

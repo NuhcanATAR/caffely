@@ -29,8 +29,8 @@ class OrderProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.top(
-        PaddingSizedsUtility.normalPaddingValue,
+      padding: BaseUtility.top(
+        BaseUtility.paddingNormalValue,
       ),
       child: GestureDetector(
         onTap: () {
@@ -42,14 +42,14 @@ class OrderProductCardWidget extends StatelessWidget {
           );
         },
         child: Container(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(
               Radius.circular(
-                RadiusUtility.circularMediumValue,
+                BaseUtility.radiusCircularMediumValue,
               ),
             ),
           ),
@@ -77,9 +77,9 @@ class OrderProductCardWidget extends StatelessWidget {
                           image: imageProvider,
                           fit: BoxFit.cover,
                         ),
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(
-                            RadiusUtility.circularMediumValue,
+                            BaseUtility.radiusCircularMediumValue,
                           ),
                         ),
                       ),
@@ -87,9 +87,9 @@ class OrderProductCardWidget extends StatelessWidget {
                     placeholder: (context, url) => Container(
                       decoration: BoxDecoration(
                         color: Colors.grey.withOpacity(0.2),
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(
-                            RadiusUtility.circularMediumValue,
+                            BaseUtility.radiusCircularMediumValue,
                           ),
                         ),
                       ),
@@ -97,9 +97,9 @@ class OrderProductCardWidget extends StatelessWidget {
                     errorWidget: (context, url, error) => Container(
                       decoration: BoxDecoration(
                         color: Colors.grey.withOpacity(0.2),
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(
-                            RadiusUtility.circularMediumValue,
+                            BaseUtility.radiusCircularMediumValue,
                           ),
                         ),
                       ),
@@ -111,8 +111,8 @@ class OrderProductCardWidget extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: Padding(
-                  padding: PaddingSizedsUtility.horizontal(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.horizontal(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: Column(
                     children: <Widget>[
@@ -122,8 +122,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: TitleMediumBlackBoldText(
                             text: productModel.title,
@@ -137,8 +137,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             children: <Widget>[
@@ -167,8 +167,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             children: <Widget>[
@@ -198,8 +198,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             children: <Widget>[
@@ -229,8 +229,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             children: <Widget>[
@@ -272,8 +272,8 @@ class OrderProductCardWidget extends StatelessWidget {
                           context,
                         ),
                         child: Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             children: <Widget>[

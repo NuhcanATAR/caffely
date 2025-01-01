@@ -35,8 +35,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -50,8 +50,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
           return Form(
             key: formAdressCreateKey,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -112,8 +112,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
               children: <Widget>[
                 Flexible(
                   child: Padding(
-                    padding: PaddingSizedsUtility.right(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.right(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: NumberTextFieldWidget(
                       controller: apartmentController,
@@ -131,8 +131,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                 ),
                 Flexible(
                   child: Padding(
-                    padding: PaddingSizedsUtility.left(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.left(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: NumberTextFieldWidget(
                       controller: floorController,
@@ -171,8 +171,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
               children: <Widget>[
                 Flexible(
                   child: Padding(
-                    padding: PaddingSizedsUtility.right(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.right(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactNameController,
@@ -193,8 +193,8 @@ class _SavedadressCreateViewState extends SavedAdressCreateViewModel {
                 ),
                 Flexible(
                   child: Padding(
-                    padding: PaddingSizedsUtility.left(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.left(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: NormalTextFieldWidget(
                       controller: contactSurnameController,

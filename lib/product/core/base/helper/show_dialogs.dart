@@ -54,7 +54,7 @@ class CodeNoahDialogs {
       borderRadius: BorderRadius.circular(10),
       messageText: Text(
         message ?? type.message,
-        style: TextStyle(color: ColorUtility.black),
+        style: const TextStyle(color: BaseUtility.black),
       ),
       boxShadows: [
         BoxShadow(
@@ -65,7 +65,7 @@ class CodeNoahDialogs {
       ],
       isDismissible: true,
       duration: const Duration(milliseconds: 2000),
-      backgroundColor: ColorUtility.white,
+      backgroundColor: BaseUtility.white,
       mainButton: IconButton(
         onPressed: () async => await _onFlushPressed(flushbar, showing),
         icon: const Icon(Icons.clear),
@@ -125,8 +125,8 @@ class CodeNoahDialogs {
         backgroundColor: Colors.white,
         title: icon.toSvgImg(
           color,
-          IconSizedsUtility.largeSize,
-          IconSizedsUtility.largeSize,
+          BaseUtility.iconLargeSize,
+          BaseUtility.iconLargeSize,
         ),
         content: TitleLargeBlackBoldText(
           text: title,
@@ -183,8 +183,8 @@ class CodeNoahDialogs {
         backgroundColor: Colors.white,
         title: icon.toSvgImg(
           null,
-          IconSizedsUtility.hugeSize,
-          IconSizedsUtility.hugeSize,
+          BaseUtility.iconHugeSize,
+          BaseUtility.iconHugeSize,
         ),
         content: SizedBox(
           height: dynamicViewExtensions.dynamicHeight(context, 0.11),
@@ -192,8 +192,8 @@ class CodeNoahDialogs {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: PaddingSizedsUtility.bottom(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.bottom(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: TitleLargeBlackBoldText(
                     text: title,
@@ -201,8 +201,8 @@ class CodeNoahDialogs {
                   ),
                 ),
                 Padding(
-                  padding: PaddingSizedsUtility.bottom(
-                    PaddingSizedsUtility.smallPaddingValue,
+                  padding: BaseUtility.bottom(
+                    BaseUtility.paddingSmallValue,
                   ),
                   child: BodyMediumBlackText(
                     text: subTitle,

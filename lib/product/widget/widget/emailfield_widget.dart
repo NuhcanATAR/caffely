@@ -35,8 +35,8 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
             ? SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: widget.hintText,
@@ -47,9 +47,9 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
             : const SizedBox(),
         Container(
           margin: widget.isLabelText == true
-              ? EdgeInsets.only(
-                  left: MarginSizedsUtility.normalMarginValue,
-                  bottom: MarginSizedsUtility.smallMarginValue,
+              ? const EdgeInsets.only(
+                  left: BaseUtility.marginNormalValue,
+                  bottom: BaseUtility.marginNormalValue,
                 )
               : context.padding.onlyBottomLow,
           child: TextFormField(
@@ -70,18 +70,18 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
                   ),
               icon: AppIcons.mailFill.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               filled: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: PaddingSizedsUtility.normalPaddingValue,
-                vertical: PaddingSizedsUtility.smallPaddingValue,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: BaseUtility.paddingNormalValue,
+                vertical: BaseUtility.paddingSmallValue,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -90,7 +90,7 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -98,7 +98,7 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -106,7 +106,7 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -119,20 +119,20 @@ class _CustomEmailFieldWidgetState extends BaseState<CustomEmailFieldWidget> {
         // validator error
         if (errorText != null)
           Padding(
-            padding: PaddingSizedsUtility.vertical(
-              PaddingSizedsUtility.mediumPaddingValue,
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingMediumValue,
             ),
             child: Row(
               children: [
                 AppIcons.warningCircle.toSvgImg(
                   Theme.of(context).colorScheme.error,
-                  IconSizedsUtility.smallSize,
-                  IconSizedsUtility.smallSize,
+                  BaseUtility.iconSmallSize,
+                  BaseUtility.iconSmallSize,
                 ),
                 Expanded(
                   child: Padding(
-                    padding: PaddingSizedsUtility.left(
-                      PaddingSizedsUtility.smallPaddingValue,
+                    padding: BaseUtility.left(
+                      BaseUtility.paddingSmallValue,
                     ),
                     child: BodyMediumRedText(
                       text: errorText!,

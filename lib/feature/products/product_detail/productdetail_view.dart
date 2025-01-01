@@ -45,8 +45,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
           onPressed: () => Navigator.pop(context),
           icon: AppIcons.closeOutline.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         actions: [
@@ -84,26 +84,28 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                         );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(
-                      right: PaddingSizedsUtility.normalPaddingValue,
+                    padding: const EdgeInsets.only(
+                      right: BaseUtility.paddingNormalValue,
                     ),
                     child: SizedBox(
                       width: 40,
                       height: 40,
                       child: Container(
-                        padding: EdgeInsets.all(
-                          PaddingSizedsUtility.smallPaddingValue,
+                        padding: const EdgeInsets.all(
+                          BaseUtility.paddingSmallValue,
                         ),
                         decoration: BoxDecoration(
                           color: Colors.grey.withOpacity(0.4),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(RadiusUtility.circularHighValue),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              BaseUtility.radiusCircularHighValue,
+                            ),
                           ),
                         ),
                         child: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
                           color: isFavorite ? Colors.red : Colors.white,
-                          size: IconSizedsUtility.normalSize,
+                          size: BaseUtility.iconNormalSize,
                         ),
                       ),
                     ),
@@ -125,8 +127,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                       ? widget.productModel.largePrice
                       : 0);
           return Padding(
-            padding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             child: Column(
               children: <Widget>[
@@ -150,9 +152,9 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                 image: imageProvider,
                                 fit: BoxFit.cover,
                               ),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.lowRadiusValue,
+                                  BaseUtility.radiusLowValue,
                                 ),
                               ),
                             ),
@@ -160,9 +162,9 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                           placeholder: (context, url) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.2),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.lowRadiusValue,
+                                  BaseUtility.radiusLowValue,
                                 ),
                               ),
                             ),
@@ -170,9 +172,9 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.2),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.lowRadiusValue,
+                                  BaseUtility.radiusLowValue,
                                 ),
                               ),
                             ),
@@ -181,8 +183,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                       ),
                       // title, price, quanity
                       Container(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         decoration: const BoxDecoration(
                           border: Border(
@@ -202,8 +204,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                     width:
                                         dynamicViewExtensions.maxWidth(context),
                                     child: Padding(
-                                      padding: PaddingSizedsUtility.vertical(
-                                        PaddingSizedsUtility.smallPaddingValue,
+                                      padding: BaseUtility.vertical(
+                                        BaseUtility.paddingSmallValue,
                                       ),
                                       child: TitleLargeBlackBoldText(
                                         text: widget.productModel.title,
@@ -216,8 +218,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                                     width:
                                         dynamicViewExtensions.maxWidth(context),
                                     child: Padding(
-                                      padding: PaddingSizedsUtility.vertical(
-                                        PaddingSizedsUtility.smallPaddingValue,
+                                      padding: BaseUtility.vertical(
+                                        BaseUtility.paddingSmallValue,
                                       ),
                                       child: BodyMediumBlackText(
                                         text: '${widget.productModel.price}TL',
@@ -233,8 +235,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                       ),
                       // avaible
                       Container(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         decoration: const BoxDecoration(
                           border: Border(
@@ -247,8 +249,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: TitleMediumBlackBoldText(
                                   text: AppLocalizations.of(context)!
@@ -301,8 +303,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                       ),
                       // size
                       Container(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         decoration: const BoxDecoration(
                           border: Border(
@@ -315,8 +317,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: TitleMediumBlackBoldText(
                                   text: AppLocalizations.of(context)!
@@ -645,8 +647,8 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                     // price
                     Flexible(
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Column(
                           children: <Widget>[

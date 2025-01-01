@@ -50,8 +50,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -70,8 +70,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                 );
               } else if (blocState is BasketLoaded) {
                 return Padding(
-                  padding: PaddingSizedsUtility.all(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.all(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: Column(
                     children: <Widget>[
@@ -179,8 +179,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Row(
                           children: <Widget>[
@@ -205,8 +205,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Row(
                           children: <Widget>[
@@ -230,8 +230,8 @@ class _OrderCompleteViewState extends OrderCompleteViewModel {
                     SizedBox(
                       width: dynamicViewExtensions.maxWidth(context),
                       child: Padding(
-                        padding: PaddingSizedsUtility.vertical(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.vertical(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Row(
                           children: <Widget>[

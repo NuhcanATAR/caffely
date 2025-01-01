@@ -32,8 +32,8 @@ class CenterHelpCardWidget extends StatelessWidget {
         ),
         trailing: AppIcons.arrowRight.toSvgImg(
           Theme.of(context).colorScheme.primary,
-          IconSizedsUtility.normalSize,
-          IconSizedsUtility.normalSize,
+          BaseUtility.iconNormalSize,
+          BaseUtility.iconNormalSize,
         ),
       ),
     );

@@ -41,8 +41,8 @@ class _AccountViewState extends AccountViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -54,8 +54,8 @@ class _AccountViewState extends AccountViewModel {
       body: RefreshIndicator(
         onRefresh: refreshUserInformation,
         child: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
           ),
           child: ListView(
             children: <Widget>[
@@ -90,8 +90,8 @@ class _AccountViewState extends AccountViewModel {
             if (snapshot.hasData) {
               final userModel = snapshot.data!;
               return Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -106,7 +106,7 @@ class _AccountViewState extends AccountViewModel {
                             ? BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
                                 borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
+                                  BaseUtility.radiusCircularHighValue,
                                 ),
                               )
                             : BoxDecoration(
@@ -117,15 +117,15 @@ class _AccountViewState extends AccountViewModel {
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
+                                  BaseUtility.radiusCircularHighValue,
                                 ),
                               ),
                         child: userModel.authStatus ==
                                 AuthControl.emailPasswordAuth.valueAuth
                             ? AppIcons.userOutline.toSvgImg(
                                 Colors.white,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
+                                BaseUtility.iconNormalSize,
+                                BaseUtility.iconNormalSize,
                               )
                             : const SizedBox(),
                       ),
@@ -133,8 +133,8 @@ class _AccountViewState extends AccountViewModel {
                     // body
                     Expanded(
                       child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
+                        padding: BaseUtility.horizontal(
+                          BaseUtility.paddingNormalValue,
                         ),
                         child: Column(
                           children: <Widget>[
@@ -142,8 +142,8 @@ class _AccountViewState extends AccountViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: TitleMediumBlackBoldText(
                                   text: userModel.nameSurname,
@@ -155,8 +155,8 @@ class _AccountViewState extends AccountViewModel {
                             SizedBox(
                               width: dynamicViewExtensions.maxWidth(context),
                               child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
+                                padding: BaseUtility.vertical(
+                                  BaseUtility.paddingSmallValue,
                                 ),
                                 child: BodyMediumBlackText(
                                   text: userModel.email,
@@ -176,10 +176,10 @@ class _AccountViewState extends AccountViewModel {
                           const AccountQrCodeView(),
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.qr_code_outlined,
                         color: Colors.black,
-                        size: IconSizedsUtility.normalSize,
+                        size: BaseUtility.iconNormalSize,
                       ),
                     ),
                   ],
@@ -234,8 +234,8 @@ class _AccountViewState extends AccountViewModel {
           SizedBox(
             width: dynamicViewExtensions.maxWidth(context),
             child: Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!.account_menu_group_title,
@@ -324,8 +324,8 @@ class _AccountViewState extends AccountViewModel {
           SizedBox(
             width: dynamicViewExtensions.maxWidth(context),
             child: Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!

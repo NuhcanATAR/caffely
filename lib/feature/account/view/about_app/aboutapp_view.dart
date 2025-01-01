@@ -30,8 +30,8 @@ class _AboutAppViewState extends AboutAppViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -40,8 +40,8 @@ class _AboutAppViewState extends AboutAppViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: ListView(
           children: <Widget>[
@@ -52,8 +52,8 @@ class _AboutAppViewState extends AboutAppViewModel {
             ),
             // title
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
               ),
               child: TitleLargeBlackBoldText(
                 text: title,
@@ -62,8 +62,8 @@ class _AboutAppViewState extends AboutAppViewModel {
             ),
             // explanation
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: explanation,
