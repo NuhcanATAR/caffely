@@ -36,7 +36,20 @@ abstract class SavedadressEditViewmodel extends BaseState<SavedAdressEditView>
 
   // city distirct
   late String? selectedCity = widget.savedAdressModel.adressCity;
- late String? selectedDistrict = widget.savedAdressModel.adressDistrict;
+  late String? selectedDistrict = widget.savedAdressModel.adressDistrict;
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleController.dispose();
+    streetController.dispose();
+    floorController.dispose();
+    apartmentController.dispose();
+    directionController.dispose();
+    contactNameController.dispose();
+    contactSurnameController.dispose();
+    contactPhoneController.dispose();
+  }
 
   void handleCityChanged(String? city) {
     setState(() {

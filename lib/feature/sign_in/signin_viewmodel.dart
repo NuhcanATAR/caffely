@@ -11,15 +11,22 @@ import 'package:flutter/material.dart';
 abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
   final formSignInKey = GlobalKey<FormState>();
 
-  late TextEditingController emailController = TextEditingController();
-  late TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  late bool isRememberMe = false;
+  bool isRememberMe = false;
 
   @override
   void initState() {
     super.initState();
     currentUserLoad();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
   }
 
   void rememberMeOnChanged(bool? value) {

@@ -130,7 +130,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
     final basketDocRef = FirebaseCollectionReferances.basket.collectRef
         .doc(FirebaseService().authID);
 
-    late int productPrice = 0;
+    int productPrice = 0;
 
     if (productModel.size == ProductTypeControl.small.productTypeValue) {
       productPrice = product.price;
@@ -195,7 +195,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
             branchesModel.id,
           );
 
-      late int productPrice = 0;
+      int productPrice = 0;
       if (productModel.size == ProductTypeControl.small.productTypeValue) {
         productPrice = product.price;
       } else if (productModel.size ==
@@ -270,7 +270,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
               branchesModel.id,
             );
 
-        late int productPrice = 0;
+        int productPrice = 0;
         if (productModel.size == ProductTypeControl.small.productTypeValue) {
           productPrice = product.price;
         } else if (productModel.size ==

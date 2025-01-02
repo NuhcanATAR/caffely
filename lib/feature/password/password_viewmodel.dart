@@ -7,5 +7,11 @@ abstract class PasswordViewmodel extends BaseState<PasswordView>
     with PasswordMixin {
   final formPasswordKey = GlobalKey<FormState>();
 
-  late TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+  }
 }

@@ -36,8 +36,8 @@ abstract class PersonalInformationViewModel
   }
 
   // city distirct
-  late String? selectedCity;
-  late String? selectedDistrict;
+  String? selectedCity;
+  String? selectedDistrict;
 
   void handleCityChanged(String? city) {
     setState(() {

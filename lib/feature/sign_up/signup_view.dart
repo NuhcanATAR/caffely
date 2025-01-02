@@ -8,7 +8,6 @@ import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
-import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/theme/light_theme.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
@@ -119,18 +118,16 @@ class _SignUpViewState extends SignUpViewModel {
           CustomEmailFieldWidget(
             emailController: emailController,
             hintText: AppLocalizations.of(context)!.signup_email,
-            onChanged: (String value) {
-              context.read<SignUpBloc>().add(SignUpEmailEvent(value));
-            },
+            onChanged: (String value) =>
+                context.read<SignUpBloc>().add(SignUpEmailEvent(value)),
             isLabelText: true,
           ),
           // password
           CustomPasswordFieldWidget(
             passwordController: passwordController,
             hintText: AppLocalizations.of(context)!.signup_password,
-            onChanged: (String value) {
-              context.read<SignUpBloc>().add(SignUpPasswordEvent(value));
-            },
+            onChanged: (String value) =>
+                context.read<SignUpBloc>().add(SignUpPasswordEvent(value)),
             isValidator: true,
             isLabelText: true,
           ),
@@ -147,11 +144,7 @@ class _SignUpViewState extends SignUpViewModel {
             // check box
             Checkbox(
               value: isAgree,
-              onChanged: (bool? value) {
-                setState(() {
-                  isAgree = value!;
-                });
-              },
+              onChanged: agreeCheckBox,
               activeColor: Theme.of(context).colorScheme.primary,
             ),
             // agree text
@@ -208,28 +201,7 @@ class _SignUpViewState extends SignUpViewModel {
           text: AppLocalizations.of(context)!.signup_btn,
           func: blocState.email.isEmpty || blocState.password.isEmpty
               ? () {}
-              : () {
-                  if (formSignUpKey.currentState!.validate()) {
-                    if (isAgree == true) {
-                      context.read<SignUpBloc>().add(
-                            SignUpUserEvent(
-                              blocState.email,
-                              blocState.password,
-                              context,
-                            ),
-                          );
-                      emailController.clear();
-                      passwordController.clear();
-                      isAgree = false;
-                    } else {
-                      CodeNoahDialogs(context).showFlush(
-                        type: SnackType.warning,
-                        message: AppLocalizations.of(context)!
-                            .signup_agreement_error,
-                      );
-                    }
-                  }
-                },
+              : () => signUp,
           btnStatus: blocState.email.isEmpty || blocState.password.isEmpty
               ? ButtonTypes.borderPrimaryColorButton
               : ButtonTypes.primaryColorButton,

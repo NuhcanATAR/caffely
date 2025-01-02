@@ -14,9 +14,9 @@ import 'package:caffely/product/model/basket_product_model/basket_product_model.
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BasketViewModel extends BaseState<BasketView> with BasketMixin {
-  late List<BasketProductModel> basketProductList = [];
+  List<BasketProductModel> basketProductList = [];
 
-  late String branchId = "";
+  String branchId = "";
 
   @override
   void initState() {

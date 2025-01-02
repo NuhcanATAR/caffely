@@ -9,9 +9,8 @@ abstract class AboutAppViewModel extends BaseState<AboutAppView> {
   late String explanation =
       AppLocalizations.of(context)!.account_aboutapp_subtitle;
 
-  late String githubUrl = 'https://github.com/NuhcanATAR';
-  late String linkedinUrl =
-      'https://www.linkedin.com/in/nuhcan-atar-371276208/';
+  String githubUrl = 'https://github.com/NuhcanATAR';
+  String linkedinUrl = 'https://www.linkedin.com/in/nuhcan-atar-371276208/';
 
   Future<void> linkOpen(String url) async {
     if (!await launchUrl(Uri.parse(url))) {

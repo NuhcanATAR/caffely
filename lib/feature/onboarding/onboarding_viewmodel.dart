@@ -10,9 +10,9 @@ import '../../product/core/base/base_state/base_state.dart';
 import '../../product/widget/text_widget/body_medium_text.dart';
 
 abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
-  late int selectProccessIndex = 0;
+  int selectProccessIndex = 0;
 
-  late List<Widget> onBoardingImage = <Widget>[
+  List<Widget> onBoardingImage = <Widget>[
     FadeInDown(
       child: Container(
         decoration: BoxDecoration(

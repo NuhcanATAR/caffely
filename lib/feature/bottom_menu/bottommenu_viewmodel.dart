@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 abstract class BottomMenuViewModel extends BaseState<BottomMenuView>
     with BottomMenuMixin {
-  late List<Widget> viewList = <Widget>[
+  List<Widget> viewList = <Widget>[
     const HomeView(),
     const StoresView(),
     const OrdersView(),

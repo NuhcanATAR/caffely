@@ -8,19 +8,33 @@ abstract class SavedAdressCreateViewModel
   final formAdressCreateKey = GlobalKey<FormState>();
 
   // controller
-  late TextEditingController titleController = TextEditingController();
-  late TextEditingController streetController = TextEditingController();
-  late TextEditingController buildNoController = TextEditingController();
-  late TextEditingController floorController = TextEditingController();
-  late TextEditingController apartmentController = TextEditingController();
-  late TextEditingController directionController = TextEditingController();
-  late TextEditingController contactNameController = TextEditingController();
-  late TextEditingController contactSurnameController = TextEditingController();
-  late TextEditingController contactPhoneController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
+  TextEditingController buildNoController = TextEditingController();
+  TextEditingController floorController = TextEditingController();
+  TextEditingController apartmentController = TextEditingController();
+  TextEditingController directionController = TextEditingController();
+  TextEditingController contactNameController = TextEditingController();
+  TextEditingController contactSurnameController = TextEditingController();
+  TextEditingController contactPhoneController = TextEditingController();
 
   // city distirct
   String? selectedCity;
   String? selectedDistrict;
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleController.dispose();
+    streetController.dispose();
+    buildNoController.dispose();
+    floorController.dispose();
+    apartmentController.dispose();
+    directionController.dispose();
+    contactNameController.dispose();
+    contactSurnameController.dispose();
+    contactPhoneController.dispose();
+  }
 
   void handleCityChanged(String? city) {
     setState(() {

@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 abstract class OrderDetailViewModel extends BaseState<OrderDetailView> {
   List<BasketBranchModel> branches = [];
 
-  late int mainTotalPrice = 0;
-  late int mainTotalQuanity = 0;
+  int mainTotalPrice = 0;
+  int mainTotalQuanity = 0;
 
   @override
   void initState() {

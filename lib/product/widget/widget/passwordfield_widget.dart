@@ -30,7 +30,7 @@ class CustomPasswordFieldWidget extends StatefulWidget {
 class _CustomPasswordFieldWidgetState
     extends BaseState<CustomPasswordFieldWidget> {
   String? errorText;
-  late bool isPassObscured = true;
+  bool isPassObscured = true;
   @override
   Widget build(BuildContext context) {
     return Column(

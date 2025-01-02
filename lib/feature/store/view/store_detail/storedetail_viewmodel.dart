@@ -10,7 +10,7 @@ abstract class StoreDetailViewModel extends BaseState<StoreDetailView>
     with StoreMixin {
   int current = 0;
 
-  late CarouselController carouselController = CarouselController();
+  CarouselController carouselController = CarouselController();
 
   late List<String> coverImages;
 
