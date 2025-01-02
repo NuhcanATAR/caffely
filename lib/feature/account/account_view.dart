@@ -1,11 +1,11 @@
 import 'package:caffely/feature/account/account_viewmodel.dart';
-import 'package:caffely/feature/account/view/about_app/aboutapp_view.dart';
-import 'package:caffely/feature/account/view/campain_discounts/campaindiscounts_view.dart';
-import 'package:caffely/feature/account/view/center_help/centerhelp_view.dart';
+import 'package:caffely/feature/account/view/about_app/about_app_view.dart';
+import 'package:caffely/feature/account/view/campain_discounts/campain_discounts_view.dart';
+import 'package:caffely/feature/account/view/center_help/center_help_view.dart';
 import 'package:caffely/feature/account/view/langue/langue_view.dart';
 import 'package:caffely/feature/account/view/notification/notification_view.dart';
-import 'package:caffely/feature/account/view/personal_information/personalinformation_view.dart';
-import 'package:caffely/feature/account/view/saved_adress/savedadress_view.dart';
+import 'package:caffely/feature/account/view/personal_information/personal_information_view.dart';
+import 'package:caffely/feature/account/view/saved_adress/saved_dadress_view.dart';
 import 'package:caffely/feature/account/view/security/security_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
@@ -15,7 +15,7 @@ import 'package:caffely/product/model/langue_model/langue_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/widget/menu_card.dart';
-import 'package:caffely/product/widget/widget/profilecard_widget.dart';
+import 'package:caffely/product/widget/widget/profile_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

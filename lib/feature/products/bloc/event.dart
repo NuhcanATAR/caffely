@@ -1,5 +1,5 @@
 import 'package:caffely/feature/products/bloc/state.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -68,5 +68,9 @@ class ProductBasketAddEvent extends ProductEvent {
   final BuildContext context;
 
   const ProductBasketAddEvent(
-      this.productModel, this.state, this.totalPrice, this.context,);
+    this.productModel,
+    this.state,
+    this.totalPrice,
+    this.context,
+  );
 }

@@ -1,8 +1,8 @@
-import 'package:caffely/feature/orders/view/order_detail/orderdetail_view.dart';
+import 'package:caffely/feature/orders/view/order_detail/order_detail_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
-import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
+import 'package:caffely/product/core/base/helper/order_basket_control.dart';
 import 'package:caffely/product/model/order_model/order_model.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';

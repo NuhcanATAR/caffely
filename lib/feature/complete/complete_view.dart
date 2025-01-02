@@ -10,9 +10,9 @@ import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
-import 'package:caffely/product/widget/widget/locationmenu_widget.dart';
-import 'package:caffely/product/widget/widget/normaltextfield_widget.dart';
-import 'package:caffely/product/widget/widget/phonenumberfield_widget.dart';
+import 'package:caffely/product/widget/widget/location_menu_widget.dart';
+import 'package:caffely/product/widget/widget/normal_text_field_widget.dart';
+import 'package:caffely/product/widget/widget/phone_number_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

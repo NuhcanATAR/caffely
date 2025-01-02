@@ -1,4 +1,4 @@
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/model/favorite_model/favorite_model.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:equatable/equatable.dart';

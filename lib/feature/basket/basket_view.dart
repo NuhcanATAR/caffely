@@ -14,8 +14,8 @@ import 'package:caffely/product/model/basket_product_model/basket_product_model.
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/basket_productslist_widget.dart';
-import 'package:caffely/product/widget/widget/basket_storecard_widget.dart';
+import 'package:caffely/product/widget/widget/basket_products_list_widget.dart';
+import 'package:caffely/product/widget/widget/basket_store_card_widget.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

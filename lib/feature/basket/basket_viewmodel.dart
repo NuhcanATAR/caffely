@@ -5,7 +5,7 @@ import 'package:caffely/feature/basket/bloc/cubit.dart';
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/mixin.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
-import 'package:caffely/feature/basket/view/order_complete/ordercomplete_view.dart';
+import 'package:caffely/feature/basket/view/order_complete/order_complete_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
