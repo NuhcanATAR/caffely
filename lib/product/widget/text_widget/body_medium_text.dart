@@ -17,9 +17,8 @@ class BodyMediumBlackBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
           ),
     );
   }
@@ -40,7 +39,7 @@ class BodyMediumBlackText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium,
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium,
     );
   }
 }
@@ -60,9 +59,8 @@ class BodyMediumWhiteBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
             color: Colors.white,
           ),
     );
@@ -85,7 +83,7 @@ class BodyMediumBlueBoldText extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: CustomLightTheme()
-          .themeData
+          .themeDataSecond
           .textTheme
           .bodyMedium!
           .copyWith(fontWeight: FontWeight.bold, color: Colors.lightBlue),
@@ -108,7 +106,7 @@ class BodyMediumMainColorText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).colorScheme.primary,
           ),
     );
@@ -130,7 +128,7 @@ class BodyMediumMainColorBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.bold,
           ),
@@ -153,7 +151,7 @@ class BodyMediumRedText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).colorScheme.error,
           ),
     );
@@ -175,7 +173,7 @@ class BodyMediumRedBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).colorScheme.error,
             fontWeight: FontWeight.bold,
           ),
@@ -198,7 +196,7 @@ class BodyMediumWhiteText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.bodyMedium!.copyWith(
+      style: CustomLightTheme().themeDataSecond.textTheme.bodyMedium!.copyWith(
             color: Theme.of(context).colorScheme.onPrimary,
             fontWeight: FontWeight.bold,
           ),

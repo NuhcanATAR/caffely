@@ -50,8 +50,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -60,8 +60,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: BlocBuilder<QrCodeCubit, QrCodeState>(
           bloc: qrCodeCubit,
@@ -93,8 +93,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
             // img
             FadeInDown(
               child: Padding(
-                padding: PaddingSizedsUtility.horizontal(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: AppImages.qrCodeNotFound.toSvgImg(
                   null,
@@ -109,8 +109,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
             // title
             FadeInLeft(
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: TitleMediumBlackBoldText(
                   text: state.title,
@@ -121,8 +121,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
             // sub title
             FadeInRight(
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: BodyMediumBlackText(
                   text: state.subTitle,
@@ -191,7 +191,7 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
                                       color:
                                           Theme.of(context).colorScheme.primary,
                                       borderRadius: BorderRadius.circular(
-                                        RadiusUtility.circularHighValue,
+                                        BaseUtility.radiusCircularHighValue,
                                       ),
                                     )
                                   : BoxDecoration(
@@ -202,23 +202,23 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
                                         fit: BoxFit.cover,
                                       ),
                                       borderRadius: BorderRadius.circular(
-                                        RadiusUtility.circularHighValue,
+                                        BaseUtility.radiusCircularHighValue,
                                       ),
                                     ),
                               child: userModel.authStatus ==
                                       AuthControl.emailPasswordAuth.valueAuth
                                   ? AppIcons.userOutline.toSvgImg(
                                       Colors.white,
-                                      IconSizedsUtility.normalSize,
-                                      IconSizedsUtility.normalSize,
+                                      BaseUtility.iconNormalSize,
+                                      BaseUtility.iconNormalSize,
                                     )
                                   : const SizedBox(),
                             ),
                           ),
                           // name surname
                           Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.normalPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingNormalValue,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -226,8 +226,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
                               children: <Widget>[
                                 // name surname
                                 Padding(
-                                  padding: PaddingSizedsUtility.vertical(
-                                    PaddingSizedsUtility.smallPaddingValue,
+                                  padding: BaseUtility.vertical(
+                                    BaseUtility.paddingSmallValue,
                                   ),
                                   child: TitleMediumBlackBoldText(
                                     text: userModel.nameSurname,
@@ -236,8 +236,8 @@ class _AccountQrCodeViewState extends AccountQrCodeViewModel {
                                 ),
                                 // verification
                                 Padding(
-                                  padding: PaddingSizedsUtility.vertical(
-                                    PaddingSizedsUtility.smallPaddingValue,
+                                  padding: BaseUtility.vertical(
+                                    BaseUtility.paddingSmallValue,
                                   ),
                                   child: BodyMediumMainColorText(
                                     text: AppLocalizations.of(context)!

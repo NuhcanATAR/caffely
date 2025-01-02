@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:caffely/feature/account/view/accountqr_code/bloc/event.dart';
 import 'package:caffely/feature/account/view/accountqr_code/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/qrcode_model/qrcode_model.dart';
@@ -13,7 +14,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -71,7 +71,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
           AppLocalizations.of(context)!.account_qrcode_error_subtitle_second,
         ),
       );
-      Logger().e(e);
+      CustomLoggerPrint().printWarningLog(e.toString());
     }
   }
 

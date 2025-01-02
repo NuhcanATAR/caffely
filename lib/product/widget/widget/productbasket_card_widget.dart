@@ -74,8 +74,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
           );
 
           return Padding(
-            padding: PaddingSizedsUtility.horizontal(
-              PaddingSizedsUtility.smallPaddingValue,
+            padding: BaseUtility.horizontal(
+              BaseUtility.paddingSmallValue,
             ),
             child: Row(
               children: <Widget>[
@@ -106,9 +106,9 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                               image: imageProvider,
                               fit: BoxFit.cover,
                             ),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularMediumValue,
+                                BaseUtility.radiusCircularMediumValue,
                               ),
                             ),
                           ),
@@ -116,9 +116,9 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                         placeholder: (context, url) => Container(
                           decoration: BoxDecoration(
                             color: Colors.grey.withOpacity(0.2),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularMediumValue,
+                                BaseUtility.radiusCircularMediumValue,
                               ),
                             ),
                           ),
@@ -126,9 +126,9 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                         errorWidget: (context, url, error) => Container(
                           decoration: BoxDecoration(
                             color: Colors.grey.withOpacity(0.2),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularMediumValue,
+                                BaseUtility.radiusCircularMediumValue,
                               ),
                             ),
                           ),
@@ -141,8 +141,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                 Expanded(
                   flex: 5,
                   child: Padding(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: Column(
                       children: <Widget>[
@@ -152,8 +152,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             context,
                           ),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: Row(
                               children: <Widget>[
@@ -182,10 +182,10 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                             widget.basketProducts,
                                             context,
                                           ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.delete_outline,
                                     color: Colors.grey,
-                                    size: IconSizedsUtility.mediumSize,
+                                    size: BaseUtility.iconMediumSize,
                                   ),
                                 ),
                               ],
@@ -198,8 +198,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             context,
                           ),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumMainColorText(
                               text:
@@ -216,8 +216,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             context,
                           ),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: Row(
                               children: <Widget>[
@@ -247,8 +247,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                             context,
                           ),
                           child: Padding(
-                            padding: PaddingSizedsUtility.vertical(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.vertical(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: Row(
                               children: <Widget>[
@@ -274,8 +274,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                         ),
                         // quanity
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -291,8 +291,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                       );
                                 },
                                 child: Container(
-                                  padding: PaddingSizedsUtility.all(
-                                    PaddingSizedsUtility.mediumPaddingValue,
+                                  padding: BaseUtility.all(
+                                    BaseUtility.paddingMediumValue,
                                   ),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -302,9 +302,9 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                       ).colorScheme.outline,
                                       width: 0.5,
                                     ),
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(
-                                        RadiusUtility.lowRadiusValue,
+                                        BaseUtility.radiusLowValue,
                                       ),
                                     ),
                                   ),
@@ -316,8 +316,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                               ),
                               // quanity
                               Container(
-                                padding: PaddingSizedsUtility.horizontal(
-                                  PaddingSizedsUtility.normalPaddingValue,
+                                padding: BaseUtility.horizontal(
+                                  BaseUtility.paddingNormalValue,
                                 ),
                                 child: BodyMediumBlackText(
                                   text: widget.productModel.quanity.toString(),
@@ -338,8 +338,8 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                       );
                                 },
                                 child: Container(
-                                  padding: PaddingSizedsUtility.all(
-                                    PaddingSizedsUtility.mediumPaddingValue,
+                                  padding: BaseUtility.all(
+                                    BaseUtility.paddingMediumValue,
                                   ),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -349,9 +349,9 @@ class _ProductBasketCardWidgetState extends BaseState<ProductBasketCardWidget> {
                                       ).colorScheme.outline,
                                       width: 0.5,
                                     ),
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(
-                                        RadiusUtility.lowRadiusValue,
+                                        BaseUtility.radiusLowValue,
                                       ),
                                     ),
                                   ),

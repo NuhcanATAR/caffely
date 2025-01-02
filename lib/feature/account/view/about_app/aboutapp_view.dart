@@ -30,8 +30,8 @@ class _AboutAppViewState extends AboutAppViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -40,63 +40,77 @@ class _AboutAppViewState extends AboutAppViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: ListView(
           children: <Widget>[
             // logo
-            SizedBox(
-              height: dynamicViewExtensions.dynamicHeight(context, 0.13),
-              child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
-            ),
-            // title
-            Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.normalPaddingValue,
-              ),
-              child: TitleLargeBlackBoldText(
-                text: title,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            // explanation
-            Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
-              ),
-              child: BodyMediumBlackText(
-                text: explanation,
-                textAlign: TextAlign.center,
-              ),
-            ),
+            buildLogoWidget,
+            // title & explanation
+            buildTitleExplanationWidget,
             // social media buttons
-            Row(
-              children: <Widget>[
-                // github
-                SocialMediaButtonWidget(
-                  onTap: () {
-                    linkOpen(githubUrl);
-                  },
-                  color: Colors.black,
-                  icon: AppIcons.github,
-                  btnText: 'Github',
-                ),
-                const Spacer(),
-                // linkedin
-                SocialMediaButtonWidget(
-                  onTap: () {
-                    linkOpen(linkedinUrl);
-                  },
-                  color: Colors.blue,
-                  icon: AppIcons.linkedin,
-                  btnText: 'Linkedin',
-                ),
-              ],
-            ),
+            buildSocialMediaButtonsWidget,
           ],
         ),
       ),
     );
   }
+
+  // logo
+  Widget get buildLogoWidget => SizedBox(
+        height: dynamicViewExtensions.dynamicHeight(context, 0.13),
+        child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
+      );
+
+  // title & explanation
+  Widget get buildTitleExplanationWidget => Column(
+        children: <Widget>[
+          // title
+          Padding(
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingNormalValue,
+            ),
+            child: TitleLargeBlackBoldText(
+              text: title,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          // explanation
+          Padding(
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingMediumValue,
+            ),
+            child: BodyMediumBlackText(
+              text: explanation,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      );
+
+  // social media buttons
+  Widget get buildSocialMediaButtonsWidget => Row(
+        children: <Widget>[
+          // github
+          SocialMediaButtonWidget(
+            onTap: () {
+              linkOpen(githubUrl);
+            },
+            color: Colors.black,
+            icon: AppIcons.github,
+            btnText: 'Github',
+          ),
+          const Spacer(),
+          // linkedin
+          SocialMediaButtonWidget(
+            onTap: () {
+              linkOpen(linkedinUrl);
+            },
+            color: Colors.blue,
+            icon: AppIcons.linkedin,
+            btnText: 'Linkedin',
+          ),
+        ],
+      );
 }

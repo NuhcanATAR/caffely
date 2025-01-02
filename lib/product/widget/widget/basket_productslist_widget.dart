@@ -35,8 +35,8 @@ class BasketProductListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.horizontal(
-        PaddingSizedsUtility.smallPaddingValue,
+      padding: BaseUtility.horizontal(
+        BaseUtility.paddingSmallValue,
       ),
       child: Row(
         children: <Widget>[
@@ -67,9 +67,9 @@ class BasketProductListWidget extends StatelessWidget {
                         image: imageProvider,
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                       ),
                     ),
@@ -77,9 +77,9 @@ class BasketProductListWidget extends StatelessWidget {
                   placeholder: (context, url) => Container(
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                       ),
                     ),
@@ -87,9 +87,9 @@ class BasketProductListWidget extends StatelessWidget {
                   errorWidget: (context, url, error) => Container(
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(
-                          RadiusUtility.circularMediumValue,
+                          BaseUtility.radiusCircularMediumValue,
                         ),
                       ),
                     ),
@@ -102,8 +102,8 @@ class BasketProductListWidget extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -113,8 +113,8 @@ class BasketProductListWidget extends StatelessWidget {
                       context,
                     ),
                     child: Padding(
-                      padding: PaddingSizedsUtility.vertical(
-                        PaddingSizedsUtility.smallPaddingValue,
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -136,10 +136,10 @@ class BasketProductListWidget extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: productRemove,
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.grey,
-                              size: IconSizedsUtility.mediumSize,
+                              size: BaseUtility.iconMediumSize,
                             ),
                           ),
                         ],
@@ -152,8 +152,8 @@ class BasketProductListWidget extends StatelessWidget {
                       context,
                     ),
                     child: Padding(
-                      padding: PaddingSizedsUtility.vertical(
-                        PaddingSizedsUtility.smallPaddingValue,
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
                       ),
                       child: BodyMediumMainColorText(
                         text:
@@ -170,8 +170,8 @@ class BasketProductListWidget extends StatelessWidget {
                       context,
                     ),
                     child: Padding(
-                      padding: PaddingSizedsUtility.vertical(
-                        PaddingSizedsUtility.smallPaddingValue,
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -201,8 +201,8 @@ class BasketProductListWidget extends StatelessWidget {
                       context,
                     ),
                     child: Padding(
-                      padding: PaddingSizedsUtility.vertical(
-                        PaddingSizedsUtility.smallPaddingValue,
+                      padding: BaseUtility.vertical(
+                        BaseUtility.paddingSmallValue,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -228,8 +228,8 @@ class BasketProductListWidget extends StatelessWidget {
                   ),
                   // quanity
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.smallPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingSmallValue,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -238,8 +238,8 @@ class BasketProductListWidget extends StatelessWidget {
                         GestureDetector(
                           onTap: produdctQuanityAdd,
                           child: Container(
-                            padding: PaddingSizedsUtility.all(
-                              PaddingSizedsUtility.mediumPaddingValue,
+                            padding: BaseUtility.all(
+                              BaseUtility.paddingMediumValue,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -249,9 +249,9 @@ class BasketProductListWidget extends StatelessWidget {
                                 ).colorScheme.outline,
                                 width: 0.5,
                               ),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.lowRadiusValue,
+                                  BaseUtility.radiusLowValue,
                                 ),
                               ),
                             ),
@@ -263,8 +263,8 @@ class BasketProductListWidget extends StatelessWidget {
                         ),
                         // quanity
                         Container(
-                          padding: PaddingSizedsUtility.horizontal(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.horizontal(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: BodyMediumBlackText(
                             text: productModel.quanity.toString(),
@@ -275,8 +275,8 @@ class BasketProductListWidget extends StatelessWidget {
                         GestureDetector(
                           onTap: productQuanityReduce,
                           child: Container(
-                            padding: PaddingSizedsUtility.all(
-                              PaddingSizedsUtility.mediumPaddingValue,
+                            padding: BaseUtility.all(
+                              BaseUtility.paddingMediumValue,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -286,9 +286,9 @@ class BasketProductListWidget extends StatelessWidget {
                                 ).colorScheme.outline,
                                 width: 0.5,
                               ),
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(
-                                  RadiusUtility.lowRadiusValue,
+                                  BaseUtility.radiusLowValue,
                                 ),
                               ),
                             ),

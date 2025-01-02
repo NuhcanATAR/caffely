@@ -11,7 +11,6 @@ import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInLoadingView extends StatefulWidget {
   const SignInLoadingView({super.key});
@@ -41,7 +40,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
               return const SizedBox();
             }
             final user = UserModel.fromJson(data);
-            SharedPreferences.getInstance().then((valuePrefs) {
+            prefService.prefs.then((valuePrefs) {
               valuePrefs.setInt(
                 'auth_status',
                 user.authStatus,
@@ -66,32 +65,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
                 );
               });
             }
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
-                    ),
-                    child: LoadingAnimationWidget.hexagonDots(
-                      color: Theme.of(context).colorScheme.primary,
-                      size: IconSizedsUtility.largeSize,
-                    ),
-                  ),
-                  Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
-                    ),
-                    child: BodyMediumBlackBoldText(
-                      text: AppLocalizations.of(context)!.sign_loading_subtitle,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return buildBodyWidget;
           } else {
             return const SizedBox();
           }
@@ -99,4 +73,32 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
       ),
     );
   }
+
+  // body
+  Widget get buildBodyWidget => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: LoadingAnimationWidget.hexagonDots(
+                color: Theme.of(context).colorScheme.primary,
+                size: BaseUtility.iconLargeSize,
+              ),
+            ),
+            Padding(
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
+              ),
+              child: BodyMediumBlackBoldText(
+                text: AppLocalizations.of(context)!.sign_loading_subtitle,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      );
 }

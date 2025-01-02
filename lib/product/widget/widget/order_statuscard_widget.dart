@@ -17,8 +17,8 @@ class OrderStatusCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.vertical(
-        PaddingSizedsUtility.mediumPaddingValue,
+      padding: BaseUtility.vertical(
+        BaseUtility.paddingMediumValue,
       ),
       child: Row(
         children: <Widget>[
@@ -27,14 +27,14 @@ class OrderStatusCardWidget extends StatelessWidget {
             fit: FlexFit.tight,
             flex: 2,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingMediumValue,
               ),
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingMediumValue,
                     ),
                     decoration: BoxDecoration(
                       color: basketModel.basketStatus ==
@@ -45,18 +45,18 @@ class OrderStatusCardWidget extends StatelessWidget {
                               ? Theme.of(context).colorScheme.primary
                               : Colors.grey,
                       borderRadius: BorderRadius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                     child: AppIcons.boxBold.toSvgImg(
                       Colors.white,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                   ),
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingMediumValue,
                     ),
                     child: BodyMediumBlackBoldText(
                       text: AppLocalizations.of(context)!.order_status_card_one,
@@ -90,14 +90,14 @@ class OrderStatusCardWidget extends StatelessWidget {
             fit: FlexFit.tight,
             flex: 2,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingMediumValue,
               ),
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingMediumValue,
                     ),
                     decoration: BoxDecoration(
                       color: basketModel.basketStatus ==
@@ -108,18 +108,18 @@ class OrderStatusCardWidget extends StatelessWidget {
                               ? Theme.of(context).colorScheme.primary
                               : Colors.grey,
                       borderRadius: BorderRadius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                     child: AppIcons.boxBold.toSvgImg(
                       Colors.white,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                   ),
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingMediumValue,
                     ),
                     child: BodyMediumBlackBoldText(
                       text: AppLocalizations.of(context)!
@@ -154,14 +154,14 @@ class OrderStatusCardWidget extends StatelessWidget {
             fit: FlexFit.tight,
             flex: 2,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingMediumValue,
               ),
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.all(
+                      BaseUtility.paddingMediumValue,
                     ),
                     decoration: BoxDecoration(
                       color: basketModel.basketStatus ==
@@ -172,18 +172,18 @@ class OrderStatusCardWidget extends StatelessWidget {
                               ? Theme.of(context).colorScheme.primary
                               : Colors.grey,
                       borderRadius: BorderRadius.circular(
-                        RadiusUtility.circularHighValue,
+                        BaseUtility.radiusCircularHighValue,
                       ),
                     ),
                     child: AppIcons.boxBold.toSvgImg(
                       Colors.white,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     ),
                   ),
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.mediumPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingMediumValue,
                     ),
                     child: BodyMediumBlackBoldText(
                       text:

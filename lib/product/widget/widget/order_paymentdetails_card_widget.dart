@@ -27,11 +27,11 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
     return SizedBox(
       width: dynamicViewExtensions.maxWidth(context),
       child: Container(
-        margin: MarginSizedsUtility.top(
-          MarginSizedsUtility.normalMarginValue,
+        margin: BaseUtility.top(
+          BaseUtility.marginNormalValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -40,7 +40,7 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(
-            RadiusUtility.normalRadiusValue,
+            BaseUtility.radiusNormalValue,
           ),
         ),
         child: Column(
@@ -49,8 +49,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Container(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 decoration: BoxDecoration(
                   border: Border(
@@ -72,8 +72,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -105,8 +105,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -134,8 +134,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -162,8 +162,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -190,8 +190,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -218,8 +218,8 @@ class OrderpaymentDetailsCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: Row(
                   children: <Widget>[

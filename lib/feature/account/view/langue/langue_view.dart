@@ -7,6 +7,7 @@ import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/model/langue_model/langue_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
+import 'package:caffely/product/widget/widget/languagecard_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,8 +35,8 @@ class _LangueViewState extends LangueViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -44,61 +45,51 @@ class _LangueViewState extends LangueViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.smallPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingSmallValue,
         ),
         child: Column(
           children: <Widget>[
             // body
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    contentPadding: PaddingSizedsUtility.all(
-                      PaddingSizedsUtility.normalPaddingValue,
-                    ),
-                    title: const BodyMediumBlackText(
-                      text: 'English',
-                      textAlign: TextAlign.left,
-                    ),
-                    leading: Radio<String>(
-                      value: 'en',
-                      groupValue: languageProvider.selectedLanguage,
-                      onChanged: (value) {
-                        setState(() {
-                          languageProvider.setLanguage(value!);
-                        });
-                      },
-                    ),
-                    trailing: AppImages.flagEnglish.toPngImg(
-                      30,
-                      30,
-                    ),
-                    onTap: () => saveLanguage('en'),
-                  ),
-                  ListTile(
-                    title: const Text('Türkçe'),
-                    leading: Radio<String>(
-                      value: 'tr',
-                      groupValue: languageProvider.selectedLanguage,
-                      onChanged: (value) {
-                        setState(() {
-                          languageProvider.setLanguage(value!);
-                        });
-                      },
-                    ),
-                    trailing: AppImages.flagTurkey.toPngImg(
-                      30,
-                      30,
-                    ),
-                    onTap: () => saveLanguage('tr'),
-                  ),
-                ],
-              ),
-            ),
+            buildBodyWidget(languageProvider),
           ],
         ),
       ),
     );
   }
+
+  // body
+  Widget buildBodyWidget(LanguageProvider languageProvider) => // body
+      Expanded(
+        child: ListView(
+          children: <Widget>[
+            // english
+            LanguageCardWidget(
+              menuText: 'English',
+              value: 'en',
+              groupValue: languageProvider.selectedLanguage,
+              onChanged: (value) {
+                setState(() {
+                  languageProvider.setLanguage(value!);
+                });
+              },
+              flagIcon: AppImages.flagEnglish,
+              onTap: () => saveLanguage('en'),
+            ),
+            // turkish
+            LanguageCardWidget(
+              menuText: 'Türkçe',
+              value: 'tr',
+              groupValue: languageProvider.selectedLanguage,
+              onChanged: (value) {
+                setState(() {
+                  languageProvider.setLanguage(value!);
+                });
+              },
+              flagIcon: AppImages.flagTurkey,
+              onTap: () => saveLanguage('tr'),
+            ),
+          ],
+        ),
+      );
 }

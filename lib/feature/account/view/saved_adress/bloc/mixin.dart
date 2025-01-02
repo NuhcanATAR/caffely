@@ -3,13 +3,15 @@
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
 mixin SavedAdressMixin {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
   void savedAdressCreateListenerBloc(
     BuildContext context,
     SavedAdressState state,
@@ -40,7 +42,7 @@ mixin SavedAdressMixin {
         );
         break;
       default:
-        Logger().i('Eksik Case Mevcut');
+        loggerPrint.printInfoLog('Eksik Case Mevcut');
     }
   }
 
@@ -74,7 +76,7 @@ mixin SavedAdressMixin {
         );
         break;
       default:
-        Logger().i('Eksik Case Mevcut');
+        loggerPrint.printInfoLog('Eksik Case Mevcut');
     }
   }
 
@@ -100,7 +102,7 @@ mixin SavedAdressMixin {
         );
         break;
       default:
-        Logger().i('Eksik Case Mevcut');
+        loggerPrint.printInfoLog('Eksik Case Mevcut');
     }
   }
 }

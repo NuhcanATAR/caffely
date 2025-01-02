@@ -7,7 +7,7 @@ class LanguageProvider with ChangeNotifier {
   String get selectedLanguage => _selectedLanguage;
 
   Future<void> loadLanguage() async {
-    final languageCode = await LocalizationService().getLanguageCode();
+    final languageCode = await LocalizationService.instance.getLanguageCode();
     if (languageCode != null) {
       _selectedLanguage = languageCode;
       notifyListeners();
@@ -15,7 +15,7 @@ class LanguageProvider with ChangeNotifier {
   }
 
   Future<void> setLanguage(String languageCode) async {
-    await LocalizationService().setLanguageCode(languageCode);
+    await LocalizationService.instance.setLanguageCode(languageCode);
     _selectedLanguage = languageCode;
     notifyListeners();
   }

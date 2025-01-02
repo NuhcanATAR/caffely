@@ -35,8 +35,8 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
             ? SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: widget.hintText,
@@ -61,13 +61,13 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
               prefixIcon: Padding(
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: AppIcons.callOutline.toSvgImg(
                   Colors.black,
-                  IconSizedsUtility.normalSize,
-                  IconSizedsUtility.normalSize,
+                  BaseUtility.iconNormalSize,
+                  BaseUtility.iconNormalSize,
                 ),
               ),
               hintText: widget.hintText,
@@ -78,13 +78,13 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
                   ),
               filled: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: PaddingSizedsUtility.normalPaddingValue,
-                vertical: PaddingSizedsUtility.smallPaddingValue,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: BaseUtility.paddingNormalValue,
+                vertical: BaseUtility.paddingSmallValue,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -93,7 +93,7 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -101,7 +101,7 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,
@@ -109,7 +109,7 @@ class _PhoneNumberFieldWidgetState extends BaseState<PhoneNumberFieldWidget> {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
                 borderSide: const BorderSide(
                   color: Colors.transparent,

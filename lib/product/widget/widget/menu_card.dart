@@ -25,20 +25,20 @@ class CustomMenuCardWidget extends StatelessWidget {
       child: SizedBox(
         width: dynamicViewExtensions.maxWidth(context),
         child: Padding(
-          padding: PaddingSizedsUtility.vertical(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.vertical(
+            BaseUtility.paddingNormalValue,
           ),
           child: Row(
             children: <Widget>[
               menuIcon.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               Expanded(
                 child: Padding(
-                  padding: PaddingSizedsUtility.horizontal(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.horizontal(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: menuText,
@@ -48,8 +48,8 @@ class CustomMenuCardWidget extends StatelessWidget {
               ),
               AppIcons.arrowRight.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
             ],
           ),
@@ -84,20 +84,20 @@ class CustomMenuRowCardWidget extends StatelessWidget {
       child: SizedBox(
         width: dynamicViewExtensions.maxWidth(context),
         child: Padding(
-          padding: PaddingSizedsUtility.vertical(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.vertical(
+            BaseUtility.paddingNormalValue,
           ),
           child: Row(
             children: <Widget>[
               menuIcon.toSvgImg(
                 Colors.black,
-                IconSizedsUtility.normalSize,
-                IconSizedsUtility.normalSize,
+                BaseUtility.iconNormalSize,
+                BaseUtility.iconNormalSize,
               ),
               Expanded(
                 child: Padding(
-                  padding: PaddingSizedsUtility.horizontal(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.horizontal(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text: menuText,
@@ -114,8 +114,8 @@ class CustomMenuRowCardWidget extends StatelessWidget {
               isArrowBtn == true
                   ? AppIcons.arrowRight.toSvgImg(
                       Colors.black,
-                      IconSizedsUtility.normalSize,
-                      IconSizedsUtility.normalSize,
+                      BaseUtility.iconNormalSize,
+                      BaseUtility.iconNormalSize,
                     )
                   : const SizedBox(),
             ],

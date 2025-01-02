@@ -31,17 +31,17 @@ class CustomButtonWidget extends StatelessWidget {
           width: dynamicViewExtensions.maxWidth(context),
           height: dynamicViewExtensions.dynamicHeight(context, 0.06),
           child: Container(
-            padding: PaddingSizedsUtility.horizontal(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.horizontal(
+              BaseUtility.paddingNormalValue,
             ),
             alignment: Alignment.center,
             decoration: btnStatus.buttonTypeValue ==
                     ButtonTypes.primaryColorButton.buttonTypeValue
                 ? BoxDecoration(
                     color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                     ),
                   )
@@ -49,9 +49,9 @@ class CustomButtonWidget extends StatelessWidget {
                         ButtonTypes.iconPrimaryColorButton.buttonTypeValue
                     ? BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(
-                            RadiusUtility.circularMediumValue,
+                            BaseUtility.radiusCircularMediumValue,
                           ),
                         ),
                       )
@@ -62,9 +62,9 @@ class CustomButtonWidget extends StatelessWidget {
                               color: Theme.of(context).colorScheme.primary,
                               width: 0.5,
                             ),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularMediumValue,
+                                BaseUtility.radiusCircularMediumValue,
                               ),
                             ),
                           )
@@ -73,9 +73,9 @@ class CustomButtonWidget extends StatelessWidget {
                               color: Theme.of(context).colorScheme.error,
                               width: 0.5,
                             ),
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(
-                                RadiusUtility.circularMediumValue,
+                                BaseUtility.radiusCircularMediumValue,
                               ),
                             ),
                           ),
@@ -93,8 +93,8 @@ class CustomButtonWidget extends StatelessWidget {
                         children: <Widget>[
                           AppIcons.add.toSvgImg(
                             Colors.white,
-                            IconSizedsUtility.normalSize,
-                            IconSizedsUtility.normalSize,
+                            BaseUtility.iconNormalSize,
+                            BaseUtility.iconNormalSize,
                           ),
                           Expanded(
                             child: BodyMediumWhiteText(

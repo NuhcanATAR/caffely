@@ -30,8 +30,8 @@ class StoreCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return isCardStatus == true
         ? Padding(
-            padding: PaddingSizedsUtility.right(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.right(
+              BaseUtility.paddingNormalValue,
             ),
             child: GestureDetector(
               onTap: func,
@@ -41,14 +41,14 @@ class StoreCardWidget extends StatelessWidget {
                   0.4,
                 ),
                 child: Container(
-                  padding: PaddingSizedsUtility.all(
-                    PaddingSizedsUtility.smallPaddingValue,
+                  padding: BaseUtility.all(
+                    BaseUtility.paddingSmallValue,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                     ),
                   ),
@@ -64,8 +64,8 @@ class StoreCardWidget extends StatelessWidget {
                             imageProvider,
                           ) {
                             return Container(
-                              padding: PaddingSizedsUtility.all(
-                                PaddingSizedsUtility.smallPaddingValue,
+                              padding: BaseUtility.all(
+                                BaseUtility.paddingSmallValue,
                               ),
                               alignment: Alignment.topLeft,
                               decoration: BoxDecoration(
@@ -74,9 +74,9 @@ class StoreCardWidget extends StatelessWidget {
                                   image: imageProvider,
                                   fit: BoxFit.cover,
                                 ),
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(
-                                    RadiusUtility.circularMediumValue,
+                                    BaseUtility.radiusCircularMediumValue,
                                   ),
                                 ),
                               ),
@@ -85,12 +85,12 @@ class StoreCardWidget extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.4),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -98,12 +98,12 @@ class StoreCardWidget extends StatelessWidget {
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.4),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -126,8 +126,8 @@ class StoreCardWidget extends StatelessWidget {
                                     context,
                                   ),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.all(
-                                      PaddingSizedsUtility.mediumPaddingValue,
+                                    padding: BaseUtility.all(
+                                      BaseUtility.paddingMediumValue,
                                     ),
                                     child: BodyMediumBlackBoldText(
                                       text: store.storeName,
@@ -141,8 +141,8 @@ class StoreCardWidget extends StatelessWidget {
                                     context,
                                   ),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.horizontal(
-                                      PaddingSizedsUtility.mediumPaddingValue,
+                                    padding: BaseUtility.horizontal(
+                                      BaseUtility.paddingMediumValue,
                                     ),
                                     child: Row(
                                       children: <Widget>[
@@ -150,14 +150,13 @@ class StoreCardWidget extends StatelessWidget {
                                           Theme.of(
                                             context,
                                           ).colorScheme.primary,
-                                          IconSizedsUtility.mediumSize,
-                                          IconSizedsUtility.mediumSize,
+                                          BaseUtility.iconMediumSize,
+                                          BaseUtility.iconMediumSize,
                                         ),
                                         Expanded(
                                           child: Padding(
-                                            padding: PaddingSizedsUtility.left(
-                                              PaddingSizedsUtility
-                                                  .smallPaddingValue,
+                                            padding: BaseUtility.left(
+                                              BaseUtility.paddingSmallValue,
                                             ),
                                             child: LabelMediumBlackText(
                                               text:
@@ -182,8 +181,8 @@ class StoreCardWidget extends StatelessWidget {
             ),
           )
         : Padding(
-            padding: PaddingSizedsUtility.vertical(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.vertical(
+              BaseUtility.paddingNormalValue,
             ),
             child: GestureDetector(
               onTap: func,
@@ -191,11 +190,11 @@ class StoreCardWidget extends StatelessWidget {
                 width: dynamicViewExtensions.maxWidth(context),
                 height: dynamicViewExtensions.dynamicHeight(context, 0.34),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
                       Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                     ),
                   ),
@@ -213,12 +212,12 @@ class StoreCardWidget extends StatelessWidget {
                                   image: imageProvider,
                                   fit: BoxFit.cover,
                                 ),
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(
-                                    RadiusUtility.circularMediumValue,
+                                    BaseUtility.radiusCircularMediumValue,
                                   ),
                                   topRight: Radius.circular(
-                                    RadiusUtility.circularMediumValue,
+                                    BaseUtility.radiusCircularMediumValue,
                                   ),
                                 ),
                               ),
@@ -227,12 +226,12 @@ class StoreCardWidget extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.3),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -240,12 +239,12 @@ class StoreCardWidget extends StatelessWidget {
                           errorWidget: (context, url, error) => Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.3),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                                 topRight: Radius.circular(
-                                  RadiusUtility.circularMediumValue,
+                                  BaseUtility.radiusCircularMediumValue,
                                 ),
                               ),
                             ),
@@ -257,8 +256,8 @@ class StoreCardWidget extends StatelessWidget {
                         fit: FlexFit.tight,
                         flex: 3,
                         child: Padding(
-                          padding: PaddingSizedsUtility.all(
-                            PaddingSizedsUtility.smallPaddingValue,
+                          padding: BaseUtility.all(
+                            BaseUtility.paddingSmallValue,
                           ),
                           child: SingleChildScrollView(
                             child: Column(
@@ -268,8 +267,8 @@ class StoreCardWidget extends StatelessWidget {
                                   width:
                                       dynamicViewExtensions.maxWidth(context),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.vertical(
-                                      PaddingSizedsUtility.normalPaddingValue,
+                                    padding: BaseUtility.vertical(
+                                      BaseUtility.paddingNormalValue,
                                     ),
                                     child: TitleMediumBlackBoldText(
                                       text: store.storeName,
@@ -282,8 +281,8 @@ class StoreCardWidget extends StatelessWidget {
                                   width:
                                       dynamicViewExtensions.maxWidth(context),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.vertical(
-                                      PaddingSizedsUtility.smallPaddingValue,
+                                    padding: BaseUtility.vertical(
+                                      BaseUtility.paddingSmallValue,
                                     ),
                                     child: BodyMediumBlackText(
                                       text:
@@ -297,34 +296,31 @@ class StoreCardWidget extends StatelessWidget {
                                   width:
                                       dynamicViewExtensions.maxWidth(context),
                                   child: Padding(
-                                    padding: PaddingSizedsUtility.vertical(
-                                      PaddingSizedsUtility.smallPaddingValue,
+                                    padding: BaseUtility.vertical(
+                                      BaseUtility.paddingSmallValue,
                                     ),
                                     child: Row(
                                       children: <Widget>[
                                         // icon
                                         AppIcons.timeOutline.toSvgImg(
                                           Theme.of(context).colorScheme.primary,
-                                          IconSizedsUtility.normalSize,
-                                          IconSizedsUtility.normalSize,
+                                          BaseUtility.iconNormalSize,
+                                          BaseUtility.iconNormalSize,
                                         ),
                                         // information
                                         Expanded(
                                           child: Padding(
-                                            padding:
-                                                PaddingSizedsUtility.horizontal(
-                                              PaddingSizedsUtility
-                                                  .smallPaddingValue,
+                                            padding: BaseUtility.horizontal(
+                                              BaseUtility.paddingSmallValue,
                                             ),
                                             child: Row(
                                               children: <Widget>[
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        PaddingSizedsUtility
-                                                            .horizontal(
-                                                      PaddingSizedsUtility
-                                                          .smallPaddingValue,
+                                                        BaseUtility.horizontal(
+                                                      BaseUtility
+                                                          .paddingSmallValue,
                                                     ),
                                                     child: BodyMediumBlackText(
                                                       text: store.deliveryTimeFrame ==

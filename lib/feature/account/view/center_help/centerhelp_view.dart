@@ -36,8 +36,8 @@ class _CenterHelpViewState extends CenterHelpViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -51,8 +51,8 @@ class _CenterHelpViewState extends CenterHelpViewModel {
             return const Center(child: CircularProgressIndicator());
           } else if (state is CenterHelpLoadedState) {
             return Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: state.centerHelps.isEmpty
                   ? CustomResponseWidget(

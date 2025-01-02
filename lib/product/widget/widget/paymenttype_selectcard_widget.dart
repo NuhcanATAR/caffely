@@ -27,11 +27,11 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
     return SizedBox(
       width: dynamicViewExtensions.maxWidth(context),
       child: Container(
-        margin: MarginSizedsUtility.top(
-          MarginSizedsUtility.normalMarginValue,
+        margin: BaseUtility.top(
+          BaseUtility.marginNormalValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -39,9 +39,9 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.outline,
             width: 0.5,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.normalRadiusValue,
+              BaseUtility.radiusNormalValue,
             ),
           ),
         ),
@@ -51,8 +51,8 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
             SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.mediumPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingMediumValue,
                 ),
                 child: BodyMediumBlackBoldText(
                   text: AppLocalizations.of(context)!.payment_type_select_title,
@@ -62,8 +62,8 @@ class PaymentTypeSelectCardWidget extends StatelessWidget {
             ),
             // payment select
             Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: Row(
                 children: <Widget>[

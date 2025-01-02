@@ -20,18 +20,18 @@ class SignInButtonWidget extends StatelessWidget {
     return GestureDetector(
       onTap: func,
       child: Container(
-        margin: MarginSizedsUtility.top(
-          MarginSizedsUtility.normalMarginValue,
+        margin: BaseUtility.top(
+          BaseUtility.marginNormalValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: appIcons == AppIcons.google
             ? BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(
-                    RadiusUtility.circularMediumValue,
+                    BaseUtility.radiusCircularMediumValue,
                   ),
                 ),
                 border: Border.all(
@@ -41,9 +41,9 @@ class SignInButtonWidget extends StatelessWidget {
               )
             : BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(
-                    RadiusUtility.circularMediumValue,
+                    BaseUtility.radiusCircularMediumValue,
                   ),
                 ),
               ),
@@ -52,14 +52,14 @@ class SignInButtonWidget extends StatelessWidget {
             // icon
             appIcons.toSvgImg(
               appIcons == AppIcons.google ? null : Colors.white,
-              IconSizedsUtility.normalSize,
-              IconSizedsUtility.normalSize,
+              BaseUtility.iconNormalSize,
+              BaseUtility.iconNormalSize,
             ),
             // sign in
             Expanded(
               child: Padding(
-                padding: PaddingSizedsUtility.horizontal(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.horizontal(
+                  BaseUtility.paddingNormalValue,
                 ),
                 child: appIcons == AppIcons.google
                     ? BodyMediumBlackBoldText(

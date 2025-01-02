@@ -25,11 +25,11 @@ class MinSelectButtonWidget extends StatelessWidget {
     return GestureDetector(
       onTap: func,
       child: Container(
-        margin: MarginSizedsUtility.right(
-          MarginSizedsUtility.normalMarginValue,
+        margin: BaseUtility.right(
+          BaseUtility.marginNormalValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: coffeType != ProductCoffeAvaibleTypeControl.notSelect
@@ -42,31 +42,31 @@ class MinSelectButtonWidget extends StatelessWidget {
             width:
                 coffeType != ProductCoffeAvaibleTypeControl.notSelect ? 2 : 0.5,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
         ),
         child: Padding(
-          padding: PaddingSizedsUtility.horizontal(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.horizontal(
+            BaseUtility.iconNormalSize,
           ),
           child: Column(
             children: <Widget>[
               Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingSmallValue,
                 ),
                 child: icon.toSvgImg(
                   Colors.black,
-                  IconSizedsUtility.normalSize,
-                  IconSizedsUtility.normalSize,
+                  BaseUtility.iconNormalSize,
+                  BaseUtility.iconNormalSize,
                 ),
               ),
               Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingSmallValue,
                 ),
                 child: BodyMediumBlackBoldText(
                   text: buttonText,
@@ -100,11 +100,11 @@ class MinSelectButtonSecondWidget extends StatelessWidget {
     return GestureDetector(
       onTap: func,
       child: Container(
-        margin: MarginSizedsUtility.right(
-          MarginSizedsUtility.normalMarginValue,
+        margin: BaseUtility.right(
+          BaseUtility.marginNormalValue,
         ),
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         decoration: BoxDecoration(
           color: coffeSize != ProductTypeControl.notSelect
@@ -116,31 +116,31 @@ class MinSelectButtonSecondWidget extends StatelessWidget {
                 : Colors.grey,
             width: coffeSize != ProductTypeControl.notSelect ? 2 : 0.5,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
         ),
         child: Padding(
-          padding: PaddingSizedsUtility.horizontal(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.horizontal(
+            BaseUtility.paddingNormalValue,
           ),
           child: Column(
             children: <Widget>[
               Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingSmallValue,
                 ),
                 child: icon.toSvgImg(
                   Colors.black,
-                  IconSizedsUtility.normalSize,
-                  IconSizedsUtility.normalSize,
+                  BaseUtility.iconNormalSize,
+                  BaseUtility.iconNormalSize,
                 ),
               ),
               Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.smallPaddingValue,
+                padding: BaseUtility.vertical(
+                  BaseUtility.paddingSmallValue,
                 ),
                 child: BodyMediumBlackBoldText(
                   text: buttonText,

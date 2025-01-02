@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/exception/service_exception/service_exceptions.dart';
 import 'package:caffely/product/model/banner_model/banner_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SliderCardWidget extends StatelessWidget {
@@ -18,6 +18,7 @@ class SliderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CustomLoggerPrint loggerPrint = CustomLoggerPrint();
     return CachedNetworkImage(
       imageUrl: item.img.toString(),
       imageBuilder: (context, imageProvider) {
@@ -33,15 +34,15 @@ class SliderCardWidget extends StatelessWidget {
                   );
                 }
               } else {
-                Logger().e('Url empty');
+                loggerPrint.printInfoLog('Url empty');
               }
             }
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(
-                  RadiusUtility.circularMediumValue,
+                  BaseUtility.radiusCircularMediumValue,
                 ),
               ),
               image: DecorationImage(
@@ -54,9 +55,9 @@ class SliderCardWidget extends StatelessWidget {
       },
       placeholder: (context, url) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
           color: Colors.grey.withOpacity(0.4),
@@ -64,9 +65,9 @@ class SliderCardWidget extends StatelessWidget {
       ),
       errorWidget: (context, url, error) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
           ),
           color: Colors.grey.withOpacity(0.4),
