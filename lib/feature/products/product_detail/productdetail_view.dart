@@ -186,66 +186,16 @@ class _ProductDetailViewState extends ProductDetailViewModel {
                   // avaible
                   ProductAvaibleCardWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
-                    coffeTypeFirst:
-                        state.coffeeType == ProductCoffeAvaibleTypeControl.hot
-                            ? ProductCoffeAvaibleTypeControl.hot
-                            : ProductCoffeAvaibleTypeControl.notSelect,
-                    coffeTypeSecond:
-                        state.coffeeType == ProductCoffeAvaibleTypeControl.ice
-                            ? ProductCoffeAvaibleTypeControl.ice
-                            : ProductCoffeAvaibleTypeControl.notSelect,
-                    funcOne: () {
-                      context.read<ProductBloc>().add(
-                            const ProductAvaibleEvent(
-                              ProductCoffeAvaibleTypeControl.hot,
-                            ),
-                          );
-                    },
-                    funcSecond: () {
-                      context.read<ProductBloc>().add(
-                            const ProductAvaibleEvent(
-                              ProductCoffeAvaibleTypeControl.ice,
-                            ),
-                          );
-                    },
+                    state: state,
                   ),
                 ],
               ),
             ),
             // size
             ProductSizeCardWidget(
+              state: state,
               dynamicViewExtensions: dynamicViewExtensions,
               productModel: widget.productModel,
-              smallFunc: () {
-                context.read<ProductBloc>().add(
-                      const ProductCoffeSizeEvent(
-                        ProductTypeControl.small,
-                      ),
-                    );
-              },
-              middleFunc: () {
-                context.read<ProductBloc>().add(
-                      const ProductCoffeSizeEvent(
-                        ProductTypeControl.middle,
-                      ),
-                    );
-              },
-              largeFunc: () {
-                context.read<ProductBloc>().add(
-                      const ProductCoffeSizeEvent(
-                        ProductTypeControl.large,
-                      ),
-                    );
-              },
-              smallCoffeSize: state.coffeSize == ProductTypeControl.small
-                  ? ProductTypeControl.small
-                  : ProductTypeControl.notSelect,
-              middleCoffeSize: state.coffeSize == ProductTypeControl.small
-                  ? ProductTypeControl.middle
-                  : ProductTypeControl.notSelect,
-              largeCoffeSize: state.coffeSize == ProductTypeControl.small
-                  ? ProductTypeControl.large
-                  : ProductTypeControl.notSelect,
             ),
 
             //

@@ -1,5 +1,8 @@
 // ignore_for_file: unrelated_type_equality_checks
 
+import 'package:caffely/feature/products/bloc/cubit.dart';
+import 'package:caffely/feature/products/bloc/event.dart';
+import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
@@ -8,31 +11,28 @@ import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/minselect_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../lang/app_localizations.dart';
 
-class ProductSizeCardWidget extends StatelessWidget {
+class ProductSizeCardWidget extends StatefulWidget {
   const ProductSizeCardWidget({
     super.key,
     required this.dynamicViewExtensions,
     required this.productModel,
-    required this.smallFunc,
-    required this.middleFunc,
-    required this.largeFunc,
-    required this.smallCoffeSize,
-    required this.middleCoffeSize,
-    required this.largeCoffeSize,
+    required this.state,
   });
 
   final DynamicViewExtensions dynamicViewExtensions;
   final ProductModel productModel;
-  final Function() smallFunc;
-  final Function() middleFunc;
-  final Function() largeFunc;
-  final ProductTypeControl smallCoffeSize;
-  final ProductTypeControl middleCoffeSize;
-  final ProductTypeControl largeCoffeSize;
 
+  final ProductState state;
+
+  @override
+  State<ProductSizeCardWidget> createState() => _ProductSizeCardWidgetState();
+}
+
+class _ProductSizeCardWidgetState extends State<ProductSizeCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +48,7 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // title
           SizedBox(
-            width: dynamicViewExtensions.maxWidth(context),
+            width: widget.dynamicViewExtensions.maxWidth(context),
             child: Padding(
               padding: BaseUtility.vertical(
                 BaseUtility.paddingNormalValue,
@@ -61,27 +61,27 @@ class ProductSizeCardWidget extends StatelessWidget {
           ),
           // avaible
           SizedBox(
-            width: dynamicViewExtensions.maxWidth(context),
-            height: dynamicViewExtensions.dynamicHeight(
+            width: widget.dynamicViewExtensions.maxWidth(context),
+            height: widget.dynamicViewExtensions.dynamicHeight(
               context,
               0.12,
             ),
-            child: productModel.productType ==
+            child: widget.productModel.productType ==
                     ProductTypeControl.all.productTypeValue
                 ? buildAllSizesWidget(context)
-                : productModel.productType ==
+                : widget.productModel.productType ==
                         ProductTypeControl.small.productTypeValue
                     ? buildSmallSizesWidget(context)
-                    : productModel.productType ==
+                    : widget.productModel.productType ==
                             ProductTypeControl.middle.productTypeValue
                         ? buildMiddleSizesWidget(context)
-                        : productModel.productType ==
+                        : widget.productModel.productType ==
                                 ProductTypeControl.large.productTypeValue
                             ? buildLargeSizesWidget(context)
-                            : productModel.productType ==
+                            : widget.productModel.productType ==
                                     ProductTypeControl.smallMiddle
                                 ? buildSmallMiddleSizesWidget(context)
-                                : productModel.productType ==
+                                : widget.productModel.productType ==
                                         ProductTypeControl
                                             .middleLarge.productTypeValue
                                     ? buildMiddleLargeSizesWidget(context)
@@ -98,22 +98,46 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // small
           MinSelectButtonSecondWidget(
-            func: smallFunc,
-            coffeSize: smallCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.small,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.small
+                ? ProductTypeControl.small
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(context)!.products_size_small,
           ),
           // middle
           MinSelectButtonSecondWidget(
-            func: middleFunc,
-            coffeSize: middleCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.middle,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.middle
+                ? ProductTypeControl.middle
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(context)!.products_size_medium,
           ),
           // large
           MinSelectButtonSecondWidget(
-            func: largeFunc,
-            coffeSize: largeCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.large,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.large
+                ? ProductTypeControl.large
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(context)!.products_size_large,
           ),
@@ -126,8 +150,16 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // small
           MinSelectButtonSecondWidget(
-            func: smallFunc,
-            coffeSize: smallCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.small,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.small
+                ? ProductTypeControl.small
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -143,8 +175,16 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // middle
           MinSelectButtonSecondWidget(
-            func: middleFunc,
-            coffeSize: middleCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.middle,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.middle
+                ? ProductTypeControl.middle
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -160,8 +200,16 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // large
           MinSelectButtonSecondWidget(
-            func: largeFunc,
-            coffeSize: largeCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.large,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.large
+                ? ProductTypeControl.large
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -177,8 +225,16 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // small
           MinSelectButtonSecondWidget(
-            func: smallFunc,
-            coffeSize: smallCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.small,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.small
+                ? ProductTypeControl.small
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -187,8 +243,16 @@ class ProductSizeCardWidget extends StatelessWidget {
           ),
           // middle
           MinSelectButtonSecondWidget(
-            func: middleFunc,
-            coffeSize: middleCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.middle,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.middle
+                ? ProductTypeControl.middle
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -204,8 +268,16 @@ class ProductSizeCardWidget extends StatelessWidget {
         children: <Widget>[
           // middle
           MinSelectButtonSecondWidget(
-            func: middleFunc,
-            coffeSize: middleCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.middle,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.middle
+                ? ProductTypeControl.middle
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,
@@ -214,8 +286,16 @@ class ProductSizeCardWidget extends StatelessWidget {
           ),
           // large
           MinSelectButtonSecondWidget(
-            func: largeFunc,
-            coffeSize: largeCoffeSize,
+            func: () {
+              context.read<ProductBloc>().add(
+                    const ProductCoffeSizeEvent(
+                      ProductTypeControl.large,
+                    ),
+                  );
+            },
+            coffeSize: widget.state.coffeSize == ProductTypeControl.large
+                ? ProductTypeControl.large
+                : ProductTypeControl.notSelect,
             icon: AppIcons.hotOutline,
             buttonText: AppLocalizations.of(
               context,

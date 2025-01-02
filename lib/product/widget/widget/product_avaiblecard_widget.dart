@@ -1,29 +1,33 @@
+import 'package:caffely/feature/products/bloc/cubit.dart';
+import 'package:caffely/feature/products/bloc/event.dart';
+import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/producttype_control.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/minselect_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/icon.dart';
 import '../../util/base_utility.dart';
 
-class ProductAvaibleCardWidget extends StatelessWidget {
+class ProductAvaibleCardWidget extends StatefulWidget {
   const ProductAvaibleCardWidget({
     super.key,
     required this.dynamicViewExtensions,
-    required this.coffeTypeFirst,
-    required this.coffeTypeSecond,
-    required this.funcOne,
-    required this.funcSecond,
+    required this.state,
   });
 
   final DynamicViewExtensions dynamicViewExtensions;
-  final ProductCoffeAvaibleTypeControl coffeTypeFirst;
-  final ProductCoffeAvaibleTypeControl coffeTypeSecond;
-  final Function() funcOne;
-  final Function() funcSecond;
+  final ProductState state;
 
+  @override
+  State<ProductAvaibleCardWidget> createState() =>
+      _ProductAvaibleCardWidgetState();
+}
+
+class _ProductAvaibleCardWidgetState extends State<ProductAvaibleCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +43,7 @@ class ProductAvaibleCardWidget extends StatelessWidget {
         children: <Widget>[
           // title
           SizedBox(
-            width: dynamicViewExtensions.maxWidth(context),
+            width: widget.dynamicViewExtensions.maxWidth(context),
             child: Padding(
               padding: BaseUtility.vertical(
                 BaseUtility.paddingNormalValue,
@@ -54,14 +58,32 @@ class ProductAvaibleCardWidget extends StatelessWidget {
           Row(
             children: <Widget>[
               MinSelectButtonWidget(
-                func: () => funcOne,
-                coffeType: coffeTypeFirst,
+                func: () {
+                  context.read<ProductBloc>().add(
+                        const ProductAvaibleEvent(
+                          ProductCoffeAvaibleTypeControl.hot,
+                        ),
+                      );
+                },
+                coffeType: widget.state.coffeeType ==
+                        ProductCoffeAvaibleTypeControl.hot
+                    ? ProductCoffeAvaibleTypeControl.hot
+                    : ProductCoffeAvaibleTypeControl.notSelect,
                 icon: AppIcons.hotOutline,
                 buttonText: AppLocalizations.of(context)!.products_hot,
               ),
               MinSelectButtonWidget(
-                func: () => funcSecond,
-                coffeType: coffeTypeSecond,
+                func: () {
+                  context.read<ProductBloc>().add(
+                        const ProductAvaibleEvent(
+                          ProductCoffeAvaibleTypeControl.ice,
+                        ),
+                      );
+                },
+                coffeType: widget.state.coffeeType ==
+                        ProductCoffeAvaibleTypeControl.ice
+                    ? ProductCoffeAvaibleTypeControl.ice
+                    : ProductCoffeAvaibleTypeControl.notSelect,
                 icon: AppIcons.icedOutline,
                 buttonText: AppLocalizations.of(context)!.products_ice,
               ),
