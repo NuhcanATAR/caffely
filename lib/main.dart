@@ -1,9 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
-
-import 'package:caffely/feature/account/view/accountqr_code/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/event.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
+import 'package:caffely/feature/account/view/qr_code/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/cubit.dart';

@@ -2,11 +2,11 @@
 
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
-import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
+import 'package:caffely/feature/basket/view/order_complete/order_complete_viewmodel.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/logger.dart';
-import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/order_basket_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -130,7 +130,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
     final basketDocRef = FirebaseCollectionReferances.basket.collectRef
         .doc(FirebaseService().authID);
 
-    late int productPrice = 0;
+    int productPrice = 0;
 
     if (productModel.size == ProductTypeControl.small.productTypeValue) {
       productPrice = product.price;
@@ -195,7 +195,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
             branchesModel.id,
           );
 
-      late int productPrice = 0;
+      int productPrice = 0;
       if (productModel.size == ProductTypeControl.small.productTypeValue) {
         productPrice = product.price;
       } else if (productModel.size ==
@@ -270,7 +270,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
               branchesModel.id,
             );
 
-        late int productPrice = 0;
+        int productPrice = 0;
         if (productModel.size == ProductTypeControl.small.productTypeValue) {
           productPrice = product.price;
         } else if (productModel.size ==

@@ -1,7 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:caffely/feature/basket/bloc/state.dart';
-import 'package:caffely/feature/basket/view/order_success/ordersuccess_view.dart';
+import 'package:caffely/feature/basket/view/order_success/order_success_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';

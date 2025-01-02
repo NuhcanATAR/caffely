@@ -7,7 +7,7 @@ import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/model/langue_model/langue_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/languagecard_widget.dart';
+import 'package:caffely/product/widget/widget/language_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

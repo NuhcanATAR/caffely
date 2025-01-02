@@ -1,7 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:caffely/feature/sign_in/bloc/state.dart';
-import 'package:caffely/feature/sign_in/signin_loading_view.dart';
+import 'package:caffely/feature/sign_in/sign_in_loading_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/logger.dart';

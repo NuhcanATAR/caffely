@@ -2,7 +2,7 @@ import 'package:caffely/feature/store/bloc/cubit.dart';
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/feature/store/store_viewmodel.dart';
-import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
+import 'package:caffely/feature/store/view/store_detail/store_detail_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/constants/logo.dart';
@@ -11,7 +11,7 @@ import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
 import 'package:caffely/product/widget/widget/search_widget.dart';
-import 'package:caffely/product/widget/widget/storecard_widget.dart';
+import 'package:caffely/product/widget/widget/store_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
