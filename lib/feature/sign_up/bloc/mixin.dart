@@ -5,7 +5,6 @@ import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 mixin SignUpMixin {
   // logger

@@ -9,7 +9,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class MainViewModel extends BaseState<FirsView> {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -31,11 +30,9 @@ abstract class MainViewModel extends BaseState<FirsView> {
   }
 
   Future<void> getUserId(Timestamp now) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? userId = await prefService.getString('current_user');
 
-    final String userId = prefs.getString('current_user') ?? '';
-
-    if (userId.isEmpty) {
+    if (userId!.isEmpty) {
       loggerPrint.printInfoLog('Oturum ID Bulunmuyor Henüz');
     } else {
       loggerPrint.printInfoLog('Bildirim için kullanıcı Oturum ID: $userId');

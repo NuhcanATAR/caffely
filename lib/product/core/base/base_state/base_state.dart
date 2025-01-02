@@ -1,4 +1,5 @@
 import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/base/helper/shared_service.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/extension/dynamic_extensions.dart';
 import 'package:caffely/product/model/user_model/user_model.dart';
@@ -11,6 +12,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   // logger
   final loggerPrint = CustomLoggerPrint();
+
+  final prefService = PrefService();
 
   Future<UserModel> getUserFromFireStore(String authID) async {
     final DocumentSnapshot snapshotData =

@@ -7,7 +7,6 @@ import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
   final formSignInKey = GlobalKey<FormState>();
@@ -30,7 +29,7 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
 
     isRememberMe = value!;
 
-    SharedPreferences.getInstance().then((valuePrefs) {
+    prefService.prefs.then((valuePrefs) {
       valuePrefs.setBool('remember_me', value);
       valuePrefs.setString('email', emailController.text);
       valuePrefs.setString('password', passwordController.text);
@@ -42,10 +41,9 @@ abstract class SignInViewModel extends BaseState<SignInView> with SignInMixin {
 
   Future<void> currentUserLoad() async {
     try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String email = prefs.getString('email') ?? '';
-      final String password = prefs.getString('password') ?? '';
-      final bool rememberMe = prefs.getBool('remember_me') ?? false;
+      final String email = await prefService.getString('email') ?? '';
+      final String password = await prefService.getString('password') ?? '';
+      final bool rememberMe = await prefService.getBool('remember_me') ?? false;
 
       if (rememberMe) {
         loggerPrint.printInfoLog('Beni hatırla açık');

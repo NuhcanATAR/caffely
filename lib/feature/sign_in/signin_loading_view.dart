@@ -11,7 +11,6 @@ import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInLoadingView extends StatefulWidget {
   const SignInLoadingView({super.key});
@@ -41,7 +40,7 @@ class _SignInLoadingViewState extends SignInLoadingViewmodel {
               return const SizedBox();
             }
             final user = UserModel.fromJson(data);
-            SharedPreferences.getInstance().then((valuePrefs) {
+            prefService.prefs.then((valuePrefs) {
               valuePrefs.setInt(
                 'auth_status',
                 user.authStatus,
