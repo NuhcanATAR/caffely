@@ -7,8 +7,8 @@ part of 'qrcode_model.dart';
 // **************************************************************************
 
 QrCodeModel _$QrCodeModelFromJson(Map<String, dynamic> json) => QrCodeModel(
-      json['id'] as String,
-      json['qrcode_url'] as String,
+      id: json['id'] as String,
+      qrCode: json['qrcode_url'] as String,
     );
 
 Map<String, dynamic> _$QrCodeModelToJson(QrCodeModel instance) =>

@@ -1,6 +1,8 @@
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/favorite_model/favorite_model.dart';
@@ -13,6 +15,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
   List<StoreModel> allStores = [];
   List<ProductModel> productList = [];
   List<FavoriteModel> favoritesList = [];
+  final loggerPrint = CustomLoggerPrint();
   StoreBloc() : super(StoresInitial()) {
     on<LoadStores>(_onLoadStores);
     on<SearchStores>(_onSearchStores);
@@ -32,8 +35,8 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       final userCity = userCollection['city'];
       final QuerySnapshot snapshotStore = await FirebaseCollectionReferances
           .stores.collectRef
-          .where('location_city', isEqualTo: userCity)
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.locationCity, isEqualTo: userCity)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
       allStores = snapshotStore.docs
           .map(
@@ -47,6 +50,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       );
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -68,6 +72,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       );
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -79,8 +84,8 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .product.collectRef
-          .where('store_id', isEqualTo: event.storeId)
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.storeId, isEqualTo: event.storeId)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
       productList = snapshot.docs
           .map(
@@ -90,8 +95,8 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
 
       final QuerySnapshot snapshotFavorite = await FirebaseCollectionReferances
           .favorite.collectRef
-          .where('store_id', isEqualTo: event.storeId)
-          .where('user_id', isEqualTo: FirebaseService().authID)
+          .where(FirebaseConstant.storeId, isEqualTo: event.storeId)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
           .get();
       favoritesList = snapshotFavorite.docs
           .map(
@@ -101,6 +106,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       emit(StoreDetailLoaded(productList, favoritesList));
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -111,15 +117,18 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
     emit(StoreFavoriteAddLoading());
     try {
       event.isFavoriteStatus == true
-          ? await FirebaseCollectionReferances.favorite.collectRef.add({
-              'id': null,
-              'product_id': '',
-              'store_id': event.storeId,
-              'user_id': FirebaseService().authID,
-              'date': FieldValue.serverTimestamp(),
-            }).then((value) {
+          ? await FirebaseCollectionReferances.favorite.collectRef
+              .add(
+              FavoriteModel(
+                id: '',
+                productId: '',
+                storeId: event.storeId,
+                userId: FirebaseService().authID!,
+              ).toFavoriteAdd(),
+            )
+              .then((value) {
               final String docId = value.id;
-              value.update({'id': docId});
+              value.update(FavoriteModel(id: docId).toFavoriteDocUpdate());
             })
           : await FirebaseCollectionReferances.favorite.collectRef
               .doc(event.favoriteId)
@@ -141,6 +150,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
               .stores_information_favorite_loading_title,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }

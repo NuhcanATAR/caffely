@@ -12,16 +12,32 @@ class FavoriteModel {
   @TimestampConverter()
   final Timestamp? date;
 
-  FavoriteModel(
-    this.id,
-    this.productId,
-    this.storeId,
-    this.userId,
+  FavoriteModel({
+    this.id = '',
+    this.productId = '',
+    this.storeId = '',
+    this.userId = '',
     this.date,
-  );
+  });
 
   factory FavoriteModel.fromMap(Map<String, dynamic> json) =>
       _$FavoriteModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$FavoriteModelToJson(this);
+
+  Map<String, dynamic> toFavoriteAdd() {
+    return {
+      'id': id,
+      'product_id': productId,
+      'store_id': storeId,
+      'user_id': userId,
+      'date': FieldValue.serverTimestamp(),
+    };
+  }
+
+  Map<String, dynamic> toFavoriteDocUpdate() {
+    return {
+      'id': id,
+    };
+  }
 }

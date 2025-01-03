@@ -12,7 +12,7 @@ import 'package:caffely/product/model/basket_product_model/basket_product_model.
 import 'package:caffely/product/model/savedadress_model/savedadress_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/adress_select_card_widget.dart';
+import 'package:caffely/product/widget/widget/adress_selectcard_widget.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
 import 'package:caffely/product/widget/widget/payment_type_select_card_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

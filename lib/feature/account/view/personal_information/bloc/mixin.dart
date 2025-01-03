@@ -25,6 +25,7 @@ mixin PersonalInformationMixin {
           type: SnackType.error,
           message: (state as PersonalInformationUpdateError).error,
         );
+        loggerPrint.printErrorLog(state.error);
       case PersonalInformationUpdateLoading:
         CodeNoahDialogs(context).showAlert(
           BodyMediumWhiteText(

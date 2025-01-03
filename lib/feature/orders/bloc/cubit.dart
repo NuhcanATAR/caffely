@@ -1,6 +1,8 @@
 import 'package:caffely/feature/orders/bloc/event.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
@@ -9,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
+  final loggerPrint = CustomLoggerPrint();
   OrderBloc() : super(OrderInitial()) {
     on<LoadOrderEvent>(_onOrderAll);
 
@@ -23,7 +26,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .orders.collectRef
-          .where('user_id', isEqualTo: FirebaseService().authID)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
           .get();
 
       final List<OrderModel> orders = snapshot.docs
@@ -40,6 +43,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       emit(
         OrderError(AppLocalizations.of(event.context)!.order_error),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -74,7 +78,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
       final QuerySnapshot orderSnapshot = await FirebaseCollectionReferances
           .orders.collectRef
-          .where('user_id', isEqualTo: FirebaseService().authID)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
           .get();
 
       final List<OrderModel> orders = orderSnapshot.docs
@@ -92,6 +96,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     } catch (e) {
       if (!event.context.mounted) return;
       emit(OrderError(AppLocalizations.of(event.context)!.order_error));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }
