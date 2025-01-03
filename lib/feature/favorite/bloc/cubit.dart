@@ -1,5 +1,6 @@
 import 'package:caffely/feature/favorite/bloc/event.dart';
 import 'package:caffely/feature/favorite/bloc/state.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
+  final loggerPrint = CustomLoggerPrint();
   FavoriteBloc() : super(FavoriteInitialState()) {
     on<LoadFavoriteProduct>(_onLoadFavorite);
   }
@@ -77,6 +79,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       );
     } catch (e) {
       emit(FavoriteError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }

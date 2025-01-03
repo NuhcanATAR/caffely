@@ -20,33 +20,26 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
     Emitter<PasswordState> emit,
   ) async {
     emit(PasswordLoadingState(event.dynamicViewExtensions));
-    try {
-      final userCollection = await FirebaseCollectionReferances.users.collectRef
-          .where(FirebaseConstant.email, isEqualTo: event.email)
-          .get();
 
-      if (userCollection.docs.isNotEmpty) {
-        await FirebaseService().authService.sendPasswordResetEmail(
-              email: event.email,
-            );
-        if (!event.context.mounted) return;
-        emit(
-          PasswordSuccessState(
-            AppLocalizations.of(event.context)!.forgot_password_success,
-          ),
-        );
-      } else {
-        if (!event.context.mounted) return;
-        emit(
-          PasswordErrorState(
-            AppLocalizations.of(event.context)!.forgot_password_error,
-          ),
-        );
-      }
-    } catch (e) {
+    final userCollection = await FirebaseCollectionReferances.users.collectRef
+        .where(FirebaseConstant.email, isEqualTo: event.email)
+        .get();
+
+    if (userCollection.docs.isNotEmpty) {
+      await FirebaseService().authService.sendPasswordResetEmail(
+            email: event.email,
+          );
+      if (!event.context.mounted) return;
+      emit(
+        PasswordSuccessState(
+          AppLocalizations.of(event.context)!.forgot_password_success,
+        ),
+      );
+    } else {
+      if (!event.context.mounted) return;
       emit(
         PasswordErrorState(
-          AppLocalizations.of(event.context)!.forgot_password_email_error,
+          AppLocalizations.of(event.context)!.forgot_password_error,
         ),
       );
     }

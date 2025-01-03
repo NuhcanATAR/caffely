@@ -1,5 +1,6 @@
 import 'package:caffely/feature/home/bloc/event.dart';
 import 'package:caffely/feature/home/bloc/state.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final loggerPrint = CustomLoggerPrint();
   HomeBloc() : super(HomeInitial()) {
     on<LoadHome>(_onLoadAll);
   }
@@ -65,6 +67,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
     } catch (e) {
       emit(HomeError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }

@@ -91,6 +91,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(ProductLoaded(productList, const []));
     } catch (e) {
       emit(ProductError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -114,6 +115,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(ProductLoaded(filteredStores, const []));
     } catch (e) {
       emit(ProductError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -157,6 +159,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           AppLocalizations.of(event.context)!.products_favorite_error,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -185,14 +188,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               .collection(FirebaseCollectionReferances.branch.name)
               .doc(event.productModel.storeId)
               .collection(FirebaseCollectionReferances.product.name)
-              .where(FirebaseConstant.productId,
-                  isEqualTo: event.productModel.id)
+              .where(
+                FirebaseConstant.productId,
+                isEqualTo: event.productModel.id,
+              )
               .where(
                 FirebaseConstant.avaible,
                 isEqualTo: state.coffeeType.coffeAvaibleTypeValue,
               )
-              .where(FirebaseConstant.size,
-                  isEqualTo: state.coffeSize.productTypeValue)
+              .where(
+                FirebaseConstant.size,
+                isEqualTo: state.coffeSize.productTypeValue,
+              )
               .get();
 
           if (productQuery.docs.isNotEmpty) {
@@ -272,10 +279,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       } else {
         loggerPrint.printInfoLog('Sepet Henüz Açılmamış');
 
-        await basketDoc.set(BasketModel(
-          id: FirebaseService().authID!,
-          basketStatus: BasketMainStatusControl.orderReceived.value,
-        ).toBasketSetFirebase());
+        await basketDoc.set(
+          BasketModel(
+            id: FirebaseService().authID!,
+            basketStatus: BasketMainStatusControl.orderReceived.value,
+          ).toBasketSetFirebase(),
+        );
 
         await addNewBranchToBasket(
           state,
@@ -296,6 +305,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           AppLocalizations.of(event.context)!.products_basket_add_error,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 

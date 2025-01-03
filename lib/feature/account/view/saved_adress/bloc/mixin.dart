@@ -32,6 +32,7 @@ mixin SavedAdressMixin {
           type: SnackType.error,
           message: (state as SaveAdressCreateError).errorMessage,
         );
+        loggerPrint.printErrorLog(state.errorMessage);
         break;
       case SaveAdressCreateLoading:
         CodeNoahDialogs(context).showAlert(
@@ -66,6 +67,7 @@ mixin SavedAdressMixin {
           type: SnackType.error,
           message: (state as SaveAdressUpdateError).errorMessage,
         );
+        loggerPrint.printErrorLog(state.errorMessage);
         break;
       case SaveAdressUpdateLoading:
         CodeNoahDialogs(context).showAlert(
@@ -100,6 +102,7 @@ mixin SavedAdressMixin {
           type: SnackType.error,
           message: (state as SaveAdressDeleteError).errorMessage,
         );
+        loggerPrint.printErrorLog(state.errorMessage);
         break;
       default:
         loggerPrint.printInfoLog('Eksik Case Mevcut');

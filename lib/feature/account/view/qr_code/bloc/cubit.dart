@@ -7,6 +7,7 @@ import 'package:caffely/feature/account/view/qr_code/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
+import 'package:caffely/product/core/exception/service_exception/service_exceptions.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/qrcode_model/qrcode_model.dart';
 import 'package:caffely/product/model/user_model/user_model.dart';
@@ -18,6 +19,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
+  final loggerPrint = CustomLoggerPrint();
   QrCodeCubit() : super(QrCodeState()) {
     on<QrCodeCreateEvent>(qrCodeCreate);
   }
@@ -71,7 +73,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
           AppLocalizations.of(context)!.account_qrcode_error_subtitle_second,
         ),
       );
-      CustomLoggerPrint().printWarningLog(e.toString());
+      loggerPrint.printWarningLog(e.toString());
     }
   }
 
@@ -118,6 +120,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
               .account_qrcode_error_subtitle_second,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -146,7 +149,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       return file;
     } else {
-      throw Exception(
+      throw ServiceException(
         AppLocalizations.of(context)!.account_qrcode_error_subtitle,
       );
     }
@@ -167,7 +170,7 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       return await snapshot.ref.getDownloadURL();
     } catch (e) {
-      throw Exception(
+      throw ServiceException(
         AppLocalizations.of(context)!.account_qrcode_error_subtitle,
       );
     }

@@ -1,6 +1,7 @@
 import 'package:caffely/feature/orders/bloc/event.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
+  final loggerPrint = CustomLoggerPrint();
   OrderBloc() : super(OrderInitial()) {
     on<LoadOrderEvent>(_onOrderAll);
 
@@ -41,6 +43,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       emit(
         OrderError(AppLocalizations.of(event.context)!.order_error),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -93,6 +96,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     } catch (e) {
       if (!event.context.mounted) return;
       emit(OrderError(AppLocalizations.of(event.context)!.order_error));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }

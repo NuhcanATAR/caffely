@@ -1,6 +1,7 @@
 import 'package:caffely/feature/store/bloc/event.dart';
 import 'package:caffely/feature/store/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
@@ -14,6 +15,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
   List<StoreModel> allStores = [];
   List<ProductModel> productList = [];
   List<FavoriteModel> favoritesList = [];
+  final loggerPrint = CustomLoggerPrint();
   StoreBloc() : super(StoresInitial()) {
     on<LoadStores>(_onLoadStores);
     on<SearchStores>(_onSearchStores);
@@ -48,6 +50,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       );
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -69,6 +72,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       );
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -102,6 +106,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
       emit(StoreDetailLoaded(productList, favoritesList));
     } catch (e) {
       emit(StoresError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -145,6 +150,7 @@ class StoreBloc extends Bloc<StoresEvent, StoresState> {
               .stores_information_favorite_loading_title,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }
