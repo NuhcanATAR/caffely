@@ -1,6 +1,7 @@
 import 'package:caffely/feature/password/bloc/event.dart';
 import 'package:caffely/feature/password/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
     emit(PasswordLoadingState(event.dynamicViewExtensions));
     try {
       final userCollection = await FirebaseCollectionReferances.users.collectRef
-          .where('email', isEqualTo: event.email)
+          .where(FirebaseConstant.email, isEqualTo: event.email)
           .get();
 
       if (userCollection.docs.isNotEmpty) {

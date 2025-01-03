@@ -8,6 +8,7 @@ import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/order_basket_control.dart';
 import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
@@ -222,14 +223,12 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
           ).toProductDocUpdate(),
         );
 
-        await branchDocRef.update({
-          'total_quanity': FieldValue.increment(
-            1,
-          ),
-          'basket_total': FieldValue.increment(
-            productPrice,
-          ),
-        });
+        await branchDocRef.update(
+          BasketBranchModel(
+            totalQuanity: 1,
+            basketTotal: productPrice,
+          ).toBranchDocUpdate(),
+        );
       }
     } catch (e) {
       loggerPrint.printErrorLog(
@@ -327,8 +326,8 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
   Future<List<SavedAdressModel>> fetchSavedAddresses() async {
     final QuerySnapshot querySnapshot = await FirebaseCollectionReferances
         .saved_adress.collectRef
-        .where('user_id', isEqualTo: FirebaseService().authID)
-        .where('is_deleted', isEqualTo: false)
+        .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
+        .where(FirebaseConstant.isDeleted, isEqualTo: false)
         .get();
 
     return querySnapshot.docs.map((doc) {

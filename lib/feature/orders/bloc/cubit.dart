@@ -1,6 +1,7 @@
 import 'package:caffely/feature/orders/bloc/event.dart';
 import 'package:caffely/feature/orders/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
@@ -23,7 +24,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .orders.collectRef
-          .where('user_id', isEqualTo: FirebaseService().authID)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
           .get();
 
       final List<OrderModel> orders = snapshot.docs
@@ -74,7 +75,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
       final QuerySnapshot orderSnapshot = await FirebaseCollectionReferances
           .orders.collectRef
-          .where('user_id', isEqualTo: FirebaseService().authID)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
           .get();
 
       final List<OrderModel> orders = orderSnapshot.docs

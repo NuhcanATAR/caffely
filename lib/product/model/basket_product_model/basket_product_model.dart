@@ -47,4 +47,10 @@ class BasketProductModel {
       'branch_id': branchId,
     };
   }
+
+  Map<String, dynamic> toBasketProductDocUpdate() {
+    return {
+      'id': id,
+    };
+  }
 }

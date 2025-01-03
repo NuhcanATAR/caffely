@@ -1,5 +1,6 @@
 import 'package:caffely/feature/account/view/center_help/bloc/event.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/state.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/model/centerhelp_model/centerhelp_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +19,7 @@ class CenterHelpBloc extends Bloc<CenterHelpEvent, CenterHelpState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .center_helps.collectRef
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
 
       final List<CenterHelpModel> centerHelps = snapshot.docs

@@ -6,9 +6,11 @@ import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/order_basket_control.dart';
 import 'package:caffely/product/core/base/helper/product_type_control.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
+import 'package:caffely/product/model/basket_model/basket_model.dart';
 import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
 import 'package:caffely/product/model/favorite_model/favorite_model.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
@@ -75,7 +77,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     try {
       final QuerySnapshot snapshotProducts = await FirebaseCollectionReferances
           .product.collectRef
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
 
       productList = snapshotProducts.docs
@@ -183,12 +185,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               .collection(FirebaseCollectionReferances.branch.name)
               .doc(event.productModel.storeId)
               .collection(FirebaseCollectionReferances.product.name)
-              .where('product_id', isEqualTo: event.productModel.id)
+              .where(FirebaseConstant.productId,
+                  isEqualTo: event.productModel.id)
               .where(
-                'avaible',
+                FirebaseConstant.avaible,
                 isEqualTo: state.coffeeType.coffeAvaibleTypeValue,
               )
-              .where('size', isEqualTo: state.coffeSize.productTypeValue)
+              .where(FirebaseConstant.size,
+                  isEqualTo: state.coffeSize.productTypeValue)
               .get();
 
           if (productQuery.docs.isNotEmpty) {
@@ -268,10 +272,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       } else {
         loggerPrint.printInfoLog('Sepet Henüz Açılmamış');
 
-        await basketDoc.set({
-          'id': FirebaseService().authID,
-          'basket_status': BasketMainStatusControl.orderReceived.value,
-        });
+        await basketDoc.set(BasketModel(
+          id: FirebaseService().authID!,
+          basketStatus: BasketMainStatusControl.orderReceived.value,
+        ).toBasketSetFirebase());
 
         await addNewBranchToBasket(
           state,
@@ -347,7 +351,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         )
         .then((value) {
       final docId = value.id;
-      value.update({'id': docId});
+      value.update(BasketProductModel(id: docId).toBasketProductDocUpdate());
       loggerPrint.printInfoLog('Yeni ürün sepete eklendi: $docId');
     });
   }

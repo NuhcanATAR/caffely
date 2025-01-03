@@ -1,6 +1,7 @@
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/savedadress_model/savedadress_model.dart';
@@ -66,9 +67,9 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .saved_adress.collectRef
-          .where('is_deleted', isEqualTo: false)
-          .where('user_id', isEqualTo: FirebaseService().authID)
-          .orderBy('created_date', descending: true)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
+          .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
+          .orderBy(FirebaseConstant.createdDate, descending: true)
           .get();
 
       final List<SavedAdressModel> savedAdress = snapshot.docs
