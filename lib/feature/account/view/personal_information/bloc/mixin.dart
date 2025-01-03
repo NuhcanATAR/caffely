@@ -2,12 +2,14 @@
 
 import 'package:caffely/feature/account/view/personal_information/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 mixin PersonalInformationMixin {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
   void personalInformationUpdateListenerBloc(BuildContext context, state) {
     switch (state.runtimeType) {
       case PersonalInformationUpdateSuccess:
@@ -23,6 +25,7 @@ mixin PersonalInformationMixin {
           type: SnackType.error,
           message: (state as PersonalInformationUpdateError).error,
         );
+        loggerPrint.printErrorLog(state.error);
       case PersonalInformationUpdateLoading:
         CodeNoahDialogs(context).showAlert(
           BodyMediumWhiteText(
@@ -33,7 +36,7 @@ mixin PersonalInformationMixin {
         );
         break;
       default:
-        Logger().i('Eksik Case Mevcut');
+        loggerPrint.printInfoLog('Eksik Case Mevcut');
     }
   }
 }

@@ -16,10 +16,7 @@ class TitleLargeBlackBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
-          ),
+      style: CustomLightTheme().themeDataSecond.textTheme.titleLarge,
     );
   }
 }
@@ -39,9 +36,7 @@ class TitleLargeBlackText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleLarge!.copyWith(
-            fontFamily: 'Nunito Bold',
-          ),
+      style: CustomLightTheme().themeDataSecond.textTheme.titleLarge,
     );
   }
 }
@@ -61,9 +56,7 @@ class TitleLargeWhiteBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
+      style: CustomLightTheme().themeDataSecond.textTheme.titleLarge!.copyWith(
             color: Colors.white,
           ),
     );
@@ -85,9 +78,7 @@ class TitleLargeMainColorBoldText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: CustomLightTheme().themeData.textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Nunito Bold',
+      style: CustomLightTheme().themeDataSecond.textTheme.titleLarge!.copyWith(
             color: Theme.of(context).colorScheme.primary,
           ),
     );

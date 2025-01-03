@@ -3,16 +3,25 @@
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
-import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/base/helper/order_basket_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
+import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
+import 'package:caffely/product/model/basket_model/basket_model.dart';
+import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
+import 'package:caffely/product/model/favorite_model/favorite_model.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
+
   List<ProductModel> productList = [];
   List<ProductModel> allProducts = [];
 
@@ -68,7 +77,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     try {
       final QuerySnapshot snapshotProducts = await FirebaseCollectionReferances
           .product.collectRef
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
 
       productList = snapshotProducts.docs
@@ -82,6 +91,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(ProductLoaded(productList, const []));
     } catch (e) {
       emit(ProductError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -105,6 +115,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(ProductLoaded(filteredStores, const []));
     } catch (e) {
       emit(ProductError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -116,16 +127,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     try {
       if (event.isFavoriteStatus) {
         final docRef =
-            await FirebaseCollectionReferances.favorite.collectRef.add({
-          'id': null,
-          'product_id': event.productId,
-          'store_id': '',
-          'user_id': FirebaseService().authID,
-          'date': FieldValue.serverTimestamp(),
-        });
+            await FirebaseCollectionReferances.favorite.collectRef.add(
+          FavoriteModel(
+            id: '',
+            productId: event.productId,
+            storeId: '',
+            userId: FirebaseService().authID!,
+          ).toFavoriteAdd(),
+        );
 
         final String docId = docRef.id;
-        await docRef.update({'id': docId});
+        await docRef.update(FavoriteModel(id: docId).toFavoriteDocUpdate());
       } else {
         await FirebaseCollectionReferances.favorite.collectRef
             .doc(event.favoriteId)
@@ -147,6 +159,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           AppLocalizations.of(event.context)!.products_favorite_error,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -160,7 +173,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       final basketCollection = await basketDoc.get();
 
       if (basketCollection.exists) {
-        Logger().i('Sepette ürün var');
+        loggerPrint.printInfoLog('Sepette ürün var');
 
         final branchDoc = basketDoc
             .collection(FirebaseCollectionReferances.branch.name)
@@ -175,12 +188,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               .collection(FirebaseCollectionReferances.branch.name)
               .doc(event.productModel.storeId)
               .collection(FirebaseCollectionReferances.product.name)
-              .where('product_id', isEqualTo: event.productModel.id)
               .where(
-                'avaible',
+                FirebaseConstant.productId,
+                isEqualTo: event.productModel.id,
+              )
+              .where(
+                FirebaseConstant.avaible,
                 isEqualTo: state.coffeeType.coffeAvaibleTypeValue,
               )
-              .where('size', isEqualTo: state.coffeSize.productTypeValue)
+              .where(
+                FirebaseConstant.size,
+                isEqualTo: state.coffeSize.productTypeValue,
+              )
               .get();
 
           if (productQuery.docs.isNotEmpty) {
@@ -188,12 +207,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             final currentQuantity = productDoc['quanity'];
             final newQuantity = currentQuantity + 1;
 
-            await productDoc.reference.update({
-              'quanity': newQuantity,
-              'product_total': FieldValue.increment(event.totalPrice),
-            });
+            await productDoc.reference.update(
+              BasketProductModel(
+                quanity: newQuantity,
+                productTotal: FieldValue.increment(event.totalPrice) as int,
+              ).toProductDocUpdate(),
+            );
 
-            Logger().i('Ürün miktarı güncellendi: $newQuantity');
+            loggerPrint.printInfoLog('Ürün miktarı güncellendi: $newQuantity');
 
             final branchQuery = await basketDoc
                 .collection(FirebaseCollectionReferances.branch.name)
@@ -204,13 +225,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               final currentBasketTotal = branchQuery['basket_total'];
               final currentTotalQuantity = branchQuery['total_quanity'];
 
-              await branchDoc.update({
-                'basket_total': currentBasketTotal + event.totalPrice,
-                'total_quanity': currentTotalQuantity + 1,
-                'status': OrderBranchStatusControl.orderReceived.value,
-              });
+              await branchDoc.update(
+                BasketBranchModel(
+                  basketTotal: currentBasketTotal + event.totalPrice,
+                  totalQuanity: currentTotalQuantity + 1,
+                  status: OrderBranchStatusControl.orderReceived.value,
+                ).toBranchProductDocUpdate(),
+              );
 
-              Logger().i(
+              loggerPrint.printInfoLog(
                 'Şube bilgileri güncellendi: basket_total ve total_quanity',
               );
             }
@@ -231,19 +254,21 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               final currentBasketTotal = branchQuery['basket_total'];
               final currentTotalQuantity = branchQuery['total_quanity'];
 
-              await branchDoc.update({
-                'basket_total': currentBasketTotal + event.totalPrice,
-                'total_quanity': currentTotalQuantity + 1,
-                'status': OrderBranchStatusControl.orderReceived.value,
-              });
+              await branchDoc.update(
+                BasketBranchModel(
+                  basketTotal: currentBasketTotal + event.totalPrice,
+                  totalQuanity: currentTotalQuantity + 1,
+                  status: OrderBranchStatusControl.orderReceived.value,
+                ).toBranchProductDocUpdate(),
+              );
 
-              Logger().i(
+              loggerPrint.printInfoLog(
                 'Şube bilgileri güncellendi: basket_total ve total_quanity',
               );
             }
           }
         } else {
-          Logger().f('Yeni şube sepete ekleniyor');
+          loggerPrint.printInfoLog('Yeni şube sepete ekleniyor');
           await addNewBranchToBasket(
             state,
             basketDoc,
@@ -252,12 +277,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           );
         }
       } else {
-        Logger().f('Sepet Henüz Açılmamış');
+        loggerPrint.printInfoLog('Sepet Henüz Açılmamış');
 
-        await basketDoc.set({
-          'id': FirebaseService().authID,
-          'basket_status': BasketMainStatusControl.orderReceived.value,
-        });
+        await basketDoc.set(
+          BasketModel(
+            id: FirebaseService().authID!,
+            basketStatus: BasketMainStatusControl.orderReceived.value,
+          ).toBasketSetFirebase(),
+        );
 
         await addNewBranchToBasket(
           state,
@@ -278,6 +305,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           AppLocalizations.of(event.context)!.products_basket_add_error,
         ),
       );
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 
@@ -290,12 +318,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     await basketDoc
         .collection(FirebaseCollectionReferances.branch.name)
         .doc(productModel.storeId)
-        .set({
-      'id': productModel.storeId,
-      'basket_total': totalPrice,
-      'total_quanity': 1,
-      'status': OrderBranchStatusControl.orderReceived.value,
-    });
+        .set(
+          BasketBranchModel(
+            id: productModel.storeId,
+            basketTotal: totalPrice,
+            totalQuanity: 1,
+            status: OrderBranchStatusControl.orderReceived.value,
+          ).toBranchAdd(),
+        );
 
     await addNewProductToBasket(
       state,
@@ -317,19 +347,22 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         .collection(FirebaseCollectionReferances.branch.name)
         .doc(productModel.storeId)
         .collection(FirebaseCollectionReferances.product.name)
-        .add({
-      'id': null,
-      'quanity': 1,
-      'size': state.coffeSize.productTypeValue,
-      'avaible': state.coffeeType.coffeAvaibleTypeValue,
-      'status': OrderProductStatusControl.orderInProgress.value,
-      'product_id': productModel.id,
-      'product_total': totalPrice,
-      'branch_id': storeId,
-    }).then((value) {
+        .add(
+          BasketProductModel(
+            id: '',
+            quanity: 1,
+            size: state.coffeSize.productTypeValue,
+            avaible: state.coffeeType.coffeAvaibleTypeValue,
+            status: OrderProductStatusControl.orderInProgress.value,
+            productId: productModel.id,
+            productTotal: totalPrice,
+            branchId: storeId,
+          ).toBranchProductSetFirebase(),
+        )
+        .then((value) {
       final docId = value.id;
-      value.update({'id': docId});
-      Logger().i('Yeni ürün sepete eklendi: $docId');
+      value.update(BasketProductModel(id: docId).toBasketProductDocUpdate());
+      loggerPrint.printInfoLog('Yeni ürün sepete eklendi: $docId');
     });
   }
 }

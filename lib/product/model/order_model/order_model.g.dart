@@ -7,20 +7,20 @@ part of 'order_model.dart';
 // **************************************************************************
 
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
-      json['id'] as String,
-      (json['adress_apartment_no'] as num).toInt(),
-      json['adress_city'] as String,
-      json['adress_directions'] as String,
-      json['adress_district'] as String,
-      (json['adress_floor'] as num).toInt(),
-      json['adress_street'] as String,
-      json['adress_title'] as String,
-      json['contact_name'] as String,
-      json['contact_surname'] as String,
-      (json['contact_phone_number'] as num).toInt(),
-      (json['payment_type'] as num).toInt(),
-      json['user_id'] as String,
-      const TimestampConverter().fromJson(json['date']),
+      id: json['id'] as String,
+      adressApartmentNo: (json['adress_apartment_no'] as num).toInt(),
+      adressCity: json['adress_city'] as String,
+      adressDirections: json['adress_directions'] as String,
+      adressDistrict: json['adress_district'] as String,
+      adressFloor: (json['adress_floor'] as num).toInt(),
+      adressStreet: json['adress_street'] as String,
+      adressTitle: json['adress_title'] as String,
+      contactName: json['contact_name'] as String,
+      contactSurname: json['contact_surname'] as String,
+      contactPhoneNumber: (json['contact_phone_number'] as num).toInt(),
+      paymentType: (json['payment_type'] as num).toInt(),
+      userId: json['user_id'] as String,
+      date: const TimestampConverter().fromJson(json['date']),
     );
 
 Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>

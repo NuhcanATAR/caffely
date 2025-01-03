@@ -9,7 +9,7 @@ import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
-import 'package:caffely/product/widget/widget/emailfield_widget.dart';
+import 'package:caffely/product/widget/widget/email_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,8 +33,8 @@ class _PasswordViewState extends PasswordViewmodel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
       ),
@@ -44,8 +44,8 @@ class _PasswordViewState extends PasswordViewmodel {
           return Form(
             key: formPasswordKey,
             child: Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[
@@ -55,8 +55,8 @@ class _PasswordViewState extends PasswordViewmodel {
                       children: <Widget>[
                         // title & sub title
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: Column(
                             children: <Widget>[
@@ -64,8 +64,8 @@ class _PasswordViewState extends PasswordViewmodel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: TitleLargeBlackBoldText(
                                     text: AppLocalizations.of(context)!
@@ -78,8 +78,8 @@ class _PasswordViewState extends PasswordViewmodel {
                               SizedBox(
                                 width: dynamicViewExtensions.maxWidth(context),
                                 child: Padding(
-                                  padding: PaddingSizedsUtility.bottom(
-                                    PaddingSizedsUtility.normalPaddingValue,
+                                  padding: BaseUtility.bottom(
+                                    BaseUtility.paddingNormalValue,
                                   ),
                                   child: BodyMediumBlackText(
                                     text: AppLocalizations.of(context)!

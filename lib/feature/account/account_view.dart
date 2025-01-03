@@ -1,25 +1,21 @@
 import 'package:caffely/feature/account/account_viewmodel.dart';
-import 'package:caffely/feature/account/view/about_app/aboutapp_view.dart';
-import 'package:caffely/feature/account/view/accountqr_code/accountqrcode_view.dart';
-import 'package:caffely/feature/account/view/campain_discounts/campaindiscounts_view.dart';
-import 'package:caffely/feature/account/view/center_help/centerhelp_view.dart';
+import 'package:caffely/feature/account/view/about_app/about_app_view.dart';
+import 'package:caffely/feature/account/view/campain_discounts/campain_discounts_view.dart';
+import 'package:caffely/feature/account/view/center_help/center_help_view.dart';
 import 'package:caffely/feature/account/view/langue/langue_view.dart';
 import 'package:caffely/feature/account/view/notification/notification_view.dart';
-import 'package:caffely/feature/account/view/personal_information/personalinformation_view.dart';
-import 'package:caffely/feature/account/view/saved_adress/savedadress_view.dart';
+import 'package:caffely/feature/account/view/personal_information/personal_information_view.dart';
+import 'package:caffely/feature/account/view/saved_adress/saved_dadress_view.dart';
 import 'package:caffely/feature/account/view/security/security_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
-import 'package:caffely/product/core/base/helper/auth_control.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
-import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/langue_model/langue_model.dart';
-import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/text_widget/title_medium_text.dart';
 import 'package:caffely/product/widget/widget/menu_card.dart';
+import 'package:caffely/product/widget/widget/profile_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -41,8 +37,8 @@ class _AccountViewState extends AccountViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -54,8 +50,8 @@ class _AccountViewState extends AccountViewModel {
       body: RefreshIndicator(
         onRefresh: refreshUserInformation,
         child: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
           ),
           child: ListView(
             children: <Widget>[
@@ -78,118 +74,9 @@ class _AccountViewState extends AccountViewModel {
   }
 
   // user card
-  Widget get buildUserCardWidget => SizedBox(
-        width: dynamicViewExtensions.maxWidth(context),
-        child: FutureBuilder(
-          future: getUserFromFireStore(FirebaseService().authID.toString()),
-          builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
-            if (snapshot.hasError) {
-              return const SizedBox();
-            }
-
-            if (snapshot.hasData) {
-              final userModel = snapshot.data!;
-              return Padding(
-                padding: PaddingSizedsUtility.vertical(
-                  PaddingSizedsUtility.normalPaddingValue,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    // profile image
-                    SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: userModel.authStatus ==
-                                AuthControl.emailPasswordAuth.valueAuth
-                            ? BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary,
-                                borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
-                                ),
-                              )
-                            : BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                    userModel.profileImage,
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                  RadiusUtility.circularHighValue,
-                                ),
-                              ),
-                        child: userModel.authStatus ==
-                                AuthControl.emailPasswordAuth.valueAuth
-                            ? AppIcons.userOutline.toSvgImg(
-                                Colors.white,
-                                IconSizedsUtility.normalSize,
-                                IconSizedsUtility.normalSize,
-                              )
-                            : const SizedBox(),
-                      ),
-                    ),
-                    // body
-                    Expanded(
-                      child: Padding(
-                        padding: PaddingSizedsUtility.horizontal(
-                          PaddingSizedsUtility.normalPaddingValue,
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            // name surname
-                            SizedBox(
-                              width: dynamicViewExtensions.maxWidth(context),
-                              child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
-                                ),
-                                child: TitleMediumBlackBoldText(
-                                  text: userModel.nameSurname,
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            ),
-                            // email
-                            SizedBox(
-                              width: dynamicViewExtensions.maxWidth(context),
-                              child: Padding(
-                                padding: PaddingSizedsUtility.vertical(
-                                  PaddingSizedsUtility.smallPaddingValue,
-                                ),
-                                child: BodyMediumBlackText(
-                                  text: userModel.email,
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // qr code
-                    IconButton(
-                      onPressed: () {
-                        CodeNoahNavigatorRouter.push(
-                          context,
-                          const AccountQrCodeView(),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.qr_code_outlined,
-                        color: Colors.black,
-                        size: IconSizedsUtility.normalSize,
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return const SizedBox();
-            }
-          },
-        ),
+  Widget get buildUserCardWidget => ProfileCardWidget(
+        getUserFromFireStore: getUserFromFireStore,
+        dynamicViewExtensions: dynamicViewExtensions,
       );
 
   // menu group one
@@ -234,8 +121,8 @@ class _AccountViewState extends AccountViewModel {
           SizedBox(
             width: dynamicViewExtensions.maxWidth(context),
             child: Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!.account_menu_group_title,
@@ -324,8 +211,8 @@ class _AccountViewState extends AccountViewModel {
           SizedBox(
             width: dynamicViewExtensions.maxWidth(context),
             child: Padding(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.mediumPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingMediumValue,
               ),
               child: BodyMediumBlackText(
                 text: AppLocalizations.of(context)!

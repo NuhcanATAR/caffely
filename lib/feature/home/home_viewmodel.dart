@@ -9,7 +9,7 @@ abstract class HomeViewModel extends BaseState<HomeView> {
   final int timeHour = DateTime.now().hour;
   int current = 0;
 
-  late CarouselController carouselController = CarouselController();
+  CarouselController carouselController = CarouselController();
   @override
   void initState() {
     super.initState();

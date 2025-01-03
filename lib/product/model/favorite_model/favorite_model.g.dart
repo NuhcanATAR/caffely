@@ -8,11 +8,11 @@ part of 'favorite_model.dart';
 
 FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) =>
     FavoriteModel(
-      json['id'] as String,
-      json['product_id'] as String,
-      json['store_id'] as String,
-      json['user_id'] as String,
-      const TimestampConverter().fromJson(json['date']),
+      id: json['id'] as String,
+      productId: json['product_id'] as String,
+      storeId: json['store_id'] as String,
+      userId: json['user_id'] as String,
+      date: const TimestampConverter().fromJson(json['date']),
     );
 
 Map<String, dynamic> _$FavoriteModelToJson(FavoriteModel instance) =>

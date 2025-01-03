@@ -12,6 +12,14 @@ final class CustomLightTheme implements CustomTheme {
         textTheme: textThemeData,
       );
 
+  ThemeData get themeDataSecond => ThemeData(
+        useMaterial3: true,
+        fontFamily: 'Nunito Bold',
+        colorScheme: CustomColorScheme.lightColorScheme,
+        floatingActionButtonTheme: floatingActionButtonThemeData,
+        textTheme: textThemeData,
+      );
+
   @override
   final FloatingActionButtonThemeData floatingActionButtonThemeData =
       const FloatingActionButtonThemeData();
@@ -21,18 +29,22 @@ final class CustomLightTheme implements CustomTheme {
     titleLarge: TextStyle(
       fontSize: 22,
       color: CustomColorScheme.lightColorScheme.onSurface,
+      fontWeight: FontWeight.bold,
     ),
     titleMedium: TextStyle(
       fontSize: 16,
       color: CustomColorScheme.lightColorScheme.onSurface,
+      fontWeight: FontWeight.normal,
     ),
     bodyMedium: TextStyle(
       fontSize: 14,
       color: CustomColorScheme.lightColorScheme.onSurface,
+      fontWeight: FontWeight.normal,
     ),
     labelMedium: TextStyle(
       fontSize: 12,
       color: CustomColorScheme.lightColorScheme.onSurface,
+      fontWeight: FontWeight.normal,
     ),
   );
 }

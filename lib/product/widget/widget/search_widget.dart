@@ -27,21 +27,21 @@ class _SearchWidgetState extends BaseState<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingSizedsUtility.horizontal(
-        PaddingSizedsUtility.smallPaddingValue,
+      padding: BaseUtility.horizontal(
+        BaseUtility.paddingSmallValue,
       ),
       child: TextField(
         controller: widget.controller,
         onChanged: widget.onChanged,
         decoration: InputDecoration(
           prefixIcon: Padding(
-            padding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             child: AppIcons.searchOutline.toSvgImg(
               Theme.of(context).colorScheme.onSurface,
-              IconSizedsUtility.mediumSize,
-              IconSizedsUtility.mediumSize,
+              BaseUtility.iconMediumSize,
+              BaseUtility.iconMediumSize,
             ),
           ),
           labelText: widget.searchText,
@@ -49,13 +49,13 @@ class _SearchWidgetState extends BaseState<SearchWidget> {
             color: Theme.of(context).colorScheme.onSurface,
           ),
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: PaddingSizedsUtility.normalPaddingValue,
-            vertical: PaddingSizedsUtility.normalPaddingValue,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: BaseUtility.paddingNormalValue,
+            vertical: BaseUtility.paddingNormalValue,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
@@ -64,7 +64,7 @@ class _SearchWidgetState extends BaseState<SearchWidget> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.primary,
@@ -73,7 +73,7 @@ class _SearchWidgetState extends BaseState<SearchWidget> {
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.error,
@@ -82,7 +82,7 @@ class _SearchWidgetState extends BaseState<SearchWidget> {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              RadiusUtility.circularMediumValue,
+              BaseUtility.radiusCircularMediumValue,
             ),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.error,

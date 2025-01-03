@@ -16,16 +16,16 @@ class _SplashViewState extends SplashViewModel {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.hightPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingHightValue,
         ),
         child: Column(
           children: <Widget>[
             // logo
             Expanded(
               child: Padding(
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.hightPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingHightValue,
                 ),
                 child: Center(
                   child: AppLogoConstants

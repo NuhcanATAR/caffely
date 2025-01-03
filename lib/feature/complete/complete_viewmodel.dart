@@ -7,12 +7,19 @@ abstract class ProfileCompleteViewModel extends BaseState<ProfileCompleteView>
     with ProfileCompleteMixin {
   final formProfileCompleteKey = GlobalKey<FormState>();
 
-  late TextEditingController nameSurnameController = TextEditingController();
-  late TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController nameSurnameController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
   // city distirct
   String? selectedCity;
   String? selectedDistrict;
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameSurnameController.dispose();
+    phoneNumberController.dispose();
+  }
 
   void handleCityChanged(String? city) {
     setState(() {

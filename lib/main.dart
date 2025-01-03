@@ -1,9 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
-
-import 'package:caffely/feature/account/view/accountqr_code/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/center_help/bloc/event.dart';
 import 'package:caffely/feature/account/view/personal_information/bloc/cubit.dart';
+import 'package:caffely/feature/account/view/qr_code/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/cubit.dart';
@@ -104,10 +103,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<OrderBloc>(
           create: (BuildContext context) => OrderBloc()
             ..add(LoadOrderEvent(context))
-            ..add(LoadBranchesEvent(
-              "",
-              context,
-            ),),
+            ..add(
+              LoadBranchesEvent(
+                "",
+                context,
+              ),
+            ),
         ),
       ],
       child: MaterialApp(
@@ -146,18 +147,18 @@ class _FirsViewState extends MainViewModel {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: PaddingSizedsUtility.all(
+          padding: BaseUtility.all(
             130,
           ),
           child: Center(
             child: Container(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.smallPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingSmallValue,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(
-                    RadiusUtility.circularMediumValue,
+                    BaseUtility.radiusCircularMediumValue,
                   ),
                 ),
                 color: Theme.of(context).colorScheme.primary,

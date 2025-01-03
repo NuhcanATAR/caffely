@@ -1,18 +1,18 @@
 import 'package:caffely/feature/favorite/bloc/cubit.dart';
 import 'package:caffely/feature/favorite/bloc/state.dart';
 import 'package:caffely/feature/favorite/favorite_viewmodel.dart';
-import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
-import 'package:caffely/feature/store/view/store_detail/storedetail_view.dart';
+import 'package:caffely/feature/products/product_detail/product_detail_view.dart';
+import 'package:caffely/feature/store/view/store_detail/store_detail_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/constants/logo.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/productcard_widget.dart';
+import 'package:caffely/product/widget/widget/product_card_widget.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
-import 'package:caffely/product/widget/widget/storecard_widget.dart';
+import 'package:caffely/product/widget/widget/store_card_widget.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,8 +34,8 @@ class _FavoriteViewState extends FavoriteViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -45,8 +45,8 @@ class _FavoriteViewState extends FavoriteViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: BlocBuilder<FavoriteBloc, FavoriteState>(
           builder: (context, state) {

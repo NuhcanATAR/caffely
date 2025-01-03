@@ -2,24 +2,29 @@
 
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
-import 'package:caffely/feature/basket/view/order_complete/ordercomplete_viewmodel.dart';
+import 'package:caffely/feature/basket/view/order_complete/order_complete_viewmodel.dart';
 import 'package:caffely/lang/app_localizations.dart';
-import 'package:caffely/product/core/base/helper/orderbasket_control.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/base/helper/order_basket_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/core/base/helper/show_dialogs.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/basket_branch_model/basket_branch_model.dart';
+import 'package:caffely/product/model/basket_model/basket_model.dart';
 import 'package:caffely/product/model/basket_product_model/basket_product_model.dart';
+import 'package:caffely/product/model/order_model/order_model.dart';
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
 import '../../../product/model/savedadress_model/savedadress_model.dart';
 
 class BasketBloc extends Bloc<BasketEvent, BasketState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
   BasketBloc() : super(BasketInitialState()) {
     on<LoadBasketEvent>(basketList);
 
@@ -128,7 +133,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
     final basketDocRef = FirebaseCollectionReferances.basket.collectRef
         .doc(FirebaseService().authID);
 
-    late int productPrice = 0;
+    int productPrice = 0;
 
     if (productModel.size == ProductTypeControl.small.productTypeValue) {
       productPrice = product.price;
@@ -140,11 +145,12 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
     }
 
     try {
-      await branchDocRef.update({
-        'basket_total':
-            FieldValue.increment(-productModel.quanity * productPrice),
-        'total_quanity': FieldValue.increment(-productModel.quanity),
-      });
+      await branchDocRef.update(
+        BasketBranchModel(
+          basketTotal: -productModel.quanity * productPrice,
+          totalQuanity: -productModel.quanity,
+        ).toBranchDocUpdate(),
+      );
 
       if (basketProducts.length == 1) {
         await productDocRef.delete();
@@ -154,7 +160,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         Navigator.pop(context);
       }
     } catch (e) {
-      Logger().f('Hata:  $e');
+      loggerPrint.printErrorLog('Hata:  $e');
     }
   }
 
@@ -193,7 +199,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
             branchesModel.id,
           );
 
-      late int productPrice = 0;
+      int productPrice = 0;
       if (productModel.size == ProductTypeControl.small.productTypeValue) {
         productPrice = product.price;
       } else if (productModel.size ==
@@ -210,22 +216,22 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         final currentQuantity = data['quanity'] ?? 0;
         final newQuantity = currentQuantity + 1;
 
-        await productDocRef.update({
-          'quanity': newQuantity,
-          'product_total': newQuantity * productPrice,
-        });
+        await productDocRef.update(
+          BasketProductModel(
+            quanity: newQuantity,
+            productTotal: newQuantity * productPrice,
+          ).toProductDocUpdate(),
+        );
 
-        await branchDocRef.update({
-          'total_quanity': FieldValue.increment(
-            1,
-          ),
-          'basket_total': FieldValue.increment(
-            productPrice,
-          ),
-        });
+        await branchDocRef.update(
+          BasketBranchModel(
+            totalQuanity: 1,
+            basketTotal: productPrice,
+          ).toBranchDocUpdate(),
+        );
       }
     } catch (e) {
-      Logger().f(
+      loggerPrint.printErrorLog(
         'Hata: $e',
       );
     }
@@ -268,7 +274,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
               branchesModel.id,
             );
 
-        late int productPrice = 0;
+        int productPrice = 0;
         if (productModel.size == ProductTypeControl.small.productTypeValue) {
           productPrice = product.price;
         } else if (productModel.size ==
@@ -287,19 +293,19 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
           if (currentQuantity > 0) {
             final newQuantity = currentQuantity - 1;
 
-            await productDocRef.update({
-              'quanity': newQuantity,
-              'product_total': newQuantity * productPrice,
-            });
+            await productDocRef.update(
+              BasketProductModel(
+                quanity: newQuantity,
+                productTotal: newQuantity * productPrice,
+              ).toProductDocUpdate(),
+            );
 
-            await branchDocRef.update({
-              'total_quanity': FieldValue.increment(
-                -1,
-              ),
-              'basket_total': FieldValue.increment(
-                -productPrice,
-              ),
-            });
+            await branchDocRef.update(
+              BasketBranchModel(
+                totalQuanity: -1,
+                basketTotal: -productPrice,
+              ).toBranchDocUpdate(),
+            );
           }
         }
       } else {
@@ -311,7 +317,7 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
         );
       }
     } catch (e) {
-      Logger().f(
+      loggerPrint.printErrorLog(
         'Hata: $e',
       );
     }
@@ -320,8 +326,8 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
   Future<List<SavedAdressModel>> fetchSavedAddresses() async {
     final QuerySnapshot querySnapshot = await FirebaseCollectionReferances
         .saved_adress.collectRef
-        .where('user_id', isEqualTo: FirebaseService().authID)
-        .where('is_deleted', isEqualTo: false)
+        .where(FirebaseConstant.userId, isEqualTo: FirebaseService().authID)
+        .where(FirebaseConstant.isDeleted, isEqualTo: false)
         .get();
 
     return querySnapshot.docs.map((doc) {
@@ -335,37 +341,39 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
   ) async {
     emit(BaskekOrderCompleteLoading());
     try {
-      final orderRef =
-          await FirebaseCollectionReferances.orders.collectRef.add({
-        'id': null,
-        'user_id': FirebaseService().authID,
-        'payment_type': event.paymentType == PaymentType.online
-            ? OrderPaymentType.online.value
-            : OrderPaymentType.payAtTheDoor.value,
-        'adress_title': event.selectAdress.adressTitle,
-        'adress_city': event.selectAdress.adressCity,
-        'adress_district': event.selectAdress.adressDistrict,
-        'adress_street': event.selectAdress.adressStreet,
-        'adress_floor': event.selectAdress.adressFloor,
-        'adress_apartment_no': event.selectAdress.adressAparmentNo,
-        'adress_directions': event.selectAdress.adressDirections,
-        'contact_name': event.selectAdress.contactName,
-        'contact_surname': event.selectAdress.contactSurname,
-        'contact_phone_number': event.selectAdress.contactPhoneNumber,
-        'date': FieldValue.serverTimestamp(),
-      });
+      final orderRef = await FirebaseCollectionReferances.orders.collectRef.add(
+        OrderModel(
+          id: '',
+          userId: FirebaseService().authID!,
+          paymentType: event.paymentType == PaymentType.online
+              ? OrderPaymentType.online.value
+              : OrderPaymentType.payAtTheDoor.value,
+          adressTitle: event.selectAdress.adressTitle,
+          adressCity: event.selectAdress.adressCity,
+          adressDistrict: event.selectAdress.adressDistrict,
+          adressStreet: event.selectAdress.adressStreet,
+          adressFloor: event.selectAdress.adressFloor,
+          adressApartmentNo: event.selectAdress.adressAparmentNo,
+          adressDirections: event.selectAdress.adressDirections,
+          contactName: event.selectAdress.contactName,
+          contactSurname: event.selectAdress.contactSurname,
+          contactPhoneNumber: event.selectAdress.contactPhoneNumber,
+        ).toOrderAdd(),
+      );
 
       final String orderId = orderRef.id;
-      await orderRef.update({'id': orderId});
+      await orderRef.update(OrderModel(id: orderId).toOrderDocUpdate());
 
       await FirebaseCollectionReferances.orders.collectRef
           .doc(orderId)
           .collection(FirebaseCollectionReferances.basket.name)
           .doc(orderId)
-          .set({
-        'id': orderId,
-        'basket_status': BasketMainStatusControl.orderReceived.value,
-      });
+          .set(
+            BasketModel(
+              id: orderId,
+              basketStatus: BasketMainStatusControl.orderReceived.value,
+            ).toBasketSetFirebase(),
+          );
 
       for (final branchModel in event.basketBranchModel) {
         await FirebaseCollectionReferances.orders.collectRef
@@ -374,12 +382,14 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
             .doc(orderId)
             .collection(FirebaseCollectionReferances.branch.name)
             .doc(branchModel.id)
-            .set({
-          'id': branchModel.id,
-          'basket_total': branchModel.basketTotal,
-          'total_quanity': branchModel.totalQuanity,
-          'status': OrderBranchStatusControl.orderReceived.value,
-        });
+            .set(
+              BasketBranchModel(
+                id: branchModel.id,
+                basketTotal: branchModel.basketTotal,
+                totalQuanity: branchModel.totalQuanity,
+                status: OrderBranchStatusControl.orderReceived.value,
+              ).toBranchAdd(),
+            );
 
         final List<BasketProductModel> productsForBranch = event
             .basketProductModel
@@ -395,16 +405,18 @@ class BasketBloc extends Bloc<BasketEvent, BasketState> {
               .doc(branchModel.id)
               .collection(FirebaseCollectionReferances.product.name)
               .doc(productModel.id)
-              .set({
-            'id': productModel.id,
-            'avaible': productModel.avaible,
-            'product_id': productModel.productId,
-            'product_total': productModel.productTotal,
-            'quanity': productModel.quanity,
-            'size': productModel.size,
-            'status': productModel.status,
-            'branch_id': productModel.branchId,
-          });
+              .set(
+                BasketProductModel(
+                  id: productModel.id,
+                  avaible: productModel.avaible,
+                  productId: productModel.productId,
+                  productTotal: productModel.productTotal,
+                  quanity: productModel.quanity,
+                  size: productModel.size,
+                  status: productModel.status,
+                  branchId: productModel.branchId,
+                ).toBranchProductSetFirebase(),
+              );
         }
       }
 

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class ProductsViewModel extends BaseState<ProductsView> {
-  late TextEditingController searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {

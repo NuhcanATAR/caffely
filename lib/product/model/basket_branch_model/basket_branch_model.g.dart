@@ -8,10 +8,10 @@ part of 'basket_branch_model.dart';
 
 BasketBranchModel _$BasketBranchModelFromJson(Map<String, dynamic> json) =>
     BasketBranchModel(
-      json['id'] as String,
-      (json['basket_total'] as num).toInt(),
-      (json['total_quanity'] as num).toInt(),
-      json['status'] != null ? json['status'] as int : null,
+      id: json['id'] as String,
+      basketTotal: (json['basket_total'] as num).toInt(),
+      totalQuanity: (json['total_quanity'] as num).toInt(),
+      status: json['status'] != null ? json['status'] as int : null,
     );
 
 Map<String, dynamic> _$BasketBranchModelToJson(BasketBranchModel instance) =>

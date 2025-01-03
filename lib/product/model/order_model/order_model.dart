@@ -1,35 +1,7 @@
+import 'package:caffely/product/model/timestamp_model/timestamp_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'order_model.g.dart';
-
-class TimestampConverter implements JsonConverter<Timestamp?, Object?> {
-  const TimestampConverter();
-
-  @override
-  Timestamp? fromJson(Object? json) {
-    if (json is Timestamp) {
-      return json;
-    } else if (json is int) {
-      return Timestamp.fromMillisecondsSinceEpoch(json);
-    } else if (json is Map<String, dynamic>) {
-      if (json.containsKey('_seconds') && json.containsKey('_nanoseconds')) {
-        final int seconds = json['_seconds'];
-        final int nanoseconds = json['_nanoseconds'];
-        return Timestamp(seconds, nanoseconds);
-      }
-    }
-    return null;
-  }
-
-  @override
-  Object? toJson(Timestamp? object) {
-    if (object == null) return null;
-    return {
-      '_seconds': object.seconds,
-      '_nanoseconds': object.nanoseconds,
-    };
-  }
-}
 
 @JsonSerializable()
 class OrderModel {
@@ -49,25 +21,50 @@ class OrderModel {
   @TimestampConverter()
   final Timestamp? date;
 
-  OrderModel(
-    this.id,
-    this.adressApartmentNo,
-    this.adressCity,
-    this.adressDirections,
-    this.adressDistrict,
-    this.adressFloor,
-    this.adressStreet,
-    this.adressTitle,
-    this.contactName,
-    this.contactSurname,
-    this.contactPhoneNumber,
-    this.paymentType,
-    this.userId,
+  OrderModel({
+    this.id = '',
+    this.adressApartmentNo = 0,
+    this.adressCity = '',
+    this.adressDirections = '',
+    this.adressDistrict = '',
+    this.adressFloor = 0,
+    this.adressStreet = '',
+    this.adressTitle = '',
+    this.contactName = '',
+    this.contactSurname = '',
+    this.contactPhoneNumber = 0,
+    this.paymentType = 0,
+    this.userId = '',
     this.date,
-  );
+  });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderModelToJson(this);
+
+  Map<String, dynamic> toOrderAdd() {
+    return {
+      'id': id,
+      'user_id': userId,
+      'payment_type': paymentType,
+      'adress_title': adressTitle,
+      'adress_city': adressCity,
+      'adress_district': adressDistrict,
+      'adress_street': adressStreet,
+      'adress_floor': adressFloor,
+      'adress_apartment_no': adressApartmentNo,
+      'adress_directions': adressDirections,
+      'contact_name': contactName,
+      'contact_surname': contactSurname,
+      'contact_phone_number': contactPhoneNumber,
+      'date': FieldValue.serverTimestamp(),
+    };
+  }
+
+  Map<String, dynamic> toOrderDocUpdate() {
+    return {
+      'id': id,
+    };
+  }
 }

@@ -1,5 +1,7 @@
 import 'package:caffely/feature/home/bloc/event.dart';
 import 'package:caffely/feature/home/bloc/state.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/database/firebase_constant.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
 import 'package:caffely/product/model/banner_model/banner_model.dart';
@@ -9,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final loggerPrint = CustomLoggerPrint();
   HomeBloc() : super(HomeInitial()) {
     on<LoadHome>(_onLoadAll);
   }
@@ -21,8 +24,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final QuerySnapshot snapshot = await FirebaseCollectionReferances
           .banners.collectRef
-          .where('is_deleted', isEqualTo: false)
-          .where('status', isEqualTo: false)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
+          .where(FirebaseConstant.status, isEqualTo: false)
           .get();
       final List<BannerModel> banners = snapshot.docs
           .map(
@@ -36,8 +39,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final userCity = userCollection['city'];
       final QuerySnapshot snapshotStore = await FirebaseCollectionReferances
           .stores.collectRef
-          .where('location_city', isEqualTo: userCity)
-          .where('is_deleted', isEqualTo: false)
+          .where(FirebaseConstant.locationCity, isEqualTo: userCity)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
           .get();
       final List<StoreModel> stores = snapshotStore.docs
           .map(
@@ -47,8 +50,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       final QuerySnapshot snapshotProduct = await FirebaseCollectionReferances
           .product.collectRef
-          .where('is_deleted', isEqualTo: false)
-          .where('is_showcase', isEqualTo: true)
+          .where(FirebaseConstant.isDeleted, isEqualTo: false)
+          .where(FirebaseConstant.isShowCase, isEqualTo: true)
           .get();
       final List<ProductModel> products = snapshotProduct.docs
           .map(
@@ -64,6 +67,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
     } catch (e) {
       emit(HomeError(e.toString()));
+      loggerPrint.printErrorLog(e.toString());
     }
   }
 }

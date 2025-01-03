@@ -1,17 +1,17 @@
 import 'package:caffely/feature/products/bloc/cubit.dart';
 import 'package:caffely/feature/products/bloc/event.dart';
 import 'package:caffely/feature/products/bloc/state.dart';
-import 'package:caffely/feature/products/product_detail/productdetail_view.dart';
+import 'package:caffely/feature/products/product_detail/product_detail_view.dart';
 import 'package:caffely/feature/products/products_viewmodel.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/image.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
-import 'package:caffely/product/core/base/helper/productfilter_control.dart';
-import 'package:caffely/product/core/base/helper/producttype_control.dart';
+import 'package:caffely/product/core/base/helper/product_filter_control.dart';
+import 'package:caffely/product/core/base/helper/product_type_control.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/productcard_widget.dart';
+import 'package:caffely/product/widget/widget/product_card_widget.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
 import 'package:caffely/product/widget/widget/search_widget.dart';
 import 'package:flutter/material.dart';
@@ -42,8 +42,8 @@ class _ProductsViewState extends ProductsViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         centerTitle: true,
@@ -61,8 +61,8 @@ class _ProductsViewState extends ProductsViewModel {
             );
           } else if (state is ProductLoaded) {
             return Padding(
-              padding: PaddingSizedsUtility.all(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.all(
+                BaseUtility.paddingNormalValue,
               ),
               child: Column(
                 children: <Widget>[

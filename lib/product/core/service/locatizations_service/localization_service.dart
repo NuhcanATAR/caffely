@@ -1,15 +1,19 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:caffely/product/core/base/helper/shared_service.dart';
 
 class LocalizationService {
   static const _keyLanguage = 'language_code';
 
+  final PrefService _prefService = PrefService();
+
+  LocalizationService._privateConstructor();
+  static final LocalizationService instance =
+      LocalizationService._privateConstructor();
+
   Future<void> setLanguageCode(String languageCode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_keyLanguage, languageCode);
+    await _prefService.saveString(_keyLanguage, languageCode);
   }
 
   Future<String?> getLanguageCode() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_keyLanguage);
+    return _prefService.getString(_keyLanguage);
   }
 }

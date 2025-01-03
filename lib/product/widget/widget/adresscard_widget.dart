@@ -1,6 +1,6 @@
 import 'package:caffely/feature/account/view/saved_adress/bloc/cubit.dart';
 import 'package:caffely/feature/account/view/saved_adress/bloc/event.dart';
-import 'package:caffely/feature/account/view/saved_adress/view/savedadress_edit/savedadress_edit_view.dart';
+import 'package:caffely/feature/account/view/saved_adress/view/saved_adress_edit/saved_adress_edit_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/core/base/helper/button_control.dart';
@@ -28,20 +28,20 @@ class AdressCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: MarginSizedsUtility.vertical(
-        MarginSizedsUtility.normalMarginValue,
+      margin: BaseUtility.vertical(
+        BaseUtility.marginNormalValue,
       ),
-      padding: PaddingSizedsUtility.all(
-        PaddingSizedsUtility.normalPaddingValue,
+      padding: BaseUtility.all(
+        BaseUtility.paddingNormalValue,
       ),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey,
           width: 0.5,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(
-            RadiusUtility.circularMediumValue,
+            BaseUtility.radiusCircularMediumValue,
           ),
         ),
       ),
@@ -51,8 +51,8 @@ class AdressCardWidget extends StatelessWidget {
           SizedBox(
             width: dynamicViewExtensions.maxWidth(context),
             child: Container(
-              padding: PaddingSizedsUtility.vertical(
-                PaddingSizedsUtility.normalPaddingValue,
+              padding: BaseUtility.vertical(
+                BaseUtility.paddingNormalValue,
               ),
               decoration: const BoxDecoration(
                 border: Border(
@@ -75,8 +75,8 @@ class AdressCardWidget extends StatelessWidget {
               SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.vertical(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.vertical(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackBoldText(
                     text:
@@ -89,8 +89,8 @@ class AdressCardWidget extends StatelessWidget {
               SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.bottom(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.bottom(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: BodyMediumBlackText(
                     text:
@@ -103,20 +103,20 @@ class AdressCardWidget extends StatelessWidget {
               SizedBox(
                 width: dynamicViewExtensions.maxWidth(context),
                 child: Padding(
-                  padding: PaddingSizedsUtility.top(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.top(
+                    BaseUtility.paddingNormalValue,
                   ),
                   child: Row(
                     children: <Widget>[
                       AppIcons.locationOutline.toSvgImg(
                         Colors.black,
-                        IconSizedsUtility.normalSize,
-                        IconSizedsUtility.normalSize,
+                        BaseUtility.iconNormalSize,
+                        BaseUtility.iconNormalSize,
                       ),
                       Expanded(
                         child: Padding(
-                          padding: PaddingSizedsUtility.horizontal(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.horizontal(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: BodyMediumBlackText(
                             text:
@@ -137,8 +137,8 @@ class AdressCardWidget extends StatelessWidget {
               // edit
               Flexible(
                 child: Padding(
-                  padding: PaddingSizedsUtility.right(
-                    PaddingSizedsUtility.smallPaddingValue,
+                  padding: BaseUtility.right(
+                    BaseUtility.paddingSmallValue,
                   ),
                   child: CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,
@@ -158,8 +158,8 @@ class AdressCardWidget extends StatelessWidget {
               // delete
               Flexible(
                 child: Padding(
-                  padding: PaddingSizedsUtility.left(
-                    PaddingSizedsUtility.smallPaddingValue,
+                  padding: BaseUtility.left(
+                    BaseUtility.paddingSmallValue,
                   ),
                   child: CustomButtonWidget(
                     dynamicViewExtensions: dynamicViewExtensions,

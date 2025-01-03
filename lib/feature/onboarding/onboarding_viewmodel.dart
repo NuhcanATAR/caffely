@@ -10,9 +10,9 @@ import '../../product/core/base/base_state/base_state.dart';
 import '../../product/widget/text_widget/body_medium_text.dart';
 
 abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
-  late int selectProccessIndex = 0;
+  int selectProccessIndex = 0;
 
-  late List<Widget> onBoardingImage = <Widget>[
+  List<Widget> onBoardingImage = <Widget>[
     FadeInDown(
       child: Container(
         decoration: BoxDecoration(
@@ -53,8 +53,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
         children: <Widget>[
           // title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingNormalValue,
             ),
             child: TitleLargeBlackBoldText(
               text: AppLocalizations.of(context)!.onboarding_title_one,
@@ -63,8 +63,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
           ),
           // sub title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.smallPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingSmallValue,
             ),
             child: BodyMediumBlackText(
               text: AppLocalizations.of(context)!.onboarding_subtitle_one,
@@ -81,8 +81,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
         children: <Widget>[
           // title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingNormalValue,
             ),
             child: TitleLargeBlackBoldText(
               text: AppLocalizations.of(context)!.onboarding_title_second,
@@ -91,8 +91,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
           ),
           // sub title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.smallPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingSmallValue,
             ),
             child: BodyMediumBlackText(
               text: AppLocalizations.of(context)!.onboarding_subtitle_second,
@@ -109,8 +109,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
         children: <Widget>[
           // title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingNormalValue,
             ),
             child: TitleLargeBlackBoldText(
               text: AppLocalizations.of(context)!.onboarding_title_three,
@@ -119,8 +119,8 @@ abstract class OnBoardingViewModel extends BaseState<OnBoardingView> {
           ),
           // sub title
           Padding(
-            padding: PaddingSizedsUtility.bottom(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.bottom(
+              BaseUtility.paddingNormalValue,
             ),
             child: BodyMediumBlackText(
               text: AppLocalizations.of(context)!.onboarding_subtitle_three,

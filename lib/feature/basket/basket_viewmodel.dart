@@ -5,7 +5,7 @@ import 'package:caffely/feature/basket/bloc/cubit.dart';
 import 'package:caffely/feature/basket/bloc/event.dart';
 import 'package:caffely/feature/basket/bloc/mixin.dart';
 import 'package:caffely/feature/basket/bloc/state.dart';
-import 'package:caffely/feature/basket/view/order_complete/ordercomplete_view.dart';
+import 'package:caffely/feature/basket/view/order_complete/order_complete_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/base/base_state/base_state.dart';
 import 'package:caffely/product/core/base/helper/navigator_router.dart';
@@ -14,9 +14,9 @@ import 'package:caffely/product/model/basket_product_model/basket_product_model.
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BasketViewModel extends BaseState<BasketView> with BasketMixin {
-  late List<BasketProductModel> basketProductList = [];
+  List<BasketProductModel> basketProductList = [];
 
-  late String branchId = "";
+  String branchId = "";
 
   @override
   void initState() {

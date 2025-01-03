@@ -20,7 +20,7 @@ class VersionView extends StatefulWidget {
 }
 
 class _VersionViewState extends BaseState<VersionView> {
-  late String coverImage =
+  String coverImage =
       "https://firebasestorage.googleapis.com/v0/b/caffely-90d9a.appspot.com/o/images%2Fpexels-ron-lach-8429814.jpg?alt=media&token=5c0177f2-45b6-4b92-a582-4b8160056581";
   @override
   Widget build(BuildContext context) {
@@ -38,31 +38,31 @@ class _VersionViewState extends BaseState<VersionView> {
             Expanded(
               child: Container(
                 alignment: Alignment.center,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(
-                      RadiusUtility.circularMediumValue,
+                      BaseUtility.radiusCircularMediumValue,
                     ),
                     topRight: Radius.circular(
-                      RadiusUtility.circularMediumValue,
+                      BaseUtility.radiusCircularMediumValue,
                     ),
                   ),
                 ),
                 child: Container(
-                  padding: PaddingSizedsUtility.all(
-                    PaddingSizedsUtility.normalPaddingValue,
+                  padding: BaseUtility.all(
+                    BaseUtility.paddingNormalValue,
                   ),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color:
                         Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                       topRight: Radius.circular(
-                        RadiusUtility.circularMediumValue,
+                        BaseUtility.radiusCircularMediumValue,
                       ),
                     ),
                   ),
@@ -71,28 +71,28 @@ class _VersionViewState extends BaseState<VersionView> {
                       children: <Widget>[
                         // icon
                         Container(
-                          margin: PaddingSizedsUtility.bottom(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          margin: BaseUtility.bottom(
+                            BaseUtility.paddingNormalValue,
                           ),
-                          padding: PaddingSizedsUtility.all(
+                          padding: BaseUtility.all(
                             30,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(
-                              RadiusUtility.circularHighValue,
+                              BaseUtility.radiusCircularHighValue,
                             ),
                           ),
                           child: AppIcons.rocketOutline.toSvgImg(
                             Colors.black,
-                            IconSizedsUtility.mediumSecondSize,
-                            IconSizedsUtility.mediumSecondSize,
+                            BaseUtility.iconMediumSecondSize,
+                            BaseUtility.iconMediumSecondSize,
                           ),
                         ),
                         // title
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: TitleLargeBlackBoldText(
                             text: AppLocalizations.of(context)!.version_title,
@@ -101,8 +101,8 @@ class _VersionViewState extends BaseState<VersionView> {
                         ),
                         // sub title
                         Padding(
-                          padding: PaddingSizedsUtility.vertical(
-                            PaddingSizedsUtility.normalPaddingValue,
+                          padding: BaseUtility.vertical(
+                            BaseUtility.paddingNormalValue,
                           ),
                           child: BodyMediumBlackText(
                             text:

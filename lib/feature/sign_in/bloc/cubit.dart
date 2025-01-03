@@ -3,16 +3,19 @@
 import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
+import 'package:caffely/product/core/base/helper/logger.dart';
+import 'package:caffely/product/core/base/helper/shared_service.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
+  // logger
+  final loggerPrint = CustomLoggerPrint();
+  final prefService = PrefService();
   SignInBloc() : super(const SignInState()) {
     on<SignInEmailEvent>((event, emit) {
       emit(state.copyWith(email: event.email));
@@ -81,13 +84,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           errorMessage =
               AppLocalizations.of(event.context)!.sign_auth_exception_error;
       }
-      Logger().e('FirebaseAuthException: ${e.code} - ${e.message}');
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('remember_me', false);
+      loggerPrint
+          .printErrorLog('FirebaseAuthException: ${e.code} - ${e.message}');
+
+      await prefService.setBool('remember_me', false);
 
       emit(SignInErrorState(errorMessage));
     } catch (e) {
-      Logger().e('Unexpected Error: ${e.toString()}');
+      loggerPrint.printErrorLog('Unexpected Error: ${e.toString()}');
       if (!event.context.mounted) return;
       emit(
         SignInErrorState(
@@ -129,25 +133,27 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         if (userCollection.exists == false) {
           await FirebaseCollectionReferances.users.collectRef
               .doc(FirebaseService().authID)
-              .set({
-            'id': FirebaseService().authID,
-            'profile_image': googleUser.photoUrl,
-            'name_surname': '',
-            'email': googleUser.email,
-            'password': '',
-            'phone_number': 0,
-            'city': '',
-            'district': '',
-            'auth_status': 2,
-            'date': FieldValue.serverTimestamp(),
-          });
+              .set(
+                UserModel(
+                  id: FirebaseService().authID!,
+                  profileImage: googleUser.photoUrl!,
+                  nameSurname: '',
+                  email: googleUser.email,
+                  phoneNumber: 0,
+                  city: '',
+                  district: '',
+                  authStatus: 2,
+                ).toUserInformationSet(),
+              );
         } else {
           await FirebaseCollectionReferances.users.collectRef
               .doc(FirebaseService().authID)
-              .update({
-            'profile_image': googleUser.photoUrl,
-            'auth_status': 2,
-          });
+              .update(
+                UserModel(
+                  profileImage: googleUser.photoUrl!,
+                  authStatus: 2,
+                ).toUserUpdate(),
+              );
         }
         if (!event.context.mounted) return;
         emit(
@@ -158,7 +164,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         return null;
       });
     } catch (error) {
-      Logger().i('Hata: $error');
+      loggerPrint.printErrorLog('Hata: $error');
       emit(
         SignInGoogleAuthError(
           AppLocalizations.of(event.context)!.sign_google_error,

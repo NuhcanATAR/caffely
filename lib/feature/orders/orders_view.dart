@@ -28,8 +28,8 @@ class _OrdersViewState extends OrdersViewModel {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.smallPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingSmallValue,
           ),
           child: AppLogoConstants.appLogoNoBackgroundColorPrimary.toImg,
         ),
@@ -69,8 +69,8 @@ class _OrdersViewState extends OrdersViewModel {
           subTitle: AppLocalizations.of(context)!.order_empty_subtitle,
         )
       : Padding(
-          padding: PaddingSizedsUtility.all(
-            PaddingSizedsUtility.normalPaddingValue,
+          padding: BaseUtility.all(
+            BaseUtility.paddingNormalValue,
           ),
           child: ListView.builder(
             itemCount: state.orders.length,

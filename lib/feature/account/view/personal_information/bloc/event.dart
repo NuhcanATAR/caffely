@@ -1,3 +1,4 @@
+import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class PersonalInformationUpdatedEvent extends PersonalInformationEvent {
   final String selectedCity;
   final String selectedDistrict;
   final BuildContext context;
+  final UserModel userModel;
 
   const PersonalInformationUpdatedEvent(
     this.nameSurmame,
@@ -21,5 +23,6 @@ class PersonalInformationUpdatedEvent extends PersonalInformationEvent {
     this.selectedCity,
     this.selectedDistrict,
     this.context,
+    this.userModel,
   );
 }

@@ -2,8 +2,8 @@ import 'package:caffely/feature/sign/sign_viewmodel.dart';
 import 'package:caffely/feature/sign_in/bloc/cubit.dart';
 import 'package:caffely/feature/sign_in/bloc/event.dart';
 import 'package:caffely/feature/sign_in/bloc/state.dart';
-import 'package:caffely/feature/sign_in/signin_view.dart';
-import 'package:caffely/feature/sign_up/signup_view.dart';
+import 'package:caffely/feature/sign_in/sign_in_view.dart';
+import 'package:caffely/feature/sign_up/sign_up_view.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/constants/icon.dart';
 import 'package:caffely/product/constants/logo.dart';
@@ -11,7 +11,7 @@ import 'package:caffely/product/core/base/helper/navigator_router.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
 import 'package:caffely/product/widget/text_widget/title_large_text.dart';
-import 'package:caffely/product/widget/widget/signin_button_widget.dart';
+import 'package:caffely/product/widget/widget/sign_in_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,8 +31,8 @@ class _SignViewState extends SignViewModel {
         listener: signInGoogleListenerBloc,
         builder: (BuildContext context, state) {
           return Padding(
-            padding: PaddingSizedsUtility.all(
-              PaddingSizedsUtility.normalPaddingValue,
+            padding: BaseUtility.all(
+              BaseUtility.paddingNormalValue,
             ),
             child: Center(
               child: Column(
@@ -41,16 +41,16 @@ class _SignViewState extends SignViewModel {
                 children: <Widget>[
                   // logo
                   Padding(
-                    padding: PaddingSizedsUtility.horizontal(
-                      PaddingSizedsUtility.hugePaddingValue,
+                    padding: BaseUtility.horizontal(
+                      BaseUtility.paddingHugeValue,
                     ),
                     child: AppLogoConstants
                         .appLogoTextNoBackgroundColorPrimary.toImg,
                   ),
                   // title
                   Padding(
-                    padding: PaddingSizedsUtility.vertical(
-                      PaddingSizedsUtility.normalPaddingValue,
+                    padding: BaseUtility.vertical(
+                      BaseUtility.paddingNormalValue,
                     ),
                     child: TitleLargeBlackBoldText(
                       text: AppLocalizations.of(context)!.sign_title,
@@ -86,8 +86,8 @@ class _SignViewState extends SignViewModel {
                   ),
                   // sign up
                   Padding(
-                    padding: PaddingSizedsUtility.top(
-                      PaddingSizedsUtility.hightPaddingValue,
+                    padding: BaseUtility.top(
+                      BaseUtility.paddingHightValue,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -98,8 +98,8 @@ class _SignViewState extends SignViewModel {
                           fit: FlexFit.tight,
                           flex: 5,
                           child: Padding(
-                            padding: PaddingSizedsUtility.horizontal(
-                              PaddingSizedsUtility.smallPaddingValue,
+                            padding: BaseUtility.horizontal(
+                              BaseUtility.paddingSmallValue,
                             ),
                             child: BodyMediumBlackText(
                               text: AppLocalizations.of(context)!
@@ -120,8 +120,8 @@ class _SignViewState extends SignViewModel {
                               );
                             },
                             child: Padding(
-                              padding: PaddingSizedsUtility.horizontal(
-                                PaddingSizedsUtility.smallPaddingValue,
+                              padding: BaseUtility.horizontal(
+                                BaseUtility.paddingSmallValue,
                               ),
                               child: BodyMediumMainColorText(
                                 text: AppLocalizations.of(context)!

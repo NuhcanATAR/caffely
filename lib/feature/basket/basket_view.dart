@@ -14,8 +14,8 @@ import 'package:caffely/product/model/basket_product_model/basket_product_model.
 import 'package:caffely/product/model/product_model/product_model.dart';
 import 'package:caffely/product/util/base_utility.dart';
 import 'package:caffely/product/widget/text_widget/body_medium_text.dart';
-import 'package:caffely/product/widget/widget/basket_productslist_widget.dart';
-import 'package:caffely/product/widget/widget/basket_storecard_widget.dart';
+import 'package:caffely/product/widget/widget/basket_products_list_widget.dart';
+import 'package:caffely/product/widget/widget/basket_store_card_widget.dart';
 import 'package:caffely/product/widget/widget/button_widget.dart';
 import 'package:caffely/product/widget/widget/response_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,8 +44,8 @@ class _BasketViewState extends BasketViewModel {
           },
           icon: AppIcons.arrowLeft.toSvgImg(
             Colors.black,
-            IconSizedsUtility.normalSize,
-            IconSizedsUtility.normalSize,
+            BaseUtility.iconNormalSize,
+            BaseUtility.iconNormalSize,
           ),
         ),
         title: BodyMediumBlackText(
@@ -54,8 +54,8 @@ class _BasketViewState extends BasketViewModel {
         ),
       ),
       body: Padding(
-        padding: PaddingSizedsUtility.all(
-          PaddingSizedsUtility.normalPaddingValue,
+        padding: BaseUtility.all(
+          BaseUtility.paddingNormalValue,
         ),
         child: BlocBuilder<BasketBloc, BasketState>(
           builder: (context, state) {
@@ -107,20 +107,20 @@ class _BasketViewState extends BasketViewModel {
             return SizedBox(
               width: dynamicViewExtensions.maxWidth(context),
               child: Container(
-                margin: MarginSizedsUtility.vertical(
-                  MarginSizedsUtility.mediumMarginValue,
+                margin: BaseUtility.vertical(
+                  BaseUtility.marginMediumValue,
                 ),
-                padding: PaddingSizedsUtility.all(
-                  PaddingSizedsUtility.normalPaddingValue,
+                padding: BaseUtility.all(
+                  BaseUtility.paddingNormalValue,
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Theme.of(context).colorScheme.outline,
                     width: 0.5,
                   ),
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(
-                      RadiusUtility.normalRadiusValue,
+                      BaseUtility.radiusNormalValue,
                     ),
                   ),
                 ),
