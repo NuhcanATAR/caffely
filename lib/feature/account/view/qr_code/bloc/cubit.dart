@@ -84,19 +84,29 @@ class QrCodeCubit extends Bloc<QrCodeEvent, QrCodeState> {
 
       final String authId = FirebaseService().authID!;
 
+      final userDocSnapshot =
+          await FirebaseCollectionReferances.users.collectRef.doc(authId).get();
+
+      final Map<String, dynamic> userData =
+          userDocSnapshot.data() as Map<String, dynamic>;
+
+      final UserModel userModel = UserModel.fromJson(userData);
+
       final qrImgFile = await generateQrCode(authId, event.context);
 
       final qrCodeUrl =
           await uploadQrCodeToStorage(qrImgFile, authId, event.context);
 
-      await FirebaseCollectionReferances.qr_code.collectRef.doc(authId).set({
-        'id': authId,
-        'qrcode_url': qrCodeUrl,
-      });
+      await FirebaseCollectionReferances.qr_code.collectRef.doc(authId).set(
+            QrCodeModel(
+              id: authId,
+              qrCode: qrCodeUrl,
+            ).toJson(),
+          );
 
-      await FirebaseCollectionReferances.users.collectRef.doc(authId).update({
-        'qrcode_id': authId,
-      });
+      await FirebaseCollectionReferances.users.collectRef
+          .doc(authId)
+          .update(userModel.toUpdateQrCode(authId));
 
       emit(QrCodeExistState(qrCodeUrl));
     } catch (e) {

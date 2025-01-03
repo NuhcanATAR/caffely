@@ -3,7 +3,7 @@ import 'package:caffely/feature/sign_up/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,18 +34,18 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
       await FirebaseCollectionReferances.users.collectRef
           .doc(FirebaseService().authID)
-          .set({
-        'id': FirebaseAuth.instance.currentUser!.uid,
-        'profile_image': '',
-        'name_surname': '',
-        'email': event.email,
-        'password': event.password,
-        'phone_number': 0,
-        'city': '',
-        'district': '',
-        'auth_status': 1,
-        'date': FieldValue.serverTimestamp(),
-      });
+          .set(
+            UserModel(
+              id: FirebaseAuth.instance.currentUser!.uid,
+              profileImage: '',
+              nameSurname: '',
+              email: event.email,
+              phoneNumber: 0,
+              city: '',
+              district: '',
+              authStatus: 1,
+            ).toUserInformationSet(password: event.password),
+          );
 
       final User? userAuth = userCredential.user;
       await userAuth?.sendEmailVerification();

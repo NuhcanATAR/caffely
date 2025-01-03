@@ -7,8 +7,8 @@ part of 'basket_model.dart';
 // **************************************************************************
 
 BasketModel _$BasketModelFromJson(Map<String, dynamic> json) => BasketModel(
-      json['id'] as String,
-      (json['basket_status'] as num).toInt(),
+      id: json['id'] as String,
+      basketStatus: (json['basket_status'] as num).toInt(),
     );
 
 Map<String, dynamic> _$BasketModelToJson(BasketModel instance) =>

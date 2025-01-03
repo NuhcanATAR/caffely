@@ -95,24 +95,27 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
   ) async {
     emit(SavedAdressLoading());
     try {
-      await FirebaseCollectionReferances.saved_adress.collectRef.add({
-        'id': null,
-        'user_id': FirebaseService().authID,
-        'adress_title': event.adressTitle,
-        'adress_city': event.adressCity,
-        'adress_district': event.adressDistrict,
-        'adress_street': event.adressStreet,
-        'adress_floor': event.adressFloor,
-        'adress_apartment_no': event.adressAparmentNo,
-        'adress_directions': event.adressDirections,
-        'contact_name': event.contactName,
-        'contact_surname': event.contactSurname,
-        'contact_phone_number': event.contactPhoneNumber,
-        'is_deleted': false,
-        'created_date': FieldValue.serverTimestamp(),
-      }).then((value) {
+      await FirebaseCollectionReferances.saved_adress.collectRef
+          .add(
+        SavedAdressModel(
+          id: '',
+          userId: FirebaseService().authID!,
+          adressTitle: event.adressTitle,
+          adressCity: event.adressCity,
+          adressDistrict: event.adressDistrict,
+          adressStreet: event.adressStreet,
+          adressFloor: event.adressFloor,
+          adressAparmentNo: event.adressAparmentNo,
+          adressDirections: event.adressDirections,
+          contactName: event.contactName,
+          contactSurname: event.contactSurname,
+          contactPhoneNumber: event.contactPhoneNumber,
+          isDeleted: false,
+        ).toFirebaseAdd(),
+      )
+          .then((value) {
         final String docId = value.id;
-        value.update({'id': docId});
+        value.update(SavedAdressModel(id: docId).toFirebaseDocUpdate());
       });
       if (!event.context.mounted) return;
       emit(
@@ -137,9 +140,7 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
     try {
       await FirebaseCollectionReferances.saved_adress.collectRef
           .doc(event.model.id)
-          .update({
-        'is_deleted': true,
-      });
+          .update(SavedAdressModel(isDeleted: true).toFirebaseDocDelete());
       if (!event.context.mounted) return;
       emit(
         SaveAdressDeleteSuccess(
@@ -163,18 +164,20 @@ class SavedAdressBloc extends Bloc<SavedAdressEvent, SavedAdressState> {
     try {
       await FirebaseCollectionReferances.saved_adress.collectRef
           .doc(event.model.id)
-          .update({
-        'adress_title': event.adressTitle,
-        'adress_city': event.adressCity,
-        'adress_district': event.adressDistrict,
-        'adress_street': event.adressStreet,
-        'adress_floor': event.adressFloor,
-        'adress_apartment_no': event.adressAparmentNo,
-        'adress_directions': event.adressDirections,
-        'contact_name': event.contactName,
-        'contact_surname': event.contactSurname,
-        'contact_phone_number': event.contactPhoneNumber,
-      });
+          .update(
+            SavedAdressModel(
+              adressTitle: event.adressTitle,
+              adressCity: event.adressCity,
+              adressDistrict: event.adressDistrict,
+              adressStreet: event.adressStreet,
+              adressFloor: event.adressFloor,
+              adressAparmentNo: event.adressAparmentNo,
+              adressDirections: event.adressDirections,
+              contactName: event.contactName,
+              contactSurname: event.contactSurname,
+              contactPhoneNumber: event.contactPhoneNumber,
+            ).toFirebaseUpdate(),
+          );
       if (!event.context.mounted) return;
       emit(
         SaveAdressUpdateSuccess(

@@ -23,17 +23,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
           snapshotData.data() as Map<String, dynamic>;
       return UserModel.fromJson(data);
     } else {
-      return UserModel(
-        '',
-        '',
-        '',
-        '',
-        '',
-        0,
-        '',
-        '',
-        0,
-      );
+      return UserModel();
     }
   }
 }

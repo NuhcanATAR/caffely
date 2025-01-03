@@ -7,7 +7,7 @@ import 'package:caffely/product/core/base/helper/logger.dart';
 import 'package:caffely/product/core/base/helper/shared_service.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -133,25 +133,27 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         if (userCollection.exists == false) {
           await FirebaseCollectionReferances.users.collectRef
               .doc(FirebaseService().authID)
-              .set({
-            'id': FirebaseService().authID,
-            'profile_image': googleUser.photoUrl,
-            'name_surname': '',
-            'email': googleUser.email,
-            'password': '',
-            'phone_number': 0,
-            'city': '',
-            'district': '',
-            'auth_status': 2,
-            'date': FieldValue.serverTimestamp(),
-          });
+              .set(
+                UserModel(
+                  id: FirebaseService().authID!,
+                  profileImage: googleUser.photoUrl!,
+                  nameSurname: '',
+                  email: googleUser.email,
+                  phoneNumber: 0,
+                  city: '',
+                  district: '',
+                  authStatus: 2,
+                ).toUserInformationSet(),
+              );
         } else {
           await FirebaseCollectionReferances.users.collectRef
               .doc(FirebaseService().authID)
-              .update({
-            'profile_image': googleUser.photoUrl,
-            'auth_status': 2,
-          });
+              .update(
+                UserModel(
+                  profileImage: googleUser.photoUrl!,
+                  authStatus: 2,
+                ).toUserUpdate(),
+              );
         }
         if (!event.context.mounted) return;
         emit(

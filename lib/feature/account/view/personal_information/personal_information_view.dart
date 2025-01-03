@@ -133,31 +133,50 @@ class _PersonalInformationViewState extends PersonalInformationViewModel {
       );
 
   // footer button
-  CustomButtonWidget get buildFooterButtonWidget => CustomButtonWidget(
-        dynamicViewExtensions: dynamicViewExtensions,
-        text: AppLocalizations.of(context)!
-            .account_personal_information_footer_btn,
-        func: () {
-          if (formPersonalInformationKey.currentState!.validate()) {
-            if (selectedCity != null || selectedDistrict != null) {
-              context.read<PersonalInformationBloc>().add(
-                    PersonalInformationUpdatedEvent(
-                      nameSurnameController.text,
-                      int.parse(phoneNumberController.text),
-                      selectedCity!,
-                      selectedDistrict!,
-                      context,
-                    ),
-                  );
-            } else {
-              CodeNoahDialogs(context).showFlush(
-                type: SnackType.error,
-                message: AppLocalizations.of(context)!
-                    .account_personal_information_city_error,
-              );
-            }
+  FutureBuilder get buildFooterButtonWidget => FutureBuilder<UserModel>(
+        future: getUserFromFireStore(FirebaseService().authID!),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const SizedBox();
           }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SizedBox();
+          }
+
+          if (snapshot.hasData) {
+            final userModel = snapshot.data!;
+            return CustomButtonWidget(
+              dynamicViewExtensions: dynamicViewExtensions,
+              text: AppLocalizations.of(context)!
+                  .account_personal_information_footer_btn,
+              func: () {
+                if (formPersonalInformationKey.currentState!.validate()) {
+                  if (selectedCity != null || selectedDistrict != null) {
+                    context.read<PersonalInformationBloc>().add(
+                          PersonalInformationUpdatedEvent(
+                            nameSurnameController.text,
+                            int.parse(phoneNumberController.text),
+                            selectedCity!,
+                            selectedDistrict!,
+                            context,
+                            userModel,
+                          ),
+                        );
+                  } else {
+                    CodeNoahDialogs(context).showFlush(
+                      type: SnackType.error,
+                      message: AppLocalizations.of(context)!
+                          .account_personal_information_city_error,
+                    );
+                  }
+                }
+              },
+              btnStatus: ButtonTypes.primaryColorButton,
+            );
+          }
+
+          return const SizedBox();
         },
-        btnStatus: ButtonTypes.primaryColorButton,
       );
 }

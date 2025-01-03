@@ -19,12 +19,7 @@ class PersonalInformationBloc
     try {
       await FirebaseCollectionReferances.users.collectRef
           .doc(FirebaseService().authID)
-          .update({
-        'name_surname': event.nameSurmame,
-        'phone_number': event.phoneNumber,
-        'city': event.selectedCity,
-        'district': event.selectedDistrict,
-      });
+          .update(event.userModel.toUpdateFiebaseMap());
       if (!event.context.mounted) return;
       emit(
         PersonalInformationUpdateSuccess(

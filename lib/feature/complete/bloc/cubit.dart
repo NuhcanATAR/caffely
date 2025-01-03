@@ -3,6 +3,7 @@ import 'package:caffely/feature/complete/bloc/state.dart';
 import 'package:caffely/lang/app_localizations.dart';
 import 'package:caffely/product/core/database/firebase_database.dart';
 import 'package:caffely/product/core/service/firebase/firebase_service.dart';
+import 'package:caffely/product/model/user_model/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileCompleteBloc
@@ -31,12 +32,14 @@ class ProfileCompleteBloc
     try {
       await FirebaseCollectionReferances.users.collectRef
           .doc(FirebaseService().authID)
-          .update({
-        'name_surname': event.nameSurname,
-        'phone_number': event.phoneNumber,
-        'city': event.city,
-        'district': event.district,
-      });
+          .update(
+            UserModel(
+              nameSurname: event.nameSurname,
+              phoneNumber: event.phoneNumber,
+              city: event.city,
+              district: event.district,
+            ).toUpdateFiebaseMap(),
+          );
       emit(ProfileCompleteSuccess());
     } catch (e) {
       if (!event.context.mounted) return;
